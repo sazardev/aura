@@ -26,19 +26,38 @@ import { useAuraStore } from '@/state/store'
 
 const SAMPLE_TEXT = `The sun rose over the quiet village. People walked slowly to the market, carrying baskets of fresh fruit. Learning a new language opens many doors in your life. Practice every day, even for a short time, and you will see great progress. English is not difficult if you enjoy the journey.`
 
+/**
+Upper bound of characters sent to the full NLP pipeline (keeps it fast).
+ */
+const MAX_ANALYZE_CHARS = 150_000
+
+/**
+Average reading speed used to estimate reading time (words per minute).
+ */
+const WORDS_PER_MINUTE = 200
+
 export function AnalyzerScreen() {
   const [text, setText] = useState('')
   const [result, setResult] = useState<AnalyzerResult | undefined>(undefined)
   const [analyzing, setAnalyzing] = useState(false)
+  const [truncated, setTruncated] = useState(false)
+  const [error, setError] = useState<string | undefined>(undefined)
   const addWord = useAuraStore((state) => state.addWord)
   const inTauri = isTauriRuntime()
 
   const runAnalysis = async (source: string) => {
+    const total = source.length
+    const limited = total > MAX_ANALYZE_CHARS ? source.slice(0, MAX_ANALYZE_CHARS) : source
     setText(source)
+    setTruncated(total > MAX_ANALYZE_CHARS)
+    setError(undefined)
     setAnalyzing(true)
     try {
-      const analysis = await analyzeText(source)
+      const analysis = await analyzeText(limited)
       setResult(analysis)
+    } catch (error_) {
+      setResult(undefined)
+      setError(error_ instanceof Error ? error_.message : 'Analysis failed. Please try again.')
     } finally {
       setAnalyzing(false)
     }
@@ -47,11 +66,14 @@ export function AnalyzerScreen() {
   const importFile = async () => {
     const selected = await open({
       multiple: false,
-      filters: [{ name: 'Text', extensions: ['txt', 'md'] }],
+      filters: [
+        { name: 'Documents', extensions: ['pdf', 'txt', 'md'] },
+        { name: 'Text', extensions: ['txt', 'md'] },
+      ],
     })
     if (typeof selected === 'string') {
-      const content = await invokeOptional<string>('read_text_file', { path: selected })
-      if (content !== undefined) await runAnalysis(content)
+      const content = await invokeOptional<string>('read_document_text', { path: selected })
+      if (content !== undefined && content.length > 0) await runAnalysis(content)
     }
   }
 
@@ -74,8 +96,9 @@ export function AnalyzerScreen() {
         <FlaskConical size={22} aria-hidden="true" /> Text analyzer
       </h1>
       <p className="screen-subtitle">
-        Paste any English text and Aura breaks it down: readability, grammar, sentiment, frequencies
-        and words to learn.
+        Paste any English text, open a <strong>PDF</strong>, TXT or MD file, or paste from the
+        clipboard. Aura runs a full NLP pass: readability, grammar, sentiment, frequencies and words
+        to learn.
       </p>
 
       <textarea
@@ -85,6 +108,14 @@ export function AnalyzerScreen() {
         rows={8}
         onChange={(event) => setText(event.target.value)}
       />
+
+      {truncated && (
+        <p className="analyzer-note">
+          Very large text: the first {MAX_ANALYZE_CHARS.toLocaleString('en-US')} characters were
+          analyzed ({text.length.toLocaleString('en-US')} total).
+        </p>
+      )}
+      {error !== undefined && <p className="analyzer-note analyzer-note--error">{error}</p>}
 
       <div className="analyzer-actions">
         <Button
@@ -132,6 +163,7 @@ function AnalyzerResults({
           <Stat label="Syllables" value={result.syllables} />
           <Stat label="Avg. length" value={result.averageWordLength.toFixed(1)} />
           <Stat label="Sentiment" value={sentimentLabel(result.sentiment)} />
+          <Stat label="Reading time" value={readingTime(result.totalWords)} />
         </div>
         {result.readingAge !== undefined && (
           <p className="reading-age">
@@ -233,6 +265,11 @@ function sentimentLabel(value: number | undefined): string {
   if (value > 0.02) return 'Positive'
   if (value < -0.02) return 'Negative'
   return 'Neutral'
+}
+
+function readingTime(words: number): string {
+  const minutes = Math.max(1, Math.round(words / WORDS_PER_MINUTE))
+  return `${minutes} min`
 }
 
 function Stat({ label, value }: { label: string; value: number | string }) {

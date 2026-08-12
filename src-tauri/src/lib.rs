@@ -1,3 +1,4 @@
+use std::path::Path;
 use std::sync::Mutex;
 
 use tauri::{Manager, State};
@@ -80,6 +81,24 @@ fn read_text_file(path: String) -> Result<String, String> {
     std::fs::read_to_string(&path).map_err(|error| format!("Could not read the file: {error}"))
 }
 
+/// Reads a document selected by the user: extracts text from PDFs and reads
+/// plain text files (txt, md, etc.).
+#[tauri::command]
+fn read_document_text(path: String) -> Result<String, String> {
+    let extension = Path::new(&path)
+        .extension()
+        .and_then(|value| value.to_str())
+        .unwrap_or("")
+        .to_ascii_lowercase();
+
+    match extension.as_str() {
+        "pdf" => pdf_extract::extract_text(&path)
+            .map_err(|error| format!("Could not parse the PDF: {error}")),
+        _ => std::fs::read_to_string(&path)
+            .map_err(|error| format!("Could not read the file: {error}")),
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -89,7 +108,11 @@ pub fn run() {
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![lookup_word, read_text_file])
+        .invoke_handler(tauri::generate_handler![
+            lookup_word,
+            read_text_file,
+            read_document_text
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

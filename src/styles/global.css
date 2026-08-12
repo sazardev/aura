@@ -1591,3 +1591,19 @@ button {
   max-width: 320px;
   margin: 0;
 }
+
+.analyzer-note {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+
+  font-size: 13px;
+  color: #9a6a00;
+
+  background: #fff8e1;
+}
+
+.analyzer-note--error {
+  color: var(--aura-red-dark);
+  background: var(--aura-red-soft);
+}

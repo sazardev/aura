@@ -151,8 +151,14 @@ every achievement rule has a JSON definition). Setup: `src/test-setup.ts` + jsdo
    manifest, OG image, robots.txt and JSON-LD (`public/`).
 8. `fcfec39` — **all emojis removed from the UI and data**; every emoji replaced
    by Lucide icons (data schema now uses `icon` names; `UiIcon` maps name -> icon).
-9. `TBD` — logo redesigned to a minimalist **soaring bird** (Lucide `Bird`
-   icon = wings), new app icons/favicon/OG image regenerated.
+9. `cadb228` — logo redesigned to a minimalist **soaring bird** (Lucide `Bird`
+   icon = wings); app icons/favicon/OG regenerated.
+10. `36a46aa` — zero tolerance for emojis across the whole repo (UI, data, docs, scripts).
+11. `8e0ebfa` — design conformance sweep: radii fully tokenized, `--icon-*` tokens,
+    headings 800/1.15, body/buttons use `--font-base`, badges uppercase, empty states with icons.
+12. `TBD` — analyzer is now an ultra processor: reads **PDF** (`pdf-extract` in Rust via
+    `read_document_text`), TXT and MD; truncates huge texts (150k chars) with a notice,
+    shows reading time and error banners.
 
 ## 11. Known gotchas / notes
 
