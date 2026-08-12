@@ -1,4 +1,7 @@
-import { useMemo } from 'react'
+import type { LucideIcon } from 'lucide-react'
+
+import { BookOpen, Check, Flame, Heart, Lock, Medal, Play, Target, Trophy } from 'lucide-react'
+import { type ReactNode, useMemo } from 'react'
 
 import type { Lesson } from '@/engine/lessons'
 
@@ -21,11 +24,19 @@ function nodeStatus(lessonId: string, completed: ReadonlySet<string>): NodeStatu
   return 'locked'
 }
 
-function nodeIcon(status: NodeStatus, type: Lesson['type']): string {
-  if (status === 'done') return '✓'
-  if (status === 'locked') return '🔒'
-  if (type === 'quiz') return '🏆'
-  return '▶'
+const NODE_ICONS: Record<NodeStatus, LucideIcon> = {
+  done: Check,
+  locked: Lock,
+  available: Play,
+}
+
+function nodeIcon(status: NodeStatus, type: Lesson['type']): ReactNode {
+  if (status !== 'available') {
+    const Icon = NODE_ICONS[status]
+    return <Icon size={18} aria-hidden="true" />
+  }
+  const Icon = type === 'quiz' ? Trophy : Play
+  return <Icon size={18} aria-hidden="true" />
 }
 
 function greeting(): string {
@@ -58,12 +69,12 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
         <h1 className="home-hero__title">{greeting()}, learner 🦉</h1>
         <div className="home-hero__stats">
           <div className="home-card home-card--streak">
-            <span className="home-card__emoji">🔥</span>
+            <Flame size={22} aria-hidden="true" />
             <strong>{streak}</strong>
             <span>day streak</span>
           </div>
           <div className="home-card home-card--goal">
-            <span className="home-card__emoji">🎯</span>
+            <Target size={22} aria-hidden="true" />
             <strong>
               {daily.xp}/{dailyGoal}
             </strong>
@@ -71,7 +82,7 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
             <ProgressBar value={goalPercent} height={8} />
           </div>
           <div className="home-card home-card--hearts">
-            <span className="home-card__emoji">❤️</span>
+            <Heart size={22} fill="currentColor" aria-hidden="true" />
             <strong>{hearts}</strong>
             <span>hearts</span>
           </div>
@@ -132,14 +143,14 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
 
       <section className="home-bottom">
         <div className="home-card home-card--words">
-          <span className="home-card__emoji">📖</span>
+          <BookOpen size={22} aria-hidden="true" />
           <div>
             <strong>{learnedWords.length} words</strong>
             <span>in your vocabulary</span>
           </div>
         </div>
         <div className="home-card home-card--achievements">
-          <span className="home-card__emoji">🏅</span>
+          <Medal size={22} aria-hidden="true" />
           <div>
             <strong>
               {unlockedCount}/{ACHIEVEMENTS.length} achievements

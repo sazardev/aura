@@ -1,11 +1,14 @@
 :root {
+  /* Brand palette */
   --aura-green: #58cc02;
   --aura-green-dark: #46a302;
+  --aura-green-soft: #d7ffb8;
   --aura-blue: #1cb0f6;
   --aura-blue-dark: #1899d6;
   --aura-orange: #ff9600;
   --aura-red: #ff4b4b;
   --aura-red-dark: #d33131;
+  --aura-red-soft: #ffdfe0;
   --aura-purple: #ce82ff;
   --aura-pink: #ff86e8;
   --aura-yellow: #ffc800;
@@ -15,8 +18,40 @@
   --aura-bg: #f0f4ef;
   --aura-card: #ffffff;
   --aura-border: #e5e5e5;
-  --aura-radius: 14px;
-  --aura-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  --aura-focus: #1cb0f6;
+
+  /* Typography */
+  --font-sans:
+    'Nunito Variable', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, 'Helvetica Neue',
+    arial, sans-serif;
+  --font-xs: 12px;
+  --font-sm: 13px;
+  --font-base: 15px;
+  --font-lg: 19px;
+  --font-xl: 26px;
+  --font-2xl: 34px;
+
+  /* Spacing (4px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 999px;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 6%);
+  --shadow-sm: 0 2px 4px rgb(0 0 0 / 8%);
+  --shadow-md: 0 6px 16px rgb(0 0 0 / 12%);
 }
 
 * {
@@ -31,14 +66,19 @@ body,
 }
 
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 15px;
   line-height: 1.5;
   color: var(--aura-text);
 
   background: var(--aura-bg);
 
   -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--aura-focus);
+  outline-offset: 2px;
 }
 
 h1,
@@ -193,7 +233,7 @@ button {
 
   padding: 13px 18px;
   border: none;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   font-size: 15px;
   font-weight: 800;
@@ -324,12 +364,12 @@ button {
   align-items: center;
 
   padding: 12px 8px;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   text-align: center;
 
   background: var(--aura-card);
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .home-card__emoji {
@@ -343,9 +383,9 @@ button {
 
 .level-card {
   padding: 14px;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
   background: var(--aura-card);
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .level-card__info {
@@ -384,10 +424,10 @@ button {
 .unit {
   margin: 20px 0;
   padding: 14px;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   background: var(--aura-card);
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .unit__header {
@@ -537,7 +577,7 @@ button {
 
   padding: 13px 28px;
   border: none;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   font-size: 15px;
   font-weight: 800;
@@ -607,7 +647,7 @@ button {
 
   padding: 14px 12px;
   border: 2px solid var(--aura-border);
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   font-size: 15px;
   font-weight: 600;
@@ -630,13 +670,13 @@ button {
 .exercise-option--correct {
   border-color: var(--aura-green);
   color: var(--aura-green-dark);
-  background: #d7ffb8;
+  background: var(--aura-green-soft);
 }
 
 .exercise-option--wrong {
   border-color: var(--aura-red);
   color: var(--aura-red-dark);
-  background: #ffdfe0;
+  background: var(--aura-red-soft);
 }
 
 .exercise-input {
@@ -644,7 +684,7 @@ button {
   margin: 16px 0;
   padding: 14px;
   border: 2px solid var(--aura-border);
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   font-size: 16px;
   color: var(--aura-ink);
@@ -665,7 +705,7 @@ button {
   margin-top: 16px;
   padding: 12px;
   border: 2px solid #d7ffb8;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   background: #f5faf5;
 }
@@ -688,7 +728,7 @@ button {
   margin-bottom: 16px;
   padding: 10px;
   border: 2px dashed var(--aura-border);
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   background: white;
 }
@@ -735,7 +775,7 @@ button {
 
   padding: 14px;
   border: 2px solid var(--aura-border);
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   font-size: 15px;
   font-weight: 700;
@@ -753,12 +793,12 @@ button {
   cursor: default;
   border-color: var(--aura-green);
   color: var(--aura-green-dark);
-  background: #d7ffb8;
+  background: var(--aura-green-soft);
 }
 
 .match-card--error {
   border-color: var(--aura-red);
-  background: #ffdfe0;
+  background: var(--aura-red-soft);
 }
 
 .flip-card {
@@ -850,10 +890,10 @@ button {
 
   min-width: 110px;
   padding: 14px;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   background: white;
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-card__value {
@@ -889,10 +929,10 @@ button {
 .word-card {
   margin-bottom: 24px;
   padding: 16px;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   background: white;
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .word-card__header {
@@ -942,7 +982,7 @@ button {
 .tier-badge--very-common,
 .tier-badge--common {
   color: var(--aura-green-dark);
-  background: #d7ffb8;
+  background: var(--aura-green-soft);
 }
 
 .tier-badge--uncommon {
@@ -953,7 +993,7 @@ button {
 .tier-badge--rare,
 .tier-badge--very-rare {
   color: var(--aura-red-dark);
-  background: #ffdfe0;
+  background: var(--aura-red-soft);
 }
 
 .word-card__loading {
@@ -1072,7 +1112,7 @@ button {
   border-radius: 12px;
 
   background: white;
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .vocabulary__info {
@@ -1110,7 +1150,7 @@ button {
   min-height: 180px;
   padding: 14px;
   border: 2px solid var(--aura-border);
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
 
   font-family: inherit;
   font-size: 15px;
@@ -1138,9 +1178,9 @@ button {
 
 .result-section {
   padding: 16px;
-  border-radius: var(--aura-radius);
+  border-radius: var(--radius-lg);
   background: white;
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-grid {
@@ -1378,7 +1418,7 @@ button {
   text-align: center;
 
   background: white;
-  box-shadow: var(--aura-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 .review-card__header {

@@ -1,5 +1,6 @@
 import { readText } from '@tauri-apps/plugin-clipboard-manager'
 import { open } from '@tauri-apps/plugin-dialog'
+import { Clipboard, FolderOpen } from 'lucide-react'
 import { useState } from 'react'
 
 import type { AnalyzerResult, ReadabilityScore } from '@/engine/analyzer'
@@ -86,11 +87,11 @@ export function AnalyzerScreen() {
         </Button>
         {inTauri && (
           <Button variant="secondary" onClick={() => void importFile()}>
-            📂 Open file
+            <FolderOpen size={16} aria-hidden="true" /> Open file
           </Button>
         )}
         <Button variant="secondary" onClick={() => void pasteClipboard()}>
-          📋 Paste
+          <Clipboard size={16} aria-hidden="true" /> Paste
         </Button>
       </div>
 

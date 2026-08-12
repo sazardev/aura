@@ -143,6 +143,10 @@ every achievement rule has a JSON definition). Setup: `src/test-setup.ts` + jsdo
 4. `1b6cba0` — everything in English (UI, content, ids, docs); course schema simplified.
 5. `5a2e38c` — giant data bank (3,885 words) + course expansion (36 lessons/180 words)
    via `gen_vocab` and a custom WordNet reader (`wordnet_db.rs`).
+6. `TBD` — DESIGN.md + implementation: `lucide-react` (functional icons) and
+   `@fontsource-variable/nunito` (self-hosted font) adopted; full token set in
+   `global.css` (`--space-*`, `--radius-*`, `--shadow-*`, `--font-*`, `-soft` colors,
+   `--aura-focus`), `:focus-visible` ring.
 
 ## 11. Known gotchas / notes
 

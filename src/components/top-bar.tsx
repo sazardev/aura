@@ -1,3 +1,5 @@
+import { Flame, Heart, Zap } from 'lucide-react'
+
 import { ProgressBar } from '@/components/progress-bar'
 import { levelFromXp } from '@/engine/xp'
 import { useAuraStore } from '@/state/store'
@@ -15,16 +17,16 @@ export function TopBar() {
   return (
     <header className="top-bar">
       <div className="top-bar__stat" title="Day streak">
-        <span className="top-bar__icon">🔥</span>
+        <Flame size={18} aria-hidden="true" />
         <strong>{streak}</strong>
       </div>
       <div className="top-bar__stat" title="Experience points">
-        <span className="top-bar__icon">⚡</span>
+        <Zap size={18} aria-hidden="true" />
         <strong>{xp}</strong>
         <span className="top-bar__level">Lv {level.level}</span>
       </div>
       <div className="top-bar__stat" title="Hearts">
-        <span className="top-bar__icon">❤️</span>
+        <Heart size={18} fill="currentColor" aria-hidden="true" />
         <strong>{hearts}</strong>
       </div>
       <div className="top-bar__goal" title={`Daily goal: ${daily.xp}/${dailyGoal} XP`}>

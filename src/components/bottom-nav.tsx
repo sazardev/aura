@@ -1,3 +1,7 @@
+import type { LucideIcon } from 'lucide-react'
+
+import { BookOpen, FlaskConical, Home, RotateCcw } from 'lucide-react'
+
 import { useDueCardCount } from '@/state/store'
 
 export type NavTarget = 'home' | 'dictionary' | 'analyzer' | 'review'
@@ -5,7 +9,7 @@ export type NavTarget = 'home' | 'dictionary' | 'analyzer' | 'review'
 interface NavItem {
   target: NavTarget
   label: string
-  icon: string
+  icon: LucideIcon
   badge?: number
 }
 
@@ -18,16 +22,17 @@ export function BottomNav({ active, onNavigate }: BottomNavProps) {
   const dueCount = useDueCardCount()
 
   const items: NavItem[] = [
-    { target: 'home', label: 'Home', icon: '🏠' },
-    { target: 'dictionary', label: 'Dictionary', icon: '📖' },
-    { target: 'analyzer', label: 'Analyzer', icon: '🧪' },
-    { target: 'review', label: 'Review', icon: '🔁', badge: dueCount },
+    { target: 'home', label: 'Home', icon: Home },
+    { target: 'dictionary', label: 'Dictionary', icon: BookOpen },
+    { target: 'analyzer', label: 'Analyzer', icon: FlaskConical },
+    { target: 'review', label: 'Review', icon: RotateCcw, badge: dueCount },
   ]
 
   return (
     <nav className="bottom-nav" aria-label="Main navigation">
       {items.map((item) => {
         const isActive = active === item.target
+        const Icon = item.icon
         const classes = ['bottom-nav__item', isActive ? 'bottom-nav__item--active' : '']
           .filter(Boolean)
           .join(' ')
@@ -40,7 +45,7 @@ export function BottomNav({ active, onNavigate }: BottomNavProps) {
             onClick={() => onNavigate(item.target)}
           >
             <span className="bottom-nav__icon">
-              {item.icon}
+              <Icon size={20} strokeWidth={2} aria-hidden="true" />
               {item.badge !== undefined && item.badge > 0 && (
                 <span className="bottom-nav__badge">{item.badge}</span>
               )}

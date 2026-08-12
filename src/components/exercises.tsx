@@ -1,3 +1,4 @@
+import { Mic, Square } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import type {
@@ -277,7 +278,15 @@ export function SpeakView({
       {recognitionSupported ? (
         <>
           <Button variant="secondary" block onClick={toggleListening}>
-            {listening ? '⏹ Stop' : '🎙 Listen to my voice'}
+            {listening ? (
+              <>
+                <Square size={16} aria-hidden="true" /> Stop
+              </>
+            ) : (
+              <>
+                <Mic size={16} aria-hidden="true" /> Listen to my voice
+              </>
+            )}
           </Button>
           {transcript.length > 0 && (
             <p className="speak-transcript">

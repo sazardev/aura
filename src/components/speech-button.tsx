@@ -1,3 +1,5 @@
+import { AudioLines, Volume2 } from 'lucide-react'
+
 import { useSpeech } from '@/hooks/use-speech'
 
 interface SpeechButtonProps {
@@ -5,6 +7,8 @@ interface SpeechButtonProps {
   label?: string
   size?: 'sm' | 'md' | 'lg'
 }
+
+const ICON_SIZE: Record<'sm' | 'md' | 'lg', number> = { sm: 16, md: 20, lg: 26 }
 
 export function SpeechButton({ text, label, size = 'md' }: SpeechButtonProps) {
   const { speak, speaking } = useSpeech()
@@ -19,7 +23,11 @@ export function SpeechButton({ text, label, size = 'md' }: SpeechButtonProps) {
       title="Listen"
       onClick={() => speak(text)}
     >
-      {speaking ? '🔊' : '🔈'}
+      {speaking ? (
+        <AudioLines size={ICON_SIZE[size]} strokeWidth={2} aria-hidden="true" />
+      ) : (
+        <Volume2 size={ICON_SIZE[size]} strokeWidth={2} aria-hidden="true" />
+      )}
     </button>
   )
 }

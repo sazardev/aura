@@ -1,3 +1,4 @@
+import { Heart, X } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import type { Exercise } from '@/engine/exercises'
@@ -162,14 +163,16 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
           aria-label="Close lesson"
           onClick={onHome}
         >
-          ✕
+          <X size={18} aria-hidden="true" />
         </button>
         <ProgressBar
           value={(index / exercises.length) * 100}
           color="var(--aura-yellow)"
           height={14}
         />
-        <span className="lesson-screen__hearts">❤️ {hearts}</span>
+        <span className="lesson-screen__hearts">
+          <Heart size={16} fill="currentColor" aria-hidden="true" /> {hearts}
+        </span>
       </div>
 
       {renderExercise(

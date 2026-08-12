@@ -1,3 +1,4 @@
+import { Dices } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 import type { DictionaryEntry, WordnetSense } from '@/engine/dictionary'
@@ -118,7 +119,7 @@ export function DictionaryScreen() {
         />
       </div>
       <Button variant="ghost" block onClick={surprise}>
-        🎲 Surprise me
+        <Dices size={16} aria-hidden="true" /> Surprise me
       </Button>
 
       {debounced.length > 0 && (
