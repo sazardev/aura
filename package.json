@@ -27,7 +27,7 @@
     "test:coverage": "vitest run --coverage",
     "docs": "typedoc",
     "tauri": "tauri",
-    "tauri:dev": "tauri dev",
+    "tauri:dev": "node scripts/tauri-dev.mjs",
     "tauri:build": "tauri build",
     "lint:rust": "cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
     "format:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml --check",

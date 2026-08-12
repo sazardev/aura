@@ -45,22 +45,22 @@ El diccionario WordNet se copia automáticamente desde `node_modules/wordnet-db`
 
 ## 🛠 Scripts
 
-| Comando                 | Descripción                                                     |
-| ----------------------- | --------------------------------------------------------------- |
-| `npm run dev`           | Servidor de desarrollo Vite (puerto 1420).                      |
-| `npm run tauri:dev`     | App Tauri en modo desarrollo.                                   |
-| `npm run tauri:build`   | Build release de escritorio (deb, AppImage, etc.).              |
-| `npm run typecheck`     | TypeScript 7 (`tsgo`, nativo) — typecheck de todo el proyecto.  |
-| `npm run lint`          | ESLint 10 con rulesets type-aware máximos (strict + stylistic). |
-| `npm run format`        | Prettier (escribe).                                             |
-| `npm run stylelint`     | Stylelint (orden y estilo del CSS).                             |
-| `npm run lint:rust`     | Clippy con `-D warnings`.                                       |
-| `npm run format:rust`   | rustfmt en modo check.                                          |
-| `npm run test`          | Vitest (37+ tests del motor).                                   |
-| `npm run test:coverage` | Cobertura de código.                                            |
-| `npm run docs`          | TypeDoc de la API interna en `docs/`.                           |
-| `npm run analyze`       | `typecheck` + `lint` + `stylelint` + `format:check`.            |
-| `npm run ci`            | Todo: análisis, Rust, tests y build.                            |
+| Comando                 | Descripción                                                                                    |
+| ----------------------- | ---------------------------------------------------------------------------------------------- |
+| `npm run dev`           | Servidor de desarrollo Vite (puerto 1420).                                                     |
+| `npm run tauri:dev`     | App Tauri en modo desarrollo. Si el puerto 1420 está ocupado elige otro libre automáticamente. |
+| `npm run tauri:build`   | Build release de escritorio (deb, AppImage, etc.).                                             |
+| `npm run typecheck`     | TypeScript 7 (`tsgo`, nativo) — typecheck de todo el proyecto.                                 |
+| `npm run lint`          | ESLint 10 con rulesets type-aware máximos (strict + stylistic).                                |
+| `npm run format`        | Prettier (escribe).                                                                            |
+| `npm run stylelint`     | Stylelint (orden y estilo del CSS).                                                            |
+| `npm run lint:rust`     | Clippy con `-D warnings`.                                                                      |
+| `npm run format:rust`   | rustfmt en modo check.                                                                         |
+| `npm run test`          | Vitest (37+ tests del motor).                                                                  |
+| `npm run test:coverage` | Cobertura de código.                                                                           |
+| `npm run docs`          | TypeDoc de la API interna en `docs/`.                                                          |
+| `npm run analyze`       | `typecheck` + `lint` + `stylelint` + `format:check`.                                           |
+| `npm run ci`            | Todo: análisis, Rust, tests y build.                                                           |
 
 ---
 

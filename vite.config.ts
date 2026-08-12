@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 const host = process.env['TAURI_DEV_HOST']
+const devPort = Number(process.env['AURA_DEV_PORT'] ?? 1420)
 
 export default defineConfig({
   plugins: [react()],
@@ -14,10 +15,11 @@ export default defineConfig({
   },
   clearScreen: false,
   server: {
-    port: 1420,
-    strictPort: true,
+    port: devPort,
+    // Si el puerto está ocupado, Vite elige el siguiente libre en vez de fallar.
+    strictPort: false,
     host: host ?? false,
-    ...(host !== undefined ? { hmr: { protocol: 'ws', host, port: 1421 } } : {}),
+    ...(host !== undefined ? { hmr: { protocol: 'ws', host, port: devPort + 1 } } : {}),
     watch: {
       ignored: ['**/src-tauri/**'],
     },
