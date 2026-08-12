@@ -293,7 +293,7 @@ fn main() {
         serde_json::to_string_pretty(&vocab).expect("serialize vocab"),
     )
     .expect("write vocab");
-    println!("  → {} entries written to {:?}", vocab.len(), vocab_out);
+    println!("  -> {} entries written to {:?}", vocab.len(), vocab_out);
 
     println!("Building course expansion…");
     let expansion = build_expansion(&db, &subtlex, &excluded);
@@ -304,7 +304,7 @@ fn main() {
     .expect("write expansion");
     let lesson_count: usize = expansion.iter().map(|u| u.lessons.len()).sum();
     println!(
-        "  → {} units, {} lessons written to {:?}",
+        "  -> {} units, {} lessons written to {:?}",
         expansion.len(),
         lesson_count,
         expansion_out

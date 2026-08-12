@@ -102,10 +102,10 @@ export function dueCards(cards: readonly SrsCard[], now: Date = new Date()): Srs
 }
 
 /**
- * Readable due-date label (e.g. "today" or "Jun 1 → Jul 3").
+ * Readable due-date label (e.g. "today" or "Jun 1 to Jul 3").
  */
 export function dueLabel(card: SrsCard, now: Date = new Date()): string {
   const due = new Date(card.state.due)
   if (due.getTime() - now.getTime() <= DAY_MS) return 'today'
-  return `${now.toLocaleDateString('en', { day: 'numeric', month: 'short' })} → ${due.toLocaleDateString('en', { day: 'numeric', month: 'short' })}`
+  return `${now.toLocaleDateString('en', { day: 'numeric', month: 'short' })} to ${due.toLocaleDateString('en', { day: 'numeric', month: 'short' })}`
 }

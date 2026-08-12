@@ -45,8 +45,8 @@ async function waitForServer(port, timeoutMs = 30_000) {
 const port = await findFreePort()
 console.log(
   port === PREFERRED_PORT
-    ? `\n🦉 Aura dev server at http://localhost:${port}\n`
-    : `\n🦉 Aura dev server at http://localhost:${port}\n   (port ${PREFERRED_PORT} is busy, a free one was picked)\n`,
+    ? `\nAura dev server at http://localhost:${port}\n`
+    : `\nAura dev server at http://localhost:${port}\n   (port ${PREFERRED_PORT} is busy, a free one was picked)\n`,
 )
 
 const vite = spawn(process.execPath, [VITE_BIN, '--port', String(port), '--strictPort'], {
@@ -56,7 +56,7 @@ const vite = spawn(process.execPath, [VITE_BIN, '--port', String(port), '--stric
 
 if (!(await waitForServer(port))) {
   vite.kill()
-  console.error(`\n✖ The dev server did not start on port ${port}`)
+  console.error(`\nError: the dev server did not start on port ${port}`)
   process.exit(1)
 }
 

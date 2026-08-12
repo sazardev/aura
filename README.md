@@ -1,4 +1,4 @@
-# 🦉 Aura — Learn English at full power
+# Aura — Learn English at full power
 
 **Aura is not a translator: it is a way to learn English.** A Duolingo-style
 course that is **100% local, free, libre and open source**, with a full
@@ -11,22 +11,22 @@ Vitest, Clippy and rustfmt.
 
 ---
 
-## ✨ Features
+## Features
 
-| Module                       | What it does                                                                                                                                                                               |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 📚 **Course**                | 36 lessons in 12 units (90 guided + 90 generated from WordNet) with 7 exercise types: multiple choice, listening, typing, sentence building, speaking, matching and flashcards.            |
-| 🧠 **Spaced repetition**     | **SM-2** (SuperMemo) algorithm to memorize vocabulary scientifically.                                                                                                                      |
-| 📖 **WordNet dictionary**    | Full WordNet 3.0 database (~35 MB) embedded in the app: definitions, examples, synonyms, antonyms, hypernyms and hyponyms, plus an instant offline bank of **3,884 high-frequency words**. |
-| 🔤 **Real frequencies**      | **SUBTLEX-US** corpus (74,286 words) to know whether a word is common, rare or very rare.                                                                                                  |
-| 🧪 **Text analyzer**         | Readability (Flesch, Gunning Fog, SMOG, ARI, Dale–Chall, Coleman-Liau…), grammar and style (retext ecosystem), sentiment (AFINN-165), parts of speech and words to learn.                  |
-| 🔊 **Voice & pronunciation** | Text-to-speech (TTS) on every word plus speaking exercises with speech recognition when the platform supports it.                                                                          |
-| 🎮 **Gamification**          | XP, levels, streaks, hearts, daily goals and 15 achievements.                                                                                                                              |
-| 🔒 **Total privacy**         | No account, no internet, no telemetry. Everything lives on your machine.                                                                                                                   |
+| Module                    | What it does                                                                                                                                                                               |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Course**                | 36 lessons in 12 units (90 guided + 90 generated from WordNet) with 7 exercise types: multiple choice, listening, typing, sentence building, speaking, matching and flashcards.            |
+| **Spaced repetition**     | **SM-2** (SuperMemo) algorithm to memorize vocabulary scientifically.                                                                                                                      |
+| **WordNet dictionary**    | Full WordNet 3.0 database (~35 MB) embedded in the app: definitions, examples, synonyms, antonyms, hypernyms and hyponyms, plus an instant offline bank of **3,884 high-frequency words**. |
+| **Real frequencies**      | **SUBTLEX-US** corpus (74,286 words) to know whether a word is common, rare or very rare.                                                                                                  |
+| **Text analyzer**         | Readability (Flesch, Gunning Fog, SMOG, ARI, Dale–Chall, Coleman-Liau…), grammar and style (retext ecosystem), sentiment (AFINN-165), parts of speech and words to learn.                  |
+| **Voice & pronunciation** | Text-to-speech (TTS) on every word plus speaking exercises with speech recognition when the platform supports it.                                                                          |
+| **Gamification**          | XP, levels, streaks, hearts, daily goals and 15 achievements.                                                                                                                              |
+| **Total privacy**         | No account, no internet, no telemetry. Everything lives on your machine.                                                                                                                   |
 
 ---
 
-## 🚀 Getting started
+## Getting started
 
 Requirements: [Node.js ≥ 22](https://nodejs.org), [Rust ≥ 1.77](https://rustup.rs)
 and the [Tauri prerequisites](https://tauri.app/start/prerequisites/).
@@ -42,7 +42,7 @@ The WordNet dictionary is copied automatically from `node_modules/wordnet-db` to
 
 ---
 
-## 🛠 Scripts
+## Scripts
 
 | Command                 | Description                                                                      |
 | ----------------------- | -------------------------------------------------------------------------------- |
@@ -65,7 +65,7 @@ The WordNet dictionary is copied automatically from `node_modules/wordnet-db` to
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ```
 src/
@@ -118,7 +118,7 @@ lesson, you only edit `course.json`.
 
 ---
 
-## 🧪 Quality
+## Quality
 
 - **50 tests** with Vitest over the engine (SM-2, streaks, frequencies,
   vocabulary bank, exercises, text analyzer, strings) plus a UI smoke test.
@@ -131,14 +131,14 @@ lesson, you only edit `course.json`.
 
 ---
 
-## 📄 License
+## License
 
 **MIT** — free and for everyone. Uses WordNet (Princeton), SUBTLEX-US
 frequency data and AFINN-165, all under permissive licenses.
 
 ---
 
-## 🗺 Roadmap
+## Roadmap
 
 - [ ] More units and lessons (full course up to B1 level)
 - [ ] Interactive stories and timed challenges
@@ -146,5 +146,5 @@ frequency data and AFINN-165, all under permissive licenses.
 - [ ] Irregular verbs module
 - [ ] Free writing practice with corrections
 
-Made with ❤️ for anyone who wants to master English — without paying, without
+Made for anyone who wants to master English — without paying, without
 internet and without giving away their data.

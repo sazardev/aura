@@ -13,7 +13,7 @@ bundled with the app (no CDNs), and all copy is English.
 
 - **Name**: Aura
 - **Tagline**: Learn English at full power.
-- **Mascot**: 🦉 an owl (the "teacher"). Used decoratively in greetings/empty states.
+- **Mascot**: an owl (the "teacher"), echoed by the soaring-bird logo mark.
 
 ### Logo
 
@@ -59,20 +59,16 @@ soar. One icon from our own set, nothing else.
   `--icon-lg` 24 / `--icon-xl` 32).
 - Icons inherit color from text color; never hard-code icon color.
 
-### Emoji policy
+### Zero-emoji policy
 
-Emojis are **decorative/content only**, never functional affordances:
+**No emojis anywhere** — in the UI, the data, the docs or the scripts. Every
+icon, decorative or functional, comes from **Lucide** (or the `Logo` mark).
+Emoji glyphs render inconsistently across platforms (tofu boxes), so they are
+banned; if a concept has no Lucide icon, use text instead.
 
-| Where                                            | Emoji allowed       | Replaced by Lucide |
-| ------------------------------------------------ | ------------------- | ------------------ |
-| Unit icons (course map)                          | ✅ `👋` `🍎` `✈️` … | —                  |
-| Achievement emojis                               | ✅                  | —                  |
-| Greeting / empty states                          | ✅                  | —                  |
-| Close (✕), speaker (🔈/🔊), mic (🎙), nav, badges | ❌                  | ✅                 |
-
-> Implementation: install `lucide-react` and swap the functional emoji usages
-> (`speech-button`, `bottom-nav`, `top-bar`, close buttons, etc.). Keep the
-> content emojis.
+> Implementation: `UiIcon` resolves icon names (units, achievements) to Lucide
+> components; everything else imports Lucide directly. A scan for emoji code
+> points across the repo must return zero matches.
 
 ---
 
@@ -141,12 +137,12 @@ Emojis are **decorative/content only**, never functional affordances:
 
 ### Contrast (WCAG AA)
 
-| Pair                               | Ratio | Status                                                                                                         |
-| ---------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------- |
-| `--aura-ink` on white              | ~12:1 | ✅                                                                                                             |
-| `--aura-text` on `--aura-bg`/white | ~7:1  | ✅                                                                                                             |
-| `--aura-muted` (#8a8a8a) on white  | ~3:1  | ⚠️ only for large/decorative text                                                                              |
-| white on `--aura-green`            | ~2:1  | ⚠️ buttons rely on the `-dark` shadow for shape; ensure ≥3:1 for text by using `--aura-green-dark` when needed |
+| Pair                               | Ratio | Status                                                      |
+| ---------------------------------- | ----- | ----------------------------------------------------------- |
+| `--aura-ink` on white              | ~12:1 | Pass                                                        |
+| `--aura-text` on `--aura-bg`/white | ~7:1  | Pass                                                        |
+| `--aura-muted` (#8a8a8a) on white  | ~3:1  | Caution: only for large text                                |
+| white on `--aura-green`            | ~2:1  | Caution: use the `-dark` shadow + text variant for contrast |
 
 > Rule: never use `--aura-muted` for text smaller than 13px on `--aura-bg`.
 
@@ -232,7 +228,7 @@ Primary/secondary buttons use a bottom edge of the same hue:
 
 ### Top bar
 
-- Sticky, white, 2px `--aura-border` bottom. Stats (streak 🔥, XP ⚡, hearts ❤️)
+- Sticky, white, 2px `--aura-border` bottom. Icon counters for streak, XP and hearts.
   in `--aura-ink` 15px; daily-goal mini progress at right.
 
 ### Bottom navigation
@@ -269,7 +265,7 @@ Primary/secondary buttons use a bottom edge of the same hue:
 
 ### Empty states
 
-Always include a friendly icon (emoji allowed), one line of guidance and a
+Always include a friendly Lucide icon, one line of guidance and a
 clear next action (e.g. "Finish lessons to fill your review queue" + CTA).
 
 ---
@@ -280,7 +276,7 @@ clear next action (e.g. "Finish lessons to fill your review queue" + CTA).
 - Sticky top bar; fixed bottom nav (content reserves 96px bottom padding).
 - Lesson player: full-height column, header (close + progress + hearts),
   exercise body, footer (Continue / progress count).
-- Result screens: centered stack, 64px hero emoji, stat cards, actions.
+- Result screens: centered stack, large hero icon, stat cards, actions.
 - Content column: 1 column on mobile; never requires landscape.
 
 ---
@@ -306,8 +302,7 @@ clear next action (e.g. "Finish lessons to fill your review queue" + CTA).
 
 **To adopt (per this doc):**
 
-1. `lucide-react` for all functional icons (replace speaker 🔈/🔊, close ✕, nav
-   emojis, mic, search). Keep content emojis.
+1. All icons come from `lucide-react`; no emojis anywhere (UI, data, docs).
 2. Bundle **Nunito** variable woff2; `@font-face` in CSS; apply scale tokens.
 3. Formalize the token set into semantic names + add missing tokens
    (spacing, radii, shadow, font scale, `-soft` colors, focus ring).
