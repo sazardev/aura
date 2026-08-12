@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import type { AchievementDef } from '@/engine/types'
 
+import { UiIcon } from '@/components/ui-icon'
 import { achievementById } from '@/engine/achievements'
 import { useAuraStore } from '@/state/store'
 
@@ -34,7 +35,9 @@ export function AchievementToast() {
 
   return (
     <div className="achievement-toast" role="status">
-      <span className="achievement-toast__emoji">{toast.emoji}</span>
+      <span className="achievement-toast__emoji">
+        <UiIcon name={toast.icon} size={30} />
+      </span>
       <div className="achievement-toast__body">
         <strong>Achievement unlocked!</strong>
         <span>{toast.name}</span>

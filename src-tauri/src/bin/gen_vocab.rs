@@ -23,13 +23,13 @@ fn vocab_top_n() -> usize {
 const UNIT_LESSONS: usize = 3;
 const LESSON_SIZE: usize = 5;
 const EXPANSION_UNITS: usize = 6;
-const UNIT_EMOJIS: &[(&str, &str)] = &[
-    ("core-1", "🔤"),
-    ("core-2", "💬"),
-    ("core-3", "🗣️"),
-    ("core-4", "🧠"),
-    ("core-5", "🌊"),
-    ("core-6", "🚀"),
+const UNIT_ICONS: &[(&str, &str)] = &[
+    ("core-1", "Sparkles"),
+    ("core-2", "MessageSquare"),
+    ("core-3", "Mic"),
+    ("core-4", "Brain"),
+    ("core-5", "Waves"),
+    ("core-6", "Rocket"),
 ];
 
 #[derive(Deserialize)]
@@ -69,7 +69,7 @@ struct ExpansionLesson {
 struct ExpansionUnit {
     id: String,
     title: String,
-    emoji: String,
+    icon: String,
     color: String,
     lessons: Vec<ExpansionLesson>,
 }
@@ -222,11 +222,14 @@ fn build_expansion(
         }
 
         if !lessons.is_empty() {
-            let emoji = UNIT_EMOJIS.get(unit_index).map(|e| e.1).unwrap_or("📚");
+            let icon = UNIT_ICONS
+                .get(unit_index)
+                .map(|e| e.1)
+                .unwrap_or("Sparkles");
             units.push(ExpansionUnit {
                 id: format!("core-{}", unit_index + 1),
                 title: format!("Core Words {}", unit_index + 1),
-                emoji: emoji.to_string(),
+                icon: icon.to_string(),
                 color: "#1cb0f6".to_string(),
                 lessons,
             });

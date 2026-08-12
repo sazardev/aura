@@ -1,4 +1,5 @@
 import { Button } from '@/components/button'
+import { UiIcon } from '@/components/ui-icon'
 
 interface LessonResultProps {
   title: string
@@ -10,10 +11,10 @@ interface LessonResultProps {
   onHome: () => void
 }
 
-function resultEmoji(perfect: boolean, correct: number, total: number): string {
-  if (perfect) return '🏆'
-  if (correct >= total * 0.7) return '🎉'
-  return '💪'
+function resultIcon(perfect: boolean, correct: number, total: number): string {
+  if (perfect) return 'Trophy'
+  if (correct >= total * 0.7) return 'PartyPopper'
+  return 'Dumbbell'
 }
 
 export function LessonResult({
@@ -27,7 +28,9 @@ export function LessonResult({
 }: LessonResultProps) {
   return (
     <div className="lesson-result">
-      <div className="lesson-result__emoji">{resultEmoji(perfect, correct, total)}</div>
+      <div className="lesson-result__emoji">
+        <UiIcon name={resultIcon(perfect, correct, total)} size={64} />
+      </div>
       <h2>{perfect ? 'Perfect lesson!' : 'Lesson complete'}</h2>
       <p className="lesson-result__subtitle">{title}</p>
 

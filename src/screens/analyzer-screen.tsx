@@ -1,6 +1,16 @@
 import { readText } from '@tauri-apps/plugin-clipboard-manager'
 import { open } from '@tauri-apps/plugin-dialog'
-import { Clipboard, FolderOpen } from 'lucide-react'
+import {
+  BarChart3,
+  BookOpenCheck,
+  Clipboard,
+  FlaskConical,
+  FolderOpen,
+  SpellCheck,
+  Sprout,
+  Tag,
+  TrendingUp,
+} from 'lucide-react'
 import { useState } from 'react'
 
 import type { AnalyzerResult, ReadabilityScore } from '@/engine/analyzer'
@@ -60,7 +70,9 @@ export function AnalyzerScreen() {
 
   return (
     <div className="analyzer-screen">
-      <h1>Text analyzer 🧪</h1>
+      <h1 className="screen-title">
+        <FlaskConical size={22} aria-hidden="true" /> Text analyzer
+      </h1>
       <p className="screen-subtitle">
         Paste any English text and Aura breaks it down: readability, grammar, sentiment, frequencies
         and words to learn.
@@ -110,7 +122,9 @@ function AnalyzerResults({
   return (
     <div className="analyzer-results">
       <section className="result-section">
-        <h2>📊 Statistics</h2>
+        <h2 className="section-title">
+          <BarChart3 size={18} aria-hidden="true" /> Statistics
+        </h2>
         <div className="stat-grid">
           <Stat label="Words" value={result.totalWords} />
           <Stat label="Unique" value={result.uniqueWords} />
@@ -127,7 +141,9 @@ function AnalyzerResults({
       </section>
 
       <section className="result-section">
-        <h2>📚 Readability</h2>
+        <h2 className="section-title">
+          <BookOpenCheck size={18} aria-hidden="true" /> Readability
+        </h2>
         <div className="readability-grid">
           {result.readability.map((score) => (
             <ReadabilityCard key={score.name} score={score} />
@@ -136,12 +152,16 @@ function AnalyzerResults({
       </section>
 
       <section className="result-section">
-        <h2>🗂 Parts of speech</h2>
+        <h2 className="section-title">
+          <Tag size={18} aria-hidden="true" /> Parts of speech
+        </h2>
         <PosBars distribution={result.posDistribution} total={result.totalWords} />
       </section>
 
       <section className="result-section">
-        <h2>🏆 Most used words</h2>
+        <h2 className="section-title">
+          <TrendingUp size={18} aria-hidden="true" /> Most used words
+        </h2>
         <ul className="top-words">
           {result.topWords.map((stat) => (
             <li key={stat.word} className="top-word">
@@ -159,7 +179,9 @@ function AnalyzerResults({
 
       {result.notes.length > 0 && (
         <section className="result-section">
-          <h2>💬 Style and grammar suggestions</h2>
+          <h2 className="section-title">
+            <SpellCheck size={18} aria-hidden="true" /> Style and grammar suggestions
+          </h2>
           <ul className="notes-list">
             {result.notes.slice(0, 30).map((note, index) => (
               <li key={`${note.source}-${index}`} className="note-item">
@@ -177,7 +199,9 @@ function AnalyzerResults({
       )}
 
       <section className="result-section">
-        <h2>🌱 Words to learn ({result.unknownWords.length})</h2>
+        <h2 className="section-title">
+          <Sprout size={18} aria-hidden="true" /> Words to learn ({result.unknownWords.length})
+        </h2>
         {result.unknownWords.length > 0 ? (
           <>
             <ul className="top-words">

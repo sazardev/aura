@@ -1,3 +1,4 @@
+import { BookOpen, Eye, PartyPopper, RotateCcw } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import type { ReviewGrade } from '@/engine/srs'
@@ -49,7 +50,9 @@ export function ReviewScreen() {
   if (done) {
     return (
       <div className="review-screen review-screen--done">
-        <div className="lesson-result__emoji">🎉</div>
+        <div className="lesson-result__emoji">
+          <PartyPopper size={64} aria-hidden="true" />
+        </div>
         <h1>Review complete!</h1>
         <p>
           You reviewed {total} {total === 1 ? 'card' : 'cards'} and earned{' '}
@@ -69,15 +72,17 @@ export function ReviewScreen() {
   if (current === undefined) {
     return (
       <div className="review-screen">
-        <h1>Review 🔁</h1>
+        <h1 className="screen-title">
+          <RotateCcw size={20} aria-hidden="true" /> Review
+        </h1>
         {due.length === 0 ? (
           <>
             <p className="screen-subtitle">
-              No cards are due right now. 🎊 Finish lessons or add words to fill your
-              spaced-repetition queue!
+              No cards are due right now. Finish lessons or add words to fill your spaced-repetition
+              queue!
             </p>
             <div className="review-empty">
-              <span>📚</span>
+              <BookOpen size={56} aria-hidden="true" />
             </div>
           </>
         ) : (
@@ -99,7 +104,9 @@ export function ReviewScreen() {
 
   return (
     <div className="review-screen">
-      <h1>Review 🔁</h1>
+      <h1 className="screen-title">
+        <RotateCcw size={20} aria-hidden="true" /> Review
+      </h1>
       <div className="review-progress">
         <ProgressBar value={total > 0 ? (reviewed / total) * 100 : 0} height={12} />
         <span>
@@ -119,7 +126,7 @@ export function ReviewScreen() {
           onClick={() => setRevealed(true)}
           disabled={revealed}
         >
-          {revealed ? '👀' : 'Tap to see the answer'}
+          {revealed ? <Eye size={18} aria-hidden="true" /> : 'Tap to see the answer'}
         </button>
         {revealed && (
           <div className="review-card__answer">

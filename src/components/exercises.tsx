@@ -1,4 +1,4 @@
-import { Mic, Square } from 'lucide-react'
+import { Check, Mic, Square, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import type {
@@ -307,7 +307,7 @@ export function SpeakView({
               disabled={feedback !== 'idle'}
               onClick={() => onSubmit(true)}
             >
-              ✓ I said it well
+              <Check size={16} aria-hidden="true" /> I said it well
             </Button>
             <Button
               variant="danger"
@@ -315,7 +315,7 @@ export function SpeakView({
               disabled={feedback !== 'idle'}
               onClick={() => onSubmit(false)}
             >
-              ✗ I need to review
+              <X size={16} aria-hidden="true" /> I need to review
             </Button>
           </div>
         </>

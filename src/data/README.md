@@ -13,7 +13,7 @@ The guided curriculum (6 units, 18 lessons, 90 words). Each lesson carries
 {
   "id": "greetings", // unique unit id
   "title": "Greetings & Introductions",
-  "emoji": "👋", // unit icon
+  "icon": "MessageCircle", // unit icon
   "color": "#58cc02", // color of the unit's lesson nodes
   "lessons": [
     {
@@ -61,7 +61,7 @@ Analyzer screens, so it never slows down startup.
 
 ## `achievements.json` — achievements
 
-A list of `{ id, name, description, emoji }` objects. The `id`s must match
+A list of `{ id, name, description, icon }` objects (icon = Lucide icon name). The `id`s must match
 the rules defined in `src/engine/achievements.ts`.
 
 ## `config.json` — game balance

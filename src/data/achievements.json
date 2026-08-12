@@ -3,90 +3,90 @@
     "id": "first-steps",
     "name": "First steps",
     "description": "Earn 100 XP",
-    "emoji": "🌱"
+    "icon": "Sprout"
   },
   {
     "id": "xp-500",
     "name": "On a roll",
     "description": "Earn 500 XP",
-    "emoji": "⚡"
+    "icon": "Zap"
   },
   {
     "id": "xp-1000",
     "name": "Unstoppable",
     "description": "Earn 1,000 XP",
-    "emoji": "🔥"
+    "icon": "Flame"
   },
   {
     "id": "xp-5000",
     "name": "Aura Legend",
     "description": "Earn 5,000 XP",
-    "emoji": "👑"
+    "icon": "Crown"
   },
   {
     "id": "first-lesson",
     "name": "First lesson",
     "description": "Complete your first lesson",
-    "emoji": "🎓"
+    "icon": "GraduationCap"
   },
   {
     "id": "lessons-5",
     "name": "Student",
     "description": "Complete 5 lessons",
-    "emoji": "📚"
+    "icon": "BookOpen"
   },
   {
     "id": "lessons-25",
     "name": "Scholar",
     "description": "Complete 25 lessons",
-    "emoji": "🏛️"
+    "icon": "Landmark"
   },
   {
     "id": "streak-3",
     "name": "Three days",
     "description": "3-day streak",
-    "emoji": "🔥"
+    "icon": "Flame"
   },
   {
     "id": "streak-7",
     "name": "One week",
     "description": "7-day streak",
-    "emoji": "⚡"
+    "icon": "Zap"
   },
   {
     "id": "streak-30",
     "name": "Full month",
     "description": "30-day streak",
-    "emoji": "🌙"
+    "icon": "Moon"
   },
   {
     "id": "words-50",
     "name": "Vocabulary",
     "description": "Learn 50 words",
-    "emoji": "📖"
+    "icon": "BookMarked"
   },
   {
     "id": "words-200",
     "name": "Powerful words",
     "description": "Learn 200 words",
-    "emoji": "🗺️"
+    "icon": "Map"
   },
   {
     "id": "words-500",
     "name": "Living library",
     "description": "Learn 500 words",
-    "emoji": "🌌"
+    "icon": "Library"
   },
   {
     "id": "correct-100",
     "name": "Precision",
     "description": "100 correct answers",
-    "emoji": "🎯"
+    "icon": "Target"
   },
   {
     "id": "correct-1000",
     "name": "Master",
     "description": "1,000 correct answers",
-    "emoji": "🏆"
+    "icon": "Trophy"
   }
 ]

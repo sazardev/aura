@@ -17,7 +17,7 @@ describe('Achievements (data/achievements.json)', () => {
       expect(achievement.id.length).toBeGreaterThan(0)
       expect(achievement.name.length).toBeGreaterThan(0)
       expect(achievement.description.length).toBeGreaterThan(0)
-      expect(achievement.emoji.length).toBeGreaterThan(0)
+      expect(achievement.icon.length).toBeGreaterThan(0)
     }
   })
 

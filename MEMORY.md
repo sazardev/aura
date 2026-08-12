@@ -146,9 +146,13 @@ every achievement rule has a JSON definition). Setup: `src/test-setup.ts` + jsdo
 6. `388fc94` — DESIGN.md implementation: `lucide-react` (functional icons) and
    `@fontsource-variable/nunito` (self-hosted font); full token set in `global.css`;
    `:focus-visible` ring.
-7. `TBD` — minimalist logo (A + halo ring), regenerated Tauri icons, `Logo`
+7. `29511b1` — minimalist logo (A + halo ring), regenerated Tauri icons, `Logo`
    component in top bar/home, and full web SEO: meta/OG/Twitter, favicon, web
    manifest, OG image, robots.txt and JSON-LD (`public/`).
+8. `TBD` — **all emojis removed from the UI and data**; every emoji replaced by
+   Lucide icons (data schema now uses `icon` names: `course.json`,
+   `achievements.json`, `course-expansion.json`; `UiIcon` component maps
+   name -> icon).
 
 ## 11. Known gotchas / notes
 

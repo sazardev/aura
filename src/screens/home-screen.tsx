@@ -7,6 +7,7 @@ import type { Lesson } from '@/engine/lessons'
 
 import { Logo } from '@/components/logo'
 import { ProgressBar } from '@/components/progress-bar'
+import { UiIcon } from '@/components/ui-icon'
 import { ACHIEVEMENTS } from '@/engine/achievements'
 import { COURSE, previousLessonId } from '@/engine/lessons'
 import { levelFromXp } from '@/engine/xp'
@@ -71,7 +72,7 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
           <Logo size={56} withBackground />
           <div>
             <h1 className="home-hero__title">Aura</h1>
-            <p className="home-hero__greeting">{greeting()}, learner 🦉</p>
+            <p className="home-hero__greeting">{greeting()}, learner</p>
           </div>
         </div>
         <div className="home-hero__stats">
@@ -115,7 +116,9 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
           return (
             <article key={unit.id} className="unit">
               <header className="unit__header">
-                <span className="unit__emoji">{unit.emoji}</span>
+                <span className="unit__icon" style={{ color: unit.color }}>
+                  <UiIcon name={unit.icon} size={26} />
+                </span>
                 <div className="unit__title">
                   <h2>{unit.title}</h2>
                   <span>
@@ -166,7 +169,8 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
           </div>
         </div>
         <p className="home-screen__privacy">
-          🔒 100% local: your data never leaves your device. Free, libre and open source.
+          <Lock size={14} aria-hidden="true" /> 100% local: your data never leaves your device.
+          Free, libre and open source.
         </p>
       </section>
     </div>

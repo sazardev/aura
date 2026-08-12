@@ -2,7 +2,7 @@
   {
     "id": "core-1",
     "title": "Core Words 1",
-    "emoji": "🔤",
+    "icon": "Sparkles",
     "color": "#1cb0f6",
     "lessons": [
       {
@@ -106,7 +106,7 @@
   {
     "id": "core-2",
     "title": "Core Words 2",
-    "emoji": "💬",
+    "icon": "MessageSquare",
     "color": "#1cb0f6",
     "lessons": [
       {
@@ -210,7 +210,7 @@
   {
     "id": "core-3",
     "title": "Core Words 3",
-    "emoji": "🗣️",
+    "icon": "Mic",
     "color": "#1cb0f6",
     "lessons": [
       {
@@ -314,7 +314,7 @@
   {
     "id": "core-4",
     "title": "Core Words 4",
-    "emoji": "🧠",
+    "icon": "Brain",
     "color": "#1cb0f6",
     "lessons": [
       {
@@ -418,7 +418,7 @@
   {
     "id": "core-5",
     "title": "Core Words 5",
-    "emoji": "🌊",
+    "icon": "Waves",
     "color": "#1cb0f6",
     "lessons": [
       {
@@ -522,7 +522,7 @@
   {
     "id": "core-6",
     "title": "Core Words 6",
-    "emoji": "🚀",
+    "icon": "Rocket",
     "color": "#1cb0f6",
     "lessons": [
       {

@@ -1,4 +1,4 @@
-import { Dices } from 'lucide-react'
+import { BookOpen, Check, Dices, Lightbulb, X } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 import type { DictionaryEntry, WordnetSense } from '@/engine/dictionary'
@@ -103,7 +103,9 @@ export function DictionaryScreen() {
 
   return (
     <div className="dictionary-screen">
-      <h1>Dictionary 📖</h1>
+      <h1 className="screen-title">
+        <BookOpen size={22} aria-hidden="true" /> Dictionary
+      </h1>
       <p className="screen-subtitle">
         {vocabularySize().toLocaleString('en-US')} words in the local bank + full WordNet, real
         frequencies and spaced repetition. Offline.
@@ -133,7 +135,9 @@ export function DictionaryScreen() {
                   + Learn
                 </Button>
               ) : (
-                <span className="word-card__in-deck">✓ In your vocabulary</span>
+                <span className="word-card__in-deck">
+                  <Check size={14} aria-hidden="true" /> In your vocabulary
+                </span>
               )}
             </div>
           </header>
@@ -168,7 +172,8 @@ export function DictionaryScreen() {
 
           {!loading && !inTauri && bankEntry === undefined && (
             <p className="word-card__hint">
-              💡 The full WordNet dictionary is available inside the desktop app.
+              <Lightbulb size={14} aria-hidden="true" /> The full WordNet dictionary is available
+              inside the desktop app.
             </p>
           )}
         </section>
@@ -196,7 +201,7 @@ export function DictionaryScreen() {
                   aria-label={`Remove ${card.word}`}
                   onClick={() => removeCard(card.id)}
                 >
-                  ✕
+                  <X size={16} aria-hidden="true" />
                 </button>
               </li>
             ))}

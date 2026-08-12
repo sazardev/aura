@@ -2,7 +2,7 @@
   {
     "id": "greetings",
     "title": "Greetings & Introductions",
-    "emoji": "👋",
+    "icon": "MessageCircle",
     "color": "#58cc02",
     "lessons": [
       {
@@ -106,7 +106,7 @@
   {
     "id": "food",
     "title": "Food & Drink",
-    "emoji": "🍎",
+    "icon": "Utensils",
     "color": "#1cb0f6",
     "lessons": [
       {
@@ -210,7 +210,7 @@
   {
     "id": "travel",
     "title": "Travel",
-    "emoji": "✈️",
+    "icon": "Plane",
     "color": "#ff9600",
     "lessons": [
       {
@@ -314,7 +314,7 @@
   {
     "id": "work",
     "title": "Work & Study",
-    "emoji": "💼",
+    "icon": "Briefcase",
     "color": "#ce82ff",
     "lessons": [
       {
@@ -418,7 +418,7 @@
   {
     "id": "body",
     "title": "Body & Health",
-    "emoji": "❤️",
+    "icon": "HeartPulse",
     "color": "#ff4b4b",
     "lessons": [
       {
@@ -522,7 +522,7 @@
   {
     "id": "verbs",
     "title": "Essential Verbs",
-    "emoji": "🔥",
+    "icon": "Languages",
     "color": "#ff86e8",
     "lessons": [
       {

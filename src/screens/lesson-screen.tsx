@@ -1,4 +1,4 @@
-import { Heart, X } from 'lucide-react'
+import { ArrowRight, Heart, HeartCrack, X } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import type { Exercise } from '@/engine/exercises'
@@ -137,7 +137,9 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
   if (phase === 'failed') {
     return (
       <div className="lesson-failed">
-        <div className="lesson-result__emoji">💔</div>
+        <div className="lesson-result__emoji">
+          <HeartCrack size={64} aria-hidden="true" />
+        </div>
         <h2>You ran out of hearts</h2>
         <p>No worries — you learn English by repeating. Try again!</p>
         <div className="lesson-result__actions">
@@ -187,7 +189,7 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
       <div className="lesson-screen__footer">
         {feedback === 'wrong' && (
           <button type="button" className="lesson-screen__continue" onClick={continueAfterWrong}>
-            Continue →
+            <ArrowRight size={16} aria-hidden="true" /> Continue
           </button>
         )}
         <span className="lesson-screen__progress-text">

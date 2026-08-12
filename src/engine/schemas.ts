@@ -16,7 +16,7 @@ export const lessonSchema = z.object({
 export const unitSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
-  emoji: z.string().min(1),
+  icon: z.string().min(1),
   color: z.string().min(1),
   lessons: z.array(lessonSchema).min(1),
 })
@@ -54,7 +54,7 @@ export const achievementDefSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   description: z.string().min(1),
-  emoji: z.string().min(1),
+  icon: z.string().min(1),
 })
 
 export const achievementsSchema = z.array(achievementDefSchema).min(1)
