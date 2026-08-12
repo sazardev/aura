@@ -149,10 +149,10 @@ every achievement rule has a JSON definition). Setup: `src/test-setup.ts` + jsdo
 7. `29511b1` — minimalist logo (A + halo ring), regenerated Tauri icons, `Logo`
    component in top bar/home, and full web SEO: meta/OG/Twitter, favicon, web
    manifest, OG image, robots.txt and JSON-LD (`public/`).
-8. `TBD` — **all emojis removed from the UI and data**; every emoji replaced by
-   Lucide icons (data schema now uses `icon` names: `course.json`,
-   `achievements.json`, `course-expansion.json`; `UiIcon` component maps
-   name -> icon).
+8. `fcfec39` — **all emojis removed from the UI and data**; every emoji replaced
+   by Lucide icons (data schema now uses `icon` names; `UiIcon` maps name -> icon).
+9. `TBD` — logo redesigned to a minimalist **soaring bird** (Lucide `Bird`
+   icon = wings), new app icons/favicon/OG image regenerated.
 
 ## 11. Known gotchas / notes
 

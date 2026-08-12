@@ -17,13 +17,15 @@ bundled with the app (no CDNs), and all copy is English.
 
 ### Logo
 
-A minimalist, elegant mark: a geometric **"A"** (two rounded strokes + crossbar)
-wrapped in a thin **halo ring** — the "aura". One idea, two shapes.
+A minimalist, elegant mark: a **soaring bird** (the Lucide `Bird` icon) —
+**wings taking flight**, echoing the owl mascot and the idea of learning to
+soar. One icon from our own set, nothing else.
 
 - **App icon** (`assets/aura-logo.svg`): green gradient rounded square
-  (`#5ece0b → #3f9300`, rx 232), white "A", ring at 40% white opacity.
-- **Brand mark** (in-app, `src/components/logo.tsx`): same shapes in
-  `--aura-green` on transparent; optional solid-green background variant.
+  (`#5ece0b → #3f9300`, rx 232), white bird, stroke 2.2.
+- **Brand mark** (in-app, `src/components/logo.tsx`): the `Bird` icon in
+  `--aura-green` on transparent; optional solid-green rounded background
+  (radius 22% of size).
 - Used in: top bar (26px), home hero (56px, with background), favicon,
   web manifest icons, OG image. Wordmark "Aura" in Nunito 800.
 - **Personality**: playful but serious about learning. Encouraging, warm,

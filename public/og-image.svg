@@ -1,9 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#f0f4ef"/>
-  <g transform="translate(385 46) scale(0.42)">
-    <circle cx="512" cy="512" r="322" fill="none" stroke="#58cc02" stroke-width="34"/>
-    <path d="M318 736 L512 318 L706 736" fill="none" stroke="#58cc02" stroke-width="94" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M394 604 L630 604" fill="none" stroke="#58cc02" stroke-width="84" stroke-linecap="round"/>
+  <g transform="translate(468 40) scale(11)">
+    <g fill="none" stroke="#58cc02" stroke-width="0.16" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 7h.01"/>
+      <path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/>
+      <path d="m20 7 2 .5-2 .5"/>
+      <path d="M10 18v3"/>
+      <path d="M14 17.75V21"/>
+      <path d="M7 18a6 6 0 0 0 3.84-10.61"/>
+    </g>
   </g>
   <text x="600" y="560" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" fill="#3c3c3c">Aura</text>
   <text x="600" y="610" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#8a8a8a">Learn English at full power · 100% local</text>
