@@ -1,11 +1,10 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 
 import { AchievementToast } from '@/components/achievement-toast'
 import { BottomNav, type NavTarget } from '@/components/bottom-nav'
 import { TopBar } from '@/components/top-bar'
 import { lessonById } from '@/engine/lessons'
 import { HomeScreen } from '@/screens/home-screen'
-import { LessonScreen } from '@/screens/lesson-screen'
 import { ReviewScreen } from '@/screens/review-screen'
 
 const AnalyzerScreen = lazy(async () => {
@@ -16,6 +15,10 @@ const DictionaryScreen = lazy(async () => {
   const module = await import('@/screens/dictionary-screen')
   return { default: module.DictionaryScreen }
 })
+const LessonScreen = lazy(async () => {
+  const module = await import('@/screens/lesson-screen')
+  return { default: module.LessonScreen }
+})
 
 type Route = { name: NavTarget } | { name: 'lesson'; lessonId: string }
 
@@ -23,6 +26,18 @@ export function App() {
   const [route, setRoute] = useState<Route>({ name: 'home' })
 
   const goHome = () => setRoute({ name: 'home' })
+
+  // Warm the shared lazy chunks (frequency + vocabulary + screens) in the
+  // background so opening the Dictionary/Analyzer feels instant.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      void import('@/engine/frequency')
+      void import('@/engine/vocabulary')
+      void import('@/screens/dictionary-screen')
+      void import('@/screens/analyzer-screen')
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
 
   if (route.name === 'lesson') {
     const lesson = lessonById(route.lessonId)
@@ -36,7 +51,11 @@ export function App() {
         </div>
       )
     }
-    return <LessonScreen lesson={lesson} onHome={goHome} />
+    return (
+      <Suspense fallback={<ScreenLoading />}>
+        <LessonScreen lesson={lesson} onHome={goHome} />
+      </Suspense>
+    )
   }
 
   return (

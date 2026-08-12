@@ -17,7 +17,7 @@ import type { AnalyzerResult, ReadabilityScore } from '@/engine/analyzer'
 
 import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
-import { analyzeText } from '@/engine/analyzer'
+import { analyzeText } from '@/engine/analyze'
 import { FREQUENCY_TIER_LABELS } from '@/engine/frequency'
 import { lookupVocab } from '@/engine/vocabulary'
 import { invokeOptional } from '@/lib/tauri'

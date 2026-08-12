@@ -8,12 +8,17 @@ const mergedUnits: unknown[] = [...(courseData as Unit[]), ...(courseExpansionDa
 
 export const COURSE: Course = courseSchema.parse(mergedUnits)
 
+let lessonsCache: Lesson[] | undefined
+let wordsCache: LessonWord[] | undefined
+
 export function allLessons(): Lesson[] {
-  return COURSE.flatMap((unit) => unit.lessons)
+  lessonsCache ??= COURSE.flatMap((unit) => unit.lessons)
+  return lessonsCache
 }
 
 export function allWords(): LessonWord[] {
-  return allLessons().flatMap((lesson) => lesson.words)
+  wordsCache ??= allLessons().flatMap((lesson) => lesson.words)
+  return wordsCache
 }
 
 export function lessonById(id: string): Lesson | undefined {

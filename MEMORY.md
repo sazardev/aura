@@ -156,9 +156,17 @@ every achievement rule has a JSON definition). Setup: `src/test-setup.ts` + jsdo
 10. `36a46aa` — zero tolerance for emojis across the whole repo (UI, data, docs, scripts).
 11. `8e0ebfa` — design conformance sweep: radii fully tokenized, `--icon-*` tokens,
     headings 800/1.15, body/buttons use `--font-base`, badges uppercase, empty states with icons.
-12. `TBD` — analyzer is now an ultra processor: reads **PDF** (`pdf-extract` in Rust via
-    `read_document_text`), TXT and MD; truncates huge texts (150k chars) with a notice,
-    shows reading time and error banners.
+12. `bbb7651` — analyzer ultra processor: reads **PDF** (`pdf-extract` in Rust via
+    `read_document_text`), TXT and MD; truncates huge texts (150k chars), reading time
+    and error banners.
+13. `TBD` — performance pass:
+    - Full NLP analysis moved to a **Web Worker** (`analyzer-worker.ts` +
+      `analyze.ts` client, LRU cache): the UI never blocks and the heavy NLP
+      bundle (~1.4MB gzip) is only fetched when analysis runs
+    - `LessonScreen` lazy-loaded (lesson-screen chunk ~15KB)
+    - Idle preload of the shared frequency/vocabulary chunks in `App`
+    - WordNet lookups cached in the frontend (LRU, 300 entries)
+    - `allLessons`/`allWords` memoized in `lessons.ts`
 
 ## 11. Known gotchas / notes
 
