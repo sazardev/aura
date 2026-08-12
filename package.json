@@ -14,6 +14,7 @@
     "build": "npm run copy:wn && tsc -b && vite build",
     "preview": "vite preview",
     "copy:wn": "node scripts/copy-wordnet.mjs",
+    "gen:vocab": "npm run copy:wn && cargo run --manifest-path src-tauri/Cargo.toml --bin gen_vocab",
     "typecheck": "tsc -b --noEmit",
     "typecheck:watch": "tsc -b --noEmit --watch",
     "lint": "eslint .",

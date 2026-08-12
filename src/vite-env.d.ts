@@ -24,3 +24,13 @@ declare module '@/data/course.json' {
   const data: unknown
   export default data
 }
+
+declare module '@/data/course-expansion.json' {
+  const data: unknown
+  export default data
+}
+
+declare module '@/data/vocabulary.json' {
+  const data: unknown
+  export default data
+}

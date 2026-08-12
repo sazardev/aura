@@ -1,0 +1,626 @@
+[
+  {
+    "id": "core-1",
+    "title": "Core Words 1",
+    "emoji": "🔤",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "core-1-1",
+        "title": "Lesson 1",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "good",
+            "meaning": "benefit",
+            "sentence": "what's the good of worrying?"
+          },
+          {
+            "word": "make",
+            "meaning": "a recognizable kind",
+            "sentence": "what make of car is that?"
+          },
+          {
+            "word": "never",
+            "meaning": "not ever; at no time in the past or future",
+            "sentence": "I will never marry you!"
+          },
+          {
+            "word": "people",
+            "meaning": "members of a family line",
+            "sentence": "are your people still alive?"
+          },
+          {
+            "word": "home",
+            "meaning": "where you live at a particular time",
+            "sentence": "your place or mine?"
+          }
+        ]
+      },
+      {
+        "id": "core-1-2",
+        "title": "Lesson 2",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "ever",
+            "meaning": "at any time",
+            "sentence": "did you ever smoke?"
+          },
+          {
+            "word": "place",
+            "meaning": "any area set aside for a particular purpose",
+            "sentence": "who owns this place?"
+          },
+          {
+            "word": "remember",
+            "meaning": "keep in mind for attention or consideration",
+            "sentence": "Remember to call your mother every day!"
+          },
+          {
+            "word": "own",
+            "meaning": "have ownership or possession of",
+            "sentence": "How many cars does she have?"
+          },
+          {
+            "word": "most",
+            "meaning": "(superlative of `many' used with count nouns and often preceded by `the') quantifier meaning the greatest in number",
+            "sentence": "who has the most apples?"
+          }
+        ]
+      },
+      {
+        "id": "core-1-3",
+        "title": "Lesson 3",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "use",
+            "meaning": "what something is used for",
+            "sentence": "ballet is beautiful but what use is it?"
+          },
+          {
+            "word": "exactly",
+            "meaning": "indicating exactness or preciseness",
+            "sentence": "Properly speaking, all true work is religion."
+          },
+          {
+            "word": "ass",
+            "meaning": "the fleshy part of the human body that you sit on",
+            "sentence": "are you going to sit on your fanny and do nothing?"
+          },
+          {
+            "word": "behind",
+            "meaning": "the fleshy part of the human body that you sit on",
+            "sentence": "are you going to sit on your fanny and do nothing?"
+          },
+          {
+            "word": "stupid",
+            "meaning": "a person who is not very bright",
+            "sentence": "The economy, stupid!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "core-2",
+    "title": "Core Words 2",
+    "emoji": "💬",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "core-2-1",
+        "title": "Lesson 1",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "feeling",
+            "meaning": "a vague idea in which some confidence is placed",
+            "sentence": "what are your feelings about the crisis?"
+          },
+          {
+            "word": "wonderful",
+            "meaning": "extraordinarily good or great; used especially as intensifiers",
+            "sentence": "the film was fantastic!"
+          },
+          {
+            "word": "date",
+            "meaning": "the specified day of the month",
+            "sentence": "what is the date today?"
+          },
+          {
+            "word": "catch",
+            "meaning": "a drawback or difficulty that is not readily evident",
+            "sentence": "it sounds good but what's the catch?"
+          },
+          {
+            "word": "cold",
+            "meaning": "a mild viral infection involving the nose and respiratory passages (but not the lungs)",
+            "sentence": "will they never find a cure for the common cold?"
+          }
+        ]
+      },
+      {
+        "id": "core-2-2",
+        "title": "Lesson 2",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "suppose",
+            "meaning": "express a supposition",
+            "sentence": "Let's say you had a lot of money--what would you do?"
+          },
+          {
+            "word": "goddamn",
+            "meaning": "used as expletives",
+            "sentence": "oh, damn (or goddamn)!"
+          },
+          {
+            "word": "dude",
+            "meaning": "an informal form of address for a man",
+            "sentence": "Say, fellow, what are you doing?"
+          },
+          {
+            "word": "spend",
+            "meaning": "use up a period of time in a specific way",
+            "sentence": "how are you spending your summer vacation?"
+          },
+          {
+            "word": "mark",
+            "meaning": "a number or letter indicating quality (especially of a student's performance)",
+            "sentence": "what was your score on your homework?"
+          }
+        ]
+      },
+      {
+        "id": "core-2-3",
+        "title": "Lesson 3",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "area",
+            "meaning": "a subject of study",
+            "sentence": "areas of interest include..."
+          },
+          {
+            "word": "shoes",
+            "meaning": "a particular situation",
+            "sentence": "If you were in my place what would you do?"
+          },
+          {
+            "word": "kick",
+            "meaning": "the swift release of a store of affective force",
+            "sentence": "what a boot!"
+          },
+          {
+            "word": "type",
+            "meaning": "a subdivision of a particular kind of thing",
+            "sentence": "what type of sculpture do you prefer?"
+          },
+          {
+            "word": "beg",
+            "meaning": "call upon in supplication; entreat",
+            "sentence": "I beg you to stop!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "core-3",
+    "title": "Core Words 3",
+    "emoji": "🗣️",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "core-3-1",
+        "title": "Lesson 1",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "immediately",
+            "meaning": "without delay or hesitation; with no time intervening",
+            "sentence": "Come here now!"
+          },
+          {
+            "word": "comfortable",
+            "meaning": "providing or experiencing physical well-being or relief (`comfy' is informal)",
+            "sentence": "are you comfortable?"
+          },
+          {
+            "word": "indeed",
+            "meaning": "in truth (often tends to intensify)",
+            "sentence": "he did so do it!"
+          },
+          {
+            "word": "assume",
+            "meaning": "take on titles, offices, duties, responsibilities",
+            "sentence": "When will the new President assume office?"
+          },
+          {
+            "word": "property",
+            "meaning": "any area set aside for a particular purpose",
+            "sentence": "who owns this place?"
+          }
+        ]
+      },
+      {
+        "id": "core-3-2",
+        "title": "Lesson 2",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "score",
+            "meaning": "a number or letter indicating quality (especially of a student's performance)",
+            "sentence": "what was your score on your homework?"
+          },
+          {
+            "word": "survive",
+            "meaning": "continue to live and avoid dying",
+            "sentence": "how long can a person last without food and water?"
+          },
+          {
+            "word": "borrow",
+            "meaning": "get temporarily",
+            "sentence": "May I borrow your lawn mower?"
+          },
+          {
+            "word": "exist",
+            "meaning": "support oneself",
+            "sentence": "Can you live on $2000 a month in New York City?"
+          },
+          {
+            "word": "ashamed",
+            "meaning": "feeling shame or guilt or embarrassment or remorse",
+            "sentence": "are you ashamed for having lied?"
+          }
+        ]
+      },
+      {
+        "id": "core-3-3",
+        "title": "Lesson 3",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "younger",
+            "meaning": "used of the younger of two persons of the same name especially used to distinguish a son from his father",
+            "sentence": "John Smith, Jr."
+          },
+          {
+            "word": "appear",
+            "meaning": "be issued or published",
+            "sentence": "Did your latest book appear yet?"
+          },
+          {
+            "word": "nasty",
+            "meaning": "offensive or even (of persons) malicious",
+            "sentence": "Will he say nasty things at my funeral?"
+          },
+          {
+            "word": "assure",
+            "meaning": "make certain of",
+            "sentence": "Preparation will guarantee success!"
+          },
+          {
+            "word": "latest",
+            "meaning": "the most recent news or development",
+            "sentence": "have you heard the latest?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "core-4",
+    "title": "Core Words 4",
+    "emoji": "🧠",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "core-4-1",
+        "title": "Lesson 1",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "impression",
+            "meaning": "a vague idea in which some confidence is placed",
+            "sentence": "what are your feelings about the crisis?"
+          },
+          {
+            "word": "insist",
+            "meaning": "be emphatic or resolute and refuse to budge",
+            "sentence": "I must insist!"
+          },
+          {
+            "word": "buster",
+            "meaning": "an informal form of address for a man",
+            "sentence": "Say, fellow, what are you doing?"
+          },
+          {
+            "word": "perform",
+            "meaning": "perform a function",
+            "sentence": "Who will perform the wedding?"
+          },
+          {
+            "word": "arrange",
+            "meaning": "make arrangements for",
+            "sentence": "Can you arrange a meeting with the President?"
+          }
+        ]
+      },
+      {
+        "id": "core-4-2",
+        "title": "Lesson 2",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "bum",
+            "meaning": "a person who is deemed to be despicable or contemptible",
+            "sentence": "you cowardly little pukes!"
+          },
+          {
+            "word": "valentine",
+            "meaning": "a sweetheart chosen to receive a greeting on Saint Valentine's Day",
+            "sentence": "will you be my valentine?"
+          },
+          {
+            "word": "attend",
+            "meaning": "be present at (meetings, church services, university), etc.",
+            "sentence": "did you go to the meeting?"
+          },
+          {
+            "word": "brand",
+            "meaning": "a recognizable kind",
+            "sentence": "what make of car is that?"
+          },
+          {
+            "word": "equal",
+            "meaning": "be identical or equivalent to",
+            "sentence": "One dollar equals 1,000 rubles these days!"
+          }
+        ]
+      },
+      {
+        "id": "core-4-3",
+        "title": "Lesson 3",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "marvelous",
+            "meaning": "extraordinarily good or great; used especially as intensifiers",
+            "sentence": "the film was fantastic!"
+          },
+          {
+            "word": "properly",
+            "meaning": "in the right manner; correctly; suitably",
+            "sentence": "please do your job properly!"
+          },
+          {
+            "word": "apply",
+            "meaning": "be pertinent or relevant or applicable",
+            "sentence": "The same laws apply to you!"
+          },
+          {
+            "word": "precisely",
+            "meaning": "indicating exactness or preciseness",
+            "sentence": "Properly speaking, all true work is religion."
+          },
+          {
+            "word": "worker",
+            "meaning": "a member of the working class (not necessarily employed)",
+            "sentence": "workers of the world--unite!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "core-5",
+    "title": "Core Words 5",
+    "emoji": "🌊",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "core-5-1",
+        "title": "Lesson 1",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "communication",
+            "meaning": "a connection allowing access between persons or places",
+            "sentence": "how many lines of communication can there be among four people?"
+          },
+          {
+            "word": "locate",
+            "meaning": "discover the location of; determine the place of; find by searching or examining",
+            "sentence": "Can you locate your cousins in the Midwest?"
+          },
+          {
+            "word": "interfere",
+            "meaning": "come between so as to be hindrance or obstacle",
+            "sentence": "Your talking interferes with my work!"
+          },
+          {
+            "word": "alternative",
+            "meaning": "one of a number of things from which only one can be chosen",
+            "sentence": "what option did I have?"
+          },
+          {
+            "word": "thrill",
+            "meaning": "the swift release of a store of affective force",
+            "sentence": "what a boot!"
+          }
+        ]
+      },
+      {
+        "id": "core-5-2",
+        "title": "Lesson 2",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "presume",
+            "meaning": "take upon oneself; act presumptuously, without permission",
+            "sentence": "How dare you call my lawyer?"
+          },
+          {
+            "word": "belief",
+            "meaning": "a vague idea in which some confidence is placed",
+            "sentence": "what are your feelings about the crisis?"
+          },
+          {
+            "word": "suspended",
+            "meaning": "(of undissolved particles in a fluid) supported or kept from sinking or falling by buoyancy and without apparent attachment",
+            "sentence": "suspended matter such as silt or mud..."
+          },
+          {
+            "word": "rely",
+            "meaning": "have faith or confidence in",
+            "sentence": "You can bet on that!"
+          },
+          {
+            "word": "bart",
+            "meaning": "a member of the British order of honor; ranks below a baron but above a knight",
+            "sentence": "since he was a baronet he had to be addressed as Sir Henry Jones, Bart."
+          }
+        ]
+      },
+      {
+        "id": "core-5-3",
+        "title": "Lesson 3",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "notion",
+            "meaning": "a vague idea in which some confidence is placed",
+            "sentence": "what are your feelings about the crisis?"
+          },
+          {
+            "word": "puke",
+            "meaning": "a person who is deemed to be despicable or contemptible",
+            "sentence": "you cowardly little pukes!"
+          },
+          {
+            "word": "starve",
+            "meaning": "be hungry; go without food",
+            "sentence": "Let's eat--I'm starving!"
+          },
+          {
+            "word": "recognise",
+            "meaning": "show approval or appreciation of",
+            "sentence": "My work is not recognized by anybody!"
+          },
+          {
+            "word": "sew",
+            "meaning": "create (clothes) with cloth",
+            "sentence": "Can the seamstress sew me a suit by next week?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "core-6",
+    "title": "Core Words 6",
+    "emoji": "🚀",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "core-6-1",
+        "title": "Lesson 1",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "dismiss",
+            "meaning": "cease to consider; put out of judicial consideration",
+            "sentence": "This case is dismissed!"
+          },
+          {
+            "word": "fanny",
+            "meaning": "the fleshy part of the human body that you sit on",
+            "sentence": "are you going to sit on your fanny and do nothing?"
+          },
+          {
+            "word": "reconsider",
+            "meaning": "consider again; give new consideration to; usually with a view to changing",
+            "sentence": "Won't you reconsider your decision?"
+          },
+          {
+            "word": "ensure",
+            "meaning": "make certain of",
+            "sentence": "Preparation will guarantee success!"
+          },
+          {
+            "word": "efficient",
+            "meaning": "able to accomplish a purpose; functioning effectively",
+            "sentence": "people who will do nothing unless they get something out of it for themselves are often highly effective persons..."
+          }
+        ]
+      },
+      {
+        "id": "core-6-2",
+        "title": "Lesson 2",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "update",
+            "meaning": "information or data that updates",
+            "sentence": "do you have the latest software update?"
+          },
+          {
+            "word": "ungrateful",
+            "meaning": "not feeling or showing gratitude",
+            "sentence": "How sharper than a serpent's tooth it is / To have a thankless child!"
+          },
+          {
+            "word": "instantly",
+            "meaning": "without delay or hesitation; with no time intervening",
+            "sentence": "Come here now!"
+          },
+          {
+            "word": "marvellous",
+            "meaning": "extraordinarily good or great; used especially as intensifiers",
+            "sentence": "the film was fantastic!"
+          },
+          {
+            "word": "forged",
+            "meaning": "reproduced fraudulently",
+            "sentence": "like a bad penny..."
+          }
+        ]
+      },
+      {
+        "id": "core-6-3",
+        "title": "Lesson 3",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "keeper",
+            "meaning": "someone in charge of other people",
+            "sentence": "am I my brother's keeper?"
+          },
+          {
+            "word": "buns",
+            "meaning": "the fleshy part of the human body that you sit on",
+            "sentence": "are you going to sit on your fanny and do nothing?"
+          },
+          {
+            "word": "arse",
+            "meaning": "the fleshy part of the human body that you sit on",
+            "sentence": "are you going to sit on your fanny and do nothing?"
+          },
+          {
+            "word": "yonder",
+            "meaning": "distant but within sight (`yon' is dialectal)",
+            "sentence": "what is yon place?"
+          },
+          {
+            "word": "seduce",
+            "meaning": "induce to have sex",
+            "sentence": "Did you score last night?"
+          }
+        ]
+      }
+    ]
+  }
+]

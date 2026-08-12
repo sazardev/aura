@@ -4,7 +4,10 @@ All content lives here, outside the code, as readable JSON. The engine
 (`src/engine/`) loads it with runtime validation and **fails fast** if
 something is wrong, so you can edit these files safely.
 
-## `course.json` — the course
+## `course.json` — the hand-authored course
+
+The guided curriculum (6 units, 18 lessons, 90 words). Each lesson carries
+5 words; words and ids must be unique across the whole course.
 
 ```jsonc
 {
@@ -29,9 +32,32 @@ something is wrong, so you can edit these files safely.
 }
 ```
 
-Each lesson carries 5 words (the exercise generator uses them to build
-choice, listen, type, tap, speak, match and flashcard exercises). Words and
-ids must be unique across the whole course.
+## `course-expansion.json` — generated course units
+
+More units (6 units, 18 lessons, 90 words) generated from the real engines
+(WordNet + SUBTLEX-US) with `npm run gen:vocab`. Same schema as `course.json`.
+It is merged with `course.json` at load time (`src/engine/lessons.ts`).
+
+## `vocabulary.json` — the giant vocabulary bank
+
+**3,884 high-frequency words** generated from WordNet + SUBTLEX-US
+(`npm run gen:vocab`), each with an English definition, a WordNet example
+(when available), part of speech, synonyms, frequency rank and tier. It powers
+instant offline lookups in the Dictionary (plus a "Surprise me" explorer) and
+enriches the Analyzer's "words to learn". Loaded lazily by the Dictionary and
+Analyzer screens, so it never slows down startup.
+
+```jsonc
+{
+  "word": "walk",
+  "meaning": "use one's feet to advance",
+  "example": "Let's go for a walk in the park.",
+  "pos": "noun",
+  "synonyms": ["walking", "march"],
+  "rank": 148,
+  "tier": "very-common",
+}
+```
 
 ## `achievements.json` — achievements
 
@@ -43,3 +69,9 @@ the rules defined in `src/engine/achievements.ts`.
 Gamification numbers (XP per exercise/lesson, hearts, daily goals, level
 curve) and the SM-2 spaced-repetition parameters. Edit it to rebalance the
 app without touching code.
+
+## Regenerating the generated data
+
+```bash
+npm run gen:vocab   # rebuilds vocabulary.json and course-expansion.json
+```

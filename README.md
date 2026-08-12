@@ -13,16 +13,16 @@ Vitest, Clippy and rustfmt.
 
 ## ✨ Features
 
-| Module                       | What it does                                                                                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 📚 **Course**                | 18 lessons in 6 themed units with 7 exercise types: multiple choice, listening, typing, sentence building, speaking, matching and flashcards.                             |
-| 🧠 **Spaced repetition**     | **SM-2** (SuperMemo) algorithm to memorize vocabulary scientifically.                                                                                                     |
-| 📖 **WordNet dictionary**    | Full WordNet 3.0 database (~35 MB) embedded in the app: definitions, examples, synonyms, antonyms, hypernyms and hyponyms.                                                |
-| 🔤 **Real frequencies**      | **SUBTLEX-US** corpus (74,286 words) to know whether a word is common, rare or very rare.                                                                                 |
-| 🧪 **Text analyzer**         | Readability (Flesch, Gunning Fog, SMOG, ARI, Dale–Chall, Coleman-Liau…), grammar and style (retext ecosystem), sentiment (AFINN-165), parts of speech and words to learn. |
-| 🔊 **Voice & pronunciation** | Text-to-speech (TTS) on every word plus speaking exercises with speech recognition when the platform supports it.                                                         |
-| 🎮 **Gamification**          | XP, levels, streaks, hearts, daily goals and 15 achievements.                                                                                                             |
-| 🔒 **Total privacy**         | No account, no internet, no telemetry. Everything lives on your machine.                                                                                                  |
+| Module                       | What it does                                                                                                                                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 📚 **Course**                | 36 lessons in 12 units (90 guided + 90 generated from WordNet) with 7 exercise types: multiple choice, listening, typing, sentence building, speaking, matching and flashcards.            |
+| 🧠 **Spaced repetition**     | **SM-2** (SuperMemo) algorithm to memorize vocabulary scientifically.                                                                                                                      |
+| 📖 **WordNet dictionary**    | Full WordNet 3.0 database (~35 MB) embedded in the app: definitions, examples, synonyms, antonyms, hypernyms and hyponyms, plus an instant offline bank of **3,884 high-frequency words**. |
+| 🔤 **Real frequencies**      | **SUBTLEX-US** corpus (74,286 words) to know whether a word is common, rare or very rare.                                                                                                  |
+| 🧪 **Text analyzer**         | Readability (Flesch, Gunning Fog, SMOG, ARI, Dale–Chall, Coleman-Liau…), grammar and style (retext ecosystem), sentiment (AFINN-165), parts of speech and words to learn.                  |
+| 🔊 **Voice & pronunciation** | Text-to-speech (TTS) on every word plus speaking exercises with speech recognition when the platform supports it.                                                                          |
+| 🎮 **Gamification**          | XP, levels, streaks, hearts, daily goals and 15 achievements.                                                                                                                              |
+| 🔒 **Total privacy**         | No account, no internet, no telemetry. Everything lives on your machine.                                                                                                                   |
 
 ---
 
@@ -57,6 +57,8 @@ The WordNet dictionary is copied automatically from `node_modules/wordnet-db` to
 | `npm run format:rust`   | rustfmt in check mode.                                                           |
 | `npm run test`          | Vitest (engine tests).                                                           |
 | `npm run test:coverage` | Code coverage.                                                                   |
+| `npm run copy:wn`       | Copies the WordNet data files into `src-tauri/resources/wn/`.                    |
+| `npm run gen:vocab`     | Regenerates `vocabulary.json` + `course-expansion.json` from the engines.        |
 | `npm run docs`          | TypeDoc for the internal API in `docs/`.                                         |
 | `npm run analyze`       | `typecheck` + `lint` + `stylelint` + `format:check`.                             |
 | `npm run ci`            | Everything: analysis, Rust, tests and build.                                     |
@@ -68,12 +70,15 @@ The WordNet dictionary is copied automatically from `node_modules/wordnet-db` to
 ```
 src/
 ├── data/            # All content as readable JSON (no code)
-│   ├── course.json       # 6 units, 18 lessons, 90 words
-│   ├── achievements.json # 15 achievements
-│   └── config.json       # Game balance + SM-2 parameters
+│   ├── course.json           # Hand-authored course (6 units, 18 lessons)
+│   ├── course-expansion.json # Generated course (6 units, 18 lessons)
+│   ├── vocabulary.json       # Giant bank: 3,884 words with meanings/examples
+│   ├── achievements.json     # 15 achievements
+│   └── config.json           # Game balance + SM-2 parameters
 ├── engine/          # Pure, testable engine (no React)
 │   ├── schemas.ts       # Zod schemas that validate the JSON and derive the types
 │   ├── lessons.ts       # Course loading and queries
+│   ├── vocabulary.ts    # Instant lookup over the 3,884-word bank
 │   ├── exercises.ts     # Deterministic exercise generator (seeded RNG)
 │   ├── srs.ts           # SM-2 spaced repetition
 │   ├── xp.ts            # XP, levels and streaks
@@ -115,8 +120,8 @@ lesson, you only edit `course.json`.
 
 ## 🧪 Quality
 
-- **45 tests** with Vitest over the engine (SM-2, streaks, frequencies,
-  exercises, text analyzer, strings) plus a UI smoke test.
+- **50 tests** with Vitest over the engine (SM-2, streaks, frequencies,
+  vocabulary bank, exercises, text analyzer, strings) plus a UI smoke test.
 - **ESLint 10** with `recommended` + `recommendedTypeChecked` +
   `strictTypeChecked` + `stylisticTypeChecked`, react-hooks, react-refresh,
   unicorn, jsdoc and perfectionist.

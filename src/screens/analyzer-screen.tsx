@@ -8,6 +8,7 @@ import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
 import { analyzeText } from '@/engine/analyzer'
 import { FREQUENCY_TIER_LABELS } from '@/engine/frequency'
+import { lookupVocab } from '@/engine/vocabulary'
 import { invokeOptional } from '@/lib/tauri'
 import { isTauriRuntime } from '@/lib/tauri'
 import { useAuraStore } from '@/state/store'
@@ -51,7 +52,8 @@ export function AnalyzerScreen() {
   const learnAll = () => {
     if (result === undefined) return
     for (const word of result.unknownWords.slice(0, 20)) {
-      addWord(word, 'A word from your texts')
+      const meaning = lookupVocab(word)?.meaning ?? 'A word from your texts'
+      addWord(word, meaning)
     }
   }
 
@@ -177,13 +179,18 @@ function AnalyzerResults({
         <h2>🌱 Words to learn ({result.unknownWords.length})</h2>
         {result.unknownWords.length > 0 ? (
           <>
-            <div className="word-chips">
-              {result.unknownWords.slice(0, 30).map((word) => (
-                <span key={word} className="word-chip">
-                  {word}
-                </span>
-              ))}
-            </div>
+            <ul className="top-words">
+              {result.unknownWords.slice(0, 30).map((word) => {
+                const bank = lookupVocab(word)
+                return (
+                  <li key={word} className="top-word">
+                    <SpeechButton text={word} size="sm" label={`Listen to ${word}`} />
+                    <strong>{word}</strong>
+                    <span className="top-word__pos">{bank?.meaning ?? '—'}</span>
+                  </li>
+                )
+              })}
+            </ul>
             <Button variant="success" onClick={onLearnAll}>
               + Add to my vocabulary
             </Button>

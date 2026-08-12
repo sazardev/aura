@@ -3,9 +3,10 @@ import { describe, expect, it } from 'vitest'
 import { allLessons, allWords, COURSE, lessonById, previousLessonId } from '@/engine/lessons'
 
 describe('English course', () => {
-  it('has enough units and lessons', () => {
-    expect(COURSE.length).toBeGreaterThanOrEqual(6)
-    expect(allLessons().length).toBeGreaterThanOrEqual(18)
+  it('has a giant, valid course', () => {
+    expect(COURSE.length).toBeGreaterThanOrEqual(12)
+    expect(allLessons().length).toBe(36)
+    expect(allWords().length).toBe(180)
   })
 
   it('every lesson has complete words', () => {

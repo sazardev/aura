@@ -239,7 +239,6 @@ dependencies = [
  "tauri-plugin-clipboard-manager",
  "tauri-plugin-dialog",
  "tauri-plugin-opener",
- "wordnet",
 ]
 
 [[package]]
@@ -5189,12 +5188,6 @@ dependencies = [
  "wayland-protocols",
  "wayland-protocols-wlr",
 ]
-
-[[package]]
-name = "wordnet"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "298dd98161f0bdf74da6a26be3d90174300389fb314cfa9aad64cdc116033c01"
 
 [[package]]
 name = "writeable"

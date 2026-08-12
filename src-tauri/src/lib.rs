@@ -1,10 +1,13 @@
 use std::sync::Mutex;
 
 use tauri::{Manager, State};
-use wordnet::{Database, Relationship};
+
+pub mod wordnet_db;
+
+use wordnet_db::WordNet;
 
 struct AppState {
-    wordnet: Mutex<Option<Database>>,
+    wordnet: Mutex<Option<WordNet>>,
 }
 
 #[derive(serde::Serialize)]
@@ -22,20 +25,6 @@ struct SenseOut {
 struct LookupOut {
     word: String,
     senses: Vec<SenseOut>,
-}
-
-fn push_words(target: &mut Vec<String>, source: &[wordnet::SenseRef]) {
-    for entry in source {
-        let word = entry.word.clone();
-        if !target.contains(&word) {
-            target.push(word);
-        }
-    }
-}
-
-fn limit(mut words: Vec<String>, max: usize) -> Vec<String> {
-    words.truncate(max);
-    words
 }
 
 /// Looks up a word in the full WordNet (index + data) shipped as an app
@@ -56,7 +45,7 @@ fn lookup_word(
             .path()
             .resolve("wn", tauri::path::BaseDirectory::Resource)
             .map_err(|error| format!("Could not locate the dictionary: {error}"))?;
-        let database = Database::open(&resource_dir)
+        let database = WordNet::open(&resource_dir)
             .map_err(|error| format!("Could not open WordNet: {error}"))?;
         *guard = Some(database);
     }
@@ -65,49 +54,17 @@ fn lookup_word(
         .as_ref()
         .ok_or_else(|| "The dictionary is not available".to_string())?;
 
-    let senses = database.senses(&word);
-
-    let senses_out: Vec<SenseOut> = senses
-        .iter()
-        .map(|sense| {
-            let mut synonyms = Vec::new();
-            let mut antonyms = Vec::new();
-            let mut hypernyms = Vec::new();
-            let mut hyponyms = Vec::new();
-
-            for entry in &sense.synonyms {
-                synonyms.push(entry.word.clone());
-            }
-
-            for pointer in &sense.pointers {
-                let related = pointer.read();
-                match pointer.relationship {
-                    Relationship::Antonym => push_words(&mut antonyms, &related.synonyms),
-                    Relationship::Hypernym | Relationship::InstanceHypernym => {
-                        push_words(&mut hypernyms, &related.synonyms)
-                    }
-                    Relationship::Hyponym => push_words(&mut hyponyms, &related.synonyms),
-                    _ => {}
-                }
-            }
-
-            let mut examples = Vec::new();
-            for part in sense.gloss.split(';') {
-                let part = part.trim();
-                if part.starts_with('"') && part.ends_with('"') && part.len() > 2 {
-                    examples.push(part[1..part.len() - 1].to_string());
-                }
-            }
-
-            SenseOut {
-                part_of_speech: sense.part_of_speech.short().to_string(),
-                gloss: sense.gloss.clone(),
-                synonyms: limit(synonyms, 8),
-                antonyms: limit(antonyms, 8),
-                hypernyms: limit(hypernyms, 8),
-                hyponyms: limit(hyponyms, 8),
-                examples: limit(examples, 3),
-            }
+    let senses_out: Vec<SenseOut> = database
+        .senses(&word)
+        .into_iter()
+        .map(|sense| SenseOut {
+            part_of_speech: sense.part_of_speech,
+            gloss: sense.gloss,
+            synonyms: sense.synonyms,
+            antonyms: sense.antonyms,
+            hypernyms: sense.hypernyms,
+            hyponyms: sense.hyponyms,
+            examples: sense.examples,
         })
         .collect();
 

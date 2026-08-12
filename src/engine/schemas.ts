@@ -59,6 +59,18 @@ export const achievementDefSchema = z.object({
 
 export const achievementsSchema = z.array(achievementDefSchema).min(1)
 
+export const vocabularyEntrySchema = z.object({
+  word: z.string().min(1),
+  meaning: z.string().min(1),
+  example: z.string().optional(),
+  pos: z.string().min(1),
+  synonyms: z.array(z.string()),
+  rank: z.number().int().positive(),
+  tier: z.enum(['very-common', 'common', 'uncommon', 'rare', 'very-rare']),
+})
+
+export const vocabularySchema = z.array(vocabularyEntrySchema).min(1)
+
 export const appConfigSchema = z.object({
   gamification: z.object({
     xpPerCorrect: z.number().int().positive(),
@@ -88,6 +100,7 @@ export type Lesson = z.infer<typeof lessonSchema>
 export type Unit = z.infer<typeof unitSchema>
 export type Course = z.infer<typeof courseSchema>
 export type AchievementDef = z.infer<typeof achievementDefSchema>
+export type VocabularyEntry = z.infer<typeof vocabularyEntrySchema>
 export type AppConfig = z.infer<typeof appConfigSchema>
 export type DailyGoalConfig = AppConfig['gamification']['dailyGoal']
 export type GamificationConfig = AppConfig['gamification']

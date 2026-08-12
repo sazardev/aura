@@ -1,9 +1,12 @@
 import type { Course, Lesson, LessonWord, Unit } from '@/engine/types'
 
+import courseExpansionData from '@/data/course-expansion.json'
 import courseData from '@/data/course.json'
 import { courseSchema } from '@/engine/schemas'
 
-export const COURSE: Course = courseSchema.parse(courseData)
+const mergedUnits: unknown[] = [...(courseData as Unit[]), ...(courseExpansionData as Unit[])]
+
+export const COURSE: Course = courseSchema.parse(mergedUnits)
 
 export function allLessons(): Lesson[] {
   return COURSE.flatMap((unit) => unit.lessons)

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import type { DictionaryEntry, WordnetSense } from '@/engine/dictionary'
+import type { VocabularyEntry } from '@/engine/types'
 
 import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
@@ -12,6 +13,7 @@ import {
   wordDifficulty,
 } from '@/engine/frequency'
 import { dueLabel } from '@/engine/srs'
+import { lookupVocab, randomVocabEntry, vocabularySize } from '@/engine/vocabulary'
 import { useDebouncedValue } from '@/hooks/use-debounced'
 import { useSpeech } from '@/hooks/use-speech'
 import { isTauriRuntime } from '@/lib/tauri'
@@ -49,6 +51,10 @@ export function DictionaryScreen() {
     }
   }, [debounced, inTauri])
 
+  const bankEntry = useMemo(
+    () => (debounced.length > 0 ? lookupVocab(debounced) : undefined),
+    [debounced],
+  )
   const frequency = useMemo(
     () => (debounced.length > 0 ? frequencyOf(debounced) : undefined),
     [debounced],
@@ -67,14 +73,19 @@ export function DictionaryScreen() {
     [cards, debounced],
   )
 
-  const word = existingCard?.word ?? debounced
+  const word = existingCard?.word ?? bankEntry?.word ?? debounced
+
+  const surprise = () => {
+    const random = randomVocabEntry()
+    if (random !== undefined) setQuery(random.word)
+  }
 
   const learnWord = () => {
     if (debounced.length === 0) return
-    const sense = entry?.senses[0]
-    const meaning = sense?.gloss ?? 'Dictionary word'
+    const meaning = bankEntry?.meaning ?? entry?.senses[0]?.gloss ?? 'Dictionary word'
+    const example = bankEntry?.example
     addWord(debounced, meaning, {
-      ...(tier !== undefined && { note: `Frequency: ${FREQUENCY_TIER_LABELS[tier]}` }),
+      ...(example !== undefined && { note: `“${example}”` }),
     })
     speak(debounced)
   }
@@ -93,7 +104,8 @@ export function DictionaryScreen() {
     <div className="dictionary-screen">
       <h1>Dictionary 📖</h1>
       <p className="screen-subtitle">
-        Full WordNet dictionary, real frequencies and spaced repetition. Local, offline.
+        {vocabularySize().toLocaleString('en-US')} words in the local bank + full WordNet, real
+        frequencies and spaced repetition. Offline.
       </p>
 
       <div className="search-box">
@@ -105,6 +117,9 @@ export function DictionaryScreen() {
           onChange={(event) => setQuery(event.target.value)}
         />
       </div>
+      <Button variant="ghost" block onClick={surprise}>
+        🎲 Surprise me
+      </Button>
 
       {debounced.length > 0 && (
         <section className="word-card" aria-label={`Analysis of ${debounced}`}>
@@ -134,6 +149,8 @@ export function DictionaryScreen() {
             {frequency !== undefined && <span className="tier-badge">Top {frequency.rank}</span>}
           </div>
 
+          {bankEntry !== undefined && <BankCard entry={bankEntry} />}
+
           {loading && <p className="word-card__loading">Querying WordNet…</p>}
 
           {!loading && entry !== undefined && entry.senses.length > 0 && (
@@ -144,14 +161,14 @@ export function DictionaryScreen() {
             </div>
           )}
 
-          {!loading && !inTauri && (
-            <p className="word-card__hint">
-              💡 The full dictionary (WordNet) is available inside the desktop app.
-            </p>
-          )}
-
           {!loading && inTauri && entry?.senses.length === 0 && (
             <p className="word-card__hint">This word was not found in WordNet.</p>
+          )}
+
+          {!loading && !inTauri && bankEntry === undefined && (
+            <p className="word-card__hint">
+              💡 The full WordNet dictionary is available inside the desktop app.
+            </p>
           )}
         </section>
       )}
@@ -185,6 +202,32 @@ export function DictionaryScreen() {
           </ul>
         )}
       </section>
+    </div>
+  )
+}
+
+function BankCard({ entry }: { entry: VocabularyEntry }) {
+  return (
+    <div className="bank-card">
+      <div className="bank-card__row">
+        <span className={`tier-badge tier-badge--${entry.tier}`}>
+          {FREQUENCY_TIER_LABELS[entry.tier]}
+        </span>
+        <span className="tier-badge">{entry.pos}</span>
+        <span className="tier-badge">#{entry.rank}</span>
+      </div>
+      <p className="bank-card__meaning">{entry.meaning}</p>
+      {entry.example !== undefined && (
+        <p className="bank-card__example">
+          <SpeechButton text={entry.example} size="sm" label="Listen to the example" />
+          <em>{entry.example}</em>
+        </p>
+      )}
+      {entry.synonyms.length > 0 && (
+        <p className="bank-card__synonyms">
+          <strong>Synonyms:</strong> {entry.synonyms.join(', ')}
+        </p>
+      )}
     </div>
   )
 }

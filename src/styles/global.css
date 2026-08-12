@@ -972,6 +972,45 @@ button {
   margin-top: 12px;
 }
 
+.bank-card {
+  margin-top: 12px;
+  padding: 14px;
+  border: 2px solid #d7ffb8;
+  border-radius: 12px;
+
+  background: #f6fff0;
+}
+
+.bank-card__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.bank-card__meaning {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--aura-ink);
+}
+
+.bank-card__example {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin: 6px 0;
+
+  color: var(--aura-muted);
+}
+
+.bank-card__synonyms {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--aura-muted);
+}
+
 .sense-block {
   padding: 10px 12px;
   border: 2px solid var(--aura-border);
