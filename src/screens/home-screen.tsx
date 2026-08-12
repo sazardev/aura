@@ -5,6 +5,7 @@ import { type ReactNode, useMemo } from 'react'
 
 import type { Lesson } from '@/engine/lessons'
 
+import { Logo } from '@/components/logo'
 import { ProgressBar } from '@/components/progress-bar'
 import { ACHIEVEMENTS } from '@/engine/achievements'
 import { COURSE, previousLessonId } from '@/engine/lessons'
@@ -66,7 +67,13 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
   return (
     <div className="home-screen">
       <div className="home-hero">
-        <h1 className="home-hero__title">{greeting()}, learner 🦉</h1>
+        <div className="home-hero__brand">
+          <Logo size={56} withBackground />
+          <div>
+            <h1 className="home-hero__title">Aura</h1>
+            <p className="home-hero__greeting">{greeting()}, learner 🦉</p>
+          </div>
+        </div>
         <div className="home-hero__stats">
           <div className="home-card home-card--streak">
             <Flame size={22} aria-hidden="true" />

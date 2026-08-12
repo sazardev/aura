@@ -139,6 +139,11 @@ button {
   font-size: 15px;
 }
 
+.top-bar__brand {
+  display: flex;
+  align-items: center;
+}
+
 .top-bar__icon {
   font-size: 18px;
 }
@@ -346,8 +351,23 @@ button {
 
 /* ---------- Home ---------- */
 
+.home-hero__brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
 .home-hero__title {
-  font-size: 24px;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.home-hero__greeting {
+  margin: 0;
+  font-size: 14px;
+  color: var(--aura-muted);
 }
 
 .home-hero__stats {

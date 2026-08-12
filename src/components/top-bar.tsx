@@ -1,5 +1,6 @@
 import { Flame, Heart, Zap } from 'lucide-react'
 
+import { Logo } from '@/components/logo'
 import { ProgressBar } from '@/components/progress-bar'
 import { levelFromXp } from '@/engine/xp'
 import { useAuraStore } from '@/state/store'
@@ -16,6 +17,9 @@ export function TopBar() {
 
   return (
     <header className="top-bar">
+      <span className="top-bar__brand">
+        <Logo size={26} />
+      </span>
       <div className="top-bar__stat" title="Day streak">
         <Flame size={18} aria-hidden="true" />
         <strong>{streak}</strong>

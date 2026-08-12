@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f0f4ef"/>
+  <g transform="translate(385 46) scale(0.42)">
+    <circle cx="512" cy="512" r="322" fill="none" stroke="#58cc02" stroke-width="34"/>
+    <path d="M318 736 L512 318 L706 736" fill="none" stroke="#58cc02" stroke-width="94" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M394 604 L630 604" fill="none" stroke="#58cc02" stroke-width="84" stroke-linecap="round"/>
+  </g>
+  <text x="600" y="560" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" fill="#3c3c3c">Aura</text>
+  <text x="600" y="610" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#8a8a8a">Learn English at full power · 100% local</text>
+</svg>

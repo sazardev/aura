@@ -14,6 +14,18 @@ bundled with the app (no CDNs), and all copy is English.
 - **Name**: Aura
 - **Tagline**: Learn English at full power.
 - **Mascot**: 🦉 an owl (the "teacher"). Used decoratively in greetings/empty states.
+
+### Logo
+
+A minimalist, elegant mark: a geometric **"A"** (two rounded strokes + crossbar)
+wrapped in a thin **halo ring** — the "aura". One idea, two shapes.
+
+- **App icon** (`assets/aura-logo.svg`): green gradient rounded square
+  (`#5ece0b → #3f9300`, rx 232), white "A", ring at 40% white opacity.
+- **Brand mark** (in-app, `src/components/logo.tsx`): same shapes in
+  `--aura-green` on transparent; optional solid-green background variant.
+- Used in: top bar (26px), home hero (56px, with background), favicon,
+  web manifest icons, OG image. Wordmark "Aura" in Nunito 800.
 - **Personality**: playful but serious about learning. Encouraging, warm,
   never condescending. Think Duolingo energy, cleaner execution.
 - **Shape language**: rounded and friendly. Large radii, chunky bold buttons

@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Aura",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Windows, macOS, Linux",
+  "description": "Learn English at full power with Aura — a Duolingo-style course that is 100% local, free and open source: full WordNet dictionary, text analyzer, spaced repetition, pronunciation practice and a 3,800+ word vocabulary bank.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Duolingo-style course",
+    "Full WordNet dictionary",
+    "Text analyzer",
+    "Spaced repetition (SM-2)",
+    "Speech synthesis and pronunciation practice",
+    "Works offline, no account, no telemetry"
+  ]
+}
