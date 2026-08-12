@@ -52,6 +52,12 @@
   --shadow-xs: 0 1px 2px rgb(0 0 0 / 6%);
   --shadow-sm: 0 2px 4px rgb(0 0 0 / 8%);
   --shadow-md: 0 6px 16px rgb(0 0 0 / 12%);
+
+  /* Icon scale (Lucide size, matching the typography rhythm) */
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 32px;
 }
 
 * {
@@ -67,7 +73,7 @@ body,
 
 body {
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: var(--font-base);
   line-height: 1.5;
   color: var(--aura-text);
 
@@ -85,6 +91,8 @@ h1,
 h2,
 h3 {
   margin: 0 0 8px;
+  font-weight: 800;
+  line-height: 1.15;
   color: var(--aura-ink);
 }
 
@@ -221,7 +229,7 @@ button {
 
   min-width: 18px;
   padding: 1px 4px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 
   font-size: 10px;
   font-weight: 700;
@@ -245,7 +253,7 @@ button {
   border: none;
   border-radius: var(--radius-lg);
 
-  font-size: 15px;
+  font-size: var(--font-base);
   font-weight: 800;
   color: white;
   letter-spacing: 0.5px;
@@ -310,13 +318,13 @@ button {
 .progress-bar {
   overflow: hidden;
   width: 100%;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--aura-border);
 }
 
 .progress-bar__fill {
   height: 100%;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--aura-green);
   transition: width 0.3s ease;
 }
@@ -430,7 +438,7 @@ button {
 
   width: 40px;
   height: 40px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 
   font-size: 20px;
   font-weight: 800;
@@ -498,7 +506,7 @@ button {
   min-width: 56px;
   padding: 12px 10px;
   border: none;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
 
   font-size: 18px;
   font-weight: 800;
@@ -779,7 +787,7 @@ button {
 
   padding: 8px 12px;
   border: 2px solid var(--aura-border);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 
   font-size: 14px;
   font-weight: 600;
@@ -847,7 +855,7 @@ button {
   margin-bottom: 16px;
   padding: 20px;
   border: 2px solid var(--aura-border);
-  border-radius: 18px;
+  border-radius: var(--radius-xl);
 
   text-align: center;
 
@@ -1008,7 +1016,7 @@ button {
   display: inline-block;
 
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
 
   font-size: 12px;
   font-weight: 600;
@@ -1054,7 +1062,7 @@ button {
   margin-top: 12px;
   padding: 14px;
   border: 2px solid #d7ffb8;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 
   background: #f6fff0;
 }
@@ -1092,7 +1100,7 @@ button {
 .sense-block {
   padding: 10px 12px;
   border: 2px solid var(--aura-border);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: #fafafa;
 }
 
@@ -1106,7 +1114,7 @@ button {
 
   margin-right: 6px;
   padding: 1px 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
 
   font-size: 11px;
   font-weight: 700;
@@ -1147,7 +1155,7 @@ button {
   align-items: center;
 
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 
   background: white;
   box-shadow: var(--shadow-sm);
@@ -1232,7 +1240,7 @@ button {
   flex-direction: column;
 
   padding: 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 
   background: #fafafa;
 }
@@ -1265,7 +1273,7 @@ button {
   flex-direction: column;
 
   padding: 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 
   background: #fafafa;
 }
@@ -1308,7 +1316,7 @@ button {
   flex: 1;
 
   height: 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
 
   background: var(--aura-border);
 }
@@ -1341,7 +1349,7 @@ button {
   align-items: center;
 
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 
   background: #fafafa;
 }
@@ -1380,7 +1388,7 @@ button {
   gap: 2px;
 
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 
   font-size: 14px;
 
@@ -1423,7 +1431,7 @@ button {
 
 .word-chip {
   padding: 6px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
 
   font-size: 14px;
   font-weight: 600;
@@ -1451,7 +1459,7 @@ button {
 
 .review-card {
   padding: 24px 16px;
-  border-radius: 18px;
+  border-radius: var(--radius-xl);
 
   text-align: center;
 
@@ -1485,7 +1493,7 @@ button {
 .review-card__answer {
   margin-top: 14px;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: #fafafa;
 }
 
@@ -1523,7 +1531,7 @@ button {
   align-items: center;
 
   padding: 12px 18px;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
 
   color: white;
 
@@ -1562,4 +1570,24 @@ button {
   .stat-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* ---------- Empty states ---------- */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 16px;
+
+  color: var(--aura-muted);
+  text-align: center;
+}
+
+.empty-state p {
+  max-width: 320px;
+  margin: 0;
 }

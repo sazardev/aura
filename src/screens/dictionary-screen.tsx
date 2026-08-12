@@ -182,9 +182,12 @@ export function DictionaryScreen() {
       <section className="vocabulary" aria-label="My vocabulary">
         <h2>My vocabulary ({vocabulary.length})</h2>
         {vocabulary.length === 0 ? (
-          <p className="screen-subtitle">
-            You have no saved words yet. Finish lessons or use “+ Learn” to start your collection.
-          </p>
+          <div className="empty-state">
+            <BookOpen size={48} aria-hidden="true" />
+            <p>
+              You have no saved words yet. Finish lessons or use “+ Learn” to start your collection.
+            </p>
+          </div>
         ) : (
           <ul className="vocabulary__list">
             {vocabulary.map((card) => (
