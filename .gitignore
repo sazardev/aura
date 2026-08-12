@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# TypeScript / tsgo
+*.tsbuildinfo
+node_modules/.tmp/
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/gen/
+src-tauri/resources/wn/
+
+# Test
+coverage/
+vitest-coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Agent tooling
+.agents/
+.claude/
+skills-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+
+# TypeDoc
+docs/

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+docs/
+src-tauri/target/
+src-tauri/resources/wn/
+package-lock.json
+*.tsbuildinfo

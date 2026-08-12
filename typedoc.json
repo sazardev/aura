@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src/engine", "src/lib"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "name": "Aura — API Interna",
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "readme": "none",
+  "githubPages": false
+}
