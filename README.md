@@ -68,12 +68,17 @@ El diccionario WordNet se copia automáticamente desde `node_modules/wordnet-db`
 
 ```
 src/
+├── data/            # TODO el contenido en JSON legible (sin código)
+│   ├── course.json       # 6 unidades, 18 lecciones, 90 palabras
+│   ├── achievements.json # 15 logros
+│   └── config.json       # Equilibrio del juego + parámetros SM-2
 ├── engine/          # Motor puro y testeable (sin React)
-│   ├── lessons.ts       # Curso: 6 unidades, 18 lecciones, 90 palabras
+│   ├── schemas.ts       # Esquemas Zod que validan los JSON y dan los tipos
+│   ├── lessons.ts       # Carga y consultas del curso
 │   ├── exercises.ts     # Generador determinista de ejercicios (RNG con semilla)
 │   ├── srs.ts           # Repaso espaciado SM-2
 │   ├── xp.ts            # XP, niveles y rachas
-│   ├── achievements.ts  # 15 logros
+│   ├── achievements.ts  # Reglas de los 15 logros
 │   ├── frequency.ts     # SUBTLEX-US: frecuencias y dificultad
 │   ├── dictionary.ts    # Cliente del diccionario WordNet (vía Rust)
 │   ├── analyzer.ts      # Legibilidad + retext + sentimiento + POS
@@ -88,6 +93,12 @@ src-tauri/
 ├── resources/wn/     # Datos de WordNet 3.0 (generados en build)
 └── capabilities/     # Permisos mínimos
 ```
+
+**Datos y contenido**: todo el contenido (curso, logros y equilibrio del juego)
+vive en `src/data/` como JSON. El motor los carga con **esquemas Zod** que
+validan la estructura en runtime y fallan rápido si algo está mal; los tipos de
+TypeScript se derivan automáticamente de esos esquemas. Para añadir una lección
+solo editas `course.json`.
 
 **Decisiones técnicas clave**
 

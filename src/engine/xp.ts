@@ -1,9 +1,10 @@
+import { CONFIG } from '@/engine/config'
 import { previousDayKey } from '@/lib/date'
 
-export const XP_PER_CORRECT = 1
-export const XP_PER_LESSON = 10
-export const XP_PER_PERFECT_LESSON = 5
-export const XP_PER_REVIEW_CARD = 2
+export const XP_PER_CORRECT = CONFIG.gamification.xpPerCorrect
+export const XP_PER_LESSON = CONFIG.gamification.xpPerLesson
+export const XP_PER_PERFECT_LESSON = CONFIG.gamification.xpPerPerfectLesson
+export const XP_PER_REVIEW_CARD = CONFIG.gamification.xpPerReviewCard
 
 export interface LevelInfo {
   level: number
@@ -17,10 +18,10 @@ XP acumulado necesario para alcanzar `level` (niveles 1..infinito).
  */
 export function cumulativeXpForLevel(level: number): number {
   if (level <= 1) return 0
-  // Curva: cada nivel cuesta level*50 XP, ligeramente creciente.
+  const { baseXp, incrementPerLevel } = CONFIG.gamification.levelCurve
   let total = 0
   for (let current = 1; current < level; current += 1) {
-    total += 50 + current * 5
+    total += baseXp + current * incrementPerLevel
   }
   return total
 }
@@ -74,9 +75,6 @@ export function streakStatus(
   return 'perdido'
 }
 
-/**
-Meta diaria por defecto.
- */
-export const DEFAULT_DAILY_GOAL = 20
+export const DEFAULT_DAILY_GOAL = CONFIG.gamification.dailyGoal.default
 
-export const DAILY_GOAL_OPTIONS = [10, 20, 30, 50] as const
+export const DAILY_GOAL_OPTIONS: readonly number[] = CONFIG.gamification.dailyGoal.options

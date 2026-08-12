@@ -1,5 +1,6 @@
 import supermemo from 'supermemo'
 
+import { CONFIG } from '@/engine/config'
 import { addDays } from '@/lib/date'
 
 const DAY_MS = 86_400_000
@@ -32,9 +33,9 @@ export type ReviewGrade = 0 | 1 | 2 | 3 | 4 | 5
 
 function initialState(now: Date): SrsState {
   return {
-    interval: 0,
-    repetition: 0,
-    efactor: 2.5,
+    interval: CONFIG.srs.initialInterval,
+    repetition: CONFIG.srs.initialRepetition,
+    efactor: CONFIG.srs.initialEfactor,
     due: now.toISOString(),
     lapses: 0,
   }

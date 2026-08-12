@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import type { AchievementDef } from '@/engine/achievements'
+import type { AchievementDef } from '@/engine/types'
 
 import { achievementById } from '@/engine/achievements'
 import { useAuraStore } from '@/state/store'

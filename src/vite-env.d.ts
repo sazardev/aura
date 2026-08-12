@@ -19,3 +19,8 @@ declare module 'wink-lemmatizer' {
   export function lemmatizeVerb(word: string): string
   export function lemmatizeAdjective(word: string): string
 }
+
+declare module '@/data/course.json' {
+  const data: unknown
+  export default data
+}

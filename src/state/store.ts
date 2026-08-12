@@ -5,6 +5,7 @@ import type { ProgressSnapshot } from '@/engine/achievements'
 import type { ReviewGrade, SrsCard } from '@/engine/srs'
 
 import { newlyUnlocked } from '@/engine/achievements'
+import { CONFIG } from '@/engine/config'
 import { reviewCard as applyReview, createCard } from '@/engine/srs'
 import { DEFAULT_DAILY_GOAL, updateStreak, XP_PER_LESSON } from '@/engine/xp'
 import { localDateKey } from '@/lib/date'
@@ -102,7 +103,7 @@ export const useAuraStore = create<AuraState>()(
       lastActiveDay: undefined,
       daily: freshDaily(localDateKey()),
       dailyGoal: DEFAULT_DAILY_GOAL,
-      hearts: 5,
+      hearts: CONFIG.gamification.maxHearts,
       learnedWords: [],
       cards: {},
       completedLessons: [],
@@ -206,7 +207,7 @@ export const useAuraStore = create<AuraState>()(
       setDailyGoal: (goal) => set({ dailyGoal: goal }),
       setTtsRate: (rate) => set({ ttsRate: rate }),
       setTtsVoice: (uri) => set({ ttsVoiceURI: uri }),
-      resetHearts: () => set({ hearts: 5 }),
+      resetHearts: () => set({ hearts: CONFIG.gamification.maxHearts }),
     }),
     {
       name: 'aura-state',

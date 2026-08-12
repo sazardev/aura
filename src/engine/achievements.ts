@@ -1,9 +1,7 @@
-export interface AchievementDef {
-  id: string
-  name: string
-  description: string
-  emoji: string
-}
+import type { AchievementDef } from '@/engine/types'
+
+import achievementsData from '@/data/achievements.json'
+import { achievementsSchema } from '@/engine/schemas'
 
 export interface ProgressSnapshot {
   xp: number
@@ -13,45 +11,9 @@ export interface ProgressSnapshot {
   totalCorrect: number
 }
 
-export const ACHIEVEMENTS: readonly AchievementDef[] = [
-  { id: 'primeros-pasos', name: 'Primeros pasos', description: 'Gana 100 XP', emoji: '🌱' },
-  { id: 'xp-500', name: 'En racha', description: 'Gana 500 XP', emoji: '⚡' },
-  { id: 'xp-1000', name: 'Imparable', description: 'Gana 1.000 XP', emoji: '🔥' },
-  { id: 'xp-5000', name: 'Leyenda de Aura', description: 'Gana 5.000 XP', emoji: '👑' },
-  {
-    id: 'primera-leccion',
-    name: 'Primera lección',
-    description: 'Completa tu primera lección',
-    emoji: '🎓',
-  },
-  { id: 'lecciones-5', name: 'Estudiante', description: 'Completa 5 lecciones', emoji: '📚' },
-  { id: 'lecciones-25', name: 'Erudito', description: 'Completa 25 lecciones', emoji: '🏛️' },
-  { id: 'racha-3', name: 'Tres días', description: 'Racha de 3 días', emoji: '🔥' },
-  { id: 'racha-7', name: 'Una semana', description: 'Racha de 7 días', emoji: '⚡' },
-  { id: 'racha-30', name: 'Mes completo', description: 'Racha de 30 días', emoji: '🌙' },
-  { id: 'palabras-50', name: 'Vocabulario', description: 'Aprende 50 palabras', emoji: '📖' },
-  {
-    id: 'palabras-200',
-    name: 'Palabras poderosas',
-    description: 'Aprende 200 palabras',
-    emoji: '🗺️',
-  },
-  { id: 'palabras-500', name: 'Biblioteca viva', description: 'Aprende 500 palabras', emoji: '🌌' },
-  {
-    id: 'correcciones-100',
-    name: 'Precisión',
-    description: '100 respuestas correctas',
-    emoji: '🎯',
-  },
-  {
-    id: 'correcciones-1000',
-    name: 'Maestro',
-    description: '1.000 respuestas correctas',
-    emoji: '🏆',
-  },
-]
+export const ACHIEVEMENTS: readonly AchievementDef[] = achievementsSchema.parse(achievementsData)
 
-const RULES: readonly { id: string; check: (snapshot: ProgressSnapshot) => boolean }[] = [
+export const RULES: readonly { id: string; check: (snapshot: ProgressSnapshot) => boolean }[] = [
   { id: 'primeros-pasos', check: (s) => s.xp >= 100 },
   { id: 'xp-500', check: (s) => s.xp >= 500 },
   { id: 'xp-1000', check: (s) => s.xp >= 1000 },

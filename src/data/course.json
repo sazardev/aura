@@ -1,0 +1,806 @@
+[
+  {
+    "id": "saludos",
+    "title": "Saludos y presentaciones",
+    "emoji": "👋",
+    "color": "#58cc02",
+    "lessons": [
+      {
+        "id": "saludos-1",
+        "title": "Hola y adiós",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "hello",
+            "translation": "hola",
+            "meaning": "saludo al encontrarte con alguien",
+            "sentence": "Hello, my friend!",
+            "sentenceTranslation": "¡Hola, amigo!"
+          },
+          {
+            "word": "goodbye",
+            "translation": "adiós",
+            "meaning": "despedida al irte",
+            "sentence": "Goodbye, see you tomorrow!",
+            "sentenceTranslation": "¡Adiós, nos vemos mañana!"
+          },
+          {
+            "word": "please",
+            "translation": "por favor",
+            "meaning": "palabra de cortesía al pedir algo",
+            "sentence": "Please sit down.",
+            "sentenceTranslation": "Por favor, siéntate."
+          },
+          {
+            "word": "thanks",
+            "translation": "gracias",
+            "meaning": "agradecimiento",
+            "sentence": "Thanks for your help.",
+            "sentenceTranslation": "Gracias por tu ayuda."
+          },
+          {
+            "word": "welcome",
+            "translation": "bienvenido",
+            "meaning": "recibimiento a alguien",
+            "sentence": "Welcome to my home.",
+            "sentenceTranslation": "Bienvenido a mi casa."
+          }
+        ]
+      },
+      {
+        "id": "saludos-2",
+        "title": "Presentarse",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "name",
+            "translation": "nombre",
+            "meaning": "cómo te llaman",
+            "sentence": "My name is Ana.",
+            "sentenceTranslation": "Mi nombre es Ana."
+          },
+          {
+            "word": "friend",
+            "translation": "amigo",
+            "meaning": "persona con la que tienes cariño",
+            "sentence": "She is my best friend.",
+            "sentenceTranslation": "Ella es mi mejor amiga."
+          },
+          {
+            "word": "you",
+            "translation": "tú / usted",
+            "meaning": "segunda persona",
+            "sentence": "How are you?",
+            "sentenceTranslation": "¿Cómo estás?"
+          },
+          {
+            "word": "he",
+            "translation": "él",
+            "meaning": "pronombre masculino",
+            "sentence": "He is a doctor.",
+            "sentenceTranslation": "Él es doctor."
+          },
+          {
+            "word": "she",
+            "translation": "ella",
+            "meaning": "pronombre femenino",
+            "sentence": "She loves music.",
+            "sentenceTranslation": "Ella ama la música."
+          }
+        ]
+      },
+      {
+        "id": "saludos-3",
+        "title": "Preguntas",
+        "type": "cuestionario",
+        "words": [
+          {
+            "word": "who",
+            "translation": "quién",
+            "meaning": "pregunta por una persona",
+            "sentence": "Who is at the door?",
+            "sentenceTranslation": "¿Quién está en la puerta?"
+          },
+          {
+            "word": "what",
+            "translation": "qué",
+            "meaning": "pregunta por una cosa",
+            "sentence": "What is your name?",
+            "sentenceTranslation": "¿Cuál es tu nombre?"
+          },
+          {
+            "word": "where",
+            "translation": "dónde",
+            "meaning": "pregunta por un lugar",
+            "sentence": "Where is the station?",
+            "sentenceTranslation": "¿Dónde está la estación?"
+          },
+          {
+            "word": "how",
+            "translation": "cómo",
+            "meaning": "pregunta por una manera",
+            "sentence": "How do you learn English?",
+            "sentenceTranslation": "¿Cómo aprendes inglés?"
+          },
+          {
+            "word": "why",
+            "translation": "por qué",
+            "meaning": "pregunta por una razón",
+            "sentence": "Why are you happy?",
+            "sentenceTranslation": "¿Por qué estás feliz?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "comida",
+    "title": "Comida y bebida",
+    "emoji": "🍎",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "comida-1",
+        "title": "En la mesa",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "bread",
+            "translation": "pan",
+            "meaning": "alimento hecho con harina",
+            "sentence": "I eat bread every morning.",
+            "sentenceTranslation": "Como pan cada mañana."
+          },
+          {
+            "word": "water",
+            "translation": "agua",
+            "meaning": "líquido esencial para beber",
+            "sentence": "Drink a lot of water.",
+            "sentenceTranslation": "Bebe mucha agua."
+          },
+          {
+            "word": "apple",
+            "translation": "manzana",
+            "meaning": "fruta roja o verde",
+            "sentence": "This apple is sweet.",
+            "sentenceTranslation": "Esta manzana es dulce."
+          },
+          {
+            "word": "milk",
+            "translation": "leche",
+            "meaning": "líquido blanco de origen animal o vegetal",
+            "sentence": "The cat drinks milk.",
+            "sentenceTranslation": "El gato bebe leche."
+          },
+          {
+            "word": "food",
+            "translation": "comida",
+            "meaning": "todo lo que comemos",
+            "sentence": "The food is delicious.",
+            "sentenceTranslation": "La comida está deliciosa."
+          }
+        ]
+      },
+      {
+        "id": "comida-2",
+        "title": "Cocinar y comer",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "cook",
+            "translation": "cocinar",
+            "meaning": "preparar comida con calor",
+            "sentence": "I cook dinner for my family.",
+            "sentenceTranslation": "Cocino la cena para mi familia."
+          },
+          {
+            "word": "eat",
+            "translation": "comer",
+            "meaning": "ingerir alimentos",
+            "sentence": "We eat at noon.",
+            "sentenceTranslation": "Comemos al mediodía."
+          },
+          {
+            "word": "drink",
+            "translation": "beber",
+            "meaning": "ingerir líquidos",
+            "sentence": "Drink your tea slowly.",
+            "sentenceTranslation": "Bebe tu té lentamente."
+          },
+          {
+            "word": "delicious",
+            "translation": "delicioso",
+            "meaning": "que sabe muy bien",
+            "sentence": "This soup is delicious.",
+            "sentenceTranslation": "Esta sopa está deliciosa."
+          },
+          {
+            "word": "hungry",
+            "translation": "hambriento",
+            "meaning": "tener ganas de comer",
+            "sentence": "I am very hungry.",
+            "sentenceTranslation": "Tengo mucha hambre."
+          }
+        ]
+      },
+      {
+        "id": "comida-3",
+        "title": "Frutas y verduras",
+        "type": "cuestionario",
+        "words": [
+          {
+            "word": "banana",
+            "translation": "plátano",
+            "meaning": "fruta amarilla y larga",
+            "sentence": "A banana is good for you.",
+            "sentenceTranslation": "Un plátano es bueno para ti."
+          },
+          {
+            "word": "tomato",
+            "translation": "tomate",
+            "meaning": "verdura roja",
+            "sentence": "Add a tomato to the salad.",
+            "sentenceTranslation": "Añade un tomate a la ensalada."
+          },
+          {
+            "word": "carrot",
+            "translation": "zanahoria",
+            "meaning": "verdura naranja que crece bajo tierra",
+            "sentence": "Rabbits love carrots.",
+            "sentenceTranslation": "A los conejos les encantan las zanahorias."
+          },
+          {
+            "word": "orange",
+            "translation": "naranja",
+            "meaning": "fruta cítrica naranja",
+            "sentence": "I drink orange juice.",
+            "sentenceTranslation": "Bebo zumo de naranja."
+          },
+          {
+            "word": "cheese",
+            "translation": "queso",
+            "meaning": "producto lácteo",
+            "sentence": "Cheese goes with bread.",
+            "sentenceTranslation": "El queso combina con el pan."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "viajes",
+    "title": "Viajes",
+    "emoji": "✈️",
+    "color": "#ff9600",
+    "lessons": [
+      {
+        "id": "viajes-1",
+        "title": "El aeropuerto",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "airport",
+            "translation": "aeropuerto",
+            "meaning": "lugar donde aterrizan y despegan aviones",
+            "sentence": "The airport is far from the city.",
+            "sentenceTranslation": "El aeropuerto está lejos de la ciudad."
+          },
+          {
+            "word": "plane",
+            "translation": "avión",
+            "meaning": "vehículo que vuela",
+            "sentence": "The plane leaves at six.",
+            "sentenceTranslation": "El avión sale a las seis."
+          },
+          {
+            "word": "ticket",
+            "translation": "billete",
+            "meaning": "documento para viajar",
+            "sentence": "I need a ticket to London.",
+            "sentenceTranslation": "Necesito un billete a Londres."
+          },
+          {
+            "word": "luggage",
+            "translation": "equipaje",
+            "meaning": "maletas de un viaje",
+            "sentence": "Your luggage is very heavy.",
+            "sentenceTranslation": "Tu equipaje es muy pesado."
+          },
+          {
+            "word": "travel",
+            "translation": "viajar",
+            "meaning": "ir de un lugar a otro",
+            "sentence": "I travel by train.",
+            "sentenceTranslation": "Viajo en tren."
+          }
+        ]
+      },
+      {
+        "id": "viajes-2",
+        "title": "El hotel",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "hotel",
+            "translation": "hotel",
+            "meaning": "lugar para dormir de viaje",
+            "sentence": "The hotel is near the beach.",
+            "sentenceTranslation": "El hotel está cerca de la playa."
+          },
+          {
+            "word": "room",
+            "translation": "habitación",
+            "meaning": "espacio para dormir en el hotel",
+            "sentence": "My room has a big window.",
+            "sentenceTranslation": "Mi habitación tiene una ventana grande."
+          },
+          {
+            "word": "key",
+            "translation": "llave",
+            "meaning": "objeto para abrir puertas",
+            "sentence": "Here is your room key.",
+            "sentenceTranslation": "Aquí tienes la llave de tu habitación."
+          },
+          {
+            "word": "booking",
+            "translation": "reserva",
+            "meaning": "reserva hecha con antelación",
+            "sentence": "I made a booking for two nights.",
+            "sentenceTranslation": "Hice una reserva de dos noches."
+          },
+          {
+            "word": "stay",
+            "translation": "quedarse / estancia",
+            "meaning": "permanecer en un lugar",
+            "sentence": "We stay here for a week.",
+            "sentenceTranslation": "Nos quedamos aquí una semana."
+          }
+        ]
+      },
+      {
+        "id": "viajes-3",
+        "title": "La ciudad",
+        "type": "cuestionario",
+        "words": [
+          {
+            "word": "city",
+            "translation": "ciudad",
+            "meaning": "gran lugar poblado",
+            "sentence": "New York is a big city.",
+            "sentenceTranslation": "Nueva York es una ciudad grande."
+          },
+          {
+            "word": "street",
+            "translation": "calle",
+            "meaning": "vía entre edificios",
+            "sentence": "The museum is on this street.",
+            "sentenceTranslation": "El museo está en esta calle."
+          },
+          {
+            "word": "map",
+            "translation": "mapa",
+            "meaning": "representación de un lugar",
+            "sentence": "Look at the map to find the hotel.",
+            "sentenceTranslation": "Mira el mapa para encontrar el hotel."
+          },
+          {
+            "word": "bus",
+            "translation": "autobús",
+            "meaning": "vehículo de transporte público",
+            "sentence": "The bus stops here.",
+            "sentenceTranslation": "El autobús para aquí."
+          },
+          {
+            "word": "station",
+            "translation": "estación",
+            "meaning": "lugar donde paran trenes o buses",
+            "sentence": "The station is two blocks away.",
+            "sentenceTranslation": "La estación está a dos manzanas."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trabajo",
+    "title": "Trabajo y estudio",
+    "emoji": "💼",
+    "color": "#ce82ff",
+    "lessons": [
+      {
+        "id": "trabajo-1",
+        "title": "El trabajo",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "work",
+            "translation": "trabajar / trabajo",
+            "meaning": "actividad laboral",
+            "sentence": "I work in an office.",
+            "sentenceTranslation": "Trabajo en una oficina."
+          },
+          {
+            "word": "job",
+            "translation": "empleo",
+            "meaning": "trabajo que te da dinero",
+            "sentence": "She found a new job.",
+            "sentenceTranslation": "Ella encontró un empleo nuevo."
+          },
+          {
+            "word": "office",
+            "translation": "oficina",
+            "meaning": "lugar de trabajo",
+            "sentence": "My office is on the fifth floor.",
+            "sentenceTranslation": "Mi oficina está en el quinto piso."
+          },
+          {
+            "word": "meeting",
+            "translation": "reunión",
+            "meaning": "encuentro de trabajo",
+            "sentence": "The meeting starts at ten.",
+            "sentenceTranslation": "La reunión empieza a las diez."
+          },
+          {
+            "word": "boss",
+            "translation": "jefe",
+            "meaning": "persona que dirige",
+            "sentence": "My boss is very kind.",
+            "sentenceTranslation": "Mi jefe es muy amable."
+          }
+        ]
+      },
+      {
+        "id": "trabajo-2",
+        "title": "Estudiar",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "study",
+            "translation": "estudiar",
+            "meaning": "dedicar tiempo a aprender",
+            "sentence": "I study English every day.",
+            "sentenceTranslation": "Estudio inglés todos los días."
+          },
+          {
+            "word": "learn",
+            "translation": "aprender",
+            "meaning": "adquirir conocimiento",
+            "sentence": "You learn fast.",
+            "sentenceTranslation": "Aprendes rápido."
+          },
+          {
+            "word": "book",
+            "translation": "libro",
+            "meaning": "conjunto de páginas para leer",
+            "sentence": "This book is interesting.",
+            "sentenceTranslation": "Este libro es interesante."
+          },
+          {
+            "word": "lesson",
+            "translation": "lección",
+            "meaning": "unidad de aprendizaje",
+            "sentence": "Today is lesson number three.",
+            "sentenceTranslation": "Hoy es la lección número tres."
+          },
+          {
+            "word": "homework",
+            "translation": "tarea",
+            "meaning": "trabajo para casa",
+            "sentence": "Finish your homework tonight.",
+            "sentenceTranslation": "Termina tu tarea esta noche."
+          }
+        ]
+      },
+      {
+        "id": "trabajo-3",
+        "title": "El tiempo",
+        "type": "cuestionario",
+        "words": [
+          {
+            "word": "today",
+            "translation": "hoy",
+            "meaning": "el día presente",
+            "sentence": "Today is a good day.",
+            "sentenceTranslation": "Hoy es un buen día."
+          },
+          {
+            "word": "tomorrow",
+            "translation": "mañana",
+            "meaning": "el día siguiente",
+            "sentence": "Tomorrow we travel.",
+            "sentenceTranslation": "Mañana viajamos."
+          },
+          {
+            "word": "yesterday",
+            "translation": "ayer",
+            "meaning": "el día anterior",
+            "sentence": "Yesterday it rained.",
+            "sentenceTranslation": "Ayer llovió."
+          },
+          {
+            "word": "morning",
+            "translation": "mañana (mañanita)",
+            "meaning": "primera parte del día",
+            "sentence": "I run in the morning.",
+            "sentenceTranslation": "Corro por la mañana."
+          },
+          {
+            "word": "night",
+            "translation": "noche",
+            "meaning": "parte oscura del día",
+            "sentence": "The stars shine at night.",
+            "sentenceTranslation": "Las estrellas brillan por la noche."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cuerpo",
+    "title": "Cuerpo y salud",
+    "emoji": "❤️",
+    "color": "#ff4b4b",
+    "lessons": [
+      {
+        "id": "cuerpo-1",
+        "title": "El cuerpo",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "head",
+            "translation": "cabeza",
+            "meaning": "parte superior del cuerpo",
+            "sentence": "My head hurts.",
+            "sentenceTranslation": "Me duele la cabeza."
+          },
+          {
+            "word": "hand",
+            "translation": "mano",
+            "meaning": "parte del brazo para agarrar",
+            "sentence": "Raise your hand, please.",
+            "sentenceTranslation": "Levanta la mano, por favor."
+          },
+          {
+            "word": "eye",
+            "translation": "ojo",
+            "meaning": "órgano de la visión",
+            "sentence": "She has blue eyes.",
+            "sentenceTranslation": "Ella tiene ojos azules."
+          },
+          {
+            "word": "heart",
+            "translation": "corazón",
+            "meaning": "órgano que bombea sangre",
+            "sentence": "Your heart is strong.",
+            "sentenceTranslation": "Tu corazón es fuerte."
+          },
+          {
+            "word": "hair",
+            "translation": "pelo",
+            "meaning": "fibra que crece en la cabeza",
+            "sentence": "His hair is black.",
+            "sentenceTranslation": "Su pelo es negro."
+          }
+        ]
+      },
+      {
+        "id": "cuerpo-2",
+        "title": "Salud",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "health",
+            "translation": "salud",
+            "meaning": "bienestar del cuerpo",
+            "sentence": "Sleep is good for health.",
+            "sentenceTranslation": "Dormir es bueno para la salud."
+          },
+          {
+            "word": "doctor",
+            "translation": "médico",
+            "meaning": "persona que cura",
+            "sentence": "The doctor is very busy.",
+            "sentenceTranslation": "El médico está muy ocupado."
+          },
+          {
+            "word": "medicine",
+            "translation": "medicina",
+            "meaning": "sustancia para curar",
+            "sentence": "Take this medicine twice a day.",
+            "sentenceTranslation": "Toma esta medicina dos veces al día."
+          },
+          {
+            "word": "strong",
+            "translation": "fuerte",
+            "meaning": "con mucha fuerza",
+            "sentence": "Exercise makes you strong.",
+            "sentenceTranslation": "El ejercicio te hace fuerte."
+          },
+          {
+            "word": "tired",
+            "translation": "cansado",
+            "meaning": "necesitar descanso",
+            "sentence": "I am tired after work.",
+            "sentenceTranslation": "Estoy cansado después del trabajo."
+          }
+        ]
+      },
+      {
+        "id": "cuerpo-3",
+        "title": "Emociones",
+        "type": "cuestionario",
+        "words": [
+          {
+            "word": "happy",
+            "translation": "feliz",
+            "meaning": "sentirse bien",
+            "sentence": "I am happy today.",
+            "sentenceTranslation": "Hoy estoy feliz."
+          },
+          {
+            "word": "sad",
+            "translation": "triste",
+            "meaning": "sentirse mal",
+            "sentence": "The movie made me sad.",
+            "sentenceTranslation": "La película me puso triste."
+          },
+          {
+            "word": "angry",
+            "translation": "enojado",
+            "meaning": "sentir enfado",
+            "sentence": "Do not be angry with me.",
+            "sentenceTranslation": "No te enojes conmigo."
+          },
+          {
+            "word": "afraid",
+            "translation": "asustado",
+            "meaning": "sentir miedo",
+            "sentence": "She is afraid of the dark.",
+            "sentenceTranslation": "Ella le tiene miedo a la oscuridad."
+          },
+          {
+            "word": "excited",
+            "translation": "emocionado",
+            "meaning": "con mucha ilusión",
+            "sentence": "I am excited about the trip.",
+            "sentenceTranslation": "Estoy emocionado por el viaje."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "verbos",
+    "title": "Verbos esenciales",
+    "emoji": "🔥",
+    "color": "#ff86e8",
+    "lessons": [
+      {
+        "id": "verbos-1",
+        "title": "Mover",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "go",
+            "translation": "ir",
+            "meaning": "moverse a un lugar",
+            "sentence": "Let us go to the park.",
+            "sentenceTranslation": "Vamos al parque."
+          },
+          {
+            "word": "come",
+            "translation": "venir",
+            "meaning": "moverse hacia aquí",
+            "sentence": "Come with me, please.",
+            "sentenceTranslation": "Ven conmigo, por favor."
+          },
+          {
+            "word": "run",
+            "translation": "correr",
+            "meaning": "moverse rápido con las piernas",
+            "sentence": "I run every morning.",
+            "sentenceTranslation": "Corro cada mañana."
+          },
+          {
+            "word": "walk",
+            "translation": "caminar",
+            "meaning": "moverse a pie",
+            "sentence": "We walk to school.",
+            "sentenceTranslation": "Caminamos a la escuela."
+          },
+          {
+            "word": "fly",
+            "translation": "volar",
+            "meaning": "moverse por el aire",
+            "sentence": "Birds fly in the sky.",
+            "sentenceTranslation": "Los pájaros vuelan en el cielo."
+          }
+        ]
+      },
+      {
+        "id": "verbos-2",
+        "title": "Verbos comunes",
+        "type": "leccion",
+        "words": [
+          {
+            "word": "see",
+            "translation": "ver",
+            "meaning": "percibir con los ojos",
+            "sentence": "I see a cat in the garden.",
+            "sentenceTranslation": "Veo un gato en el jardín."
+          },
+          {
+            "word": "hear",
+            "translation": "oír",
+            "meaning": "percibir con los oídos",
+            "sentence": "Can you hear the music?",
+            "sentenceTranslation": "¿Puedes oír la música?"
+          },
+          {
+            "word": "speak",
+            "translation": "hablar",
+            "meaning": "usar la voz",
+            "sentence": "Speak slowly, please.",
+            "sentenceTranslation": "Habla despacio, por favor."
+          },
+          {
+            "word": "read",
+            "translation": "leer",
+            "meaning": "entender texto escrito",
+            "sentence": "I read a book at night.",
+            "sentenceTranslation": "Leo un libro por la noche."
+          },
+          {
+            "word": "write",
+            "translation": "escribir",
+            "meaning": "plasmar palabras",
+            "sentence": "Write your name here.",
+            "sentenceTranslation": "Escribe tu nombre aquí."
+          }
+        ]
+      },
+      {
+        "id": "verbos-3",
+        "title": "La vida",
+        "type": "cuestionario",
+        "words": [
+          {
+            "word": "live",
+            "translation": "vivir",
+            "meaning": "tener vida en un lugar",
+            "sentence": "They live in Spain.",
+            "sentenceTranslation": "Ellos viven en España."
+          },
+          {
+            "word": "grow",
+            "translation": "crecer",
+            "meaning": "aumentar de tamaño",
+            "sentence": "Plants grow in the sun.",
+            "sentenceTranslation": "Las plantas crecen con el sol."
+          },
+          {
+            "word": "love",
+            "translation": "amar",
+            "meaning": "querer mucho",
+            "sentence": "I love my family.",
+            "sentenceTranslation": "Amo a mi familia."
+          },
+          {
+            "word": "want",
+            "translation": "querer",
+            "meaning": "desear algo",
+            "sentence": "I want a cup of tea.",
+            "sentenceTranslation": "Quiero una taza de té."
+          },
+          {
+            "word": "need",
+            "translation": "necesitar",
+            "meaning": "requerir algo",
+            "sentence": "You need more practice.",
+            "sentenceTranslation": "Necesitas más práctica."
+          }
+        ]
+      }
+    ]
+  }
+]

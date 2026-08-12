@@ -109,6 +109,7 @@ export default tseslint.config(
       'unicorn/prefer-global-this': 'off',
       'unicorn/no-declarations-before-early-exit': 'off',
       'unicorn/number-literal-case': 'off',
+      'unicorn/max-nested-calls': 'off',
     },
   },
 

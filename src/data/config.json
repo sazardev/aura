@@ -1,0 +1,22 @@
+{
+  "gamification": {
+    "xpPerCorrect": 1,
+    "xpPerLesson": 10,
+    "xpPerPerfectLesson": 5,
+    "xpPerReviewCard": 2,
+    "maxHearts": 5,
+    "dailyGoal": {
+      "default": 20,
+      "options": [10, 20, 30, 50]
+    },
+    "levelCurve": {
+      "baseXp": 50,
+      "incrementPerLevel": 5
+    }
+  },
+  "srs": {
+    "initialEfactor": 2.5,
+    "initialInterval": 0,
+    "initialRepetition": 0
+  }
+}
