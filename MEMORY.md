@@ -141,7 +141,8 @@ every achievement rule has a JSON definition). Setup: `src/test-setup.ts` + jsdo
 2. `3444c04` — data separated to `src/data/*.json`, loaded with Zod schemas (45 tests).
 3. `cde829d` — resilient dev port (`scripts/tauri-dev.mjs`).
 4. `1b6cba0` — everything in English (UI, content, ids, docs); course schema simplified.
-5. `TBD` — giant data bank + course expansion via a custom WordNet reader + generator.
+5. `5a2e38c` — giant data bank (3,885 words) + course expansion (36 lessons/180 words)
+   via `gen_vocab` and a custom WordNet reader (`wordnet_db.rs`).
 
 ## 11. Known gotchas / notes
 
