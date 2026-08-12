@@ -17,21 +17,21 @@ const DictionaryScreen = lazy(async () => {
   return { default: module.DictionaryScreen }
 })
 
-type Route = { name: NavTarget } | { name: 'leccion'; lessonId: string }
+type Route = { name: NavTarget } | { name: 'lesson'; lessonId: string }
 
 export function App() {
-  const [route, setRoute] = useState<Route>({ name: 'inicio' })
+  const [route, setRoute] = useState<Route>({ name: 'home' })
 
-  const goHome = () => setRoute({ name: 'inicio' })
+  const goHome = () => setRoute({ name: 'home' })
 
-  if (route.name === 'leccion') {
+  if (route.name === 'lesson') {
     const lesson = lessonById(route.lessonId)
     if (lesson === undefined) {
       return (
         <div className="app">
-          <p>Lección no encontrada.</p>
+          <p>Lesson not found.</p>
           <button type="button" onClick={goHome}>
-            Volver al inicio
+            Back to home
           </button>
         </div>
       )
@@ -43,20 +43,20 @@ export function App() {
     <div className="app">
       <TopBar />
       <main className="app__content">
-        {route.name === 'inicio' && (
-          <HomeScreen onStartLesson={(lessonId) => setRoute({ name: 'leccion', lessonId })} />
+        {route.name === 'home' && (
+          <HomeScreen onStartLesson={(lessonId) => setRoute({ name: 'lesson', lessonId })} />
         )}
-        {route.name === 'diccionario' && (
+        {route.name === 'dictionary' && (
           <Suspense fallback={<ScreenLoading />}>
             <DictionaryScreen />
           </Suspense>
         )}
-        {route.name === 'analizador' && (
+        {route.name === 'analyzer' && (
           <Suspense fallback={<ScreenLoading />}>
             <AnalyzerScreen />
           </Suspense>
         )}
-        {route.name === 'repaso' && <ReviewScreen />}
+        {route.name === 'review' && <ReviewScreen />}
       </main>
       <BottomNav active={route.name} onNavigate={(target) => setRoute({ name: target })} />
       <AchievementToast />
@@ -65,5 +65,5 @@ export function App() {
 }
 
 function ScreenLoading() {
-  return <p className="screen-subtitle">Cargando…</p>
+  return <p className="screen-subtitle">Loading…</p>
 }

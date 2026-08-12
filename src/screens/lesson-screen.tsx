@@ -61,7 +61,7 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
   const finish = () => {
     completeLesson(lesson.id)
     for (const wordInfo of lesson.words) {
-      addWord(wordInfo.word, wordInfo.meaning, { translation: wordInfo.translation })
+      addWord(wordInfo.word, wordInfo.meaning)
     }
     setPhase('complete')
   }
@@ -137,14 +137,14 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
     return (
       <div className="lesson-failed">
         <div className="lesson-result__emoji">💔</div>
-        <h2>Te quedaste sin corazones</h2>
-        <p>No pasa nada, el inglés se aprende repitiendo. ¡Inténtalo otra vez!</p>
+        <h2>You ran out of hearts</h2>
+        <p>No worries — you learn English by repeating. Try again!</p>
         <div className="lesson-result__actions">
           <Button variant="primary" block onClick={retry}>
-            Reintentar lección
+            Retry lesson
           </Button>
           <Button variant="secondary" block onClick={onHome}>
-            Salir
+            Exit
           </Button>
         </div>
       </div>
@@ -159,7 +159,7 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
         <button
           type="button"
           className="lesson-screen__close"
-          aria-label="Cerrar lección"
+          aria-label="Close lesson"
           onClick={onHome}
         >
           ✕
@@ -184,11 +184,11 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
       <div className="lesson-screen__footer">
         {feedback === 'wrong' && (
           <button type="button" className="lesson-screen__continue" onClick={continueAfterWrong}>
-            Continuar →
+            Continue →
           </button>
         )}
         <span className="lesson-screen__progress-text">
-          Ejercicio {index + 1} de {exercises.length}
+          Exercise {index + 1} of {exercises.length}
         </span>
       </div>
     </div>

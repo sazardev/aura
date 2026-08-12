@@ -50,14 +50,14 @@ export function ReviewScreen() {
     return (
       <div className="review-screen review-screen--done">
         <div className="lesson-result__emoji">🎉</div>
-        <h1>¡Repaso completado!</h1>
+        <h1>Review complete!</h1>
         <p>
-          Repasaste {total} {total === 1 ? 'tarjeta' : 'tarjetas'} y ganaste{' '}
-          {total * XP_PER_REVIEW_CARD} XP. Tu memoria está más fuerte.
+          You reviewed {total} {total === 1 ? 'card' : 'cards'} and earned{' '}
+          {total * XP_PER_REVIEW_CARD} XP. Your memory is stronger.
         </p>
         <div className="lesson-result__actions">
           <Button variant="primary" block onClick={start}>
-            Repasar de nuevo
+            Review again
           </Button>
         </div>
       </div>
@@ -69,12 +69,12 @@ export function ReviewScreen() {
   if (current === undefined) {
     return (
       <div className="review-screen">
-        <h1>Repaso 🔁</h1>
+        <h1>Review 🔁</h1>
         {due.length === 0 ? (
           <>
             <p className="screen-subtitle">
-              No tienes tarjetas pendientes. 🎊 ¡Termina lecciones o añade palabras para llenar tu
-              cola de repaso espaciado!
+              No cards are due right now. 🎊 Finish lessons or add words to fill your
+              spaced-repetition queue!
             </p>
             <div className="review-empty">
               <span>📚</span>
@@ -83,11 +83,11 @@ export function ReviewScreen() {
         ) : (
           <>
             <p className="screen-subtitle">
-              Tienes {due.length} {due.length === 1 ? 'tarjeta lista' : 'tarjetas listas'} para
-              repasar hoy.
+              You have {due.length} {due.length === 1 ? 'card ready' : 'cards ready'} to review
+              today.
             </p>
             <Button variant="primary" block onClick={start}>
-              Empezar repaso ({due.length})
+              Start review ({due.length})
             </Button>
           </>
         )}
@@ -99,7 +99,7 @@ export function ReviewScreen() {
 
   return (
     <div className="review-screen">
-      <h1>Repaso 🔁</h1>
+      <h1>Review 🔁</h1>
       <div className="review-progress">
         <ProgressBar value={total > 0 ? (reviewed / total) * 100 : 0} height={12} />
         <span>
@@ -109,8 +109,8 @@ export function ReviewScreen() {
 
       <div className="review-card">
         <div className="review-card__header">
-          <SpeechButton text={current.word} size="lg" label={`Escuchar ${current.word}`} />
-          <span className="tier-badge">Top repaso</span>
+          <SpeechButton text={current.word} size="lg" label={`Listen to ${current.word}`} />
+          <span className="tier-badge">Top review</span>
         </div>
         <h2>{current.word}</h2>
         <button
@@ -119,13 +119,10 @@ export function ReviewScreen() {
           onClick={() => setRevealed(true)}
           disabled={revealed}
         >
-          {revealed ? '👀' : 'Toca para ver la respuesta'}
+          {revealed ? '👀' : 'Tap to see the answer'}
         </button>
         {revealed && (
           <div className="review-card__answer">
-            {current.translation !== undefined && (
-              <p className="review-card__translation">{current.translation}</p>
-            )}
             <p>{current.meaning}</p>
             {current.note !== undefined && <small>{current.note}</small>}
           </div>
@@ -134,16 +131,16 @@ export function ReviewScreen() {
 
       <div className="review-grades">
         <Button variant="danger" disabled={!revealed} onClick={() => grade(1)}>
-          Otra vez
+          Again
         </Button>
         <Button variant="secondary" disabled={!revealed} onClick={() => grade(3)}>
-          Difícil
+          Hard
         </Button>
         <Button variant="success" disabled={!revealed} onClick={() => grade(4)}>
-          Bien
+          Good
         </Button>
         <Button variant="primary" disabled={!revealed} onClick={() => grade(5)}>
-          Fácil
+          Easy
         </Button>
       </div>
     </div>

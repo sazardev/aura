@@ -67,25 +67,25 @@ export interface AnalyzerResult {
 const AFINN = new Map(Object.entries(afinn165))
 
 const TAG_TO_POS: Record<string, string> = {
-  Adjective: 'adjetivo',
-  Adverb: 'adverbio',
-  Auxiliary: 'auxiliar',
-  Cardinal: 'número',
-  Conjunction: 'conjunción',
-  Determiner: 'determinante',
-  Expression: 'interjección',
+  Adjective: 'adjective',
+  Adverb: 'adverb',
+  Auxiliary: 'auxiliary',
+  Cardinal: 'number',
+  Conjunction: 'conjunction',
+  Determiner: 'determiner',
+  Expression: 'interjection',
   Modal: 'modal',
-  Noun: 'sustantivo',
-  Possessive: 'posesivo',
-  Preposition: 'preposición',
-  Pronoun: 'pronombre',
-  ProperNoun: 'nombre propio',
-  QuestionWord: 'interrogativo',
-  Value: 'número',
-  Verb: 'verbo',
+  Noun: 'noun',
+  Possessive: 'possessive',
+  Preposition: 'preposition',
+  Pronoun: 'pronoun',
+  ProperNoun: 'proper noun',
+  QuestionWord: 'question word',
+  Value: 'number',
+  Verb: 'verb',
 }
 
-const DEFAULT_POS = 'otro'
+const DEFAULT_POS = 'other'
 
 function coarsePos(tags: readonly string[]): string {
   for (const tag of tags) {
@@ -162,7 +162,7 @@ function computeReadability(counts: {
 }
 
 /**
-Ejecuta el pipeline retext y recolecta las notas de estilo/gramática.
+ * Runs the retext pipeline and collects style/grammar notes.
  */
 async function runNotes(text: string): Promise<AnalyzerNote[]> {
   const processor = retext()
@@ -189,8 +189,8 @@ async function runNotes(text: string): Promise<AnalyzerNote[]> {
 }
 
 /**
- * Analiza un texto completo: legibilidad, gramática, sentimiento, frecuencia
- * de palabras y oportunidades de aprendizaje.
+ * Analyzes a full text: readability, grammar, sentiment, word frequency
+ * and learning opportunities.
  */
 export async function analyzeText(text: string): Promise<AnalyzerResult> {
   const trimmed = text.trim()

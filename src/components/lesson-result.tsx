@@ -28,28 +28,28 @@ export function LessonResult({
   return (
     <div className="lesson-result">
       <div className="lesson-result__emoji">{resultEmoji(perfect, correct, total)}</div>
-      <h2>{perfect ? '¡Lección perfecta!' : 'Lección completada'}</h2>
+      <h2>{perfect ? 'Perfect lesson!' : 'Lesson complete'}</h2>
       <p className="lesson-result__subtitle">{title}</p>
 
       <div className="lesson-result__stats">
         <div className="stat-card">
           <span className="stat-card__value">{xp}</span>
-          <span className="stat-card__label">XP ganados</span>
+          <span className="stat-card__label">XP earned</span>
         </div>
         <div className="stat-card">
           <span className="stat-card__value">
             {correct}/{total}
           </span>
-          <span className="stat-card__label">Correctas</span>
+          <span className="stat-card__label">Correct</span>
         </div>
       </div>
 
       <div className="lesson-result__actions">
         <Button variant="primary" block onClick={onRetry}>
-          Repetir lección
+          Repeat lesson
         </Button>
         <Button variant="secondary" block onClick={onHome}>
-          Volver al inicio
+          Back to home
         </Button>
       </div>
     </div>

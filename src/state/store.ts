@@ -19,7 +19,6 @@ export interface DailyProgress {
 }
 
 export interface AddWordOptions {
-  translation?: string
   note?: string
 }
 
@@ -67,7 +66,7 @@ function snapshotOf(state: AuraState): ProgressSnapshot {
 }
 
 /**
-Añade logros recién desbloqueados (si los hay).
+Adds newly unlocked achievements (if any).
  */
 function withAchievements(current: AuraState, next: AuraState): AuraState {
   const unlocked = newlyUnlocked(current.achievements, snapshotOf(next))
@@ -77,7 +76,7 @@ function withAchievements(current: AuraState, next: AuraState): AuraState {
 }
 
 /**
-Actualiza racha y reinicia el progreso diario si cambió el día.
+Updates the streak and resets the daily progress if the day changed.
  */
 function touch(
   state: AuraState,
@@ -169,7 +168,6 @@ export const useAuraStore = create<AuraState>()(
         if (existing !== undefined) return existing
 
         const card = createCard(word, meaning, {
-          ...(options?.translation !== undefined && { translation: options.translation }),
           ...(options?.note !== undefined && { note: options.note }),
         })
         set((state) => {

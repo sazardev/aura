@@ -38,8 +38,8 @@ fn limit(mut words: Vec<String>, max: usize) -> Vec<String> {
     words
 }
 
-/// Busca una palabra en el WordNet completo (index + data) que viaja como
-/// recurso de la app. Carga la base de datos perezosamente la primera vez.
+/// Looks up a word in the full WordNet (index + data) shipped as an app
+/// resource. Loads the database lazily on first use.
 #[tauri::command]
 fn lookup_word(
     word: String,
@@ -49,21 +49,21 @@ fn lookup_word(
     let mut guard = state
         .wordnet
         .lock()
-        .map_err(|error| format!("Error interno del diccionario: {error}"))?;
+        .map_err(|error| format!("Internal dictionary error: {error}"))?;
 
     if guard.is_none() {
         let resource_dir = app
             .path()
             .resolve("wn", tauri::path::BaseDirectory::Resource)
-            .map_err(|error| format!("No se pudo localizar el diccionario: {error}"))?;
+            .map_err(|error| format!("Could not locate the dictionary: {error}"))?;
         let database = Database::open(&resource_dir)
-            .map_err(|error| format!("No se pudo abrir WordNet: {error}"))?;
+            .map_err(|error| format!("Could not open WordNet: {error}"))?;
         *guard = Some(database);
     }
 
     let database = guard
         .as_ref()
-        .ok_or_else(|| "El diccionario no está disponible".to_string())?;
+        .ok_or_else(|| "The dictionary is not available".to_string())?;
 
     let senses = database.senses(&word);
 
@@ -117,10 +117,10 @@ fn lookup_word(
     })
 }
 
-/// Lee un archivo de texto seleccionado por el usuario (vía plugin-dialog).
+/// Reads a text file selected by the user (via the dialog plugin).
 #[tauri::command]
 fn read_text_file(path: String) -> Result<String, String> {
-    std::fs::read_to_string(&path).map_err(|error| format!("No se pudo leer el archivo: {error}"))
+    std::fs::read_to_string(&path).map_err(|error| format!("Could not read the file: {error}"))
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]

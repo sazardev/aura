@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Aura — Aprende inglés",
+        "title": "Aura — Learn English",
         "width": 480,
         "height": 800,
         "minWidth": 380,
@@ -29,8 +29,8 @@
     "active": true,
     "targets": "all",
     "category": "Education",
-    "shortDescription": "Aprende inglés al máximo, 100% local",
-    "longDescription": "Aura es un curso de inglés estilo Duolingo, completamente local, libre y open source: diccionario WordNet, analizador de textos, repaso espaciado y pronunciación sin conexión.",
+    "shortDescription": "Learn English at full power, 100% local",
+    "longDescription": "Aura is a Duolingo-style English course, fully local, free and open source: WordNet dictionary, text analyzer, spaced repetition and offline pronunciation.",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

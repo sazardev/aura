@@ -3,12 +3,12 @@ import { describe, expect, it } from 'vitest'
 import { cumulativeXpForLevel, levelFromXp, streakStatus, updateStreak } from '@/engine/xp'
 
 describe('XP y niveles', () => {
-  it('nivel 1 sin XP', () => {
+  it('starts at level 1 with no XP', () => {
     expect(levelFromXp(0).level).toBe(1)
     expect(levelFromXp(0).progress).toBe(0)
   })
 
-  it('sube de nivel al cruzar el umbral acumulado', () => {
+  it('levels up when crossing the cumulative threshold', () => {
     const threshold = cumulativeXpForLevel(3)
     const info = levelFromXp(threshold)
     expect(info.level).toBe(3)
@@ -24,27 +24,27 @@ describe('XP y niveles', () => {
   })
 })
 
-describe('Rachas', () => {
-  it('arranca una racha nueva', () => {
+describe('Streaks', () => {
+  it('starts a new streak', () => {
     expect(updateStreak(0, undefined, '2026-06-01')).toEqual({ streak: 1, newDay: true })
   })
 
-  it('incrementa si el último día fue ayer', () => {
+  it('increments when the last day was yesterday', () => {
     expect(updateStreak(3, '2026-05-31', '2026-06-01')).toEqual({ streak: 4, newDay: true })
   })
 
-  it('no cambia si ya se registró actividad hoy', () => {
+  it('does not change when already active today', () => {
     expect(updateStreak(3, '2026-06-01', '2026-06-01')).toEqual({ streak: 3, newDay: false })
   })
 
-  it('reinicia si hubo un hueco', () => {
+  it('resets after a gap', () => {
     expect(updateStreak(10, '2026-05-01', '2026-06-01')).toEqual({ streak: 1, newDay: true })
   })
 
-  it('distingue estado vivo y perdido', () => {
-    expect(streakStatus(3, '2026-06-01', '2026-06-01')).toBe('vivo')
-    expect(streakStatus(3, '2026-05-31', '2026-06-01')).toBe('vivo')
-    expect(streakStatus(3, '2026-05-01', '2026-06-01')).toBe('perdido')
-    expect(streakStatus(0, undefined, '2026-06-01')).toBe('nuevo')
+  it('distinguishes alive and lost states', () => {
+    expect(streakStatus(3, '2026-06-01', '2026-06-01')).toBe('alive')
+    expect(streakStatus(3, '2026-05-31', '2026-06-01')).toBe('alive')
+    expect(streakStatus(3, '2026-05-01', '2026-06-01')).toBe('lost')
+    expect(streakStatus(0, undefined, '2026-06-01')).toBe('new')
   })
 })

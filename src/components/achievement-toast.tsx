@@ -6,7 +6,7 @@ import { achievementById } from '@/engine/achievements'
 import { useAuraStore } from '@/state/store'
 
 /**
-Muestra un aviso cuando se desbloquea un logro nuevo.
+ * Shows a toast when a new achievement is unlocked.
  */
 export function AchievementToast() {
   const achievements = useAuraStore((state) => state.achievements)
@@ -36,7 +36,7 @@ export function AchievementToast() {
     <div className="achievement-toast" role="status">
       <span className="achievement-toast__emoji">{toast.emoji}</span>
       <div className="achievement-toast__body">
-        <strong>¡Logro desbloqueado!</strong>
+        <strong>Achievement unlocked!</strong>
         <span>{toast.name}</span>
         <small>{toast.description}</small>
       </div>

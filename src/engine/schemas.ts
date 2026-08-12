@@ -2,16 +2,14 @@ import { z } from 'zod'
 
 export const lessonWordSchema = z.object({
   word: z.string().min(1),
-  translation: z.string().min(1),
   meaning: z.string().min(1),
   sentence: z.string().min(1),
-  sentenceTranslation: z.string().min(1),
 })
 
 export const lessonSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
-  type: z.enum(['leccion', 'cuestionario']),
+  type: z.enum(['lesson', 'quiz']),
   words: z.array(lessonWordSchema).min(1),
 })
 
@@ -34,7 +32,7 @@ export const courseSchema = z
         if (lessonIds.has(lesson.id)) {
           context.addIssue({
             code: 'custom',
-            message: `Curso inválido: lección duplicada "${lesson.id}"`,
+            message: `Invalid course: duplicate lesson id "${lesson.id}"`,
           })
         }
         lessonIds.add(lesson.id)
@@ -43,7 +41,7 @@ export const courseSchema = z
           if (wordIds.has(key)) {
             context.addIssue({
               code: 'custom',
-              message: `Curso inválido: palabra duplicada "${word.word}"`,
+              message: `Invalid course: duplicate word "${word.word}"`,
             })
           }
           wordIds.add(key)

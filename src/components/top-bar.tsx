@@ -14,20 +14,20 @@ export function TopBar() {
 
   return (
     <header className="top-bar">
-      <div className="top-bar__stat" title="Racha de días">
+      <div className="top-bar__stat" title="Day streak">
         <span className="top-bar__icon">🔥</span>
         <strong>{streak}</strong>
       </div>
-      <div className="top-bar__stat" title="Puntos de experiencia">
+      <div className="top-bar__stat" title="Experience points">
         <span className="top-bar__icon">⚡</span>
         <strong>{xp}</strong>
-        <span className="top-bar__level">Nv {level.level}</span>
+        <span className="top-bar__level">Lv {level.level}</span>
       </div>
-      <div className="top-bar__stat" title="Corazones">
+      <div className="top-bar__stat" title="Hearts">
         <span className="top-bar__icon">❤️</span>
         <strong>{hearts}</strong>
       </div>
-      <div className="top-bar__goal" title={`Meta diaria: ${daily.xp}/${dailyGoal} XP`}>
+      <div className="top-bar__goal" title={`Daily goal: ${daily.xp}/${dailyGoal} XP`}>
         <span className="top-bar__goal-label">
           {daily.xp}/{dailyGoal}
         </span>

@@ -2,25 +2,24 @@ import { describe, expect, it } from 'vitest'
 
 import { allLessons, allWords, COURSE, lessonById, previousLessonId } from '@/engine/lessons'
 
-describe('Curso de inglés', () => {
-  it('tiene unidades y lecciones suficientes', () => {
+describe('English course', () => {
+  it('has enough units and lessons', () => {
     expect(COURSE.length).toBeGreaterThanOrEqual(6)
     expect(allLessons().length).toBeGreaterThanOrEqual(18)
   })
 
-  it('todas las lecciones tienen palabras completas', () => {
+  it('every lesson has complete words', () => {
     for (const lesson of allLessons()) {
       expect(lesson.words).toHaveLength(5)
       for (const word of lesson.words) {
         expect(word.word.length).toBeGreaterThan(0)
-        expect(word.translation.length).toBeGreaterThan(0)
         expect(word.meaning.length).toBeGreaterThan(0)
         expect(word.sentence.length).toBeGreaterThan(0)
       }
     }
   })
 
-  it('los ids son únicos y el contenido no se repite', () => {
+  it('ids are unique and content is not repeated', () => {
     const lessonIds = allLessons().map((lesson) => lesson.id)
     expect(new Set(lessonIds).size).toBe(lessonIds.length)
 
@@ -28,10 +27,10 @@ describe('Curso de inglés', () => {
     expect(wordIds.size).toBe(allWords().length)
   })
 
-  it('resuelve lecciones y enlaces previos', () => {
-    expect(lessonById('saludos-1')?.title).toBe('Hola y adiós')
-    expect(lessonById('no-existe')).toBeUndefined()
-    expect(previousLessonId('saludos-1')).toBeUndefined()
-    expect(previousLessonId('saludos-2')).toBe('saludos-1')
+  it('resolves lessons and previous links', () => {
+    expect(lessonById('greetings-1')?.title).toBe('Hello and Goodbye')
+    expect(lessonById('does-not-exist')).toBeUndefined()
+    expect(previousLessonId('greetings-1')).toBeUndefined()
+    expect(previousLessonId('greetings-2')).toBe('greetings-1')
   })
 })

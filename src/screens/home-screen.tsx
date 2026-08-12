@@ -24,15 +24,15 @@ function nodeStatus(lessonId: string, completed: ReadonlySet<string>): NodeStatu
 function nodeIcon(status: NodeStatus, type: Lesson['type']): string {
   if (status === 'done') return '✓'
   if (status === 'locked') return '🔒'
-  if (type === 'cuestionario') return '🏆'
+  if (type === 'quiz') return '🏆'
   return '▶'
 }
 
 function greeting(): string {
   const hour = new Date().getHours()
-  if (hour < 12) return 'Buenos días'
-  if (hour < 20) return 'Buenas tardes'
-  return 'Buenas noches'
+  if (hour < 12) return 'Good morning'
+  if (hour < 20) return 'Good afternoon'
+  return 'Good evening'
 }
 
 export function HomeScreen({ onStartLesson }: HomeScreenProps) {
@@ -55,25 +55,25 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
   return (
     <div className="home-screen">
       <div className="home-hero">
-        <h1 className="home-hero__title">{greeting()}, aprendiz 🦉</h1>
+        <h1 className="home-hero__title">{greeting()}, learner 🦉</h1>
         <div className="home-hero__stats">
           <div className="home-card home-card--streak">
             <span className="home-card__emoji">🔥</span>
             <strong>{streak}</strong>
-            <span>días de racha</span>
+            <span>day streak</span>
           </div>
           <div className="home-card home-card--goal">
             <span className="home-card__emoji">🎯</span>
             <strong>
               {daily.xp}/{dailyGoal}
             </strong>
-            <span>XP hoy</span>
+            <span>XP today</span>
             <ProgressBar value={goalPercent} height={8} />
           </div>
           <div className="home-card home-card--hearts">
             <span className="home-card__emoji">❤️</span>
             <strong>{hearts}</strong>
-            <span>corazones</span>
+            <span>hearts</span>
           </div>
         </div>
 
@@ -81,9 +81,9 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
           <div className="level-card__info">
             <span className="level-card__badge">{level.level}</span>
             <div className="level-card__text">
-              <strong>Nivel {level.level}</strong>
+              <strong>Level {level.level}</strong>
               <span>
-                {level.xpIntoLevel}/{level.xpForNextLevel} XP para el nivel {level.level + 1}
+                {level.xpIntoLevel}/{level.xpForNextLevel} XP to level {level.level + 1}
               </span>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
         </div>
       </div>
 
-      <section className="course-map" aria-label="Curso de inglés">
+      <section className="course-map" aria-label="English course">
         {COURSE.map((unit) => {
           const doneCount = unit.lessons.filter((lesson) => completed.has(lesson.id)).length
           return (
@@ -101,7 +101,7 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
                 <div className="unit__title">
                   <h2>{unit.title}</h2>
                   <span>
-                    {doneCount}/{unit.lessons.length} lecciones
+                    {doneCount}/{unit.lessons.length} lessons
                   </span>
                 </div>
               </header>
@@ -134,21 +134,21 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
         <div className="home-card home-card--words">
           <span className="home-card__emoji">📖</span>
           <div>
-            <strong>{learnedWords.length} palabras</strong>
-            <span>en tu vocabulario</span>
+            <strong>{learnedWords.length} words</strong>
+            <span>in your vocabulary</span>
           </div>
         </div>
         <div className="home-card home-card--achievements">
           <span className="home-card__emoji">🏅</span>
           <div>
             <strong>
-              {unlockedCount}/{ACHIEVEMENTS.length} logros
+              {unlockedCount}/{ACHIEVEMENTS.length} achievements
             </strong>
-            <span>sigue aprendiendo para desbloquear más</span>
+            <span>keep learning to unlock more</span>
           </div>
         </div>
         <p className="home-screen__privacy">
-          🔒 100% local: tus datos nunca salen de tu dispositivo. Gratis, libre y open source.
+          🔒 100% local: your data never leaves your device. Free, libre and open source.
         </p>
       </section>
     </div>

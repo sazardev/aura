@@ -1,12 +1,11 @@
 import supermemo from 'supermemo'
 
 import { CONFIG } from '@/engine/config'
-import { addDays } from '@/lib/date'
 
 const DAY_MS = 86_400_000
 
 /**
-Estado de repaso de un card (algoritmo SM-2).
+ * Review state of a card (SM-2 algorithm).
  */
 export interface SrsState {
   interval: number
@@ -17,13 +16,12 @@ export interface SrsState {
 }
 
 /**
-Card de vocabulario con planificación de repaso espaciado.
+ * Vocabulary card with spaced-repetition scheduling.
  */
 export interface SrsCard {
   id: string
   word: string
   meaning: string
-  translation?: string
   note?: string
   createdAt: string
   state: SrsState
@@ -42,19 +40,18 @@ function initialState(now: Date): SrsState {
 }
 
 /**
-Crea un card nuevo, listo para su primer repaso.
+ * Creates a new card, ready for its first review.
  */
 export function createCard(
   word: string,
   meaning: string,
-  options?: { translation?: string; note?: string; now?: Date },
+  options?: { note?: string; now?: Date },
 ): SrsCard {
   const now = options?.now ?? new Date()
   return {
     id: `${word}-${now.getTime()}`,
     word,
     meaning,
-    ...(options?.translation !== undefined && { translation: options.translation }),
     ...(options?.note !== undefined && { note: options.note }),
     createdAt: now.toISOString(),
     state: initialState(now),
@@ -62,8 +59,8 @@ export function createCard(
 }
 
 /**
- * Aplica SM-2 con un `grade` (0-5) y devuelve un card actualizado.
- * Grados < 3 se consideran fallos (incrementa lapses).
+ * Applies SM-2 with a `grade` (0-5) and returns the updated card.
+ * Grades < 3 count as failures (increments lapses).
  */
 export function reviewCard(card: SrsCard, grade: ReviewGrade, now: Date = new Date()): SrsCard {
   const item = supermemo(
@@ -89,14 +86,14 @@ export function reviewCard(card: SrsCard, grade: ReviewGrade, now: Date = new Da
 }
 
 /**
-True si el card debe repasarse en `now`.
+ * Returns true if the card is due for review at `now`.
  */
 export function isDue(card: SrsCard, now: Date = new Date()): boolean {
   return card.state.due <= now.toISOString()
 }
 
 /**
-Tarjetas pendientes de repaso, ordenadas por fecha.
+ * Cards pending review, sorted by due date.
  */
 export function dueCards(cards: readonly SrsCard[], now: Date = new Date()): SrsCard[] {
   return cards
@@ -105,10 +102,10 @@ export function dueCards(cards: readonly SrsCard[], now: Date = new Date()): Srs
 }
 
 /**
-Fecha legible de próximo repaso (p. ej. "12 ago").
+ * Readable due-date label (e.g. "today" or "Jun 1 → Jul 3").
  */
 export function dueLabel(card: SrsCard, now: Date = new Date()): string {
   const due = new Date(card.state.due)
-  if (due.getTime() - now.getTime() <= DAY_MS) return 'hoy'
-  return `${addDays(now, 0).toLocaleDateString('es', { day: 'numeric', month: 'short' })} → ${due.toLocaleDateString('es', { day: 'numeric', month: 'short' })}`
+  if (due.getTime() - now.getTime() <= DAY_MS) return 'today'
+  return `${now.toLocaleDateString('en', { day: 'numeric', month: 'short' })} → ${due.toLocaleDateString('en', { day: 'numeric', month: 'short' })}`
 }

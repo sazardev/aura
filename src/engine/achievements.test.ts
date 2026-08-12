@@ -10,8 +10,8 @@ const fullProgress = {
   totalCorrect: 1000,
 }
 
-describe('Logros (data/achievements.json)', () => {
-  it('carga todas las definiciones completas', () => {
+describe('Achievements (data/achievements.json)', () => {
+  it('loads all complete definitions', () => {
     expect(ACHIEVEMENTS.length).toBeGreaterThan(0)
     for (const achievement of ACHIEVEMENTS) {
       expect(achievement.id.length).toBeGreaterThan(0)
@@ -21,30 +21,30 @@ describe('Logros (data/achievements.json)', () => {
     }
   })
 
-  it('toda regla tiene su definición en el JSON', () => {
+  it('every rule has its definition in the JSON', () => {
     for (const rule of RULES) {
       expect(achievementById(rule.id)).toBeDefined()
     }
   })
 
-  it('desbloquea los logros según el progreso', () => {
+  it('unlocks achievements based on progress', () => {
     const unlocked = newlyUnlocked({}, fullProgress)
     expect(unlocked).toContain('xp-5000')
-    expect(unlocked).toContain('lecciones-25')
-    expect(unlocked).toContain('racha-30')
-    expect(unlocked).toContain('palabras-500')
-    expect(unlocked).toContain('correcciones-1000')
+    expect(unlocked).toContain('lessons-25')
+    expect(unlocked).toContain('streak-30')
+    expect(unlocked).toContain('words-500')
+    expect(unlocked).toContain('correct-1000')
   })
 
   it('no vuelve a desbloquear logros ya conseguidos', () => {
-    const current = { 'xp-500': new Date().toISOString(), 'racha-3': new Date().toISOString() }
+    const current = { 'xp-500': new Date().toISOString(), 'streak-3': new Date().toISOString() }
     const unlocked = newlyUnlocked(current, fullProgress)
     expect(unlocked).not.toContain('xp-500')
-    expect(unlocked).not.toContain('racha-3')
+    expect(unlocked).not.toContain('streak-3')
   })
 
-  it('achievementById resuelve correctamente', () => {
-    expect(achievementById('racha-7')?.name).toBe('Una semana')
+  it('achievementById resolves correctly', () => {
+    expect(achievementById('streak-7')?.name).toBe('One week')
     expect(achievementById('no-existe')).toBeUndefined()
   })
 })

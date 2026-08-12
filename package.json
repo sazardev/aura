@@ -1,7 +1,7 @@
 {
   "name": "aura",
   "version": "0.1.0",
-  "description": "Aura — aprende inglés al máximo. Estilo Duolingo, 100% local, libre y open source.",
+  "description": "Aura — learn English at full power. Duolingo-style, 100% local, free and open source.",
   "private": true,
   "type": "module",
   "license": "MIT",

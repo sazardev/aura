@@ -7,7 +7,7 @@ import '@/styles/global.css'
 const rootElement = document.querySelector('#root')
 
 if (rootElement === null) {
-  throw new Error('No se encontró el nodo #root')
+  throw new Error('Root node #root not found')
 }
 
 createRoot(rootElement).render(

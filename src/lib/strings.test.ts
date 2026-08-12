@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest'
 
 import { isCloseEnough, levenshtein, normalizeText, similarity } from '@/lib/strings'
 
-describe('Utilidades de texto', () => {
-  it('normaliza mayúsculas, puntuación y espacios', () => {
+describe('String utilities', () => {
+  it('normalizes case, punctuation and spaces', () => {
     expect(normalizeText('  Hello, World!  ')).toBe('hello world')
     expect(normalizeText("Don't stop")).toBe("don't stop")
   })
@@ -13,12 +13,12 @@ describe('Utilidades de texto', () => {
     expect(levenshtein('kitten', 'sitting')).toBe(3)
   })
 
-  it('similitud perfecta para textos iguales', () => {
+  it('perfect similarity for identical texts', () => {
     expect(similarity('hello', 'hello')).toBe(1)
     expect(similarity('', 'x')).toBe(0)
   })
 
-  it('isCloseEnough acepta variaciones mínimas', () => {
+  it('isCloseEnough accepts minimal variations', () => {
     expect(isCloseEnough('hello friend', 'Hello friend!')).toBe(true)
     expect(isCloseEnough('apple', 'orange')).toBe(false)
   })

@@ -7,6 +7,7 @@ import type { AnalyzerResult, ReadabilityScore } from '@/engine/analyzer'
 import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
 import { analyzeText } from '@/engine/analyzer'
+import { FREQUENCY_TIER_LABELS } from '@/engine/frequency'
 import { invokeOptional } from '@/lib/tauri'
 import { isTauriRuntime } from '@/lib/tauri'
 import { useAuraStore } from '@/state/store'
@@ -34,7 +35,7 @@ export function AnalyzerScreen() {
   const importFile = async () => {
     const selected = await open({
       multiple: false,
-      filters: [{ name: 'Texto', extensions: ['txt', 'md'] }],
+      filters: [{ name: 'Text', extensions: ['txt', 'md'] }],
     })
     if (typeof selected === 'string') {
       const content = await invokeOptional<string>('read_text_file', { path: selected })
@@ -50,21 +51,21 @@ export function AnalyzerScreen() {
   const learnAll = () => {
     if (result === undefined) return
     for (const word of result.unknownWords.slice(0, 20)) {
-      addWord(word, 'Palabra de tus textos')
+      addWord(word, 'A word from your texts')
     }
   }
 
   return (
     <div className="analyzer-screen">
-      <h1>Analizador de textos 🧪</h1>
+      <h1>Text analyzer 🧪</h1>
       <p className="screen-subtitle">
-        Pega cualquier texto en inglés y Aura lo descompone: legibilidad, gramática, sentimiento,
-        frecuencias y palabras para aprender.
+        Paste any English text and Aura breaks it down: readability, grammar, sentiment, frequencies
+        and words to learn.
       </p>
 
       <textarea
         className="analyzer-textarea"
-        placeholder="Pega aquí un texto en inglés…"
+        placeholder="Paste an English text here…"
         value={text}
         rows={8}
         onChange={(event) => setText(event.target.value)}
@@ -76,18 +77,18 @@ export function AnalyzerScreen() {
           disabled={text.trim().length < 10 || analyzing}
           onClick={() => void runAnalysis(text)}
         >
-          {analyzing ? 'Analizando…' : 'Analizar texto'}
+          {analyzing ? 'Analyzing…' : 'Analyze text'}
         </Button>
         <Button variant="secondary" onClick={() => void runAnalysis(SAMPLE_TEXT)}>
-          Ejemplo
+          Sample
         </Button>
         {inTauri && (
           <Button variant="secondary" onClick={() => void importFile()}>
-            📂 Abrir archivo
+            📂 Open file
           </Button>
         )}
         <Button variant="secondary" onClick={() => void pasteClipboard()}>
-          📋 Pegar
+          📋 Paste
         </Button>
       </div>
 
@@ -106,24 +107,24 @@ function AnalyzerResults({
   return (
     <div className="analyzer-results">
       <section className="result-section">
-        <h2>📊 Estadísticas</h2>
+        <h2>📊 Statistics</h2>
         <div className="stat-grid">
-          <Stat label="Palabras" value={result.totalWords} />
-          <Stat label="Únicas" value={result.uniqueWords} />
-          <Stat label="Oraciones" value={result.sentences} />
-          <Stat label="Sílabas" value={result.syllables} />
-          <Stat label="Longitud media" value={result.averageWordLength.toFixed(1)} />
-          <Stat label="Sentimiento" value={sentimentLabel(result.sentiment)} />
+          <Stat label="Words" value={result.totalWords} />
+          <Stat label="Unique" value={result.uniqueWords} />
+          <Stat label="Sentences" value={result.sentences} />
+          <Stat label="Syllables" value={result.syllables} />
+          <Stat label="Avg. length" value={result.averageWordLength.toFixed(1)} />
+          <Stat label="Sentiment" value={sentimentLabel(result.sentiment)} />
         </div>
         {result.readingAge !== undefined && (
           <p className="reading-age">
-            Edad de lectura estimada: ~{Math.round(result.readingAge)} años
+            Estimated reading age: ~{Math.round(result.readingAge)} years
           </p>
         )}
       </section>
 
       <section className="result-section">
-        <h2>📚 Legibilidad</h2>
+        <h2>📚 Readability</h2>
         <div className="readability-grid">
           {result.readability.map((score) => (
             <ReadabilityCard key={score.name} score={score} />
@@ -132,20 +133,22 @@ function AnalyzerResults({
       </section>
 
       <section className="result-section">
-        <h2>🗂 Categorías gramaticales</h2>
+        <h2>🗂 Parts of speech</h2>
         <PosBars distribution={result.posDistribution} total={result.totalWords} />
       </section>
 
       <section className="result-section">
-        <h2>🏆 Palabras más usadas</h2>
+        <h2>🏆 Most used words</h2>
         <ul className="top-words">
           {result.topWords.map((stat) => (
             <li key={stat.word} className="top-word">
               <span className="top-word__rank">{stat.count}×</span>
               <strong>{stat.word}</strong>
               <span className="top-word__pos">{stat.pos}</span>
-              {stat.tier !== undefined && <span className="top-word__tier">{stat.tier}</span>}
-              <SpeechButton text={stat.word} size="sm" label={`Escuchar ${stat.word}`} />
+              {stat.tier !== undefined && (
+                <span className="top-word__tier">{FREQUENCY_TIER_LABELS[stat.tier]}</span>
+              )}
+              <SpeechButton text={stat.word} size="sm" label={`Listen to ${stat.word}`} />
             </li>
           ))}
         </ul>
@@ -153,7 +156,7 @@ function AnalyzerResults({
 
       {result.notes.length > 0 && (
         <section className="result-section">
-          <h2>💬 Sugerencias de estilo y gramática</h2>
+          <h2>💬 Style and grammar suggestions</h2>
           <ul className="notes-list">
             {result.notes.slice(0, 30).map((note, index) => (
               <li key={`${note.source}-${index}`} className="note-item">
@@ -171,7 +174,7 @@ function AnalyzerResults({
       )}
 
       <section className="result-section">
-        <h2>🌱 Palabras para aprender ({result.unknownWords.length})</h2>
+        <h2>🌱 Words to learn ({result.unknownWords.length})</h2>
         {result.unknownWords.length > 0 ? (
           <>
             <div className="word-chips">
@@ -182,11 +185,11 @@ function AnalyzerResults({
               ))}
             </div>
             <Button variant="success" onClick={onLearnAll}>
-              + Añadir a mi vocabulario
+              + Add to my vocabulary
             </Button>
           </>
         ) : (
-          <p className="screen-subtitle">¡Este texto no tiene palabras raras para ti!</p>
+          <p className="screen-subtitle">This text has no uncommon words for you!</p>
         )}
       </section>
     </div>
@@ -195,9 +198,9 @@ function AnalyzerResults({
 
 function sentimentLabel(value: number | undefined): string {
   if (value === undefined) return '—'
-  if (value > 0.02) return 'Positivo'
-  if (value < -0.02) return 'Negativo'
-  return 'Neutro'
+  if (value > 0.02) return 'Positive'
+  if (value < -0.02) return 'Negative'
+  return 'Neutral'
 }
 
 function Stat({ label, value }: { label: string; value: number | string }) {
@@ -221,7 +224,7 @@ function ReadabilityCard({ score }: { score: ReadabilityScore }) {
 
 function PosBars({ distribution, total }: { distribution: Record<string, number>; total: number }) {
   const entries = Object.entries(distribution)
-  if (entries.length === 0) return <p className="screen-subtitle">Sin datos.</p>
+  if (entries.length === 0) return <p className="screen-subtitle">No data.</p>
   return (
     <div className="pos-bars">
       {entries.map(([pos, count]) => (

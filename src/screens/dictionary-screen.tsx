@@ -1,25 +1,21 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import type { DictionaryEntry, WordnetSense } from '@/engine/dictionary'
-import type { FrequencyTier } from '@/engine/frequency'
 
 import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
 import { lookupWord } from '@/engine/dictionary'
-import { frequencyOf, frequencyTierOf, wordDifficulty } from '@/engine/frequency'
+import {
+  FREQUENCY_TIER_LABELS,
+  frequencyOf,
+  frequencyTierOf,
+  wordDifficulty,
+} from '@/engine/frequency'
 import { dueLabel } from '@/engine/srs'
 import { useDebouncedValue } from '@/hooks/use-debounced'
 import { useSpeech } from '@/hooks/use-speech'
 import { isTauriRuntime } from '@/lib/tauri'
 import { useAuraStore } from '@/state/store'
-
-const TIER_LABEL: Record<FrequencyTier, string> = {
-  'muy-comun': 'Muy común',
-  comun: 'Común',
-  'poco-comun': 'Poco común',
-  rara: 'Rara',
-  'muy-rara': 'Muy rara',
-}
 
 export function DictionaryScreen() {
   const [query, setQuery] = useState('')
@@ -76,9 +72,9 @@ export function DictionaryScreen() {
   const learnWord = () => {
     if (debounced.length === 0) return
     const sense = entry?.senses[0]
-    const meaning = sense?.gloss ?? 'Palabra del diccionario'
+    const meaning = sense?.gloss ?? 'Dictionary word'
     addWord(debounced, meaning, {
-      ...(tier !== undefined && { note: `Frecuencia: ${TIER_LABEL[tier]}` }),
+      ...(tier !== undefined && { note: `Frequency: ${FREQUENCY_TIER_LABELS[tier]}` }),
     })
     speak(debounced)
   }
@@ -95,48 +91,50 @@ export function DictionaryScreen() {
 
   return (
     <div className="dictionary-screen">
-      <h1>Diccionario 📖</h1>
+      <h1>Dictionary 📖</h1>
       <p className="screen-subtitle">
-        WordNet completo, frecuencias reales y repaso espaciado. Local, sin internet.
+        Full WordNet dictionary, real frequencies and spaced repetition. Local, offline.
       </p>
 
       <div className="search-box">
         <input
           type="search"
           className="exercise-input"
-          placeholder="Busca una palabra en inglés…"
+          placeholder="Search an English word…"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />
       </div>
 
       {debounced.length > 0 && (
-        <section className="word-card" aria-label={`Análisis de ${debounced}`}>
+        <section className="word-card" aria-label={`Analysis of ${debounced}`}>
           <header className="word-card__header">
             <h2>{word}</h2>
             <div className="word-card__tools">
-              <SpeechButton text={word} label={`Escuchar ${word}`} size="md" />
+              <SpeechButton text={word} label={`Listen to ${word}`} size="md" />
               {existingCard === undefined ? (
                 <Button variant="success" onClick={learnWord}>
-                  + Aprender
+                  + Learn
                 </Button>
               ) : (
-                <span className="word-card__in-deck">✓ En tu vocabulario</span>
+                <span className="word-card__in-deck">✓ In your vocabulary</span>
               )}
             </div>
           </header>
 
           <div className="word-card__meta">
             {tier !== undefined && (
-              <span className={`tier-badge tier-badge--${tier}`}>{TIER_LABEL[tier]}</span>
+              <span className={`tier-badge tier-badge--${tier}`}>
+                {FREQUENCY_TIER_LABELS[tier]}
+              </span>
             )}
             {difficulty !== undefined && (
-              <span className="tier-badge">Dificultad: {difficulty}/5</span>
+              <span className="tier-badge">Difficulty: {difficulty}/5</span>
             )}
             {frequency !== undefined && <span className="tier-badge">Top {frequency.rank}</span>}
           </div>
 
-          {loading && <p className="word-card__loading">Consultando WordNet…</p>}
+          {loading && <p className="word-card__loading">Querying WordNet…</p>}
 
           {!loading && entry !== undefined && entry.senses.length > 0 && (
             <div className="word-card__senses">
@@ -148,37 +146,36 @@ export function DictionaryScreen() {
 
           {!loading && !inTauri && (
             <p className="word-card__hint">
-              💡 El diccionario completo (WordNet) está disponible dentro de la app de escritorio.
+              💡 The full dictionary (WordNet) is available inside the desktop app.
             </p>
           )}
 
           {!loading && inTauri && entry?.senses.length === 0 && (
-            <p className="word-card__hint">No se encontró esta palabra en WordNet.</p>
+            <p className="word-card__hint">This word was not found in WordNet.</p>
           )}
         </section>
       )}
 
-      <section className="vocabulary" aria-label="Mi vocabulario">
-        <h2>Mi vocabulario ({vocabulary.length})</h2>
+      <section className="vocabulary" aria-label="My vocabulary">
+        <h2>My vocabulary ({vocabulary.length})</h2>
         {vocabulary.length === 0 ? (
           <p className="screen-subtitle">
-            Aún no tienes palabras guardadas. Termina lecciones o usa “+ Aprender” para empezar tu
-            colección.
+            You have no saved words yet. Finish lessons or use “+ Learn” to start your collection.
           </p>
         ) : (
           <ul className="vocabulary__list">
             {vocabulary.map((card) => (
               <li key={card.id} className="vocabulary__item">
-                <SpeechButton text={card.word} size="sm" label={`Escuchar ${card.word}`} />
+                <SpeechButton text={card.word} size="sm" label={`Listen to ${card.word}`} />
                 <div className="vocabulary__info">
                   <strong>{card.word}</strong>
-                  {card.translation !== undefined && <span>{card.translation}</span>}
+                  <span>{card.meaning}</span>
                   <small>{dueLabel(card)}</small>
                 </div>
                 <button
                   type="button"
                   className="vocabulary__remove"
-                  aria-label={`Eliminar ${card.word}`}
+                  aria-label={`Remove ${card.word}`}
                   onClick={() => removeCard(card.id)}
                 >
                   ✕
@@ -209,10 +206,10 @@ function SenseBlock({ sense }: { sense: WordnetSense }) {
             </em>
           </p>
         )}
-        <SenseWords label="Sinónimos" words={sense.synonyms} />
-        <SenseWords label="Antónimos" words={sense.antonyms} />
-        <SenseWords label="Hiperónimos (categoría)" words={sense.hypernyms} />
-        <SenseWords label="Hipónimos (ejemplos)" words={sense.hyponyms} />
+        <SenseWords label="Synonyms" words={sense.synonyms} />
+        <SenseWords label="Antonyms" words={sense.antonyms} />
+        <SenseWords label="Hypernyms (broader)" words={sense.hypernyms} />
+        <SenseWords label="Hyponyms (examples)" words={sense.hyponyms} />
       </div>
     </details>
   )

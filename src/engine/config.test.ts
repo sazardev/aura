@@ -10,15 +10,15 @@ import {
   XP_PER_REVIEW_CARD,
 } from '@/engine/xp'
 
-describe('Configuración (data/config.json)', () => {
-  it('expone valores de gamificación válidos', () => {
+describe('Configuration (data/config.json)', () => {
+  it('exposes valid gamification values', () => {
     expect(CONFIG.gamification.maxHearts).toBeGreaterThan(0)
     expect(CONFIG.gamification.xpPerLesson).toBeGreaterThan(CONFIG.gamification.xpPerCorrect)
     expect(CONFIG.gamification.dailyGoal.options.length).toBeGreaterThan(0)
     expect(DAILY_GOAL_OPTIONS).toContain(DEFAULT_DAILY_GOAL)
   })
 
-  it('expone valores SM-2 válidos', () => {
+  it('exposes valid SM-2 values', () => {
     expect(CONFIG.srs.initialEfactor).toBeGreaterThan(1.3)
     expect(CONFIG.srs.initialEfactor).toBeLessThanOrEqual(3)
     expect(CONFIG.srs.initialInterval).toBeGreaterThanOrEqual(0)

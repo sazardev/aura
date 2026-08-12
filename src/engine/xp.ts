@@ -44,11 +44,11 @@ export function levelFromXp(totalXp: number): LevelInfo {
   }
 }
 
-export type StreakStatus = 'nuevo' | 'vivo' | 'perdido'
+export type StreakStatus = 'new' | 'alive' | 'lost'
 
 /**
- * Calcula el nuevo contador de racha dado el último día activo y la fecha de
- * hoy. Devuelve el nuevo streak y si hubo actividad nueva.
+ * Computes the new streak counter given the last active day and today's date.
+ * Returns the new streak and whether there was new activity.
  */
 export function updateStreak(
   streak: number,
@@ -69,10 +69,10 @@ export function streakStatus(
   lastActiveDay: string | undefined,
   todayKey: string,
 ): StreakStatus {
-  if (streak === 0) return 'nuevo'
-  if (lastActiveDay === todayKey) return 'vivo'
-  if (previousDayKey(todayKey) === lastActiveDay) return 'vivo'
-  return 'perdido'
+  if (streak === 0) return 'new'
+  if (lastActiveDay === todayKey) return 'alive'
+  if (previousDayKey(todayKey) === lastActiveDay) return 'alive'
+  return 'lost'
 }
 
 export const DEFAULT_DAILY_GOAL = CONFIG.gamification.dailyGoal.default

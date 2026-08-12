@@ -1,5 +1,5 @@
 /**
-RNG determinista (mulberry32). Ideal para ejercicios reproducibles.
+Deterministic RNG (mulberry32). Ideal for reproducible exercises.
  */
 export function mulberry32(seed: number): () => number {
   let a = seed >>> 0
@@ -13,7 +13,7 @@ export function mulberry32(seed: number): () => number {
 }
 
 /**
-Hash FNV-1a simple para strings.
+Simple FNV-1a hash for strings.
  */
 export function hashString(input: string): number {
   let hash = 0x81_1c_9d_c5
@@ -25,7 +25,7 @@ export function hashString(input: string): number {
 }
 
 /**
-Mezcla un array usando el RNG dado (Fisher-Yates).
+Shuffles an array using the given RNG (Fisher-Yates).
  */
 export function shuffle<T>(items: readonly T[], rng: () => number): T[] {
   const result = [...items]
@@ -40,7 +40,7 @@ export function shuffle<T>(items: readonly T[], rng: () => number): T[] {
 }
 
 /**
-Toma `count` elementos únicos al azar.
+Samples `count` unique items at random.
  */
 export function sample<T>(items: readonly T[], rng: () => number, count: number): T[] {
   return shuffle(items, rng).slice(0, count)

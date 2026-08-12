@@ -26,7 +26,7 @@ export interface RecognizerOptions {
 }
 
 /**
-True si el runtime soporta reconocimiento de voz (no disponible en WebKitGTK).
+ * Returns true if the runtime supports speech recognition (not available in WebKitGTK).
  */
 export function isSpeechRecognitionSupported(): boolean {
   if (typeof window === 'undefined') return false
@@ -34,7 +34,7 @@ export function isSpeechRecognitionSupported(): boolean {
 }
 
 /**
-True si el runtime soporta síntesis de voz (TTS).
+ * Returns true if the runtime supports speech synthesis (TTS).
  */
 export function isSpeechSynthesisSupported(): boolean {
   return typeof window !== 'undefined' && 'speechSynthesis' in globalThis
@@ -51,7 +51,7 @@ function readVoices(): VoiceInfo[] {
 }
 
 /**
-Carga las voces disponibles (getVoices puede ser asíncrono).
+ * Loads the available voices (getVoices can be asynchronous).
  */
 export async function loadVoices(): Promise<VoiceInfo[]> {
   if (!isSpeechSynthesisSupported()) return []
@@ -65,7 +65,7 @@ export async function loadVoices(): Promise<VoiceInfo[]> {
 }
 
 /**
-Devuelve la voz en inglés preferida (prefiere en-US local).
+ * Returns the preferred English voice (prefers local en-US).
  */
 export function pickEnglishVoice(): SpeechSynthesisVoice | undefined {
   if (!isSpeechSynthesisSupported()) return undefined
@@ -79,7 +79,7 @@ export function pickEnglishVoice(): SpeechSynthesisVoice | undefined {
 }
 
 /**
-Pronuncia un texto con TTS.
+ * Speaks a text with TTS.
  */
 export function speak(text: string, options: SpeakOptions = {}): void {
   if (!isSpeechSynthesisSupported()) {
@@ -109,7 +109,7 @@ export function speak(text: string, options: SpeakOptions = {}): void {
 }
 
 /**
-Detiene cualquier lectura en curso.
+ * Stops any speech currently playing.
  */
 export function cancelSpeech(): void {
   if (isSpeechSynthesisSupported()) {
@@ -129,7 +129,7 @@ function getRecognitionConstructor(): (new () => SpeechRecognition) | undefined 
 }
 
 /**
- * Crea un reconocedor de voz. Devuelve `undefined` si no está soportado.
+ * Creates a speech recognizer. Returns `undefined` when not supported.
  */
 export function createRecognizer(options: RecognizerOptions): SpeechRecognizer | undefined {
   const Constructor = getRecognitionConstructor()

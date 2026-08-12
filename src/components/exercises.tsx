@@ -47,10 +47,8 @@ export function ChoiceView({
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">¿Qué palabra es “{exercise.prompt}”?</div>
-        <div className="exercise-prompt__word">
-          <SpeechButton text={exercise.word} size="lg" label={`Escuchar ${exercise.word}`} />
-        </div>
+        <div className="exercise-prompt__label">Which word means…</div>
+        <div className="exercise-prompt__word">{exercise.prompt}</div>
       </div>
       <div className="exercise-options">
         {exercise.options.map((option) => (
@@ -69,8 +67,8 @@ export function ChoiceView({
         ))}
       </div>
       <HintCard
-        text={exercise.sentence}
-        translation={exercise.sentenceTranslation}
+        sentence={exercise.sentence}
+        meaning={exercise.meaning}
         show={feedback !== 'idle'}
       />
     </div>
@@ -95,8 +93,8 @@ export function ListenView({
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">Escucha y elige la traducción correcta</div>
-        <SpeechButton text={exercise.word} size="lg" label={`Escuchar ${exercise.word}`} />
+        <div className="exercise-prompt__label">Listen and choose the correct meaning</div>
+        <SpeechButton text={exercise.word} size="lg" label={`Listen to ${exercise.word}`} />
       </div>
       <div className="exercise-options">
         {exercise.options.map((option) => (
@@ -114,7 +112,7 @@ export function ListenView({
           </button>
         ))}
       </div>
-      <HintCard text={exercise.sentence} translation={exercise.word} show={feedback !== 'idle'} />
+      <HintCard sentence={exercise.sentence} meaning={exercise.word} show={feedback !== 'idle'} />
     </div>
   )
 }
@@ -129,9 +127,9 @@ export function TypeView({
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">Escribe en inglés</div>
+        <div className="exercise-prompt__label">Type the word in English</div>
         <div className="exercise-prompt__word">{exercise.prompt}</div>
-        <div className="exercise-prompt__hint">Pista: {exercise.hint}</div>
+        <div className="exercise-prompt__hint">Hint: starts with “{exercise.hint}”</div>
       </div>
       <input
         className="exercise-input"
@@ -140,7 +138,7 @@ export function TypeView({
         autoCorrect="off"
         spellCheck={false}
         value={value}
-        placeholder="Escribe la palabra…"
+        placeholder="Type the word…"
         disabled={feedback !== 'idle'}
         onChange={(event) => setValue(event.target.value)}
         onKeyDown={(event) => {
@@ -155,7 +153,7 @@ export function TypeView({
         disabled={value.trim().length === 0 || feedback !== 'idle'}
         onClick={() => onSubmit(normalizeText(value) === normalizeText(exercise.answer))}
       >
-        Comprobar
+        Check
       </Button>
     </div>
   )
@@ -184,11 +182,11 @@ export function TapView({ exercise, feedback, onSubmit }: SubmitProps & { exerci
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">Toca las palabras para formar la frase</div>
+        <div className="exercise-prompt__label">Tap the words to build the sentence</div>
         <div className="exercise-prompt__word">{exercise.prompt}</div>
       </div>
 
-      <div className="tap-answer" aria-label="Frase en construcción">
+      <div className="tap-answer" aria-label="Sentence being built">
         {built.map((word, index) => (
           <button
             key={`${word}-${index}`}
@@ -222,7 +220,7 @@ export function TapView({ exercise, feedback, onSubmit }: SubmitProps & { exerci
         disabled={built.length === 0 || feedback !== 'idle'}
         onClick={() => onSubmit(normalizeText(built.join(' ')) === normalizeText(exercise.answer))}
       >
-        Comprobar
+        Check
       </Button>
     </div>
   )
@@ -269,9 +267,9 @@ export function SpeakView({
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">Lee la frase en voz alta</div>
+        <div className="exercise-prompt__label">Read the sentence aloud</div>
         <div className="exercise-prompt__sentence">
-          <SpeechButton text={exercise.sentence} size="lg" label="Escuchar la frase" />
+          <SpeechButton text={exercise.sentence} size="lg" label="Listen to the sentence" />
           <p>“{exercise.sentence}”</p>
         </div>
       </div>
@@ -279,19 +277,19 @@ export function SpeakView({
       {recognitionSupported ? (
         <>
           <Button variant="secondary" block onClick={toggleListening}>
-            {listening ? '⏹ Detener' : '🎙 Escuchar mi voz'}
+            {listening ? '⏹ Stop' : '🎙 Listen to my voice'}
           </Button>
           {transcript.length > 0 && (
             <p className="speak-transcript">
-              Dijiste: <em>“{transcript}”</em>
+              You said: <em>“{transcript}”</em>
             </p>
           )}
         </>
       ) : (
         <>
           <p className="speak-transcript">
-            No hay reconocimiento de voz disponible en este sistema. Repite la frase en voz alta y
-            evalúate.
+            Speech recognition is not available on this system. Say the sentence aloud and grade
+            yourself.
           </p>
           <div className="exercise-options">
             <Button
@@ -300,7 +298,7 @@ export function SpeakView({
               disabled={feedback !== 'idle'}
               onClick={() => onSubmit(true)}
             >
-              ✓ Lo dije bien
+              ✓ I said it well
             </Button>
             <Button
               variant="danger"
@@ -308,14 +306,14 @@ export function SpeakView({
               disabled={feedback !== 'idle'}
               onClick={() => onSubmit(false)}
             >
-              ✗ Necesito repasar
+              ✗ I need to review
             </Button>
           </div>
         </>
       )}
       <HintCard
-        text={exercise.sentence}
-        translation={exercise.translation}
+        sentence={exercise.sentence}
+        meaning={exercise.meaning}
         show={feedback !== 'idle'}
       />
     </div>
@@ -331,23 +329,23 @@ export function MatchView({
   const [matchedLeft, setMatchedLeft] = useState<ReadonlySet<string>>(new Set())
   const [errorPair, setErrorPair] = useState<string | undefined>(undefined)
 
-  const pairFor = (left: string): string | undefined =>
-    exercise.pairs.find((pair) => pair.left === left)?.right
+  const pairFor = (word: string): string | undefined =>
+    exercise.pairs.find((pair) => pair.word === word)?.meaning
 
-  const clickLeft = (left: string) => {
-    if (matchedLeft.has(left)) return
-    setLeftSelected((current) => (current === left ? undefined : left))
+  const clickLeft = (word: string) => {
+    if (matchedLeft.has(word)) return
+    setLeftSelected((current) => (current === word ? undefined : word))
   }
 
-  const clickRight = (right: string) => {
+  const clickRight = (meaning: string) => {
     if (leftSelected === undefined) return
-    if (right === pairFor(leftSelected)) {
+    if (meaning === pairFor(leftSelected)) {
       const nextMatched = new Set(matchedLeft).add(leftSelected)
       setMatchedLeft(nextMatched)
       setLeftSelected(undefined)
       if (nextMatched.size === exercise.pairs.length) onComplete()
     } else {
-      setErrorPair(right)
+      setErrorPair(meaning)
       onMistake()
       setTimeout(() => setErrorPair(undefined), 600)
     }
@@ -356,7 +354,7 @@ export function MatchView({
   const shuffledRight = useMemo(
     () =>
       shuffle(
-        exercise.pairs.map((pair) => pair.right),
+        exercise.pairs.map((pair) => pair.meaning),
         mulberry32(hashString(exercise.id)),
       ),
     [exercise.id, exercise.pairs],
@@ -365,48 +363,48 @@ export function MatchView({
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">Une cada palabra con su traducción</div>
+        <div className="exercise-prompt__label">Match each word with its meaning</div>
       </div>
       <div className="match-grid">
         <div className="match-column">
           {exercise.pairs.map((pair) => (
             <button
-              key={pair.left}
+              key={pair.word}
               type="button"
               className={[
                 'match-card',
-                matchedLeft.has(pair.left) ? 'match-card--matched' : '',
-                leftSelected === pair.left ? 'match-card--selected' : '',
+                matchedLeft.has(pair.word) ? 'match-card--matched' : '',
+                leftSelected === pair.word ? 'match-card--selected' : '',
               ]
                 .filter(Boolean)
                 .join(' ')}
-              disabled={matchedLeft.has(pair.left)}
-              onClick={() => clickLeft(pair.left)}
+              disabled={matchedLeft.has(pair.word)}
+              onClick={() => clickLeft(pair.word)}
             >
-              {pair.left}
+              {pair.word}
             </button>
           ))}
         </div>
         <div className="match-column">
-          {shuffledRight.map((right) => {
+          {shuffledRight.map((meaning) => {
             const isMatched = exercise.pairs.some(
-              (pair) => pair.right === right && matchedLeft.has(pair.left),
+              (pair) => pair.meaning === meaning && matchedLeft.has(pair.word),
             )
             return (
               <button
-                key={right}
+                key={meaning}
                 type="button"
                 className={[
                   'match-card',
                   isMatched ? 'match-card--matched' : '',
-                  errorPair === right ? 'match-card--error' : '',
+                  errorPair === meaning ? 'match-card--error' : '',
                 ]
                   .filter(Boolean)
                   .join(' ')}
                 disabled={isMatched}
-                onClick={() => clickRight(right)}
+                onClick={() => clickRight(meaning)}
               >
-                {right}
+                {meaning}
               </button>
             )
           })}
@@ -426,7 +424,7 @@ export function CardView({
   return (
     <div className="exercise-body">
       <div className="exercise-prompt">
-        <div className="exercise-prompt__label">Memoriza la palabra y su significado</div>
+        <div className="exercise-prompt__label">Memorize the word and its meaning</div>
       </div>
       <button
         type="button"
@@ -436,24 +434,23 @@ export function CardView({
         {flipped ? (
           <div className="flip-card__back">
             <h3>{exercise.word}</h3>
-            <p>{exercise.translation}</p>
             <p className="flip-card__meaning">{exercise.meaning}</p>
             <p className="flip-card__sentence">{exercise.sentence}</p>
           </div>
         ) : (
           <div className="flip-card__front">
-            <SpeechButton text={exercise.word} size="lg" label={`Escuchar ${exercise.word}`} />
+            <SpeechButton text={exercise.word} size="lg" label={`Listen to ${exercise.word}`} />
             <h3>{exercise.word}</h3>
-            <small>Toca para ver la respuesta</small>
+            <small>Tap to see the answer</small>
           </div>
         )}
       </button>
       <div className="exercise-options">
         <Button variant="danger" disabled={feedback !== 'idle'} onClick={() => onSubmit(false)}>
-          Aún no lo sé
+          I don&apos;t know it yet
         </Button>
         <Button variant="success" disabled={feedback !== 'idle'} onClick={() => onSubmit(true)}>
-          Lo sabía
+          I knew it
         </Button>
       </div>
     </div>
@@ -461,21 +458,21 @@ export function CardView({
 }
 
 function HintCard({
-  text,
-  translation,
+  sentence,
+  meaning,
   show,
 }: {
-  text: string
-  translation: string
+  sentence: string
+  meaning: string
   show: boolean
 }) {
   if (!show) return null
   return (
     <div className="hint-card">
-      <SpeechButton text={text} size="sm" label={`Escuchar ${text}`} />
+      <SpeechButton text={sentence} size="sm" label={`Listen to ${sentence}`} />
       <div>
-        <p>{text}</p>
-        <small>{translation}</small>
+        <p>{sentence}</p>
+        <small>{meaning}</small>
       </div>
     </div>
   )

@@ -939,19 +939,19 @@ button {
   background: #eef6f2;
 }
 
-.tier-badge--muy-comun,
-.tier-badge--comun {
+.tier-badge--very-common,
+.tier-badge--common {
   color: var(--aura-green-dark);
   background: #d7ffb8;
 }
 
-.tier-badge--poco-comun {
+.tier-badge--uncommon {
   color: #9a6a00;
   background: #fff3d6;
 }
 
-.tier-badge--rara,
-.tier-badge--muy-rara {
+.tier-badge--rare,
+.tier-badge--very-rare {
   color: var(--aura-red-dark);
   background: #ffdfe0;
 }

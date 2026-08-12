@@ -12,7 +12,7 @@ export interface ChoiceExercise {
   options: string[]
   answer: string
   sentence: string
-  sentenceTranslation: string
+  meaning: string
 }
 
 export interface TypeExercise {
@@ -39,7 +39,6 @@ export interface TapExercise {
   prompt: string
   words: string[]
   answer: string
-  sentenceTranslation: string
 }
 
 export interface SpeakExercise {
@@ -47,12 +46,12 @@ export interface SpeakExercise {
   id: string
   word: string
   sentence: string
-  translation: string
+  meaning: string
 }
 
 export interface MatchPair {
-  left: string
-  right: string
+  word: string
+  meaning: string
 }
 
 export interface MatchExercise {
@@ -67,7 +66,6 @@ export interface CardExercise {
   word: string
   meaning: string
   sentence: string
-  translation: string
 }
 
 export type Exercise =
@@ -86,7 +84,7 @@ function globalPool(): readonly LessonWord[] {
 }
 
 /**
-Pool de distracción: palabras de la misma unidad más otras aleatorias.
+ * Distractor pool: words from the same unit plus random words from the course.
  */
 function distractorPool(lesson: Lesson, rng: () => number): LessonWord[] {
   const unit = unitForLesson(lesson.id)
@@ -100,7 +98,7 @@ function distractorPool(lesson: Lesson, rng: () => number): LessonWord[] {
 }
 
 /**
-Opciones de opción múltiple: la correcta + 3 distractores únicos.
+ * Multiple-choice options: the correct one plus up to `size - 1` unique distractors.
  */
 function buildOptions(
   correct: string,
@@ -122,31 +120,41 @@ function pickRandom<T>(items: readonly T[], rng: () => number): T {
 }
 
 /**
-Genera un set determinista de ejercicios para una lección.
+Replaces the target word in a sentence with a blank for tap exercises.
+ */
+function blankedSentence(sentence: string, target: string): string {
+  return sentence
+    .split(/\s+/)
+    .map((token) => (normalizeText(token) === normalizeText(target) ? '____' : token))
+    .join(' ')
+}
+
+/**
+ * Generates a deterministic set of exercises for a lesson (seeded by lesson id).
  */
 export function generateExercises(lesson: Lesson): Exercise[] {
   const rng = mulberry32(hashString(lesson.id))
   const distractors = distractorPool(lesson, rng)
-  const enWords = distractors.map((word) => word.word)
-  const esTranslations = distractors.map((word) => word.translation)
+  const words = distractors.map((word) => word.word)
+  const meanings = distractors.map((word) => word.meaning)
 
   const core: Exercise[] = lesson.words.flatMap((wordInfo) => [
     {
       kind: 'choice',
       id: `${lesson.id}-choice-${wordInfo.word}`,
-      prompt: wordInfo.translation,
+      prompt: wordInfo.meaning,
       word: wordInfo.word,
-      options: buildOptions(wordInfo.word, enWords, rng),
+      options: buildOptions(wordInfo.word, words, rng),
       answer: wordInfo.word,
       sentence: wordInfo.sentence,
-      sentenceTranslation: wordInfo.sentenceTranslation,
+      meaning: wordInfo.meaning,
     },
     {
       kind: 'listen',
       id: `${lesson.id}-listen-${wordInfo.word}`,
       word: wordInfo.word,
-      options: buildOptions(wordInfo.translation, esTranslations, rng),
-      answer: wordInfo.translation,
+      options: buildOptions(wordInfo.meaning, meanings, rng),
+      answer: wordInfo.meaning,
       sentence: wordInfo.sentence,
     },
   ])
@@ -155,21 +163,20 @@ export function generateExercises(lesson: Lesson): Exercise[] {
     kind: 'type',
     id: `${lesson.id}-type-${wordInfo.word}`,
     prompt: wordInfo.meaning,
-    hint: wordInfo.translation,
+    hint: wordInfo.word.charAt(0),
     word: wordInfo.word,
     answer: wordInfo.word,
   }))
 
   const tapTarget = pickRandom(lesson.words, rng)
   const sentenceWords = tapTarget.sentence.split(/\s+/)
-  const tapBank = shuffle([...new Set([...sentenceWords, ...sample(enWords, rng, 2)])], rng)
+  const tapBank = shuffle([...new Set([...sentenceWords, ...sample(words, rng, 2)])], rng)
   const tap: Exercise = {
     kind: 'tap',
     id: `${lesson.id}-tap-${tapTarget.word}`,
-    prompt: tapTarget.sentenceTranslation,
+    prompt: blankedSentence(tapTarget.sentence, tapTarget.word),
     words: tapBank,
     answer: tapTarget.sentence,
-    sentenceTranslation: tapTarget.sentenceTranslation,
   }
 
   const speakTarget = pickRandom(lesson.words, rng)
@@ -178,7 +185,7 @@ export function generateExercises(lesson: Lesson): Exercise[] {
     id: `${lesson.id}-speak-${speakTarget.word}`,
     word: speakTarget.word,
     sentence: speakTarget.sentence,
-    translation: speakTarget.sentenceTranslation,
+    meaning: speakTarget.meaning,
   }
 
   const matchWords = sample(lesson.words, rng, 4)
@@ -186,8 +193,8 @@ export function generateExercises(lesson: Lesson): Exercise[] {
     kind: 'match',
     id: `${lesson.id}-match`,
     pairs: matchWords.map((wordInfo) => ({
-      left: wordInfo.word,
-      right: wordInfo.translation,
+      word: wordInfo.word,
+      meaning: wordInfo.meaning,
     })),
   }
 
@@ -198,14 +205,13 @@ export function generateExercises(lesson: Lesson): Exercise[] {
     word: cardTarget.word,
     meaning: cardTarget.meaning,
     sentence: cardTarget.sentence,
-    translation: cardTarget.translation,
   }
 
   return shuffle([...core, ...typed, tap, speak, match, card], rng)
 }
 
 /**
-Comprueba una respuesta textual contra el ejercicio (choice/type/listen/tap).
+ * Checks a text answer against an exercise (choice/type/listen/tap).
  */
 export function checkTextExercise(
   exercise: ChoiceExercise | TypeExercise | ListenExercise | TapExercise,
@@ -215,7 +221,7 @@ export function checkTextExercise(
 }
 
 /**
-Comprueba una respuesta hablada (similitud del transcript vs la frase esperada).
+ * Checks a spoken answer (transcript similarity against the expected sentence).
  */
 export function checkSpeechAnswer(sentence: string, transcript: string): boolean {
   return isCloseEnough(transcript, sentence)

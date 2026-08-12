@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /**
-Devuelve `value` tras `delay` ms sin cambios (útil para búsquedas).
+Returns `value` after `delay` ms without changes (useful for searches).
  */
 export function useDebouncedValue<T>(value: T, delay = 300): T {
   const [debounced, setDebounced] = useState(value)

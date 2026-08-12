@@ -1,144 +1,145 @@
-# 🦉 Aura — Aprende inglés al máximo
+# 🦉 Aura — Learn English at full power
 
-**Aura no es un traductor: es una forma de aprender inglés.** Un curso estilo Duolingo,
-**100% local, gratuito, libre y open source**, con diccionario completo, analizador de
-textos y repaso espaciado. Tus datos nunca salen de tu dispositivo.
+**Aura is not a translator: it is a way to learn English.** A Duolingo-style
+course that is **100% local, free, libre and open source**, with a full
+dictionary, a text analyzer and spaced repetition. Your data never leaves
+your device.
 
-Construida con **Tauri 2 + React 19 + TypeScript 7** (compilador nativo `tsgo`) y un stack
-de calidad al máximo: ESLint type-aware, Prettier, Stylelint, Vitest, Clippy y rustfmt.
-
----
-
-## ✨ Funcionalidades
-
-| Módulo                      | Qué hace                                                                                                                                                                                    |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 📚 **Curso**                | 18 lecciones en 6 unidades temáticas con 7 tipos de ejercicios: opción múltiple, escucha, escribir, construir frases, hablar, emparejar y tarjetas.                                         |
-| 🧠 **Repaso espaciado**     | Algoritmo **SM-2** (SuperMemo) para memorizar vocabulario de forma científica.                                                                                                              |
-| 📖 **Diccionario WordNet**  | Base completa de WordNet 3.0 (~35 MB) embebida en la app: definiciones, ejemplos, sinónimos, antónimos, hiperónimos e hipónimos.                                                            |
-| 🔤 **Frecuencias reales**   | Corpus **SUBTLEX-US** (74.286 palabras) para saber si una palabra es común, rara o extraña.                                                                                                 |
-| 🧪 **Analizador de textos** | Legibilidad (Flesch, Gunning Fog, SMOG, ARI, Dale–Chall, Coleman-Liau…), gramática y estilo (ecosistema retext), sentimiento (AFINN-165), categorías gramaticales y palabras para aprender. |
-| 🔊 **Voz y pronunciación**  | Síntesis de voz (TTS) en cada palabra y ejercicio de hablar con reconocimiento de voz cuando el sistema lo soporta.                                                                         |
-| 🎮 **Gamificación**         | XP, niveles, rachas, corazones, metas diarias y 15 logros.                                                                                                                                  |
-| 🔒 **Privacidad total**     | Sin cuenta, sin internet, sin telemetría. Todo vive en tu máquina.                                                                                                                          |
-
-> Aura usa traducciones al español como _andamiaje pedagógico_, igual que Duolingo,
-> pero su objetivo es que **pienses y produzcas en inglés**.
+Built with **Tauri 2 + React 19 + TypeScript 7** (the native `tsgo` compiler)
+and a maximum-quality toolchain: type-aware ESLint, Prettier, Stylelint,
+Vitest, Clippy and rustfmt.
 
 ---
 
-## 🚀 Empezar
+## ✨ Features
 
-Requisitos: [Node.js ≥ 22](https://nodejs.org), [Rust ≥ 1.77](https://rustup.rs) y las
-dependencias de [Tauri](https://tauri.app/start/prerequisites/).
+| Module                       | What it does                                                                                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📚 **Course**                | 18 lessons in 6 themed units with 7 exercise types: multiple choice, listening, typing, sentence building, speaking, matching and flashcards.                             |
+| 🧠 **Spaced repetition**     | **SM-2** (SuperMemo) algorithm to memorize vocabulary scientifically.                                                                                                     |
+| 📖 **WordNet dictionary**    | Full WordNet 3.0 database (~35 MB) embedded in the app: definitions, examples, synonyms, antonyms, hypernyms and hyponyms.                                                |
+| 🔤 **Real frequencies**      | **SUBTLEX-US** corpus (74,286 words) to know whether a word is common, rare or very rare.                                                                                 |
+| 🧪 **Text analyzer**         | Readability (Flesch, Gunning Fog, SMOG, ARI, Dale–Chall, Coleman-Liau…), grammar and style (retext ecosystem), sentiment (AFINN-165), parts of speech and words to learn. |
+| 🔊 **Voice & pronunciation** | Text-to-speech (TTS) on every word plus speaking exercises with speech recognition when the platform supports it.                                                         |
+| 🎮 **Gamification**          | XP, levels, streaks, hearts, daily goals and 15 achievements.                                                                                                             |
+| 🔒 **Total privacy**         | No account, no internet, no telemetry. Everything lives on your machine.                                                                                                  |
+
+---
+
+## 🚀 Getting started
+
+Requirements: [Node.js ≥ 22](https://nodejs.org), [Rust ≥ 1.77](https://rustup.rs)
+and the [Tauri prerequisites](https://tauri.app/start/prerequisites/).
 
 ```bash
-npm install          # instala dependencias
-npm run tauri:dev    # abre la app de escritorio en modo desarrollo
-npm run dev          # solo el frontend (sin diccionario WordNet)
+npm install          # install dependencies
+npm run tauri:dev    # open the desktop app in development mode
+npm run dev          # frontend only (no WordNet dictionary)
 ```
 
-El diccionario WordNet se copia automáticamente desde `node_modules/wordnet-db` a
-`src-tauri/resources/wn/` antes de compilar (`npm run copy:wn`).
+The WordNet dictionary is copied automatically from `node_modules/wordnet-db` to
+`src-tauri/resources/wn/` before compiling (`npm run copy:wn`).
 
 ---
 
 ## 🛠 Scripts
 
-| Comando                 | Descripción                                                                                    |
-| ----------------------- | ---------------------------------------------------------------------------------------------- |
-| `npm run dev`           | Servidor de desarrollo Vite (puerto 1420).                                                     |
-| `npm run tauri:dev`     | App Tauri en modo desarrollo. Si el puerto 1420 está ocupado elige otro libre automáticamente. |
-| `npm run tauri:build`   | Build release de escritorio (deb, AppImage, etc.).                                             |
-| `npm run typecheck`     | TypeScript 7 (`tsgo`, nativo) — typecheck de todo el proyecto.                                 |
-| `npm run lint`          | ESLint 10 con rulesets type-aware máximos (strict + stylistic).                                |
-| `npm run format`        | Prettier (escribe).                                                                            |
-| `npm run stylelint`     | Stylelint (orden y estilo del CSS).                                                            |
-| `npm run lint:rust`     | Clippy con `-D warnings`.                                                                      |
-| `npm run format:rust`   | rustfmt en modo check.                                                                         |
-| `npm run test`          | Vitest (37+ tests del motor).                                                                  |
-| `npm run test:coverage` | Cobertura de código.                                                                           |
-| `npm run docs`          | TypeDoc de la API interna en `docs/`.                                                          |
-| `npm run analyze`       | `typecheck` + `lint` + `stylelint` + `format:check`.                                           |
-| `npm run ci`            | Todo: análisis, Rust, tests y build.                                                           |
+| Command                 | Description                                                                      |
+| ----------------------- | -------------------------------------------------------------------------------- |
+| `npm run dev`           | Vite dev server (port 1420).                                                     |
+| `npm run tauri:dev`     | Tauri app in dev mode. If port 1420 is busy, it picks a free port automatically. |
+| `npm run tauri:build`   | Desktop release build (deb, AppImage, etc.).                                     |
+| `npm run typecheck`     | TypeScript 7 (`tsgo`, native) — typechecks the whole project.                    |
+| `npm run lint`          | ESLint 10 with maxed-out type-aware rule sets (strict + stylistic).              |
+| `npm run format`        | Prettier (writes).                                                               |
+| `npm run stylelint`     | Stylelint (CSS order and style).                                                 |
+| `npm run lint:rust`     | Clippy with `-D warnings`.                                                       |
+| `npm run format:rust`   | rustfmt in check mode.                                                           |
+| `npm run test`          | Vitest (engine tests).                                                           |
+| `npm run test:coverage` | Code coverage.                                                                   |
+| `npm run docs`          | TypeDoc for the internal API in `docs/`.                                         |
+| `npm run analyze`       | `typecheck` + `lint` + `stylelint` + `format:check`.                             |
+| `npm run ci`            | Everything: analysis, Rust, tests and build.                                     |
 
 ---
 
-## 🧱 Arquitectura
+## 🧱 Architecture
 
 ```
 src/
-├── data/            # TODO el contenido en JSON legible (sin código)
-│   ├── course.json       # 6 unidades, 18 lecciones, 90 palabras
-│   ├── achievements.json # 15 logros
-│   └── config.json       # Equilibrio del juego + parámetros SM-2
-├── engine/          # Motor puro y testeable (sin React)
-│   ├── schemas.ts       # Esquemas Zod que validan los JSON y dan los tipos
-│   ├── lessons.ts       # Carga y consultas del curso
-│   ├── exercises.ts     # Generador determinista de ejercicios (RNG con semilla)
-│   ├── srs.ts           # Repaso espaciado SM-2
-│   ├── xp.ts            # XP, niveles y rachas
-│   ├── achievements.ts  # Reglas de los 15 logros
-│   ├── frequency.ts     # SUBTLEX-US: frecuencias y dificultad
-│   ├── dictionary.ts    # Cliente del diccionario WordNet (vía Rust)
-│   ├── analyzer.ts      # Legibilidad + retext + sentimiento + POS
-│   └── speech.ts        # TTS y reconocimiento de voz
-├── components/       # UI reutilizable (botones, barras, ejercicios…)
-├── screens/          # Pantallas: inicio, lección, diccionario, analizador, repaso
-├── state/store.ts    # Estado global (zustand + persistencia local)
+├── data/            # All content as readable JSON (no code)
+│   ├── course.json       # 6 units, 18 lessons, 90 words
+│   ├── achievements.json # 15 achievements
+│   └── config.json       # Game balance + SM-2 parameters
+├── engine/          # Pure, testable engine (no React)
+│   ├── schemas.ts       # Zod schemas that validate the JSON and derive the types
+│   ├── lessons.ts       # Course loading and queries
+│   ├── exercises.ts     # Deterministic exercise generator (seeded RNG)
+│   ├── srs.ts           # SM-2 spaced repetition
+│   ├── xp.ts            # XP, levels and streaks
+│   ├── achievements.ts  # Rules for the 15 achievements
+│   ├── frequency.ts     # SUBTLEX-US: frequencies and difficulty
+│   ├── dictionary.ts    # WordNet dictionary client (via Rust)
+│   ├── analyzer.ts      # Readability + retext + sentiment + POS
+│   └── speech.ts        # TTS and speech recognition
+├── components/       # Reusable UI (buttons, bars, exercise views…)
+├── screens/          # Home, lesson, dictionary, analyzer, review
+├── state/store.ts    # Global state (zustand + local persistence)
 ├── hooks/            # useSpeech, useDebouncedValue
-└── lib/              # tauri, fechas, RNG, strings
+└── lib/              # tauri, dates, RNG, strings
 src-tauri/
-├── src/lib.rs        # Comandos Rust: lookup_word (WordNet), read_text_file
-├── resources/wn/     # Datos de WordNet 3.0 (generados en build)
-└── capabilities/     # Permisos mínimos
+├── src/lib.rs        # Rust commands: lookup_word (WordNet), read_text_file
+├── resources/wn/     # WordNet 3.0 data (generated on build)
+└── capabilities/     # Minimal permissions
 ```
 
-**Datos y contenido**: todo el contenido (curso, logros y equilibrio del juego)
-vive en `src/data/` como JSON. El motor los carga con **esquemas Zod** que
-validan la estructura en runtime y fallan rápido si algo está mal; los tipos de
-TypeScript se derivan automáticamente de esos esquemas. Para añadir una lección
-solo editas `course.json`.
+**Data and content**: all content (course, achievements and game balance)
+lives in `src/data/` as JSON. The engine loads it through **Zod schemas** that
+validate the structure at runtime and fail fast if something is wrong; the
+TypeScript types are derived automatically from those schemas. To add a
+lesson, you only edit `course.json`.
 
-**Decisiones técnicas clave**
+**Key technical decisions**
 
-- **TypeScript 7 + 6 en paralelo**: el compilador nativo (`tsc`, 10× más rápido)
-  hace el typecheck; `typescript-eslint` usa el API de TS 6.0 vía el paquete
-  de compatibilidad `@typescript/typescript6` (el enfoque recomendado por el equipo de TS).
-- **WordNet en Rust**: el crate `wordnet` hace búsqueda binaria perezosa sobre los
-  ficheros `index.*`/`data.*`, cargándolos solo la primera vez que buscas una palabra.
-- **Ejercicios deterministas**: cada lección genera siempre los mismos ejercicios
-  (RNG con semilla por id), ideal para testear y rehacer lecciones.
-- **Sin acceso a red**: `connect-src` está restringido por CSP a la IPC de Tauri.
-
----
-
-## 🧪 Calidad
-
-- **37 tests** de Vitest sobre el motor (SM-2, rachas, frecuencias, ejercicios,
-  analizador de textos, strings) más un smoke test de la UI.
-- **ESLint 10** con `recommended` + `recommendedTypeChecked` + `strictTypeChecked` +
-  `stylisticTypeChecked`, react-hooks, react-refresh, unicorn, jsdoc y perfectionist.
-- **Stylelint** con orden de propiedades estándar.
-- **Clippy** estricto y **rustfmt** en el backend.
-- CI en GitHub Actions: análisis, tests, build de frontend y `cargo check`.
+- **TypeScript 7 + 6 side by side**: the native compiler (`tsc`, 10× faster)
+  does the typecheck; `typescript-eslint` uses the TS 6.0 API via the
+  `@typescript/typescript6` compatibility package (the approach recommended by
+  the TS team).
+- **WordNet in Rust**: the `wordnet` crate does a lazy binary search over the
+  `index.*`/`data.*` files, loading them only the first time you look up a word.
+- **Deterministic exercises**: each lesson always generates the same exercises
+  (RNG seeded by lesson id), great for testing and redoing lessons.
+- **No network access**: `connect-src` is restricted by CSP to Tauri's IPC.
 
 ---
 
-## 📄 Licencia
+## 🧪 Quality
 
-**MIT** — libre, gratuita y para todos. Usa WordNet (Princeton), datos de frecuencia
-SUBTLEX-US y AFINN-165, todos con licencias permisivas.
+- **45 tests** with Vitest over the engine (SM-2, streaks, frequencies,
+  exercises, text analyzer, strings) plus a UI smoke test.
+- **ESLint 10** with `recommended` + `recommendedTypeChecked` +
+  `strictTypeChecked` + `stylisticTypeChecked`, react-hooks, react-refresh,
+  unicorn, jsdoc and perfectionist.
+- **Stylelint** with standard property ordering.
+- Strict **Clippy** and **rustfmt** on the backend.
+- CI on GitHub Actions: analysis, tests, frontend build and `cargo check`.
+
+---
+
+## 📄 License
+
+**MIT** — free and for everyone. Uses WordNet (Princeton), SUBTLEX-US
+frequency data and AFINN-165, all under permissive licenses.
 
 ---
 
 ## 🗺 Roadmap
 
-- [ ] Más unidades y lecciones (curso completo hasta nivel B1)
-- [ ] Historias interactivas y retos por tiempo
-- [ ] Exportar/importar progreso (JSON)
-- [ ] Módulo de verbos irregulares
-- [ ] Práctica de escritura libre con corrección
+- [ ] More units and lessons (full course up to B1 level)
+- [ ] Interactive stories and timed challenges
+- [ ] Export/import progress (JSON)
+- [ ] Irregular verbs module
+- [ ] Free writing practice with corrections
 
-Hecho con ❤️ para quien quiere dominar el inglés, sin pagar, sin internet y sin
-entregar sus datos.
+Made with ❤️ for anyone who wants to master English — without paying, without
+internet and without giving away their data.

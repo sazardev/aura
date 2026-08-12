@@ -15,8 +15,8 @@ export function SpeechButton({ text, label, size = 'md' }: SpeechButtonProps) {
     <button
       type="button"
       className={classes}
-      aria-label={label ?? `Escuchar ${text}`}
-      title="Escuchar"
+      aria-label={label ?? `Listen to ${text}`}
+      title="Listen"
       onClick={() => speak(text)}
     >
       {speaking ? '🔊' : '🔈'}

@@ -16,8 +16,8 @@ export interface DictionaryEntry {
 }
 
 /**
- * Busca una palabra en el WordNet completo (índice + data) servido por el
- * backend Rust. Fuera de Tauri devuelve `undefined`.
+ * Looks up a word in the full WordNet (index + data) served by the Rust
+ * backend. Returns `undefined` outside of Tauri.
  */
 export async function lookupWord(word: string): Promise<DictionaryEntry | undefined> {
   const result = await invokeOptional<DictionaryEntry>('lookup_word', { word })

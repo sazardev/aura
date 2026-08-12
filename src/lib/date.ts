@@ -1,7 +1,7 @@
 const DAY_MS = 86_400_000
 
 /**
-Clave local YYYY-MM-DD (zona horaria local).
+Local YYYY-MM-DD key (local timezone).
  */
 export function localDateKey(date: Date = new Date()): string {
   const year = date.getFullYear()
@@ -17,7 +17,7 @@ export function addDays(date: Date, days: number): Date {
 }
 
 /**
-Clave de ayer con respecto a `today` (clave YYYY-MM-DD).
+Yesterday's key relative to `todayKey` (YYYY-MM-DD).
  */
 export function previousDayKey(todayKey: string): string {
   const [year, month, day] = todayKey.split('-').map(Number) as [number, number, number]
@@ -26,7 +26,7 @@ export function previousDayKey(todayKey: string): string {
 }
 
 /**
-Devuelve la diferencia en días (b - a) entre dos claves de fecha.
+Returns the difference in days (b - a) between two date keys.
  */
 export function daysBetween(a: string, b: string): number {
   const [ay, am, ad] = a.split('-').map(Number) as [number, number, number]
@@ -37,7 +37,7 @@ export function daysBetween(a: string, b: string): number {
 }
 
 /**
-Millisegundos hasta la próxima medianoche local.
+Milliseconds until the next local midnight.
  */
 export function msUntilNextDay(): number {
   const now = new Date()

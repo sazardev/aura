@@ -1,29 +1,27 @@
-# Datos de Aura
+# Aura data
 
-Todo el contenido se mantiene aquí, fuera del código, en JSON legible. El motor
-(`src/engine/`) lo carga con validación en runtime y **falla rápido** si algo
-está mal, así que puedes editar estos archivos con seguridad.
+All content lives here, outside the code, as readable JSON. The engine
+(`src/engine/`) loads it with runtime validation and **fails fast** if
+something is wrong, so you can edit these files safely.
 
-## `course.json` — el curso
+## `course.json` — the course
 
 ```jsonc
 {
-  "id": "saludos", // id único de la unidad
-  "title": "Saludos y presentaciones",
-  "emoji": "👋", // icono de la unidad
-  "color": "#58cc02", // color de los nodos de la unidad
+  "id": "greetings", // unique unit id
+  "title": "Greetings & Introductions",
+  "emoji": "👋", // unit icon
+  "color": "#58cc02", // color of the unit's lesson nodes
   "lessons": [
     {
-      "id": "saludos-1", // id único de la lección (los ejercicios son deterministas por id)
-      "title": "Hola y adiós",
-      "type": "leccion", // "leccion" | "cuestionario"
+      "id": "greetings-1", // unique lesson id (exercises are deterministic by id)
+      "title": "Hello and Goodbye",
+      "type": "lesson", // "lesson" | "quiz"
       "words": [
         {
-          "word": "hello", // palabra en inglés
-          "translation": "hola", // traducción al español (andamiaje)
-          "meaning": "saludo…", // definición breve en español
-          "sentence": "Hello!", // ejemplo en inglés
-          "sentenceTranslation": "¡Hola!", // traducción del ejemplo
+          "word": "hello", // the English word
+          "meaning": "a greeting you say when you meet someone", // short English definition
+          "sentence": "Hello!", // example sentence in English
         },
       ],
     },
@@ -31,17 +29,17 @@ está mal, así que puedes editar estos archivos con seguridad.
 }
 ```
 
-Cada lección lleva 5 palabras (el generador de ejercicios las usa para crear
-choice, listen, type, tap, speak, match y flashcards). Palabras e ids deben
-ser únicos en todo el curso.
+Each lesson carries 5 words (the exercise generator uses them to build
+choice, listen, type, tap, speak, match and flashcard exercises). Words and
+ids must be unique across the whole course.
 
-## `achievements.json` — logros
+## `achievements.json` — achievements
 
-Lista de objetos `{ id, name, description, emoji }`. Los `id` deben coincidir
-con las reglas definidas en `src/engine/achievements.ts`.
+A list of `{ id, name, description, emoji }` objects. The `id`s must match
+the rules defined in `src/engine/achievements.ts`.
 
-## `config.json` — equilibrio del juego
+## `config.json` — game balance
 
-Números de gamificación (XP por ejercicio/lección, corazones, metas diarias,
-curva de niveles) y parámetros del algoritmo de repaso SM-2. Edítalo para
-rebalancear la app sin tocar código.
+Gamification numbers (XP per exercise/lesson, hearts, daily goals, level
+curve) and the SM-2 spaced-repetition parameters. Edit it to rebalance the
+app without touching code.

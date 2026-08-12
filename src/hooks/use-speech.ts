@@ -20,7 +20,7 @@ export interface SpeechController {
 }
 
 /**
-Controlador de voz (TTS + reconocimiento) conectado a la configuración.
+Speech controller (TTS + recognition) wired to the settings.
  */
 export function useSpeech(): SpeechController {
   const rate = useAuraStore((state) => state.ttsRate)
