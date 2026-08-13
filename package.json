@@ -27,6 +27,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "version:check": "node scripts/check-version.mjs",
+    "release:check": "node scripts/release.mjs --check",
+    "release": "node scripts/release.mjs --commit",
     "docs": "typedoc",
     "tauri": "tauri",
     "tauri:dev": "node scripts/tauri-dev.mjs",
@@ -37,7 +40,7 @@
     "tauri:ios:build": "tauri ios build",
     "lint:rust": "cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings",
     "format:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml --check",
-    "analyze": "npm run typecheck && npm run lint && npm run stylelint && npm run format:check",
+    "analyze": "npm run version:check && npm run typecheck && npm run lint && npm run stylelint && npm run format:check",
     "ci": "npm run analyze && npm run lint:rust && npm run format:rust && npm run test && npm run build"
   },
   "dependencies": {

@@ -23,6 +23,7 @@ export type Route =
   | { name: 'backup' }
   | { name: 'data' }
   | { name: 'settings' }
+  | { name: 'about' }
   | { name: 'tour' }
   | { name: 'roadmap' }
   | { name: 'profile'; tab?: ProfileTab }
@@ -88,6 +89,9 @@ export function routeToHash(route: Route): string {
     }
     case 'settings': {
       return '#/settings'
+    }
+    case 'about': {
+      return '#/about'
     }
     case 'tour': {
       return '#/tour'
@@ -179,6 +183,9 @@ export function parseHash(hash: string): Route {
     }
     case 'settings': {
       return { name: 'settings' }
+    }
+    case 'about': {
+      return { name: 'about' }
     }
     case 'tour': {
       return { name: 'tour' }

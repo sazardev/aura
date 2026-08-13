@@ -6,9 +6,12 @@ Reference docs: `README.md` (overview + scripts), `DESIGN.md` (design system sou
 
 ## Commands
 
-- `npm run analyze` — fast pre-push gate: `typecheck` + `lint` + `stylelint` + `format:check`. Run after any change.
+- `npm run analyze` — fast pre-push gate: `version:check` + `typecheck` + `lint` + `stylelint` + `format:check`. Run after any change.
 - `npm run ci` — full gate CI runs: analyze + `lint:rust` + `format:rust` + `test` + `build`. Must exit 0.
 - `npm run test` / `test:watch` — Vitest. Tests are colocated (`src/**/*.test.ts`); run one: `npx vitest run src/engine/srs.test.ts`.
+- `npm run version:check` — asserts `package.json` / `tauri.conf.json` / `Cargo.toml` / `Cargo.lock` all carry the same version (part of `analyze`).
+- `npm run release:check` — dry-run of the release: prints the next version and changelog source; never writes.
+- `npm run release` — automatic bump: computes the bump from conventional commits since the last `v*` tag, rolls the `[Unreleased]` changelog section into a dated release, syncs all version files, commits `chore(release): vX.Y.Z` and tags `vX.Y.Z`. Idempotent: with nothing since the last tag it does nothing.
 - `npm run tauri:dev` — desktop dev via `scripts/tauri-dev.mjs` (auto-picks a free port). Don't run bare `tauri dev`; it hardcodes port 1420 and skips port fallback.
 - `npm run dev` — browser-only dev. No Tauri IPC; Rust-backed features return `undefined` (see `invokeOptional` below).
 - `npm run gen:vocab` — regenerates `src/data/vocabulary.json` + `course-expansion.json` from Rust (`src-tauri/src/bin/gen_vocab.rs`). Commit the regenerated JSON if engine data logic changed.

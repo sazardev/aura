@@ -1,10 +1,20 @@
-import { BarChart3, Database, Palette, PartyPopper, Play, Settings, Volume2 } from 'lucide-react'
+import {
+  BarChart3,
+  Database,
+  Info,
+  Palette,
+  PartyPopper,
+  Play,
+  Settings,
+  Volume2,
+} from 'lucide-react'
 
 import { Button } from '@/components/button'
 import { ACCENT_PALETTES } from '@/engine/theme'
 import { DAILY_GOAL_OPTIONS } from '@/engine/xp'
 import { useHashRoute } from '@/hooks/use-hash-route'
 import { useSpeech } from '@/hooks/use-speech'
+import { APP_VERSION } from '@/lib/app-info'
 import { useAuraStore } from '@/state/store'
 
 function rateLabel(rate: number): string {
@@ -282,6 +292,21 @@ export function SettingsScreen() {
           </Button>
           <Button variant="secondary" block onClick={() => navigate({ name: 'data' })}>
             <BarChart3 size={16} aria-hidden="true" /> Analytics &amp; telemetry
+          </Button>
+        </div>
+      </section>
+
+      <section className="settings-section">
+        <h2 className="settings-section__title">
+          <Info size={16} aria-hidden="true" /> About
+        </h2>
+        <p className="settings-note">
+          Aura v{APP_VERSION} — free, open source (MIT) and 100% local. Your progress never leaves
+          this device.
+        </p>
+        <div className="settings-data">
+          <Button variant="secondary" block onClick={() => navigate({ name: 'about' })}>
+            <Info size={16} aria-hidden="true" /> Version &amp; changelog
           </Button>
         </div>
       </section>

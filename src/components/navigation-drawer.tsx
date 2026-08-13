@@ -4,6 +4,7 @@ import {
   BarChart3,
   Database,
   Headphones,
+  Info,
   Map,
   MessageCircle,
   Mic,
@@ -38,6 +39,7 @@ const ITEMS: DrawerItem[] = [
   { label: 'Profile & stats', route: { name: 'profile' }, icon: BarChart3 },
   { label: 'Settings', route: { name: 'settings' }, icon: Settings },
   { label: 'Backup', route: { name: 'backup' }, icon: Database },
+  { label: 'About', route: { name: 'about' }, icon: Info },
 ]
 
 export function NavigationDrawer({ open, onClose }: NavigationDrawerProps) {

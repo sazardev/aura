@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   quality:
-    name: Análisis, tests y build
+    name: Analysis, tests and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,11 +25,15 @@ jobs:
         with:
           components: clippy, rustfmt
 
-      - name: Instalar dependencias de Tauri (Linux)
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: Tauri dependencies (Linux)
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev \
-            librsvg2-dev patchelf libgtk-3-dev libayatana-appindicator3-dev
+          sudo apt-get install -y libwebkit2gtk-4.1-dev librsvg2-dev \
+            patchelf libgtk-3-dev libayatana-appindicator3-dev
 
       - name: npm ci
         run: npm ci
@@ -37,10 +41,10 @@ jobs:
       - name: npm run analyze
         run: npm run analyze
 
-      - name: Clippy y rustfmt
+      - name: Clippy and rustfmt
         run: |
-          cargo fmt --manifest-path src-tauri/Cargo.toml --check
-          cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings
+          npm run format:rust
+          npm run lint:rust
 
       - name: Tests
         run: npm run test
@@ -65,15 +69,19 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Instalar dependencias de Tauri (Linux)
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: Tauri dependencies (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev \
-            librsvg2-dev patchelf libgtk-3-dev libayatana-appindicator3-dev
+          sudo apt-get install -y libwebkit2gtk-4.1-dev librsvg2-dev \
+            patchelf libgtk-3-dev libayatana-appindicator3-dev
 
       - name: npm ci
         run: npm ci
 
-      - name: Compilar binario nativo (Linux/macOS/Windows)
+      - name: Build native binary (Linux/macOS/Windows)
         run: npm run tauri:build -- --no-bundle

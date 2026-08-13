@@ -7,3 +7,4 @@ src-tauri/resources/wn/
 package-lock.json
 *.tsbuildinfo
 src/data/library.json
+CHANGELOG.md

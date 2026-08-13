@@ -19,6 +19,10 @@ const AnalyzerScreen = lazy(async () => {
   const module = await import('@/screens/analyzer-screen')
   return { default: module.AnalyzerScreen }
 })
+const AboutScreen = lazy(async () => {
+  const module = await import('@/screens/about-screen')
+  return { default: module.AboutScreen }
+})
 const BackupScreen = lazy(async () => {
   const module = await import('@/screens/backup-screen')
   return { default: module.BackupScreen }
@@ -222,6 +226,11 @@ export function App() {
         {route.name === 'settings' && (
           <Suspense fallback={<ScreenLoading />}>
             <SettingsScreen />
+          </Suspense>
+        )}
+        {route.name === 'about' && (
+          <Suspense fallback={<ScreenLoading />}>
+            <AboutScreen onBack={() => navigate({ name: 'settings' })} />
           </Suspense>
         )}
         {route.name === 'tour' && (

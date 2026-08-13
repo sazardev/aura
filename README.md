@@ -103,7 +103,10 @@ Aura runs fully offline on every major platform from the same codebase:
 | `npm run gen:vocab`           | Regenerates `vocabulary.json` + `course-expansion.json` from the engines.         |
 | `npm run gen:library`         | Regenerates `src/data/library.json` from public-domain texts in `scripts/books/`. |
 | `npm run docs`                | TypeDoc for the internal API in `docs/`.                                          |
-| `npm run analyze`             | `typecheck` + `lint` + `stylelint` + `format:check`.                              |
+| `npm run version:check`       | Verifies all version sources agree with `package.json`.                           |
+| `npm run release:check`       | Dry run: shows the next version and changelog source without changing anything.   |
+| `npm run release`             | Bumps the version, rewrites the changelog, commits and tags (`vX.Y.Z`).           |
+| `npm run analyze`             | `version:check` + `typecheck` + `lint` + `stylelint` + `format:check`.            |
 | `npm run ci`                  | Everything: analysis, Rust, tests and build.                                      |
 
 ---
@@ -177,6 +180,51 @@ lesson, you only edit `course.json`.
 - **Stylelint** with standard property ordering.
 - Strict **Clippy** and **rustfmt** on the backend.
 - CI on GitHub Actions: analysis, tests, frontend build and `cargo check`.
+
+---
+
+## Release & versioning
+
+Aura releases follow **Semantic Versioning** and keep a human-readable
+changelog (`CHANGELOG.md`, Keep a Changelog format). The version has a single
+**source of truth**: `package.json`. Everything else is derived from it.
+
+### How it works
+
+- **Version sources**: `package.json` is authoritative; `src-tauri/tauri.conf.json`,
+  `src-tauri/Cargo.toml` and `src-tauri/Cargo.lock` are synced to it.
+  `npm run version:check` (part of `analyze` and CI) fails if they ever drift.
+- **Automatic bump**: `npm run release:check` dry-runs the release. The bump
+  type is computed from **conventional commits** since the last `v*` tag:
+  `feat` → minor, `feat!`/`BREAKING CHANGE` → major, everything else → patch.
+  If there is nothing to release it says so and does nothing.
+- **Idempotent**: releases never repeat. A release empties the `[Unreleased]`
+  changelog section and tags `HEAD`, so re-running on the same commit produces
+  nothing. Builds and `version:check` never modify the version.
+- **Changelog**: by default the release section is generated from commit
+  messages, grouped by type. To write curated notes instead, edit the
+  `## [Unreleased]` section in `CHANGELOG.md` — curated content always wins.
+- **Tagging**: `npm run release` bumps the version, rewrites the changelog,
+  syncs the version files, commits `chore(release): vX.Y.Z` and creates an
+  annotated tag `vX.Y.Z`.
+
+### Auto release on GitHub
+
+`.github/workflows/release.yml` runs on every push to `main` (and on manual
+`workflow_dispatch`):
+
+1. **prepare** — runs `release.mjs --commit`; if a release is due it pushes the
+   release commit and the `vX.Y.Z` tag.
+2. **build** — on the tag, bundles the app for Linux, macOS and Windows
+   (`tauri build`) and uploads the installers as artifacts.
+3. **publish** — creates the GitHub Release with the changelog section for that
+   version as the body and attaches the bundles.
+
+The re-triggered run after the release commit finds no new commits, so the
+whole pipeline is skipped — a release is created exactly once.
+
+The version and changelog are visible inside the app: **Settings → About →
+Version & changelog** (`#/about`).
 
 ---
 

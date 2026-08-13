@@ -195,4 +195,12 @@ describe('App', () => {
     expect(screen.getByText(/Everyday English/)).toBeInTheDocument()
     expect(screen.getByText(/Growing fluency/)).toBeInTheDocument()
   })
+
+  it('opens the about screen with the version and changelog', async () => {
+    window.location.hash = '#/about'
+    render(<App />)
+    expect(await screen.findByRole('heading', { name: /about aura/i })).toBeInTheDocument()
+    expect(screen.getByText(/Version 0\.0\.0-test/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /changelog/i })).toBeInTheDocument()
+  })
 })

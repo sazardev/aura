@@ -1,0 +1,111 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    name: Prepare release
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.bump.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Bump version, changelog, commit and tag
+        id: bump
+        run: |
+          VERSION=$(node scripts/release.mjs --commit)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Push release commit and tag
+        if: steps.bump.outputs.version != ''
+        run: |
+          git push origin main
+          git push origin "${{ steps.bump.outputs.version }}"
+
+  build:
+    name: Bundle (${{ matrix.os }})
+    needs: prepare
+    if: needs.prepare.outputs.version != ''
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - name: Tauri dependencies (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev librsvg2-dev \
+            patchelf libgtk-3-dev libayatana-appindicator3-dev
+      - run: npm ci
+      - name: Build bundles
+        run: npm run tauri:build
+      - name: Upload bundles
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-${{ matrix.os }}
+          if-no-files-found: error
+          path: |
+            src-tauri/target/release/bundle/**/*.AppImage
+            src-tauri/target/release/bundle/**/*.deb
+            src-tauri/target/release/bundle/**/*.rpm
+            src-tauri/target/release/bundle/**/*.msi
+            src-tauri/target/release/bundle/**/*.exe
+            src-tauri/target/release/bundle/**/*.dmg
+            src-tauri/target/release/bundle/**/*.pkg
+            src-tauri/target/release/bundle/**/*.app
+
+  publish:
+    name: Publish GitHub Release
+    needs: [prepare, build]
+    if: needs.prepare.outputs.version != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Extract release notes
+        run: node scripts/release.mjs --notes "${{ needs.prepare.outputs.version }}" > release-notes.md
+      - uses: actions/download-artifact@v4
+        with:
+          path: bundles
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.prepare.outputs.version }}
+          name: Aura ${{ needs.prepare.outputs.version }}
+          body_path: release-notes.md
+          files: bundles/**/*

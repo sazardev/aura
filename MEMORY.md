@@ -101,10 +101,11 @@ So: `tsc -b` typechecks with TS7; ESLint type-aware rules run against TS 6 via `
 `dev` · `build` (copy:wn + tsc + vite) · `preview` · `copy:wn` · `gen:vocab` · `typecheck` ·
 `lint`/`lint:fix` · `format`/`format:check` · `stylelint` · `test`/`test:coverage` ·
 `docs` (typedoc) · `tauri:dev` (orchestrator) · `tauri:build` ·
-`lint:rust`/`format:rust` · `analyze` · `ci`
+`lint:rust`/`format:rust` · `version:check` · `release:check` · `release` · `analyze` · `ci`
 
 - `npm run ci` = `analyze` + `lint:rust` + `format:rust` + `test` + `build` — must be exit 0.
 - `npm run gen:vocab` regenerates `vocabulary.json` + `course-expansion.json` from the engines.
+- `npm run release` = single source of truth (`package.json`) + auto changelog/bump/tag (see session 33).
 
 ## 4. ESLint configuration highlights
 
@@ -210,8 +211,10 @@ achievement rules match JSON). Setup: `src/test-setup.ts` + jsdom.
   `react`, `typescript`, `wordnet`, `spaced-repetition`, `offline-first`,
   `open-source`, `language-learning`, `vocabulary`).
 - Tag **`v0.1.0`** + release **"Aura v0.1.0"** with full notes.
-- Publish flow: `git push origin main` → `git tag -a vX.Y.Z` →
-  `git push origin vX.Y.Z` → `gh release create vX.Y.Z --title "..." --notes "..."`.
+- Publish flow is now **automated**: `.github/workflows/release.yml` on push to
+  `main` (or `workflow_dispatch`) bumps from conventional commits, tags `vX.Y.Z`,
+  builds the 3-OS bundles and creates the GitHub Release with changelog notes.
+  Local alternative: `npm run release` (commits + tags), then push.
 
 ## 13. Commit history
 
@@ -350,6 +353,19 @@ achievement rules match JSON). Setup: `src/test-setup.ts` + jsdom.
     now `position: sticky` with safe-area insets; `.exercise-body`/`.onboarding__body`
     gained bottom padding so content never hides behind the sticky footer; the
     reader toolbar's `top` now accounts for `env(safe-area-inset-top)`.
+33. `(uncommitted)` — **changelog + release pipeline**: single source of truth
+    for the version is `package.json`; `scripts/release.mjs` computes the bump
+    from conventional commits since the last `v*` tag (`feat`→minor,
+    `feat!`/breaking→major, else patch), rolls `CHANGELOG.md`'s `[Unreleased]`
+    section into a dated release (auto-generated from commits, or curated
+    if the section is hand-filled), syncs `tauri.conf.json`/`Cargo.toml`/
+    `Cargo.lock`, and commits `chore(release): vX.Y.Z` + tags `vX.Y.Z`.
+    Idempotent (nothing since last tag ⇒ no-op). `npm run version:check`
+    (part of `analyze`) fails on version drift. `.github/workflows/release.yml`
+    on push to main: prepare (bump+tag) → build 3-OS bundles → GitHub Release
+    with changelog notes. In-app visibility: `#/about` screen shows version
+    (`__APP_VERSION__` Vite define) and the bundled changelog (`?raw` import),
+    reached from Settings → About and the navigation drawer.
 
 ## 14. Known gotchas / notes
 
