@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-08-13
+
+### Fixed
+
+- keep only installer assets in GitHub Releases
+
 ## [0.2.1] - 2026-08-13
 
 ### Fixed
