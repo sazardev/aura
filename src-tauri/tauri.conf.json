@@ -3,8 +3,8 @@
   "productName": "Aura",
   "version": "0.2.3",
   "identifier": "dev.aura.english",
+  "mainBinaryName": "aura",
   "build": {
-    "mainBinaryName": "aura",
     "beforeDevCommand": "npm run copy:wn",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
