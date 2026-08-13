@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.2.5] - 2026-08-13
+
+### Fixed
+
+- select the app binary via cargo default-run
+
 ## [0.2.4] - 2026-08-13
 
 ### Fixed
