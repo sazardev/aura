@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.2.4] - 2026-08-13
+
+### Fixed
+
+- place mainBinaryName at the config root
+
 ## [0.2.3] - 2026-08-13
 
 ### Fixed
