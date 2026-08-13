@@ -4,6 +4,7 @@
   "version": "0.2.2",
   "identifier": "dev.aura.english",
   "build": {
+    "mainBinaryName": "aura",
     "beforeDevCommand": "npm run copy:wn",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
