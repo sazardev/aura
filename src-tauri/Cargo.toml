@@ -3,6 +3,7 @@ name = "aura"
 version = "0.2.4"
 description = "Aura — learn English at full power, 100% local and open source"
 edition = "2021"
+default-run = "aura"
 
 [lib]
 name = "aura_lib"
