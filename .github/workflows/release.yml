@@ -83,7 +83,6 @@ jobs:
             src-tauri/target/release/bundle/**/*.exe
             src-tauri/target/release/bundle/**/*.dmg
             src-tauri/target/release/bundle/**/*.pkg
-            src-tauri/target/release/bundle/**/*.app
 
   publish:
     name: Publish GitHub Release
@@ -108,4 +107,4 @@ jobs:
           tag_name: ${{ needs.prepare.outputs.version }}
           name: Aura ${{ needs.prepare.outputs.version }}
           body_path: release-notes.md
-          files: bundles/**/*
+          files: bundles/**/*.{AppImage,deb,rpm,msi,exe,dmg,pkg}
