@@ -4,6 +4,7 @@ import type { AchievementDef } from '@/engine/types'
 
 import { UiIcon } from '@/components/ui-icon'
 import { achievementById } from '@/engine/achievements'
+import { playSound } from '@/engine/sounds'
 import { useAuraStore } from '@/state/store'
 
 /**
@@ -26,6 +27,7 @@ export function AchievementToast() {
     }
     known.current = new Set(Object.keys(achievements))
     if (unlocked === undefined) return
+    playSound('achievement')
     setToast(unlocked)
     const timer = setTimeout(() => setToast(undefined), 4000)
     return () => clearTimeout(timer)

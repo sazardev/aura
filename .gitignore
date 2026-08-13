@@ -15,6 +15,9 @@ src-tauri/target/
 src-tauri/gen/
 src-tauri/resources/wn/
 
+# Public-domain book sources (regenerate with npm run gen:library)
+scripts/books/*.txt
+
 # Test
 coverage/
 vitest-coverage/

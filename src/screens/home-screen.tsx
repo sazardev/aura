@@ -1,20 +1,21 @@
 import type { LucideIcon } from 'lucide-react'
 
-import { BookOpen, Check, Flame, Heart, Lock, Medal, Play, Target, Trophy } from 'lucide-react'
+import { Check, Flame, GraduationCap, Heart, Lock, Play, Target, Trophy } from 'lucide-react'
 import { type ReactNode, useMemo } from 'react'
 
 import type { Lesson } from '@/engine/lessons'
 
-import { Logo } from '@/components/logo'
+import { AvatarIcon } from '@/components/avatar'
 import { ProgressBar } from '@/components/progress-bar'
 import { UiIcon } from '@/components/ui-icon'
-import { ACHIEVEMENTS } from '@/engine/achievements'
-import { COURSE, previousLessonId } from '@/engine/lessons'
+import { COURSE, previousLessonId, professionLessons } from '@/engine/lessons'
+import { goalLabel, professionLabel } from '@/engine/profile'
 import { levelFromXp } from '@/engine/xp'
 import { useAuraStore } from '@/state/store'
 
 interface HomeScreenProps {
   onStartLesson: (lessonId: string) => void
+  onProfile: () => void
 }
 
 type NodeStatus = 'done' | 'available' | 'locked'
@@ -48,33 +49,48 @@ function greeting(): string {
   return 'Good evening'
 }
 
-export function HomeScreen({ onStartLesson }: HomeScreenProps) {
+export function HomeScreen({ onStartLesson, onProfile }: HomeScreenProps) {
   const xp = useAuraStore((state) => state.xp)
   const streak = useAuraStore((state) => state.streak)
   const hearts = useAuraStore((state) => state.hearts)
   const daily = useAuraStore((state) => state.daily)
   const dailyGoal = useAuraStore((state) => state.dailyGoal)
   const completedLessons = useAuraStore((state) => state.completedLessons)
-  const achievements = useAuraStore((state) => state.achievements)
   const learnedWords = useAuraStore((state) => state.learnedWords)
+  const profile = useAuraStore((state) => state.profile)
 
   const completed = useMemo(() => new Set(completedLessons), [completedLessons])
+  const career = useMemo(() => professionLessons(profile.profession), [profile.profession])
   const level = levelFromXp(xp)
   const goalPercent = Math.min(100, Math.round((daily.xp / dailyGoal) * 100))
-  const unlockedCount = ACHIEVEMENTS.filter(
-    (achievement) => achievements[achievement.id] !== undefined,
-  ).length
 
   return (
     <div className="home-screen">
       <div className="home-hero">
-        <div className="home-hero__brand">
-          <Logo size={56} withBackground />
+        <button
+          type="button"
+          className="home-hero__brand"
+          aria-label="Open your profile"
+          onClick={onProfile}
+        >
+          <span
+            className="home-avatar"
+            style={{ background: profile.avatarColor, color: '#ffffff' }}
+          >
+            <AvatarIcon name={profile.avatar} size={56} color="#ffffff" />
+          </span>
           <div>
-            <h1 className="home-hero__title">Aura</h1>
-            <p className="home-hero__greeting">{greeting()}, learner</p>
+            <h1 className="home-hero__title">{profile.name}</h1>
+            <p className="home-hero__greeting">
+              {greeting()}, {profile.name} · {learnedWords.length} words
+            </p>
+            {profile.goal !== undefined && (
+              <p className="home-hero__goal">
+                <Target size={13} aria-hidden="true" /> Goal: {goalLabel(profile.goal)}
+              </p>
+            )}
           </div>
-        </div>
+        </button>
         <div className="home-hero__stats">
           <div className="home-card home-card--streak">
             <Flame size={22} aria-hidden="true" />
@@ -151,28 +167,39 @@ export function HomeScreen({ onStartLesson }: HomeScreenProps) {
         })}
       </section>
 
-      <section className="home-bottom">
-        <div className="home-card home-card--words">
-          <BookOpen size={22} aria-hidden="true" />
-          <div>
-            <strong>{learnedWords.length} words</strong>
-            <span>in your vocabulary</span>
+      {career.length > 0 && (
+        <section className="career-track" aria-label="Career lessons">
+          <header className="unit__header">
+            <span className="unit__icon" style={{ color: 'var(--aura-blue)' }}>
+              <GraduationCap size={26} aria-hidden="true" />
+            </span>
+            <div className="unit__title">
+              <h2>Career track · {professionLabel(profile.profession)}</h2>
+              <span>
+                {career.filter((lesson) => completed.has(lesson.id)).length}/{career.length} lessons
+              </span>
+            </div>
+          </header>
+          <div className="unit__path">
+            {career.map((lesson) => {
+              const status = completed.has(lesson.id) ? 'done' : 'available'
+              return (
+                <button
+                  key={lesson.id}
+                  type="button"
+                  className={['lesson-node', `lesson-node--${status}`].join(' ')}
+                  style={{ background: 'var(--aura-blue)' }}
+                  aria-label={`${lesson.title} (${status})`}
+                  onClick={() => onStartLesson(lesson.id)}
+                >
+                  {nodeIcon(status, lesson.type)}
+                  <span className="lesson-node__label">{lesson.title}</span>
+                </button>
+              )
+            })}
           </div>
-        </div>
-        <div className="home-card home-card--achievements">
-          <Medal size={22} aria-hidden="true" />
-          <div>
-            <strong>
-              {unlockedCount}/{ACHIEVEMENTS.length} achievements
-            </strong>
-            <span>keep learning to unlock more</span>
-          </div>
-        </div>
-        <p className="home-screen__privacy">
-          <Lock size={14} aria-hidden="true" /> 100% local: your data never leaves your device.
-          Free, libre and open source.
-        </p>
-      </section>
+        </section>
+      )}
     </div>
   )
 }

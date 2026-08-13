@@ -1,0 +1,1012 @@
+[
+  {
+    "id": "at-the-cafe",
+    "title": "At the Café",
+    "icon": "Utensils",
+    "lines": [
+      {
+        "id": "cafe-1",
+        "speaker": "Barista",
+        "text": "Good morning! What can I get for you?"
+      },
+      {
+        "id": "cafe-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I would like a coffee, please.",
+            "correct": true,
+            "reply": "Coming right up!"
+          },
+          {
+            "text": "Give me the coffee fast.",
+            "correct": false,
+            "reply": "That sounds rude — try a polite order."
+          },
+          {
+            "text": "Coffee good today, yes?",
+            "correct": false,
+            "reply": "A clear, full order works better."
+          }
+        ]
+      },
+      {
+        "id": "cafe-3",
+        "speaker": "Barista",
+        "text": "Coming right up! Anything to eat?"
+      },
+      {
+        "id": "cafe-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Yes, a croissant, please.",
+            "correct": true,
+            "reply": "Perfect. That will be four dollars."
+          },
+          {
+            "text": "No, I don't want.",
+            "correct": false,
+            "reply": "A more complete answer: 'No, thanks.'"
+          },
+          {
+            "text": "Croissant is delicious.",
+            "correct": false,
+            "reply": "You didn't answer the question."
+          }
+        ]
+      },
+      {
+        "id": "cafe-5",
+        "speaker": "Barista",
+        "text": "Perfect. That will be four dollars."
+      },
+      {
+        "id": "cafe-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Here you go. Thank you!",
+            "correct": true,
+            "reply": "Thanks! Have a nice day."
+          },
+          {
+            "text": "Too expensive!",
+            "correct": false,
+            "reply": "A friendly payment works better."
+          },
+          { "text": "I pay tomorrow.", "correct": false, "reply": "You should pay now." }
+        ]
+      },
+      {
+        "id": "cafe-7",
+        "speaker": "Barista",
+        "text": "Thanks! Have a nice day."
+      },
+      {
+        "id": "cafe-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          { "text": "You too, goodbye!", "correct": true, "reply": "Great conversation!" },
+          { "text": "Yes.", "correct": false, "reply": "Try a warmer goodbye." },
+          { "text": "Bye bye bye.", "correct": false, "reply": "Keep it natural and polite." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "directions",
+    "title": "Asking for Directions",
+    "icon": "Map",
+    "lines": [
+      {
+        "id": "dir-1",
+        "speaker": "Tourist",
+        "text": "Excuse me, I'm looking for the museum."
+      },
+      {
+        "id": "dir-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "It's just around the corner.",
+            "correct": true,
+            "reply": "Thank you very much!"
+          },
+          {
+            "text": "Museum over there? Maybe?",
+            "correct": false,
+            "reply": "Be clear and direct."
+          },
+          {
+            "text": "I don't know nothing.",
+            "correct": false,
+            "reply": "Double negatives are confusing."
+          }
+        ]
+      },
+      {
+        "id": "dir-3",
+        "speaker": "Tourist",
+        "text": "Thank you very much! Is it far?"
+      },
+      {
+        "id": "dir-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "No, it's about five minutes on foot.",
+            "correct": true,
+            "reply": "Perfect, thank you!"
+          },
+          { "text": "Far is not.", "correct": false, "reply": "Try: 'No, it's not far.'" },
+          {
+            "text": "Five minutes walk, maybe.",
+            "correct": false,
+            "reply": "Close! Use 'on foot'."
+          }
+        ]
+      },
+      {
+        "id": "dir-5",
+        "speaker": "Tourist",
+        "text": "Perfect, thank you! And where can I buy tickets?"
+      },
+      {
+        "id": "dir-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "You can buy them at the entrance.",
+            "correct": true,
+            "reply": "Great, thanks for your help!"
+          },
+          {
+            "text": "Tickets buy at entrance.",
+            "correct": false,
+            "reply": "Word order: 'You can buy tickets at the entrance.'"
+          },
+          {
+            "text": "Buy tickets where? Entrance.",
+            "correct": false,
+            "reply": "Make it a full, clear sentence."
+          }
+        ]
+      },
+      {
+        "id": "dir-7",
+        "speaker": "Tourist",
+        "text": "Great, thanks for your help!"
+      },
+      {
+        "id": "dir-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "You're welcome. Have a nice visit!",
+            "correct": true,
+            "reply": "You gave great directions!"
+          },
+          { "text": "No problem no.", "correct": false, "reply": "Try: 'You're welcome.'" },
+          { "text": "Welcome.", "correct": false, "reply": "In English we say 'You're welcome.'" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "at-the-hotel",
+    "title": "Checking In at a Hotel",
+    "icon": "Home",
+    "lines": [
+      {
+        "id": "hotel-1",
+        "speaker": "Receptionist",
+        "text": "Good evening! Welcome to the Grand Hotel. How can I help you?"
+      },
+      {
+        "id": "hotel-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Hi, I have a reservation under the name Martinez.",
+            "correct": true,
+            "reply": "Of course. Let me find it."
+          },
+          {
+            "text": "Room I need. Now.",
+            "correct": false,
+            "reply": "Try a clear, polite sentence."
+          },
+          {
+            "text": "My name is Martinez and a reservation has me.",
+            "correct": false,
+            "reply": "A natural order: 'I have a reservation under…'"
+          }
+        ]
+      },
+      {
+        "id": "hotel-3",
+        "speaker": "Receptionist",
+        "text": "Found it — a single room for three nights. Could I see your passport, please?"
+      },
+      {
+        "id": "hotel-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Here you go. Do you need anything else?",
+            "correct": true,
+            "reply": "Perfect. Here is your key card."
+          },
+          { "text": "Passport here you need.", "correct": false, "reply": "Try: 'Here you go.'" },
+          {
+            "text": "You take my passport?",
+            "correct": false,
+            "reply": "More natural: 'Here you go.'"
+          }
+        ]
+      },
+      {
+        "id": "hotel-5",
+        "speaker": "Receptionist",
+        "text": "Room 304, on the third floor. Breakfast is served from seven to ten."
+      },
+      {
+        "id": "hotel-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Thank you. What time is checkout tomorrow?",
+            "correct": true,
+            "reply": "Checkout is at eleven."
+          },
+          {
+            "text": "Checkout what time?",
+            "correct": false,
+            "reply": "Try: 'What time is checkout?'"
+          },
+          {
+            "text": "Tomorrow checkout at eleven?",
+            "correct": false,
+            "reply": "A full question works better."
+          }
+        ]
+      },
+      {
+        "id": "hotel-7",
+        "speaker": "Receptionist",
+        "text": "At eleven. Is there anything else I can do for you?"
+      },
+      {
+        "id": "hotel-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "No, that's all. Thank you very much!",
+            "correct": true,
+            "reply": "Enjoy your stay!"
+          },
+          { "text": "No else.", "correct": false, "reply": "Try: 'No, that's all.'" },
+          {
+            "text": "All good no need.",
+            "correct": false,
+            "reply": "A simple 'No, that's all. Thanks!'"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "at-the-airport",
+    "title": "At the Airport",
+    "icon": "Plane",
+    "lines": [
+      { "id": "air-1", "speaker": "Agent", "text": "Good morning. Where are you flying today?" },
+      {
+        "id": "air-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I'm flying to London, flight number 142.",
+            "correct": true,
+            "reply": "Boarding pass, please."
+          },
+          { "text": "London I go.", "correct": false, "reply": "Try: 'I'm flying to London.'" },
+          {
+            "text": "Flight 142 to London is mine.",
+            "correct": false,
+            "reply": "A natural order: 'I'm flying to London.'"
+          }
+        ]
+      },
+      {
+        "id": "air-3",
+        "speaker": "Agent",
+        "text": "That's the 10:15 flight. Could I see your passport and boarding pass?"
+      },
+      {
+        "id": "air-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Of course, here they are.",
+            "correct": true,
+            "reply": "Thank you. Any bags to check in?"
+          },
+          { "text": "Here.", "correct": false, "reply": "Be more complete: 'Here they are.'" },
+          {
+            "text": "Passport here boarding pass here.",
+            "correct": false,
+            "reply": "Try: 'Here they are.'"
+          }
+        ]
+      },
+      { "id": "air-5", "speaker": "Agent", "text": "Any bags to check in, or just a carry-on?" },
+      {
+        "id": "air-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Just a carry-on bag, please.",
+            "correct": true,
+            "reply": "Perfect. Here's your boarding pass."
+          },
+          { "text": "One carry-on just.", "correct": false, "reply": "Try: 'Just a carry-on.'" },
+          {
+            "text": "Only carry-on one.",
+            "correct": false,
+            "reply": "A natural phrase: 'Just a carry-on.'"
+          }
+        ]
+      },
+      {
+        "id": "air-7",
+        "speaker": "Agent",
+        "text": "Your gate is B12. Boarding starts at 9:45. Have a great flight!"
+      },
+      {
+        "id": "air-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Thank you very much. Have a nice day!",
+            "correct": true,
+            "reply": "Enjoy your trip!"
+          },
+          {
+            "text": "Thank you.",
+            "correct": false,
+            "reply": "Add a warm ending: 'Have a nice day!'"
+          },
+          {
+            "text": "OK thanks bye.",
+            "correct": false,
+            "reply": "More natural: 'Thank you very much.'"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "at-the-doctors",
+    "title": "At the Doctor's Office",
+    "icon": "HeartPulse",
+    "lines": [
+      {
+        "id": "doc-1",
+        "speaker": "Doctor",
+        "text": "Hello, please have a seat. What can I help you with today?"
+      },
+      {
+        "id": "doc-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I've had a sore throat and a headache for two days.",
+            "correct": true,
+            "reply": "I see. Any fever?"
+          },
+          {
+            "text": "Two days sore throat headache me.",
+            "correct": false,
+            "reply": "Try a full sentence: 'I've had a sore throat…'"
+          },
+          {
+            "text": "I am feeling not well because throat.",
+            "correct": false,
+            "reply": "More natural: 'I've had a sore throat.'"
+          }
+        ]
+      },
+      { "id": "doc-3", "speaker": "Doctor", "text": "I see. Any fever or trouble swallowing?" },
+      {
+        "id": "doc-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "A little fever last night, but no trouble swallowing.",
+            "correct": true,
+            "reply": "Let me take a look."
+          },
+          {
+            "text": "Fever little last night.",
+            "correct": false,
+            "reply": "Full sentence: 'I had a little fever last night.'"
+          },
+          {
+            "text": "Swallow no trouble but fever yes.",
+            "correct": false,
+            "reply": "Try: 'A little fever last night.'"
+          }
+        ]
+      },
+      {
+        "id": "doc-5",
+        "speaker": "Doctor",
+        "text": "Open your mouth, please. It's a mild infection. I'll write you a prescription."
+      },
+      {
+        "id": "doc-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Thank you. How often should I take it?",
+            "correct": true,
+            "reply": "Twice a day, after meals."
+          },
+          {
+            "text": "How many times take?",
+            "correct": false,
+            "reply": "Try: 'How often should I take it?'"
+          },
+          {
+            "text": "Take it when?",
+            "correct": false,
+            "reply": "A clear question: 'How often should I take it?'"
+          }
+        ]
+      },
+      {
+        "id": "doc-7",
+        "speaker": "Doctor",
+        "text": "Twice a day after meals. Rest and drink plenty of water."
+      },
+      {
+        "id": "doc-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Got it. Thank you, doctor!",
+            "correct": true,
+            "reply": "You're welcome. Feel better soon!"
+          },
+          { "text": "OK thank.", "correct": false, "reply": "Try: 'Got it, thank you.'" },
+          {
+            "text": "I understand thank.",
+            "correct": false,
+            "reply": "A warm ending: 'Thank you, doctor!'"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "job-interview",
+    "title": "A Job Interview",
+    "icon": "Briefcase",
+    "lines": [
+      {
+        "id": "job-1",
+        "speaker": "Interviewer",
+        "text": "Thanks for coming in. Tell me a little about yourself."
+      },
+      {
+        "id": "job-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I'm a marketing assistant with three years of experience.",
+            "correct": true,
+            "reply": "Great. Why do you want this job?"
+          },
+          {
+            "text": "Me marketing three years experience.",
+            "correct": false,
+            "reply": "Full sentence: 'I have three years of experience.'"
+          },
+          {
+            "text": "I work marketing.",
+            "correct": false,
+            "reply": "Add detail: 'I'm a marketing assistant…'"
+          }
+        ]
+      },
+      {
+        "id": "job-3",
+        "speaker": "Interviewer",
+        "text": "Great. Why do you want to work with our company?"
+      },
+      {
+        "id": "job-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I admire your products and I'd love to grow here.",
+            "correct": true,
+            "reply": "Nice. What are your strengths?"
+          },
+          {
+            "text": "Because your company good.",
+            "correct": false,
+            "reply": "Give a real reason about the company."
+          },
+          {
+            "text": "I need money and a job.",
+            "correct": false,
+            "reply": "Focus on what attracts you about the company."
+          }
+        ]
+      },
+      { "id": "job-5", "speaker": "Interviewer", "text": "What are your biggest strengths?" },
+      {
+        "id": "job-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I'm organised, reliable and I learn quickly.",
+            "correct": true,
+            "reply": "That's exactly what we need."
+          },
+          {
+            "text": "I good at everything.",
+            "correct": false,
+            "reply": "Be specific: 'I'm organised and reliable.'"
+          },
+          {
+            "text": "Strong fast learn.",
+            "correct": false,
+            "reply": "Full sentence: 'I learn quickly.'"
+          }
+        ]
+      },
+      { "id": "job-7", "speaker": "Interviewer", "text": "Do you have any questions for us?" },
+      {
+        "id": "job-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Yes, could you tell me about the team I'd be working with?",
+            "correct": true,
+            "reply": "Of course — a small, friendly team of six."
+          },
+          {
+            "text": "How much salary?",
+            "correct": false,
+            "reply": "Ask about the role first: 'Tell me about the team.'"
+          },
+          {
+            "text": "No questions.",
+            "correct": false,
+            "reply": "Asking one question shows interest."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ordering-pizza",
+    "title": "Ordering Pizza",
+    "icon": "Flame",
+    "lines": [
+      {
+        "id": "pizza-1",
+        "speaker": "Pizza Place",
+        "text": "Hello, Papa Rossi's. How can I help you?"
+      },
+      {
+        "id": "pizza-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Hi, I'd like to order a large pizza, please.",
+            "correct": true,
+            "reply": "Sure. What toppings would you like?"
+          },
+          {
+            "text": "I want pizza.",
+            "correct": false,
+            "reply": "Be specific: 'I'd like to order a large pizza.'"
+          },
+          {
+            "text": "Pizza for me now.",
+            "correct": false,
+            "reply": "A polite full order works best."
+          }
+        ]
+      },
+      { "id": "pizza-3", "speaker": "Pizza Place", "text": "What toppings would you like?" },
+      {
+        "id": "pizza-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Just cheese and mushrooms, please.",
+            "correct": true,
+            "reply": "A cheese and mushroom large. For delivery?"
+          },
+          {
+            "text": "Cheese mushrooms only.",
+            "correct": false,
+            "reply": "Add 'please': 'Just cheese and mushrooms, please.'"
+          },
+          {
+            "text": "The one with toppings.",
+            "correct": false,
+            "reply": "Name the toppings: 'Cheese and mushrooms.'"
+          }
+        ]
+      },
+      { "id": "pizza-5", "speaker": "Pizza Place", "text": "Is that for delivery or pickup?" },
+      {
+        "id": "pizza-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Delivery, please. 12 Park Street.",
+            "correct": true,
+            "reply": "Great, that will be about twenty minutes."
+          },
+          {
+            "text": "Delivery Park Street 12.",
+            "correct": false,
+            "reply": "Full sentence: 'Delivery, please. 12 Park Street.'"
+          },
+          { "text": "Yes.", "correct": false, "reply": "Say which and the address." }
+        ]
+      },
+      {
+        "id": "pizza-7",
+        "speaker": "Pizza Place",
+        "text": "Great — about twenty minutes. Anything else?"
+      },
+      {
+        "id": "pizza-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "No, that's everything. Thank you!",
+            "correct": true,
+            "reply": "Thanks! See you soon."
+          },
+          {
+            "text": "Nothing else no.",
+            "correct": false,
+            "reply": "Try: 'No, that's everything.'"
+          },
+          {
+            "text": "Yes no that all.",
+            "correct": false,
+            "reply": "A clean ending: 'No, that's everything. Thanks!'"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "at-the-supermarket",
+    "title": "At the Supermarket",
+    "icon": "ShoppingBag",
+    "lines": [
+      {
+        "id": "shop-1",
+        "speaker": "Cashier",
+        "text": "Hello! Did you find everything you were looking for?"
+      },
+      {
+        "id": "shop-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Yes, thanks. Could you tell me where the bread is?",
+            "correct": true,
+            "reply": "Aisle three, next to the bakery."
+          },
+          {
+            "text": "Bread where?",
+            "correct": false,
+            "reply": "A polite question: 'Where is the bread?'"
+          },
+          {
+            "text": "I need bread aisle.",
+            "correct": false,
+            "reply": "Try: 'Where can I find the bread?'"
+          }
+        ]
+      },
+      {
+        "id": "shop-3",
+        "speaker": "Cashier",
+        "text": "Aisle three, next to the bakery. Can I help you with anything else?"
+      },
+      {
+        "id": "shop-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "No, that's all. I'm ready to pay.",
+            "correct": true,
+            "reply": "Sure, that will be twelve dollars."
+          },
+          { "text": "No else.", "correct": false, "reply": "Try: 'No, that's all.'" },
+          {
+            "text": "Pay now yes.",
+            "correct": false,
+            "reply": "A natural sentence: 'I'm ready to pay.'"
+          }
+        ]
+      },
+      {
+        "id": "shop-5",
+        "speaker": "Cashier",
+        "text": "That will be twelve dollars. Cash or card?"
+      },
+      {
+        "id": "shop-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          { "text": "Card, please.", "correct": true, "reply": "Sure, go ahead and tap." },
+          { "text": "Card.", "correct": false, "reply": "Add 'please' — it's friendlier." },
+          {
+            "text": "I pay with the card now.",
+            "correct": false,
+            "reply": "Simply: 'Card, please.'"
+          }
+        ]
+      },
+      {
+        "id": "shop-7",
+        "speaker": "Cashier",
+        "text": "Perfect. Here's your receipt. Have a great day!"
+      },
+      {
+        "id": "shop-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          { "text": "Thank you, you too!", "correct": true, "reply": "See you next time!" },
+          {
+            "text": "You too yes.",
+            "correct": false,
+            "reply": "A warm reply: 'Thank you, you too!'"
+          },
+          {
+            "text": "Ok thanks.",
+            "correct": false,
+            "reply": "Add a warm ending: 'Have a great day!'"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "small-talk-party",
+    "title": "Small Talk at a Party",
+    "icon": "Users",
+    "lines": [
+      { "id": "party-1", "speaker": "Guest", "text": "Hey! I don't think we've met. I'm Sam." },
+      {
+        "id": "party-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Hi Sam, nice to meet you. I'm Alex.",
+            "correct": true,
+            "reply": "Nice to meet you too! How do you know the host?"
+          },
+          { "text": "Hello.", "correct": false, "reply": "Say your name: 'I'm Alex.'" },
+          { "text": "Me Alex.", "correct": false, "reply": "More natural: 'I'm Alex.'" }
+        ]
+      },
+      { "id": "party-3", "speaker": "Guest", "text": "How do you know the host?" },
+      {
+        "id": "party-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "We work together at the design studio.",
+            "correct": true,
+            "reply": "Oh nice! What do you do there?"
+          },
+          {
+            "text": "Work together.",
+            "correct": false,
+            "reply": "Give a bit of detail: 'We work together…'"
+          },
+          {
+            "text": "Studio design work.",
+            "correct": false,
+            "reply": "A full answer: 'We work together at a studio.'"
+          }
+        ]
+      },
+      { "id": "party-5", "speaker": "Guest", "text": "What do you do there?" },
+      {
+        "id": "party-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I'm a graphic designer. How about you?",
+            "correct": true,
+            "reply": "I'm a teacher — and I love your work!"
+          },
+          {
+            "text": "Designer graphic.",
+            "correct": false,
+            "reply": "Full sentence: 'I'm a graphic designer.'"
+          },
+          {
+            "text": "I design things.",
+            "correct": false,
+            "reply": "Be specific and ask back: 'How about you?'"
+          }
+        ]
+      },
+      {
+        "id": "party-7",
+        "speaker": "Guest",
+        "text": "I'm a teacher. Hey, let me grab you a drink."
+      },
+      {
+        "id": "party-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "That's really kind. Thank you!",
+            "correct": true,
+            "reply": "Of course! Be right back."
+          },
+          {
+            "text": "Yes get me drink.",
+            "correct": false,
+            "reply": "Politely: 'That's kind, thank you.'"
+          },
+          { "text": "Ok.", "correct": false, "reply": "A warm reply: 'Thank you!'" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phone-call",
+    "title": "Making a Phone Call",
+    "icon": "MessageSquare",
+    "lines": [
+      {
+        "id": "call-1",
+        "speaker": "Office",
+        "text": "Good morning, Smith & Co. How may I direct your call?"
+      },
+      {
+        "id": "call-2",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Good morning. Could I speak to Ms. Rivera, please?",
+            "correct": true,
+            "reply": "One moment, I'll put you through."
+          },
+          {
+            "text": "I want Ms. Rivera.",
+            "correct": false,
+            "reply": "Politely: 'Could I speak to Ms. Rivera?'"
+          },
+          {
+            "text": "Speak to Rivera now.",
+            "correct": false,
+            "reply": "A courteous request works better."
+          }
+        ]
+      },
+      { "id": "call-3", "speaker": "Ms. Rivera", "text": "Hello, this is Ana Rivera." },
+      {
+        "id": "call-4",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "Hi Ms. Rivera, this is Alex from the design team.",
+            "correct": true,
+            "reply": "Oh hi Alex, good to hear from you!"
+          },
+          {
+            "text": "It's Alex.",
+            "correct": false,
+            "reply": "Say your name and where you're from."
+          },
+          {
+            "text": "Alex here from design.",
+            "correct": false,
+            "reply": "More natural: 'This is Alex from the design team.'"
+          }
+        ]
+      },
+      { "id": "call-5", "speaker": "Ms. Rivera", "text": "What can I do for you?" },
+      {
+        "id": "call-6",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "I'm calling about the project deadline — is Thursday still on?",
+            "correct": true,
+            "reply": "Yes, we're on track for Thursday."
+          },
+          {
+            "text": "Deadline Thursday?",
+            "correct": false,
+            "reply": "A clear question: 'Is Thursday still the deadline?'"
+          },
+          {
+            "text": "About deadline I call.",
+            "correct": false,
+            "reply": "Full sentence: 'I'm calling about the deadline.'"
+          }
+        ]
+      },
+      { "id": "call-7", "speaker": "Ms. Rivera", "text": "Yes, we're on track. Anything else?" },
+      {
+        "id": "call-8",
+        "speaker": "You",
+        "text": "…",
+        "options": [
+          {
+            "text": "No, that's all. Thanks for your time!",
+            "correct": true,
+            "reply": "Anytime. Talk soon!"
+          },
+          {
+            "text": "No thanks bye.",
+            "correct": false,
+            "reply": "A polished ending: 'Thanks for your time!'"
+          },
+          { "text": "That all.", "correct": false, "reply": "Try: 'No, that's all. Thanks!'" }
+        ]
+      }
+    ]
+  }
+]

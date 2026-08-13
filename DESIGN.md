@@ -272,12 +272,21 @@ clear next action (e.g. "Finish lessons to fill your review queue" + CTA).
 
 ## 10. Layout
 
-- App shell: **max-width 720px**, centered, `min-height 100vh`.
-- Sticky top bar; fixed bottom nav (content reserves 96px bottom padding).
+- App shell: **max-width 720px** on phones, centered, `min-height 100vh`.
+- **Responsive breakpoints** (in `src/styles/global.css`):
+  - **≥ 768px (tablet)**: shell widens to 900px; grids expand (achievements 4-up,
+    stats 6-up, exercise options 200px minimum); the reading column stays ~720px
+    centered for comfortable line length.
+  - **≥ 1100px (desktop)**: shell widens to 1080px and the **bottom navigation
+    becomes a fixed left rail** (220px, vertical, right-of-scroll); content and
+    full-screen screens (lesson/reader/book/dialogue) widen to ~1000px.
+- Sticky top bar; fixed bottom nav (mobile/tablet) with content reserving 96px
+  bottom padding; left rail on desktop.
 - Lesson player: full-height column, header (close + progress + hearts),
   exercise body, footer (Continue / progress count).
 - Result screens: centered stack, large hero icon, stat cards, actions.
-- Content column: 1 column on mobile; never requires landscape.
+- Content column: 1 column on mobile; multi-column grids scale with width;
+  never requires landscape.
 
 ---
 

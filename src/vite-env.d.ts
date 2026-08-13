@@ -34,3 +34,23 @@ declare module '@/data/vocabulary.json' {
   const data: unknown
   export default data
 }
+
+declare module '@/data/library.json' {
+  const data: unknown
+  export default data
+}
+
+declare module '@/data/library/*.json' {
+  const data: unknown
+  export default data
+}
+
+declare module '@/data/grammar.json' {
+  const data: unknown
+  export default data
+}
+
+declare module '@/data/dialogues.json' {
+  const data: unknown
+  export default data
+}

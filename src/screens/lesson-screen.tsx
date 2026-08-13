@@ -18,9 +18,16 @@ import {
 import { LessonResult } from '@/components/lesson-result'
 import { ProgressBar } from '@/components/progress-bar'
 import { generateExercises } from '@/engine/exercises'
+import { playSound } from '@/engine/sounds'
+import { trackLessonAnswer, trackLessonComplete, trackLessonStart } from '@/engine/telemetry'
 import { XP_PER_CORRECT, XP_PER_LESSON } from '@/engine/xp'
 import { useSpeech } from '@/hooks/use-speech'
 import { useAuraStore } from '@/state/store'
+
+// Current time (avoids `Date.now()` inside the component body for the lint rule).
+function nowMs(): number {
+  return Date.now()
+}
 
 interface LessonScreenProps {
   lesson: Lesson
@@ -36,11 +43,27 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
   const [phase, setPhase] = useState<Phase>('playing')
   const [correctCount, setCorrectCount] = useState(0)
   const timerRef = useRef<number | undefined>(undefined)
+  const exerciseShownAtRef = useRef(0)
+  const lessonStartRef = useRef(0)
+
+  useEffect(() => {
+    exerciseShownAtRef.current = nowMs()
+  }, [index])
+
+  useEffect(() => {
+    lessonStartRef.current = nowMs()
+    exerciseShownAtRef.current = nowMs()
+    trackLessonStart(lesson.id)
+  }, [lesson.id])
+
+  const answerMs = () => Math.max(0, nowMs() - exerciseShownAtRef.current)
 
   const recordAnswer = useAuraStore((state) => state.recordAnswer)
+  const markGuidedAction = useAuraStore((state) => state.markGuidedAction)
   const awardXp = useAuraStore((state) => state.awardXp)
   const completeLesson = useAuraStore((state) => state.completeLesson)
   const addWord = useAuraStore((state) => state.addWord)
+  const recordWeakWord = useAuraStore((state) => state.recordWeakWord)
   const resetHearts = useAuraStore((state) => state.resetHearts)
   const hearts = useAuraStore((state) => state.hearts)
   const { speak } = useSpeech()
@@ -64,18 +87,28 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
     for (const wordInfo of lesson.words) {
       addWord(wordInfo.word, wordInfo.meaning)
     }
+    playSound('success')
+    const seconds = Math.max(1, Math.round((nowMs() - lessonStartRef.current) / 1000))
+    trackLessonComplete(lesson.id, seconds)
     setPhase('complete')
   }
 
   const goTo = (nextIndex: number) => {
+    if (timerRef.current !== undefined) {
+      clearTimeout(timerRef.current)
+      timerRef.current = undefined
+    }
     setIndex(nextIndex)
     setFeedback('idle')
   }
 
   const handleCorrect = () => {
     if (feedback !== 'idle') return
+    markGuidedAction('lesson')
+    playSound('correct')
     recordAnswer(true)
     awardXp(XP_PER_CORRECT)
+    trackLessonAnswer(lesson.id, true, answerMs())
     setCorrectCount((count) => count + 1)
     setFeedback('correct')
     timerRef.current = setTimeout(() => {
@@ -86,9 +119,14 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
 
   const handleWrong = () => {
     if (feedback !== 'idle') return
+    playSound('wrong')
     recordAnswer(false)
+    trackLessonAnswer(lesson.id, false, answerMs())
+    const exercise = exercises[index]
+    if (exercise !== undefined && 'word' in exercise) recordWeakWord(exercise.word)
     setFeedback('wrong')
     if (useAuraStore.getState().hearts <= 0) {
+      playSound('heart')
       timerRef.current = setTimeout(() => setPhase('failed'), 1400)
     }
   }
@@ -99,19 +137,30 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
   }
 
   const handleMatchComplete = () => {
+    playSound('correct')
     recordAnswer(true)
     awardXp(XP_PER_CORRECT)
+    trackLessonAnswer(lesson.id, true, answerMs())
     setCorrectCount((count) => count + 1)
     if (index + 1 >= exercises.length) finish()
     else goTo(index + 1)
   }
 
   const handleMatchMistake = () => {
+    playSound('wrong')
     recordAnswer(false)
-    if (useAuraStore.getState().hearts <= 0) setPhase('failed')
+    trackLessonAnswer(lesson.id, false, answerMs())
+    if (useAuraStore.getState().hearts <= 0) {
+      playSound('heart')
+      setPhase('failed')
+    }
   }
 
   const retry = () => {
+    if (timerRef.current !== undefined) {
+      clearTimeout(timerRef.current)
+      timerRef.current = undefined
+    }
     resetHearts()
     setIndex(0)
     setFeedback('idle')

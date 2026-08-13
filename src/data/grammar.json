@@ -1,0 +1,283 @@
+[
+  {
+    "id": "present-simple",
+    "title": "Present Simple",
+    "icon": "Repeat",
+    "color": "#58cc02",
+    "summary": "Facts, habits and routines.",
+    "lessons": [
+      {
+        "id": "present-simple-rule",
+        "title": "The rule",
+        "type": "rule",
+        "explanation": "Use the present simple for things that are always or usually true: habits, routines and facts. For he/she/it, add -s (or -es after s, sh, ch, x).",
+        "examples": [
+          { "text": "I work in an office.", "note": "base verb with I / you / we / they" },
+          { "text": "She works in a school.", "note": "add -s for he / she / it" },
+          { "text": "He watches TV in the evening.", "note": "-es after ch, sh, s, x" },
+          { "text": "I don't like cold coffee.", "note": "don't / doesn't make negatives" }
+        ],
+        "exercises": [
+          {
+            "id": "ps1",
+            "kind": "choice",
+            "prompt": "She ____ English every day.",
+            "options": ["studies", "study", "studying"],
+            "answer": "studies",
+            "explanation": "Add -s for she."
+          },
+          {
+            "id": "ps2",
+            "kind": "choice",
+            "prompt": "They ____ to work by bus.",
+            "options": ["go", "goes", "going"],
+            "answer": "go",
+            "explanation": "They use the base verb, no -s."
+          },
+          {
+            "id": "ps3",
+            "kind": "fill",
+            "prompt": "He ____ (like) music.",
+            "answer": "likes",
+            "explanation": "Add -s for he."
+          },
+          {
+            "id": "ps4",
+            "kind": "reorder",
+            "prompt": "Order the words.",
+            "words": ["She", "drinks", "coffee", "every day"],
+            "answer": "She drinks coffee every day.",
+            "explanation": "Subject + verb(-s) + object + time."
+          }
+        ]
+      },
+      {
+        "id": "present-simple-practice",
+        "title": "Practice",
+        "type": "quiz",
+        "explanation": "",
+        "examples": [],
+        "exercises": [
+          {
+            "id": "ps5",
+            "kind": "choice",
+            "prompt": "We ____ at home on Sundays.",
+            "options": ["don't stay", "doesn't stay", "not stay"],
+            "answer": "don't stay",
+            "explanation": "don't + base verb with we."
+          },
+          {
+            "id": "ps6",
+            "kind": "fill",
+            "prompt": "My brother ____ (play) football.",
+            "answer": "plays",
+            "explanation": "-s for he (my brother)."
+          },
+          {
+            "id": "ps7",
+            "kind": "choice",
+            "prompt": "____ she like tea?",
+            "options": ["Does", "Do", "Is"],
+            "answer": "Does",
+            "explanation": "Does + subject + base verb."
+          },
+          {
+            "id": "ps8",
+            "kind": "reorder",
+            "prompt": "Order the words.",
+            "words": ["The", "sun", "rises", "in", "the", "east"],
+            "answer": "The sun rises in the east.",
+            "explanation": "Facts use the present simple."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "articles",
+    "title": "Articles: a, an, the",
+    "icon": "SpellCheck",
+    "color": "#1cb0f6",
+    "summary": "When to use a, an and the.",
+    "lessons": [
+      {
+        "id": "articles-rule",
+        "title": "The rule",
+        "type": "rule",
+        "explanation": "Use a before consonant sounds and an before vowel sounds for the first mention of a singular thing. Use the when the thing is specific or already known.",
+        "examples": [
+          { "text": "I saw a dog.", "note": "first mention, one of many" },
+          { "text": "An apple a day.", "note": "an before a vowel sound" },
+          { "text": "The dog was black.", "note": "the — we already know the dog" }
+        ],
+        "exercises": [
+          {
+            "id": "ar1",
+            "kind": "choice",
+            "prompt": "I bought ____ umbrella.",
+            "options": ["an", "a", "the"],
+            "answer": "an",
+            "explanation": "Umbrella starts with a vowel sound."
+          },
+          {
+            "id": "ar2",
+            "kind": "choice",
+            "prompt": "She has ____ cat and ____ dog.",
+            "options": ["a / a", "an / an", "the / the"],
+            "answer": "a / a",
+            "explanation": "First mention of both → a."
+          },
+          {
+            "id": "ar3",
+            "kind": "fill",
+            "prompt": "He is ____ astronaut.",
+            "answer": "an",
+            "explanation": "Astronaut starts with a vowel sound."
+          },
+          {
+            "id": "ar4",
+            "kind": "reorder",
+            "prompt": "Order the words.",
+            "words": ["Please", "close", "the", "door"],
+            "answer": "Please close the door.",
+            "explanation": "the — we know which door."
+          }
+        ]
+      },
+      {
+        "id": "articles-practice",
+        "title": "Practice",
+        "type": "quiz",
+        "explanation": "",
+        "examples": [],
+        "exercises": [
+          {
+            "id": "ar5",
+            "kind": "choice",
+            "prompt": "I live in ____ big city.",
+            "options": ["a", "an", "the"],
+            "answer": "a",
+            "explanation": "One of many cities → a."
+          },
+          {
+            "id": "ar6",
+            "kind": "choice",
+            "prompt": "____ sun is very bright today.",
+            "options": ["The", "A", "An"],
+            "answer": "The",
+            "explanation": "There is only one sun → the."
+          },
+          {
+            "id": "ar7",
+            "kind": "fill",
+            "prompt": "She plays ____ piano.",
+            "answer": "the",
+            "explanation": "Musical instruments take the."
+          },
+          {
+            "id": "ar8",
+            "kind": "reorder",
+            "prompt": "Order the words.",
+            "words": ["This", "is", "a", "wonderful", "idea"],
+            "answer": "This is a wonderful idea.",
+            "explanation": "First mention → a."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prepositions",
+    "title": "Prepositions: in, on, at",
+    "icon": "MapPin",
+    "color": "#ff9600",
+    "summary": "Place and time prepositions.",
+    "lessons": [
+      {
+        "id": "prepositions-rule",
+        "title": "The rule",
+        "type": "rule",
+        "explanation": "Use at for exact times and specific points; on for days and surfaces; in for months, years and inside spaces.",
+        "examples": [
+          { "text": "The meeting is at 3 p.m.", "note": "exact time → at" },
+          { "text": "See you on Monday.", "note": "day → on" },
+          { "text": "My birthday is in July.", "note": "month → in" },
+          { "text": "The keys are on the table.", "note": "surface → on" }
+        ],
+        "exercises": [
+          {
+            "id": "pp1",
+            "kind": "choice",
+            "prompt": "The train leaves ____ 9 o'clock.",
+            "options": ["at", "on", "in"],
+            "answer": "at",
+            "explanation": "Exact time → at."
+          },
+          {
+            "id": "pp2",
+            "kind": "choice",
+            "prompt": "We go to the beach ____ summer.",
+            "options": ["in", "on", "at"],
+            "answer": "in",
+            "explanation": "Season or month → in."
+          },
+          {
+            "id": "pp3",
+            "kind": "fill",
+            "prompt": "I'll see you ____ Friday.",
+            "answer": "on",
+            "explanation": "Day → on."
+          },
+          {
+            "id": "pp4",
+            "kind": "reorder",
+            "prompt": "Order the words.",
+            "words": ["My", "book", "is", "in", "my", "bag"],
+            "answer": "My book is in my bag.",
+            "explanation": "Inside a space → in."
+          }
+        ]
+      },
+      {
+        "id": "prepositions-practice",
+        "title": "Practice",
+        "type": "quiz",
+        "explanation": "",
+        "examples": [],
+        "exercises": [
+          {
+            "id": "pp5",
+            "kind": "choice",
+            "prompt": "She was born ____ 2010.",
+            "options": ["in", "on", "at"],
+            "answer": "in",
+            "explanation": "Year → in."
+          },
+          {
+            "id": "pp6",
+            "kind": "choice",
+            "prompt": "The picture is ____ the wall.",
+            "options": ["on", "in", "at"],
+            "answer": "on",
+            "explanation": "Surface → on."
+          },
+          {
+            "id": "pp7",
+            "kind": "fill",
+            "prompt": "Call me ____ 7 o'clock.",
+            "answer": "at",
+            "explanation": "Exact time → at."
+          },
+          {
+            "id": "pp8",
+            "kind": "reorder",
+            "prompt": "Order the words.",
+            "words": ["He", "is", "at", "the", "door"],
+            "answer": "He is at the door.",
+            "explanation": "Specific point → at."
+          }
+        ]
+      }
+    ]
+  }
+]

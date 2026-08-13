@@ -1,0 +1,610 @@
+{
+  "business": [
+    {
+      "id": "career-business-1",
+      "title": "Business meetings",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "agenda",
+          "meaning": "The list of topics to discuss in a meeting.",
+          "sentence": "Please send me the agenda before the meeting starts."
+        },
+        {
+          "word": "deadline",
+          "meaning": "The date or time by which something must be finished.",
+          "sentence": "The report has a strict deadline on Friday."
+        },
+        {
+          "word": "budget",
+          "meaning": "The amount of money planned for a project.",
+          "sentence": "We have a small budget for new equipment this year."
+        },
+        {
+          "word": "client",
+          "meaning": "A person or company that buys your services.",
+          "sentence": "Our client asked for a presentation next week."
+        },
+        {
+          "word": "proposal",
+          "meaning": "A formal plan or offer to do something.",
+          "sentence": "She wrote a proposal for the new marketing campaign."
+        },
+        {
+          "word": "negotiate",
+          "meaning": "To discuss something in order to reach an agreement.",
+          "sentence": "We need to negotiate a better price with the supplier."
+        }
+      ]
+    },
+    {
+      "id": "career-business-2",
+      "title": "Business emails",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "attachment",
+          "meaning": "A file sent together with an email.",
+          "sentence": "I forgot to add the attachment to my message."
+        },
+        {
+          "word": "recipient",
+          "meaning": "The person who receives a message.",
+          "sentence": "Check the recipient's address before you press send."
+        },
+        {
+          "word": "draft",
+          "meaning": "A first version of a document or email.",
+          "sentence": "I wrote a draft and will revise it tomorrow."
+        },
+        {
+          "word": "reply",
+          "meaning": "To answer a message.",
+          "sentence": "Please reply to my email before noon."
+        },
+        {
+          "word": "schedule",
+          "meaning": "A plan that shows when things will happen.",
+          "sentence": "We changed the schedule for the project launch."
+        },
+        {
+          "word": "follow up",
+          "meaning": "To check on something after a first contact.",
+          "sentence": "I will follow up with the client next Monday."
+        }
+      ]
+    }
+  ],
+  "tech": [
+    {
+      "id": "career-tech-1",
+      "title": "Software & coding",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "code",
+          "meaning": "The instructions that tell a computer what to do.",
+          "sentence": "She wrote clean code that is easy to read."
+        },
+        {
+          "word": "debug",
+          "meaning": "To find and fix problems in software.",
+          "sentence": "It took me an hour to debug the login error."
+        },
+        {
+          "word": "deploy",
+          "meaning": "To make software available for users.",
+          "sentence": "We will deploy the new version on Friday."
+        },
+        {
+          "word": "server",
+          "meaning": "A computer that stores data and serves other computers.",
+          "sentence": "The server crashed during the night."
+        },
+        {
+          "word": "database",
+          "meaning": "A place where information is stored in an organized way.",
+          "sentence": "The database holds records of all our customers."
+        },
+        {
+          "word": "algorithm",
+          "meaning": "A step-by-step method for solving a problem.",
+          "sentence": "The search uses a fast algorithm to find results."
+        }
+      ]
+    },
+    {
+      "id": "career-tech-2",
+      "title": "IT & support",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "password",
+          "meaning": "A secret word used to enter a system.",
+          "sentence": "Change your password every few months."
+        },
+        {
+          "word": "network",
+          "meaning": "Computers connected so they can share information.",
+          "sentence": "The office network is down right now."
+        },
+        {
+          "word": "backup",
+          "meaning": "A copy of data kept in case the original is lost.",
+          "sentence": "Always make a backup before you update the system."
+        },
+        {
+          "word": "update",
+          "meaning": "A newer version of software.",
+          "sentence": "Install the latest update to fix the bug."
+        },
+        {
+          "word": "crash",
+          "meaning": "When a program stops working suddenly.",
+          "sentence": "My computer crashed while I was saving the file."
+        },
+        {
+          "word": "login",
+          "meaning": "The act of entering a system with your details.",
+          "sentence": "Your login failed because the password was wrong."
+        }
+      ]
+    }
+  ],
+  "healthcare": [
+    {
+      "id": "career-health-1",
+      "title": "Medical visits",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "symptom",
+          "meaning": "A sign that shows you are ill.",
+          "sentence": "A high fever is a common symptom of the flu."
+        },
+        {
+          "word": "prescription",
+          "meaning": "An order from a doctor for medicine.",
+          "sentence": "The doctor wrote a prescription for antibiotics."
+        },
+        {
+          "word": "diagnosis",
+          "meaning": "The identification of an illness.",
+          "sentence": "The diagnosis was a simple infection."
+        },
+        {
+          "word": "treatment",
+          "meaning": "The care given to make an illness better.",
+          "sentence": "The treatment lasted for two weeks."
+        },
+        {
+          "word": "patient",
+          "meaning": "A person who receives medical care.",
+          "sentence": "The patient is resting after the operation."
+        },
+        {
+          "word": "appointment",
+          "meaning": "A fixed time to see a doctor.",
+          "sentence": "I have an appointment with the dentist at three."
+        }
+      ]
+    },
+    {
+      "id": "career-health-2",
+      "title": "The hospital",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "emergency",
+          "meaning": "A serious situation that needs immediate help.",
+          "sentence": "Call the emergency number if you need an ambulance."
+        },
+        {
+          "word": "ward",
+          "meaning": "A large room in a hospital for patients.",
+          "sentence": "The nurse took him to the children's ward."
+        },
+        {
+          "word": "surgery",
+          "meaning": "A medical operation.",
+          "sentence": "He needed surgery on his knee."
+        },
+        {
+          "word": "nurse",
+          "meaning": "A person who cares for patients in a hospital.",
+          "sentence": "The nurse checked my temperature every hour."
+        },
+        {
+          "word": "medication",
+          "meaning": "Medicine given to treat an illness.",
+          "sentence": "Take this medication after every meal."
+        },
+        {
+          "word": "wound",
+          "meaning": "An injury where the skin is cut or broken.",
+          "sentence": "Clean the wound before you bandage it."
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "career-edu-1",
+      "title": "The classroom",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "assignment",
+          "meaning": "A task given to a student to complete.",
+          "sentence": "The assignment is due next Tuesday."
+        },
+        {
+          "word": "syllabus",
+          "meaning": "The plan of a course with topics and dates.",
+          "sentence": "The syllabus shows all the readings for the term."
+        },
+        {
+          "word": "attendance",
+          "meaning": "Being present in class.",
+          "sentence": "The teacher records attendance every morning."
+        },
+        {
+          "word": "curriculum",
+          "meaning": "The subjects taught in a school or course.",
+          "sentence": "The new curriculum includes more science."
+        },
+        {
+          "word": "grade",
+          "meaning": "A mark showing how well a student did.",
+          "sentence": "She received a high grade on the exam."
+        },
+        {
+          "word": "lecture",
+          "meaning": "A long talk that teaches a large group.",
+          "sentence": "The lecture on history was very interesting."
+        }
+      ]
+    },
+    {
+      "id": "career-edu-2",
+      "title": "Teaching",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "feedback",
+          "meaning": "Comments that help someone improve.",
+          "sentence": "The teacher gave me useful feedback on my essay."
+        },
+        {
+          "word": "tutorial",
+          "meaning": "A small class with one student or a few students.",
+          "sentence": "I have a maths tutorial at four o'clock."
+        },
+        {
+          "word": "homework",
+          "meaning": "Work a student does at home after class.",
+          "sentence": "Did you finish your homework last night?"
+        },
+        {
+          "word": "exam",
+          "meaning": "A formal test of what you have learned.",
+          "sentence": "The final exam covers the whole course."
+        },
+        {
+          "word": "lesson plan",
+          "meaning": "A teacher's plan for what to teach in a class.",
+          "sentence": "She prepared a detailed lesson plan for Monday."
+        },
+        {
+          "word": "certificate",
+          "meaning": "An official paper that shows you finished a course.",
+          "sentence": "You get a certificate when you pass the course."
+        }
+      ]
+    }
+  ],
+  "hospitality": [
+    {
+      "id": "career-hospitality-1",
+      "title": "At the hotel",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "reservation",
+          "meaning": "A room or table kept for someone.",
+          "sentence": "I made a reservation for two nights."
+        },
+        {
+          "word": "check-in",
+          "meaning": "The process of arriving and getting your room key.",
+          "sentence": "Check-in starts at two in the afternoon."
+        },
+        {
+          "word": "guest",
+          "meaning": "A person staying at a hotel.",
+          "sentence": "The guest asked for a quiet room."
+        },
+        {
+          "word": "luggage",
+          "meaning": "The bags you travel with.",
+          "sentence": "The porter carried our luggage to the room."
+        },
+        {
+          "word": "room service",
+          "meaning": "Food and drinks delivered to your hotel room.",
+          "sentence": "We ordered coffee from room service."
+        },
+        {
+          "word": "checkout",
+          "meaning": "The process of leaving a hotel.",
+          "sentence": "Checkout time is eleven in the morning."
+        }
+      ]
+    },
+    {
+      "id": "career-hospitality-2",
+      "title": "At the restaurant",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "menu",
+          "meaning": "The list of food and drinks a restaurant offers.",
+          "sentence": "Can I see the menu, please?"
+        },
+        {
+          "word": "order",
+          "meaning": "To ask for food or drink in a restaurant.",
+          "sentence": "We are ready to order our starters."
+        },
+        {
+          "word": "tip",
+          "meaning": "Extra money given for good service.",
+          "sentence": "He left a big tip for the waiter."
+        },
+        {
+          "word": "bill",
+          "meaning": "The paper that shows what you must pay.",
+          "sentence": "Could we have the bill, please?"
+        },
+        {
+          "word": "waiter",
+          "meaning": "A person who serves food in a restaurant.",
+          "sentence": "The waiter recommended the grilled fish."
+        },
+        {
+          "word": "delicious",
+          "meaning": "Very good to eat or drink.",
+          "sentence": "The pasta was absolutely delicious."
+        }
+      ]
+    }
+  ],
+  "sales": [
+    {
+      "id": "career-sales-1",
+      "title": "Selling",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "customer",
+          "meaning": "A person who buys a product or service.",
+          "sentence": "The customer asked about the warranty."
+        },
+        {
+          "word": "offer",
+          "meaning": "A special deal or the act of presenting something.",
+          "sentence": "We have a special offer on all laptops."
+        },
+        {
+          "word": "discount",
+          "meaning": "A reduction in the price.",
+          "sentence": "Members get a ten percent discount."
+        },
+        {
+          "word": "refund",
+          "meaning": "Money returned because you are not happy.",
+          "sentence": "I asked for a refund for the broken phone."
+        },
+        {
+          "word": "complaint",
+          "meaning": "A statement that something is wrong.",
+          "sentence": "The manager handled the complaint politely."
+        },
+        {
+          "word": "negotiate",
+          "meaning": "To discuss terms to reach an agreement.",
+          "sentence": "He tried to negotiate a lower price."
+        }
+      ]
+    },
+    {
+      "id": "career-sales-2",
+      "title": "Customer service",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "support",
+          "meaning": "Help given to customers.",
+          "sentence": "Our support team works twenty-four hours."
+        },
+        {
+          "word": "issue",
+          "meaning": "A problem that needs a solution.",
+          "sentence": "We are working to fix the issue today."
+        },
+        {
+          "word": "resolve",
+          "meaning": "To find a solution to a problem.",
+          "sentence": "We will resolve your problem within a day."
+        },
+        {
+          "word": "representative",
+          "meaning": "A person who acts for a company.",
+          "sentence": "A representative called to check on my order."
+        },
+        {
+          "word": "satisfaction",
+          "meaning": "The feeling of being happy with a service.",
+          "sentence": "Customer satisfaction is our top priority."
+        },
+        {
+          "word": "warranty",
+          "meaning": "A promise to repair or replace a product.",
+          "sentence": "The laptop is covered by a two-year warranty."
+        }
+      ]
+    }
+  ],
+  "engineering": [
+    {
+      "id": "career-eng-1",
+      "title": "On the project",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "blueprint",
+          "meaning": "A detailed technical drawing of a design.",
+          "sentence": "The engineers studied the blueprint carefully."
+        },
+        {
+          "word": "prototype",
+          "meaning": "A first model of a product to test it.",
+          "sentence": "They built a prototype of the new machine."
+        },
+        {
+          "word": "specification",
+          "meaning": "A detailed description of how something must be made.",
+          "sentence": "The part must meet the exact specification."
+        },
+        {
+          "word": "safety",
+          "meaning": "Being protected from danger or harm.",
+          "sentence": "Safety is the first rule on the site."
+        },
+        {
+          "word": "inspection",
+          "meaning": "A careful check of quality or safety.",
+          "sentence": "The bridge passed the final inspection."
+        },
+        {
+          "word": "design",
+          "meaning": "A plan or drawing of how something will look.",
+          "sentence": "The new design is stronger and lighter."
+        }
+      ]
+    },
+    {
+      "id": "career-eng-2",
+      "title": "Construction",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "foundation",
+          "meaning": "The base that supports a building.",
+          "sentence": "Workers poured the concrete foundation."
+        },
+        {
+          "word": "beam",
+          "meaning": "A long strong piece that supports a building.",
+          "sentence": "A steel beam holds up the roof."
+        },
+        {
+          "word": "material",
+          "meaning": "The substance something is made from.",
+          "sentence": "Concrete is a common building material."
+        },
+        {
+          "word": "maintenance",
+          "meaning": "Work done to keep something in good condition.",
+          "sentence": "The building needs regular maintenance."
+        },
+        {
+          "word": "equipment",
+          "meaning": "The tools and machines used for a job.",
+          "sentence": "They checked the safety equipment before starting."
+        },
+        {
+          "word": "assembly",
+          "meaning": "Putting the parts of something together.",
+          "sentence": "The assembly of the unit takes two hours."
+        }
+      ]
+    }
+  ],
+  "law": [
+    {
+      "id": "career-law-1",
+      "title": "Legal basics",
+      "type": "lesson",
+      "words": [
+        {
+          "word": "contract",
+          "meaning": "A legal agreement between people or companies.",
+          "sentence": "Read the contract before you sign it."
+        },
+        {
+          "word": "evidence",
+          "meaning": "Information used to prove something in court.",
+          "sentence": "The lawyer presented new evidence."
+        },
+        {
+          "word": "witness",
+          "meaning": "A person who saw something happen.",
+          "sentence": "The witness described what he saw."
+        },
+        {
+          "word": "court",
+          "meaning": "The place where legal cases are decided.",
+          "sentence": "The case will be heard in court next month."
+        },
+        {
+          "word": "lawyer",
+          "meaning": "A person who advises and represents people in law.",
+          "sentence": "She hired a lawyer to review the agreement."
+        },
+        {
+          "word": "judge",
+          "meaning": "The person who decides a case in court.",
+          "sentence": "The judge made a final decision."
+        }
+      ]
+    },
+    {
+      "id": "career-law-2",
+      "title": "Agreements",
+      "type": "quiz",
+      "words": [
+        {
+          "word": "clause",
+          "meaning": "One section of a legal document.",
+          "sentence": "The contract has a clause about overtime."
+        },
+        {
+          "word": "liability",
+          "meaning": "Legal responsibility for something.",
+          "sentence": "The company accepted liability for the damage."
+        },
+        {
+          "word": "breach",
+          "meaning": "Breaking a rule or an agreement.",
+          "sentence": "Missing the payment is a breach of contract."
+        },
+        {
+          "word": "signature",
+          "meaning": "Your name written to show you agree.",
+          "sentence": "Both parties added their signature."
+        },
+        {
+          "word": "dispute",
+          "meaning": "A disagreement about something.",
+          "sentence": "The two sides could not solve the dispute."
+        },
+        {
+          "word": "settlement",
+          "meaning": "An agreement that ends a disagreement.",
+          "sentence": "They reached a settlement out of court."
+        }
+      ]
+    }
+  ]
+}

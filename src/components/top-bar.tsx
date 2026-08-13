@@ -1,8 +1,9 @@
-import { Flame, Heart, Zap } from 'lucide-react'
+import { Flame, Heart, Settings, Zap } from 'lucide-react'
 
 import { Logo } from '@/components/logo'
 import { ProgressBar } from '@/components/progress-bar'
 import { levelFromXp } from '@/engine/xp'
+import { useHashRoute } from '@/hooks/use-hash-route'
 import { useAuraStore } from '@/state/store'
 
 export function TopBar() {
@@ -11,6 +12,7 @@ export function TopBar() {
   const hearts = useAuraStore((state) => state.hearts)
   const daily = useAuraStore((state) => state.daily)
   const dailyGoal = useAuraStore((state) => state.dailyGoal)
+  const { navigate } = useHashRoute()
 
   const level = levelFromXp(xp)
   const goalPercent = Math.min(100, Math.round((daily.xp / dailyGoal) * 100))
@@ -39,6 +41,14 @@ export function TopBar() {
         </span>
         <ProgressBar value={goalPercent} color="var(--aura-yellow)" height={10} />
       </div>
+      <button
+        type="button"
+        className="top-bar__settings"
+        aria-label="Open settings"
+        onClick={() => navigate({ name: 'settings' })}
+      >
+        <Settings size={18} aria-hidden="true" />
+      </button>
     </header>
   )
 }

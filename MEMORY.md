@@ -12,10 +12,63 @@ built with Tauri 2 + React 19 + TypeScript 7.
 ## 1. What the app is
 
 - **Not a translator** — a way to learn English. Duolingo-style course, offline-first.
+- **UI dead-end audit**: no screen can get stuck. `analyzeText` never hangs (worker `onerror` +
+  15s timeout), reader analysis/lookup and WriteScreen show real errors on failure, the lesson
+  "failed" timer can't kick you out after you continue, Dictation falls back to "Reveal the
+  sentence" when TTS is off/unavailable, and `useSpeech` resets guiding/speaking when voice is
+  disabled.
+- **Onboarding = tour + setup**: 6 intro slides then 5 "setup" steps where the user chooses
+  name, age, learning goal, native language, avatar (icon + color) and accent theme — all saved
+  to the profile/store on "Start learning" (`src/screens/onboarding-screen.tsx`).
+- **Profile & identity**: name, **20 avatar icons** + **10-color avatar tint**, **age**, **learning
+  goal** (travel/work/study/exams/move/fun), **native language** and **profession** — set in
+  Profile → About you or the onboarding (`src/engine/profile.ts`). Goals and age feed the
+  recommendations: age < 18 clamps book difficulty, travel/move pushes speaking practice, work
+  pushes writing, and the Home greeting shows your goal. Plus 13 accent themes, dark mode and
+  daily goal in Settings.
+- **Career lessons by profession** (`src/data/profession-lessons.json` + `professionLessons()` in
+  `lessons.ts`): 8 professions (business, tech, healthcare, education, hospitality, sales,
+  engineering, law) × 2 lessons of job-specific vocabulary, shown as a "Career track" section on
+  the Home when a profession is set and completable through the normal lesson flow.
 - WordNet dictionary + a **3,885-word local vocabulary bank**, text analyzer, spaced
   repetition, TTS + pronunciation practice, gamification
   (XP/levels/streaks/hearts/daily goals/achievements).
-- Course: **36 lessons / 12 units / 180 words** (90 hand-authored + 90 generated).
+- **Total telemetry** (`src/engine/telemetry.ts`): every action is tracked offline —
+  sessions (with lengths), active days, per-screen time/views and transitions (who goes where),
+  usage by hour, per-day activity, word lookups/saves, book views/sections/reading time/**WPM per
+  book**, **answer/response time** (lessons, reviews, reader quiz, grammar — global average +
+  per-answer ms in events), **lesson duration**, lesson starts/answers/completions,
+  **reader comprehension quiz accuracy**, **grammar accuracy**, reviews, speak/write attempts,
+  analyzer runs and imports. Persisted to localStorage (`aura-telemetry`) with cumulative
+  counters + a capped raw event ring buffer (for future data science).
+- **Insights, predictions & recommendations** (`src/engine/insights.ts`): infers a learner
+  profile (dominant activity, best hour, days/week, avg session, reading WPM, word pace,
+  favourite genre/difficulty/book, top lookup), **merges it with the declared identity**
+  (`learnerIdentity` + `describeLearner`: age, goal, native language), predicts the next screen
+  from the transition matrix, and recommends the next book (genre affinity + **goal match** +
+  difficulty sweet spot + continuation), the next unlocked lesson and the practice mode you
+  neglect. Surfaced in the Home "Recommended for you" (with a "why" line) and a Statistics
+  "Insights & predictions" section in the Profile.
+- **Daily briefing & forecasts** (`src/engine/briefing.ts`): `dailyBriefing()` returns the full
+  day-ahead picture — identity sentence, predicted next screen, **streak risk** (low/medium/high
+  from inactivity), **daily-goal status**, best study hour, expected session length, **book
+  finish estimate** (sections left × average pace), **vocabulary projection (30 days)** and a
+  concrete **daily plan**. Shown in Profile → Statistics → "Forecast & plan".
+- **Settings → Data & privacy**: `#/settings` links to `#/data` ("Analytics & telemetry"), a
+  screen to inspect the inferred profile, **export the raw telemetry log** (copy or download
+  JSON for data science), browse recent events, see storage used and **reset telemetry**
+  (progress is never touched).
+- Course: **45 lessons / 15 units / 225 words** (135 hand-authored + 90 generated). Hand-authored
+  topics now cover A1→A2: greetings, food, travel, work, body, verbs, home & family, shopping & money,
+  weather & nature.
+- Library: **59 public-domain classics + story collections bundled offline** (Alice, Oz, Peter
+  Pan, Sherlock Holmes complete, Grimm's, Aesop, Austen ×6, Dickens ×6, Verne, Wells, Hugo,
+  Thackeray, … — ~6.4M words). Books are **lazy-loaded**: `src/data/library.json` is a small
+  index and each full book lives in `src/data/library/<id>.json`. Each book carries genre,
+  difficulty, tags, description, gutenberg id, opening line and famous quotes.
+- **Library browsing** (`src/engine/browse.ts`): search by title/author, filter by genre,
+  difficulty and reading status, sort (title/author/longest/easiest/most-read) and group into
+  sections (none/genre/level/status) — used by the Library screen. Plus hide/restore books.
 - **All content lives in `src/data/` as JSON** (validated with Zod); UI, code and docs
   are 100% English and **zero-emoji** (Lucide icons only).
 
@@ -175,6 +228,128 @@ achievement rules match JSON). Setup: `src/test-setup.ts` + jsdom.
 11. `8e0ebfa` — design conformance sweep (radii/icon tokens, heading 800, badges).
 12. `bbb7651` — analyzer ultra processor: PDF/TXT/MD via `pdf-extract`.
 13. `c737453` — performance pass: NLP Web Worker, lazy Lesson, idle preload, caches.
+14. `(uncommitted)` — onboarding tour (7 steps) + **Classics Library**: public-domain
+    books bundled offline (`src/data/library.json`, `npm run gen:library`), guided reader
+    with tap-to-lookup, TTS, WPM, comprehension questions, expressions, passage analysis,
+    and PDF/TXT/MD import (`documentToBook`, 150k char cap, 3 stored).
+15. `(uncommitted)` — audio pass: procedural SFX (Web Audio, `src/engine/sounds.ts`,
+    sounds/voices/rate settings sheet), realistic voice selection, **guided read-along**
+    (`speakGuided` with word-by-word highlighting, `useSpeech` hook).
+16. `(uncommitted)` — course expansion to A2: 3 hand-authored units (Home & Family,
+    Shopping & Money, Weather & Nature) → 45 lessons / 225 words; README roadmap
+    restructured into phased product roadmap.
+17. `(uncommitted)` — power pack: **Stats** screen (weekly XP chart, accuracy, reading
+    time/WPM, focus words), **Speaking practice** (listen-and-repeat + word highlight),
+    **Writing practice** (free sentences with instant local analysis), per-day
+    `history` + `weakWords` + reading metrics in the store (persist v5), voice **pitch**
+    control + "test voice", review prioritizes weak words.
+18. `(uncommitted)` — **Profile hub** (persist v6): editable name/avatar (`profile`),
+    joined date, tabs Overview (weekly chart, skill bars, SRS mastery) / History
+    (daily activity, words-learned timeline, per-book reading) / Achievements.
+    Speaking/writing counters (`recordSpeakingSession`/`recordWriting`), `readSeconds`
+    per day in history. Old standalone Stats screen merged into the hub; Home hero
+    shows the avatar/name and opens the profile.
+19. `(uncommitted)` — educator power pack (persist v7): **Grammar** lessons
+    (`grammar.json`, corrective choice/fill/reorder exercises), **Dictation**
+    (listen+type, adjustable TTS speed), role-play **Dialogues**, **CEFR levels**
+    per word + profile estimate, **daily quests** with XP bonus, **backup**
+    (copy/download/restore JSON), **dark mode**. `darkMode`/`questBonusClaimed`
+    in store; settings sheet gains dark toggle. NOTE: external refactor also landed
+    — library is now 44-book **index** (`library.json`) + per-book lazy chunks
+    (`src/data/library/*.json`, `loadBook` async, `LibraryIndexBook` w/ tags,
+    gutenbergId, quotes); relaxes `year` to `int` (Aesop −600 BC).
+20. `(uncommitted)` — **cross-platform document import**: the Library (and the
+    Analyzer's "Open file") now use a universal `<input type="file">` + `readDocumentFile`
+    (`src/lib/document-reader.ts`) that works in plain browsers, Tauri desktop and
+    mobile. PDFs are extracted offline by a lazy-loaded PDF.js worker
+    (`src/lib/pdf-extract.ts`, own chunk ~102 KB gzip, loaded only on import);
+    TXT/MD read as text. Tauri-native dialog/Rust path removed from the Library flow.
+21. `(uncommitted)` — **hash router / full deep linking**: `src/lib/router.ts`
+    (pure `parseHash`/`routeToHash` + tests) + `useHashRoute`. Every screen is a
+    `#/route`; sub-routes carry context: `#/read/<book>/<chapter>/<section>` (Reader is
+    now URL-controlled), `#/grammar/<lesson>`, `#/dialogue/<id>`, `#/profile/<tab>`
+    (incl. new telemetry "Statistics" tab → `profile-stats.tsx`), `#/dictionary?word=…`.
+    Refresh/back/forward restore exact position. Also fixed external in-flight edits
+    (telemetry.ts types, profile-stats StatRow `icon` optional, library-screen import
+    of `readDocumentFile`, numeric separators in telemetry.test).
+22. `(uncommitted)` — **responsive layout (web/tablet/desktop)**: CSS breakpoints at
+    768px and 1100px. Tablet widens the shell to 900px and expands grids
+    (achievements 4-up, stats 6-up, exercise options ≥200px; reading column capped
+    ~720px). Desktop widens to 1080px and turns the bottom nav into a **fixed left
+    rail** (220px); full-screen screens (lesson/reader/book/dialogue) widen to
+    ~1000px. DESIGN.md §10 documents the breakpoints.
+23. `(uncommitted)` — **Settings is a real page, not a modal**: new
+    `#/settings` route (`settings-screen.tsx`, lazy) with sections Appearance
+    (dark mode), Sound, Voice & narration (TTS rate/pitch/test voice/voice picker),
+    Learning (daily goal chips via `DAILY_GOAL_OPTIONS`) and Data & privacy
+    (backup link). The TopBar gear now navigates to the page; the old
+    `SettingsSheet` modal was deleted (its overlay class stays for the avatar
+    picker). Also absorbed the external `#/data` route (DataScreen) + new Home
+    props `onReadBook`/`onReview`.
+24. `(uncommitted)` — **user-chosen accent themes**: Settings → Appearance gains
+    an "Accent color" picker (Forest/Ocean/Mint/Violet/Rose/Sunset) that
+    recolors the whole app. `data-accent='<id>'` CSS blocks override the
+    green+blue tokens (placed before the dark block so dark still wins);
+    `src/engine/theme.ts` holds the palette list; store `accent` (persist v8,
+    `setAccent`). The Logo now uses `var(--aura-green)` so the brand follows
+    the theme.
+25. `(uncommitted)` — **more accent colors** (13 total): added Indigo, Cyan,
+    Lime, Gold, Crimson, Fuchsia, Slate, each with `[data-accent][data-theme='dark']`
+    dark-mode tints so soft/text-on-soft keep the accent hue. Also reconciled the
+    external avatar-color feature: `profile.avatarColor` + `setProfileAvatarColor`
+    (persist v9), avatar tile (profile + Home) uses the chosen color with a white
+    icon, and trimmed the avatar set to the 14 Lucide icons that actually exist in
+    the installed lucide version (Bee/Dragon/Fox/Frog/Owl/Tiger/Whale/Wolf do not).
+26. `(uncommitted)` — **multiplatform prep**: `viewport-fit=cover` +
+    `apple-mobile-web-app-capable` + `color-scheme` in index.html; safe-area CSS
+    (`env(safe-area-inset-*)`) on top bar, bottom nav, app content and full-screen
+    footers for iOS notch / Android gesture bars; `tauri icon` generated the full
+    desktop + Android + iOS icon set (`src-tauri/icons/`); npm scripts
+    `tauri:android` / `tauri:ios` (dev, free-port orchestrator) and
+    `tauri:android:build` / `tauri:ios:build`; CI gains a `desktop-build` matrix
+    (Linux/macOS/Windows) compiling the native binary (`tauri build --no-bundle`).
+    README documents the Platforms + mobile commands.
+27. `(uncommitted)` — **guided action tour ("Try it yourself")**: after onboarding
+    intro+profile setup, the app enters a guided tour (`guidedActive`, store v10)
+    listing 10 real actions (lesson, dictionary, reading, speaking, dictation,
+    writing, dialogue, grammar, review, quests). Each action navigates to the real
+    screen and is marked done only when the learner performs it
+    (`markGuidedAction` wired into every screen + `claimDailyBonus`). A persistent
+    `GuidedBar` pill returns to `#/tour` from anywhere; `TourScreen` shows progress
+    and a finish button once all actions are done. `src/engine/guide.ts` holds the
+    action list.
+28. `(uncommitted)` — **repeat the tour from Settings**: Settings gains a "Guided
+    tour" section with a "Repeat the guided tour" button that re-enables
+    `guidedActive` (clears completed actions via `startGuidedTour`) and opens
+    `#/tour`.
+29. `(uncommitted)` — **hide/restore default books + data safety**: store v11
+    `hiddenBooks` with `hideBook`/`unhideBook`/`showAllBooks`. The Library lets
+    you hide any classic (EyeOff) without touching its reading progress; a
+    "Hidden (n)" section restores them individually or all at once, and a
+    "Back up your data" shortcut points to the Backup screen.
+30. `(uncommitted)` — **Roadmap screen + better lessons**: new `#/roadmap` view
+    (`src/engine/roadmap.ts` + `roadmap-screen.tsx`) splits the course into
+    three CEFR stages (A1 Foundations / A2 Everyday English / B1 Growing
+    fluency) with overall + per-unit progress, stage milestones and a
+    "Continue" button that picks the next available lesson. Added 2 hand-authored
+    A2 units (Daily Life, People & Descriptions) → course is now 17 units /
+    51 lessons / 255 words. Home gains a Roadmap tile; UiIcon gains Sun/Users.
+31. `(uncommitted)` — **clean Home = lessons only + navigation drawer**: Home now
+    shows just the hero and the lesson path (course map + career track). The
+    practice tiles (Speaking/Dictation/Writing/Dialogues/Grammar/Profile & stats)
+    and the Roadmap tile moved out, and the daily-quests banner was removed.
+    The bottom nav (and desktop rail) gains a "More" item that opens a slide-in
+    **navigation drawer** (`navigation-drawer.tsx`) with every section: Speaking,
+    Dictation, Writing, Dialogues, Grammar, Roadmap, Profile & stats, Settings,
+    Backup. The guided tour now has 9 actions (quests removed, since the banner
+    is gone).
+32. `(uncommitted)` — **sticky app bars / footers audit**: fixed the broken,
+    non-fixed headers/footers across full-screen screens (same bug as the
+    dialogue). `.lesson-screen__header` and `.lesson-screen__footer` (lesson +
+    grammar lessons), `.book-screen__header`, `.onboarding__header/__footer` are
+    now `position: sticky` with safe-area insets; `.exercise-body`/`.onboarding__body`
+    gained bottom padding so content never hides behind the sticky footer; the
+    reader toolbar's `top` now accounts for `env(safe-area-inset-top)`.
 
 ## 14. Known gotchas / notes
 
@@ -186,7 +361,8 @@ achievement rules match JSON). Setup: `src/test-setup.ts` + jsdom.
 - `index.sense` must NOT be copied to `resources/wn` (invalid POS extension).
 - Vite 8 is Rolldown-based; **esbuild is not bundled** — don't set `minify: 'esbuild'`.
 - `wordnet-db` is a devDependency (data source only); `unrs-resolver` postinstall warning is harmless.
-- localStorage key `aura-state` (version 1).
+- localStorage key `aura-state` (version 3: v1→v2 onboarding, v2→v3 library progress/imports).
+- Raw book texts in `scripts/books/` are gitignored; regenerate `src/data/library.json` with `npm run gen:library`.
 
 ## 15. Roadmap (from README)
 

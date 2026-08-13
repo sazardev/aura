@@ -1,5 +1,4 @@
 import { readText } from '@tauri-apps/plugin-clipboard-manager'
-import { open } from '@tauri-apps/plugin-dialog'
 import {
   BarChart3,
   BookOpenCheck,
@@ -11,7 +10,7 @@ import {
   Tag,
   TrendingUp,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import type { AnalyzerResult, ReadabilityScore } from '@/engine/analyzer'
 
@@ -19,8 +18,9 @@ import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
 import { analyzeText } from '@/engine/analyze'
 import { FREQUENCY_TIER_LABELS } from '@/engine/frequency'
+import { trackAnalysisRun } from '@/engine/telemetry'
 import { lookupVocab } from '@/engine/vocabulary'
-import { invokeOptional } from '@/lib/tauri'
+import { readDocumentFile } from '@/lib/document-reader'
 import { isTauriRuntime } from '@/lib/tauri'
 import { useAuraStore } from '@/state/store'
 
@@ -44,6 +44,7 @@ export function AnalyzerScreen() {
   const [error, setError] = useState<string | undefined>(undefined)
   const addWord = useAuraStore((state) => state.addWord)
   const inTauri = isTauriRuntime()
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const runAnalysis = async (source: string) => {
     const total = source.length
@@ -52,6 +53,7 @@ export function AnalyzerScreen() {
     setTruncated(total > MAX_ANALYZE_CHARS)
     setError(undefined)
     setAnalyzing(true)
+    trackAnalysisRun()
     try {
       const analysis = await analyzeText(limited)
       setResult(analysis)
@@ -63,23 +65,25 @@ export function AnalyzerScreen() {
     }
   }
 
-  const importFile = async () => {
-    const selected = await open({
-      multiple: false,
-      filters: [
-        { name: 'Documents', extensions: ['pdf', 'txt', 'md'] },
-        { name: 'Text', extensions: ['txt', 'md'] },
-      ],
-    })
-    if (typeof selected === 'string') {
-      const content = await invokeOptional<string>('read_document_text', { path: selected })
-      if (content !== undefined && content.length > 0) await runAnalysis(content)
+  const onFileChosen = async (file: File | undefined) => {
+    if (file === undefined) return
+    try {
+      const content = await readDocumentFile(file)
+      if (content.length > 0) await runAnalysis(content)
+    } catch {
+      setError('Could not read that file.')
+    } finally {
+      if (fileInputRef.current !== null) fileInputRef.current.value = ''
     }
   }
 
   const pasteClipboard = async () => {
-    const content = inTauri ? await readText() : await navigator.clipboard.readText()
-    if (content.length > 0) await runAnalysis(content)
+    try {
+      const content = inTauri ? await readText() : await navigator.clipboard.readText()
+      if (content.length > 0) await runAnalysis(content)
+    } catch {
+      setError('Could not read the clipboard. Paste the text manually instead.')
+    }
   }
 
   const learnAll = () => {
@@ -128,11 +132,16 @@ export function AnalyzerScreen() {
         <Button variant="secondary" onClick={() => void runAnalysis(SAMPLE_TEXT)}>
           Sample
         </Button>
-        {inTauri && (
-          <Button variant="secondary" onClick={() => void importFile()}>
-            <FolderOpen size={16} aria-hidden="true" /> Open file
-          </Button>
-        )}
+        <Button variant="secondary" onClick={() => fileInputRef.current?.click()}>
+          <FolderOpen size={16} aria-hidden="true" /> Open file
+        </Button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown"
+          className="backup-file-input"
+          onChange={(event) => void onFileChosen(event.target.files?.[0])}
+        />
         <Button variant="secondary" onClick={() => void pasteClipboard()}>
           <Clipboard size={16} aria-hidden="true" /> Paste
         </Button>

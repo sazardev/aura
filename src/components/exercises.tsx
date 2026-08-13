@@ -295,31 +295,30 @@ export function SpeakView({
           )}
         </>
       ) : (
-        <>
-          <p className="speak-transcript">
-            Speech recognition is not available on this system. Say the sentence aloud and grade
-            yourself.
-          </p>
-          <div className="exercise-options">
-            <Button
-              variant="success"
-              block
-              disabled={feedback !== 'idle'}
-              onClick={() => onSubmit(true)}
-            >
-              <Check size={16} aria-hidden="true" /> I said it well
-            </Button>
-            <Button
-              variant="danger"
-              block
-              disabled={feedback !== 'idle'}
-              onClick={() => onSubmit(false)}
-            >
-              <X size={16} aria-hidden="true" /> I need to review
-            </Button>
-          </div>
-        </>
+        <p className="speak-transcript">
+          Speech recognition is not available on this system. Say the sentence aloud and grade
+          yourself.
+        </p>
       )}
+
+      <div className="exercise-options">
+        <Button
+          variant="success"
+          block
+          disabled={feedback !== 'idle' || listening}
+          onClick={() => onSubmit(true)}
+        >
+          <Check size={16} aria-hidden="true" /> I said it well
+        </Button>
+        <Button
+          variant="danger"
+          block
+          disabled={feedback !== 'idle' || listening}
+          onClick={() => onSubmit(false)}
+        >
+          <X size={16} aria-hidden="true" /> I need to review
+        </Button>
+      </div>
       <HintCard
         sentence={exercise.sentence}
         meaning={exercise.meaning}

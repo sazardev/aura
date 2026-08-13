@@ -622,5 +622,525 @@
         ]
       }
     ]
+  },
+  {
+    "id": "home",
+    "title": "Home & Family",
+    "icon": "Home",
+    "color": "#58cc02",
+    "lessons": [
+      {
+        "id": "home-1",
+        "title": "Rooms in the House",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "house",
+            "meaning": "a building where people live",
+            "sentence": "Our house has a red door."
+          },
+          {
+            "word": "floor",
+            "meaning": "the flat surface you walk on inside a building",
+            "sentence": "The cat sleeps on the floor."
+          },
+          {
+            "word": "kitchen",
+            "meaning": "the room where you cook food",
+            "sentence": "Mom is cooking in the kitchen."
+          },
+          {
+            "word": "bedroom",
+            "meaning": "the room where you sleep",
+            "sentence": "My bedroom is small but cozy."
+          },
+          {
+            "word": "bathroom",
+            "meaning": "the room with a shower and a toilet",
+            "sentence": "He brushes his teeth in the bathroom."
+          }
+        ]
+      },
+      {
+        "id": "home-2",
+        "title": "Family",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "family",
+            "meaning": "a group of people related to each other",
+            "sentence": "My family eats dinner together."
+          },
+          {
+            "word": "parents",
+            "meaning": "a mother and a father",
+            "sentence": "My parents work in the city."
+          },
+          {
+            "word": "brother",
+            "meaning": "a boy who has the same parents as you",
+            "sentence": "My brother is two years older."
+          },
+          {
+            "word": "sister",
+            "meaning": "a girl who has the same parents as you",
+            "sentence": "Her sister loves to read books."
+          },
+          {
+            "word": "child",
+            "meaning": "a young person",
+            "sentence": "Every child likes to play outside."
+          }
+        ]
+      },
+      {
+        "id": "home-3",
+        "title": "Living at Home",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "rest",
+            "meaning": "to relax and not do anything tiring",
+            "sentence": "I rest on the sofa after work."
+          },
+          {
+            "word": "clean",
+            "meaning": "to remove dirt from something",
+            "sentence": "I clean my room every Saturday."
+          },
+          {
+            "word": "sleep",
+            "meaning": "to rest with your eyes closed",
+            "sentence": "Birds sleep in the trees."
+          },
+          {
+            "word": "door",
+            "meaning": "the part of a wall you open to enter",
+            "sentence": "Please close the door."
+          },
+          {
+            "word": "window",
+            "meaning": "an opening in a wall with glass",
+            "sentence": "The cat sits by the window."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shopping",
+    "title": "Shopping & Money",
+    "icon": "ShoppingBag",
+    "color": "#ffc800",
+    "lessons": [
+      {
+        "id": "shopping-1",
+        "title": "Buying Things",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "shop",
+            "meaning": "a place where you buy things",
+            "sentence": "The shop is open until nine."
+          },
+          {
+            "word": "buy",
+            "meaning": "to get something by paying money",
+            "sentence": "I want to buy a new phone."
+          },
+          {
+            "word": "sell",
+            "meaning": "to give something in exchange for money",
+            "sentence": "They sell fresh bread here."
+          },
+          {
+            "word": "price",
+            "meaning": "the amount of money something costs",
+            "sentence": "The price of coffee is low."
+          },
+          {
+            "word": "money",
+            "meaning": "what you use to pay for things",
+            "sentence": "She saved money for a trip."
+          }
+        ]
+      },
+      {
+        "id": "shopping-2",
+        "title": "Clothes",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "clothes",
+            "meaning": "things you wear on your body",
+            "sentence": "He bought new clothes for work."
+          },
+          {
+            "word": "shirt",
+            "meaning": "a piece of clothing for the upper body",
+            "sentence": "Your blue shirt is clean."
+          },
+          {
+            "word": "pants",
+            "meaning": "a piece of clothing for your legs",
+            "sentence": "These pants are very comfortable."
+          },
+          {
+            "word": "wear",
+            "meaning": "to have clothes on your body",
+            "sentence": "I wear a jacket in winter."
+          },
+          {
+            "word": "size",
+            "meaning": "how big or small something is",
+            "sentence": "What size do you need?"
+          }
+        ]
+      },
+      {
+        "id": "shopping-3",
+        "title": "Paying",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "pay",
+            "meaning": "to give money for something",
+            "sentence": "You can pay with a card."
+          },
+          {
+            "word": "cheap",
+            "meaning": "costing little money",
+            "sentence": "This fruit is cheap today."
+          },
+          {
+            "word": "expensive",
+            "meaning": "costing a lot of money",
+            "sentence": "That watch is too expensive."
+          },
+          {
+            "word": "cost",
+            "meaning": "to have a price",
+            "sentence": "How much does this cost?"
+          },
+          {
+            "word": "change",
+            "meaning": "the money you get back when you pay too much",
+            "sentence": "Here is your change, sir."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weather",
+    "title": "Weather & Nature",
+    "icon": "CloudSun",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "weather-1",
+        "title": "The Sky",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "weather",
+            "meaning": "the state of the air outside",
+            "sentence": "The weather is nice today."
+          },
+          {
+            "word": "sun",
+            "meaning": "the bright star that gives us light and heat",
+            "sentence": "The sun is shining."
+          },
+          {
+            "word": "rain",
+            "meaning": "water that falls from the sky",
+            "sentence": "Take an umbrella, it may rain."
+          },
+          {
+            "word": "cloud",
+            "meaning": "a white or gray shape in the sky",
+            "sentence": "A dark cloud is coming."
+          },
+          {
+            "word": "wind",
+            "meaning": "air that moves",
+            "sentence": "The wind blew my hat away."
+          }
+        ]
+      },
+      {
+        "id": "weather-2",
+        "title": "Seasons",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "season",
+            "meaning": "one of the four parts of the year",
+            "sentence": "Summer is my favorite season."
+          },
+          {
+            "word": "spring",
+            "meaning": "the season after winter",
+            "sentence": "Flowers grow in spring."
+          },
+          {
+            "word": "summer",
+            "meaning": "the warmest season of the year",
+            "sentence": "We swim a lot in summer."
+          },
+          {
+            "word": "winter",
+            "meaning": "the coldest season of the year",
+            "sentence": "It snows here in winter."
+          },
+          {
+            "word": "autumn",
+            "meaning": "the season between summer and winter",
+            "sentence": "Leaves fall in autumn."
+          }
+        ]
+      },
+      {
+        "id": "weather-3",
+        "title": "Outside",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "cloudy",
+            "meaning": "covered with clouds",
+            "sentence": "The sky is cloudy this morning."
+          },
+          {
+            "word": "hot",
+            "meaning": "having a high temperature",
+            "sentence": "It is very hot at noon."
+          },
+          {
+            "word": "warm",
+            "meaning": "a little hot, comfortable",
+            "sentence": "I like warm soup in winter."
+          },
+          {
+            "word": "snow",
+            "meaning": "soft white water that falls in winter",
+            "sentence": "The children played in the snow."
+          },
+          {
+            "word": "sky",
+            "meaning": "the space above the earth",
+            "sentence": "The sky is blue and clear."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "daily-life",
+    "title": "Daily Life",
+    "icon": "Sun",
+    "color": "#58cc02",
+    "lessons": [
+      {
+        "id": "daily-life-1",
+        "title": "Morning Routine",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "wake",
+            "meaning": "to stop sleeping",
+            "sentence": "I wake up at seven every day."
+          },
+          {
+            "word": "breakfast",
+            "meaning": "the first meal of the day",
+            "sentence": "We have breakfast together."
+          },
+          {
+            "word": "shower",
+            "meaning": "to wash your body under water",
+            "sentence": "He takes a shower in the morning."
+          },
+          {
+            "word": "brush",
+            "meaning": "to clean with a brush",
+            "sentence": "Brush your teeth before bed."
+          },
+          {
+            "word": "dress",
+            "meaning": "to put clothes on",
+            "sentence": "I dress quickly when I am late."
+          }
+        ]
+      },
+      {
+        "id": "daily-life-2",
+        "title": "Every Day",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "usually",
+            "meaning": "most of the time",
+            "sentence": "I usually walk to work."
+          },
+          {
+            "word": "sometimes",
+            "meaning": "not always, but now and then",
+            "sentence": "She sometimes drinks tea."
+          },
+          {
+            "word": "always",
+            "meaning": "every time, without exception",
+            "sentence": "He always says hello."
+          },
+          {
+            "word": "often",
+            "meaning": "many times",
+            "sentence": "We often visit the park."
+          },
+          {
+            "word": "early",
+            "meaning": "before the usual time",
+            "sentence": "I wake up early on Mondays."
+          }
+        ]
+      },
+      {
+        "id": "daily-life-3",
+        "title": "Around the House",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "wash",
+            "meaning": "to clean with water and soap",
+            "sentence": "I wash the dishes after dinner."
+          },
+          {
+            "word": "sweep",
+            "meaning": "to clean a floor with a brush",
+            "sentence": "I sweep the floor on weekends."
+          },
+          {
+            "word": "tidy",
+            "meaning": "to make something neat",
+            "sentence": "Please tidy your room."
+          },
+          {
+            "word": "iron",
+            "meaning": "to make clothes smooth with heat",
+            "sentence": "She irons her shirts on Fridays."
+          },
+          {
+            "word": "laundry",
+            "meaning": "dirty clothes that need washing",
+            "sentence": "I do the laundry once a week."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "people",
+    "title": "People & Descriptions",
+    "icon": "Users",
+    "color": "#1cb0f6",
+    "lessons": [
+      {
+        "id": "people-1",
+        "title": "Describing People",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "tall",
+            "meaning": "of great height",
+            "sentence": "Her brother is very tall."
+          },
+          {
+            "word": "short",
+            "meaning": "of small height or length",
+            "sentence": "He is short but strong."
+          },
+          {
+            "word": "young",
+            "meaning": "in an early stage of life",
+            "sentence": "My uncle looks young."
+          },
+          {
+            "word": "old",
+            "meaning": "having lived a long time",
+            "sentence": "The old man walks slowly."
+          },
+          {
+            "word": "thin",
+            "meaning": "not fat, slim",
+            "sentence": "She is thin and fit."
+          }
+        ]
+      },
+      {
+        "id": "people-2",
+        "title": "Personality",
+        "type": "lesson",
+        "words": [
+          {
+            "word": "kind",
+            "meaning": "friendly and caring",
+            "sentence": "The teacher is kind to everyone."
+          },
+          {
+            "word": "funny",
+            "meaning": "causing laughter",
+            "sentence": "His jokes are very funny."
+          },
+          {
+            "word": "honest",
+            "meaning": "telling the truth",
+            "sentence": "Be honest with your friends."
+          },
+          {
+            "word": "brave",
+            "meaning": "not afraid of danger",
+            "sentence": "The brave dog saved the child."
+          },
+          {
+            "word": "quiet",
+            "meaning": "making little noise",
+            "sentence": "She is quiet but very smart."
+          }
+        ]
+      },
+      {
+        "id": "people-3",
+        "title": "Together",
+        "type": "quiz",
+        "words": [
+          {
+            "word": "neighbor",
+            "meaning": "a person who lives near you",
+            "sentence": "Our neighbor has a big garden."
+          },
+          {
+            "word": "team",
+            "meaning": "a group that works together",
+            "sentence": "Our team won the match."
+          },
+          {
+            "word": "help",
+            "meaning": "to do something for someone",
+            "sentence": "Can you help me carry this?"
+          },
+          {
+            "word": "meet",
+            "meaning": "to come together with someone",
+            "sentence": "Let's meet at the station."
+          },
+          {
+            "word": "respect",
+            "meaning": "to treat someone with care and value",
+            "sentence": "We respect our teachers."
+          }
+        ]
+      }
+    ]
   }
 ]

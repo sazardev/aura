@@ -1,12 +1,21 @@
 import { describe, expect, it } from 'vitest'
 
-import { allLessons, allWords, COURSE, lessonById, previousLessonId } from '@/engine/lessons'
+import {
+  allLessons,
+  allWords,
+  COURSE,
+  lessonById,
+  previousLessonId,
+  PROFESSION_LESSONS,
+  professionLessons,
+} from '@/engine/lessons'
+import { PROFESSIONS } from '@/engine/profile'
 
 describe('English course', () => {
   it('has a giant, valid course', () => {
-    expect(COURSE.length).toBeGreaterThanOrEqual(12)
-    expect(allLessons().length).toBe(36)
-    expect(allWords().length).toBe(180)
+    expect(COURSE.length).toBeGreaterThanOrEqual(17)
+    expect(allLessons().length).toBe(51)
+    expect(allWords().length).toBe(255)
   })
 
   it('every lesson has complete words', () => {
@@ -26,6 +35,35 @@ describe('English course', () => {
 
     const wordIds = new Set(allWords().map((word) => word.word.toLowerCase()))
     expect(wordIds.size).toBe(allWords().length)
+  })
+
+  it('every profession has a career lesson pack', () => {
+    for (const profession of PROFESSIONS) {
+      const lessons = professionLessons(profession.id)
+      expect(lessons.length).toBeGreaterThanOrEqual(1)
+      for (const lesson of lessons) {
+        expect(lesson.id.startsWith('career-')).toBe(true)
+        for (const word of lesson.words) {
+          expect(word.word.length).toBeGreaterThan(0)
+          expect(word.meaning.length).toBeGreaterThan(0)
+          expect(word.sentence.length).toBeGreaterThan(0)
+        }
+      }
+    }
+  })
+
+  it('career lesson ids are unique and resolvable', () => {
+    const ids = Object.values(PROFESSION_LESSONS)
+      .flat()
+      .map((lesson) => lesson.id)
+    expect(new Set(ids).size).toBe(ids.length)
+    for (const id of ids) {
+      expect(lessonById(id)?.id).toBe(id)
+    }
+  })
+
+  it('returns no career lessons for an unset profession', () => {
+    expect(professionLessons(undefined)).toEqual([])
   })
 
   it('resolves lessons and previous links', () => {

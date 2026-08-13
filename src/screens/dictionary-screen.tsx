@@ -1,11 +1,12 @@
 import { BookOpen, Check, Dices, Lightbulb, X } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import type { DictionaryEntry, WordnetSense } from '@/engine/dictionary'
 import type { VocabularyEntry } from '@/engine/types'
 
 import { Button } from '@/components/button'
 import { SpeechButton } from '@/components/speech-button'
+import { cefrLevelOf } from '@/engine/cefr'
 import { lookupWord } from '@/engine/dictionary'
 import {
   FREQUENCY_TIER_LABELS,
@@ -14,21 +15,48 @@ import {
   wordDifficulty,
 } from '@/engine/frequency'
 import { dueLabel } from '@/engine/srs'
+import { trackWordLookup, trackWordSave } from '@/engine/telemetry'
 import { lookupVocab, randomVocabEntry, vocabularySize } from '@/engine/vocabulary'
 import { useDebouncedValue } from '@/hooks/use-debounced'
 import { useSpeech } from '@/hooks/use-speech'
 import { isTauriRuntime } from '@/lib/tauri'
 import { useAuraStore } from '@/state/store'
 
-export function DictionaryScreen() {
-  const [query, setQuery] = useState('')
+export function DictionaryScreen({
+  initialWord,
+  onWordChange,
+}: {
+  initialWord?: string
+  onWordChange: (word: string) => void
+}) {
+  const [query, setQuery] = useState(initialWord ?? '')
   const [entry, setEntry] = useState<DictionaryEntry | undefined>(undefined)
   const [loading, setLoading] = useState(false)
   const debounced = useDebouncedValue(query.trim(), 350)
 
+  // Keep the search box in sync when the URL changes (deep links, back button).
+  useEffect(() => {
+    if (initialWord !== undefined && initialWord !== query) setQuery(initialWord)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialWord])
+
+  // Mirror the debounced query into the URL so refresh restores the search.
+  const initialWordRef = useRef(initialWord)
+  useEffect(() => {
+    initialWordRef.current = initialWord
+  }, [initialWord])
+  const onWordChangeRef = useRef(onWordChange)
+  useEffect(() => {
+    onWordChangeRef.current = onWordChange
+  }, [onWordChange])
+  useEffect(() => {
+    if (debounced !== (initialWordRef.current ?? '')) onWordChangeRef.current(debounced)
+  }, [debounced])
+
   const inTauri = isTauriRuntime()
   const addWord = useAuraStore((state) => state.addWord)
   const removeCard = useAuraStore((state) => state.removeCard)
+  const markGuidedAction = useAuraStore((state) => state.markGuidedAction)
   const cards = useAuraStore((state) => state.cards)
   const { speak } = useSpeech()
 
@@ -37,6 +65,8 @@ export function DictionaryScreen() {
       setEntry(undefined)
       return
     }
+    trackWordLookup(debounced)
+    markGuidedAction('dictionary')
     if (!inTauri) return
     let cancelled = false
     setLoading(true)
@@ -50,7 +80,7 @@ export function DictionaryScreen() {
     return () => {
       cancelled = true
     }
-  }, [debounced, inTauri])
+  }, [debounced, inTauri, markGuidedAction])
 
   const bankEntry = useMemo(
     () => (debounced.length > 0 ? lookupVocab(debounced) : undefined),
@@ -88,6 +118,7 @@ export function DictionaryScreen() {
     addWord(debounced, meaning, {
       ...(example !== undefined && { note: `“${example}”` }),
     })
+    trackWordSave(debounced)
     speak(debounced)
   }
 
@@ -152,6 +183,9 @@ export function DictionaryScreen() {
               <span className="tier-badge">Difficulty: {difficulty}/5</span>
             )}
             {frequency !== undefined && <span className="tier-badge">Top {frequency.rank}</span>}
+            {cefrLevelOf(debounced) !== undefined && (
+              <span className="tier-badge">CEFR {cefrLevelOf(debounced)}</span>
+            )}
           </div>
 
           {bankEntry !== undefined && <BankCard entry={bankEntry} />}

@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
+
 import { Button } from '@/components/button'
 import { UiIcon } from '@/components/ui-icon'
+import { playSound } from '@/engine/sounds'
 
 interface LessonResultProps {
   title: string
@@ -26,6 +29,10 @@ export function LessonResult({
   onRetry,
   onHome,
 }: LessonResultProps) {
+  useEffect(() => {
+    if (perfect) playSound('achievement')
+  }, [perfect])
+
   return (
     <div className="lesson-result">
       <div className="lesson-result__emoji">

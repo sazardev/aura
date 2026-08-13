@@ -1,10 +1,13 @@
 import type { LucideIcon } from 'lucide-react'
 
-import { BookOpen, FlaskConical, Home, RotateCcw } from 'lucide-react'
+import { BookOpen, FlaskConical, Home, LayoutGrid, LibraryBig, RotateCcw } from 'lucide-react'
+import { useState } from 'react'
 
+import { NavigationDrawer } from '@/components/navigation-drawer'
+import { playSound } from '@/engine/sounds'
 import { useDueCardCount } from '@/state/store'
 
-export type NavTarget = 'home' | 'dictionary' | 'analyzer' | 'review'
+export type NavTarget = 'home' | 'dictionary' | 'analyzer' | 'library' | 'review'
 
 interface NavItem {
   target: NavTarget
@@ -20,11 +23,13 @@ interface BottomNavProps {
 
 export function BottomNav({ active, onNavigate }: BottomNavProps) {
   const dueCount = useDueCardCount()
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   const items: NavItem[] = [
     { target: 'home', label: 'Home', icon: Home },
     { target: 'dictionary', label: 'Dictionary', icon: BookOpen },
     { target: 'analyzer', label: 'Analyzer', icon: FlaskConical },
+    { target: 'library', label: 'Library', icon: LibraryBig },
     { target: 'review', label: 'Review', icon: RotateCcw, badge: dueCount },
   ]
 
@@ -42,7 +47,10 @@ export function BottomNav({ active, onNavigate }: BottomNavProps) {
             type="button"
             className={classes}
             aria-current={isActive ? 'page' : undefined}
-            onClick={() => onNavigate(item.target)}
+            onClick={() => {
+              playSound('click')
+              onNavigate(item.target)
+            }}
           >
             <span className="bottom-nav__icon">
               <Icon size={20} strokeWidth={2} aria-hidden="true" />
@@ -54,6 +62,22 @@ export function BottomNav({ active, onNavigate }: BottomNavProps) {
           </button>
         )
       })}
+      <button
+        type="button"
+        className={['bottom-nav__item', 'bottom-nav__item--more'].filter(Boolean).join(' ')}
+        aria-label="All sections"
+        aria-expanded={drawerOpen}
+        onClick={() => {
+          playSound('click')
+          setDrawerOpen(true)
+        }}
+      >
+        <span className="bottom-nav__icon">
+          <LayoutGrid size={20} strokeWidth={2} aria-hidden="true" />
+        </span>
+        <span className="bottom-nav__label">More</span>
+      </button>
+      <NavigationDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </nav>
   )
 }

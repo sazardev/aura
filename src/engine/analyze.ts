@@ -16,10 +16,15 @@ let worker: Worker | undefined
 let nextId = 0
 const pending = new Map<
   number,
-  { resolve: (value: AnalyzerResult) => void; reject: (error: Error) => void }
+  {
+    resolve: (value: AnalyzerResult) => void
+    reject: (error: Error) => void
+    timer: number
+  }
 >()
 const cache = new Map<string, AnalyzerResult>()
 const CACHE_LIMIT = 12
+const ANALYSIS_TIMEOUT_MS = 15_000
 
 function getWorker(): Worker {
   if (worker === undefined) {
@@ -28,11 +33,19 @@ function getWorker(): Worker {
       const entry = pending.get(event.data.id)
       if (entry === undefined) return
       pending.delete(event.data.id)
+      clearTimeout(entry.timer)
       if (event.data.ok && event.data.result !== undefined) {
         entry.resolve(event.data.result)
       } else {
         entry.reject(new Error(event.data.error ?? 'Analysis failed'))
       }
+    })
+    worker.addEventListener('error', (event) => {
+      for (const entry of pending.values()) {
+        clearTimeout(entry.timer)
+        entry.reject(new Error(event.message || 'Analysis worker failed'))
+      }
+      pending.clear()
     })
   }
   return worker
@@ -40,7 +53,9 @@ function getWorker(): Worker {
 
 /**
  * Runs the full NLP analysis in a Web Worker so the UI never blocks, with an
- * LRU cache so re-analyzing the same text is instant.
+ * LRU cache so re-analyzing the same text is instant. Never hangs: a worker
+ * crash or a 15s timeout rejects so screens can show an error instead of a
+ * forever-spinning button.
  */
 export async function analyzeText(text: string): Promise<AnalyzerResult> {
   const cached = cache.get(text)
@@ -48,7 +63,11 @@ export async function analyzeText(text: string): Promise<AnalyzerResult> {
 
   const result = await new Promise<AnalyzerResult>((resolve, reject) => {
     const id = ++nextId
-    pending.set(id, { resolve, reject })
+    const timer = window.setTimeout(() => {
+      pending.delete(id)
+      reject(new Error('Analysis timed out. Try a shorter text.'))
+    }, ANALYSIS_TIMEOUT_MS)
+    pending.set(id, { resolve, reject, timer })
     getWorker().postMessage({ id, text } satisfies WorkerRequest)
   })
 

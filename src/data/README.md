@@ -6,8 +6,10 @@ something is wrong, so you can edit these files safely.
 
 ## `course.json` — the hand-authored course
 
-The guided curriculum (6 units, 18 lessons, 90 words). Each lesson carries
-5 words; words and ids must be unique across the whole course.
+The guided curriculum (9 units, 27 lessons, 135 words). Each lesson carries
+5 words; words and ids must be unique across the whole course. Topics span
+A1→A2: greetings, food, travel, work, body, verbs, home & family, shopping and
+weather.
 
 ```jsonc
 {
@@ -63,6 +65,63 @@ Analyzer screens, so it never slows down startup.
 
 A list of `{ id, name, description, icon }` objects (icon = Lucide icon name). The `id`s must match
 the rules defined in `src/engine/achievements.ts`.
+
+## `library.json` — the classics library (index)
+
+**Public-domain books** (Project Gutenberg), split into chapters and reading
+sections, generated with `npm run gen:library` from raw texts in
+`scripts/books/` (gitignored — download them and re-run the generator to add
+more books). `library.json` is a lightweight **index** used by the Library
+grid and progress bars; each full book lives in its own `library/<id>.json`,
+code-split and loaded on demand when the book is opened.
+
+```jsonc
+// src/data/library.json — index entry (no chapter text)
+{
+  "id": "alice-in-wonderland",
+  "title": "Alice's Adventures in Wonderland",
+  "author": "Lewis Carroll",
+  "year": 1865,
+  "genre": "Fantasy",
+  "difficulty": 3, // 1..5
+  "description": "…",
+  "tags": ["Children", "Fantasy", "Classic"],
+  "source": "Project Gutenberg",
+  "words": 27261,
+  "chapters": 12, // count
+  "sections": 163, // count
+  "gutenbergId": 11,
+}
+```
+
+```jsonc
+// src/data/library/alice-in-wonderland.json — full book (chapters)
+{
+  "id": "alice-in-wonderland",
+  "title": "…",
+  "author": "…",
+  "year": 1865,
+  "genre": "Fantasy",
+  "difficulty": 3,
+  "description": "…",
+  "tags": ["…"],
+  "source": "Project Gutenberg",
+  "words": 27261,
+  "gutenbergId": 11,
+  "firstLine": "Alice was beginning to get very tired…",
+  "quotes": ["\"Curiouser and curiouser!\" cried Alice.", "…"],
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Down the Rabbit-Hole",
+      "sections": [{ "id": "s1-1", "paragraphs": ["…"] }],
+    },
+  ],
+}
+```
+
+Book/chapter/section ids must be unique within a book. The reader also stores
+imported documents (PDF/TXT/MD) as `LibraryBook` objects in `localStorage`.
 
 ## `config.json` — game balance
 

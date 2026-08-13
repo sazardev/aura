@@ -1,30 +1,42 @@
 import { BookOpen, Eye, PartyPopper, RotateCcw } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 import type { ReviewGrade } from '@/engine/srs'
 
 import { Button } from '@/components/button'
 import { ProgressBar } from '@/components/progress-bar'
 import { SpeechButton } from '@/components/speech-button'
+import { playSound } from '@/engine/sounds'
+import { weakWordsSorted } from '@/engine/stats'
+import { trackReview } from '@/engine/telemetry'
 import { XP_PER_REVIEW_CARD } from '@/engine/xp'
 import { useAuraStore } from '@/state/store'
 
 export function ReviewScreen() {
   const cards = useAuraStore((state) => state.cards)
   const review = useAuraStore((state) => state.review)
+  const markGuidedAction = useAuraStore((state) => state.markGuidedAction)
   const awardXp = useAuraStore((state) => state.awardXp)
+  const recordWeakWord = useAuraStore((state) => state.recordWeakWord)
+  const clearWeakWord = useAuraStore((state) => state.clearWeakWord)
+  const weakWords = useAuraStore((state) => state.weakWords)
 
   const due = useMemo(() => {
     const now = new Date().toISOString()
     return Object.values(cards)
       .filter((card) => card.state.due <= now)
-      .toSorted((a, b) => a.state.due.localeCompare(b.state.due))
-  }, [cards])
+      .toSorted((a, b) => {
+        const aWeak = weakWords[a.word.toLowerCase()] ?? 0
+        const bWeak = weakWords[b.word.toLowerCase()] ?? 0
+        return bWeak - aWeak || a.state.due.localeCompare(b.state.due)
+      })
+  }, [cards, weakWords])
 
   const [queue, setQueue] = useState<typeof due>([])
   const [total, setTotal] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [done, setDone] = useState(false)
+  const revealedAtRef = useRef(0)
 
   const start = () => {
     setQueue(due)
@@ -33,13 +45,24 @@ export function ReviewScreen() {
     setDone(false)
   }
 
+  const reveal = () => {
+    revealedAtRef.current = Date.now()
+    setRevealed(true)
+  }
+
   const grade = (value: ReviewGrade) => {
     if (queue.length === 0) return
+    markGuidedAction('review')
     const top = queue[0]!
+    playSound(value >= 4 ? 'correct' : 'wrong')
+    trackReview(value >= 4, Date.now() - revealedAtRef.current)
+    if (value >= 4) clearWeakWord(top.word)
+    else recordWeakWord(top.word)
     review(top.id, value)
     awardXp(XP_PER_REVIEW_CARD)
     const remaining = queue.slice(1)
     if (remaining.length === 0) {
+      playSound('success')
       setDone(true)
     } else {
       setQueue(remaining)
@@ -94,6 +117,7 @@ export function ReviewScreen() {
             <Button variant="primary" block onClick={start}>
               Start review ({due.length})
             </Button>
+            <FocusWords weakWords={weakWords} />
           </>
         )}
       </div>
@@ -120,12 +144,7 @@ export function ReviewScreen() {
           <span className="tier-badge">Top review</span>
         </div>
         <h2>{current.word}</h2>
-        <button
-          type="button"
-          className="review-card__reveal"
-          onClick={() => setRevealed(true)}
-          disabled={revealed}
-        >
+        <button type="button" className="review-card__reveal" onClick={reveal} disabled={revealed}>
           {revealed ? <Eye size={18} aria-hidden="true" /> : 'Tap to see the answer'}
         </button>
         {revealed && (
@@ -151,5 +170,24 @@ export function ReviewScreen() {
         </Button>
       </div>
     </div>
+  )
+}
+
+function FocusWords({ weakWords }: { weakWords: Record<string, number> }) {
+  const weak = weakWordsSorted(weakWords, 5)
+  if (weak.length === 0) return null
+  return (
+    <section className="review-focus">
+      <h2 className="section-title">
+        <RotateCcw size={16} aria-hidden="true" /> Focus words go first
+      </h2>
+      <div className="review-focus__chips">
+        {weak.map((item) => (
+          <span key={item.word} className="word-chip">
+            {item.word} · {item.count}
+          </span>
+        ))}
+      </div>
+    </section>
   )
 }

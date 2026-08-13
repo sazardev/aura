@@ -60,8 +60,11 @@ if (!(await waitForServer(port))) {
   process.exit(1)
 }
 
+// `npm run tauri:android` / `tauri:ios` pass the platform as the first argument.
+const platform = process.argv[2]
+const tauriArgs = platform === 'android' || platform === 'ios' ? [platform, 'dev'] : ['dev']
 const configOverride = JSON.stringify({ build: { devUrl: `http://localhost:${port}` } })
-const tauri = spawn(process.execPath, [TAURI_BIN, 'dev', '--config', configOverride], {
+const tauri = spawn(process.execPath, [TAURI_BIN, ...tauriArgs, '--config', configOverride], {
   stdio: 'inherit',
 })
 

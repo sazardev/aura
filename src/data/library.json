@@ -1,0 +1,1123 @@
+[
+  {
+    "id": "aesop-fables",
+    "title": "Aesop's Fables",
+    "author": "Aesop",
+    "year": -600,
+    "genre": "Classic",
+    "difficulty": 2,
+    "description": "Three hundred very short animal stories, each ending in a moral: the tortoise and the hare, the boy who cried wolf, the fox and the grapes. Perfect bite-sized reading.",
+    "tags": [
+      "Fables",
+      "Short stories",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 36764,
+    "chapters": 309,
+    "sections": 318,
+    "gutenbergId": 21
+  },
+  {
+    "id": "alice-in-wonderland",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "year": 1865,
+    "genre": "Fantasy",
+    "difficulty": 3,
+    "description": "Alice falls down a rabbit hole into a world of talking animals, riddles and nonsense — a playful tour of real, vivid English.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 27261,
+    "chapters": 12,
+    "sections": 163,
+    "gutenbergId": 11
+  },
+  {
+    "id": "anne-of-green-gables",
+    "title": "Anne of Green Gables",
+    "author": "L. M. Montgomery",
+    "year": 1908,
+    "genre": "Classic",
+    "difficulty": 3,
+    "description": "An imaginative orphan girl with red hair and a big vocabulary transforms a quiet farm in Prince Edward Island. Charming and full of vivid speech.",
+    "tags": [
+      "Children",
+      "Coming of age",
+      "Friendship"
+    ],
+    "source": "Project Gutenberg",
+    "words": 106592,
+    "chapters": 38,
+    "sections": 372,
+    "gutenbergId": 45
+  },
+  {
+    "id": "around-the-world-in-eighty-days",
+    "title": "Around the World in Eighty Days",
+    "author": "Jules Verne",
+    "year": 1873,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "Phileas Fogg bets he can circle the globe in eighty days and races against the clock with his loyal servant Passepartout. A fast, fun plot in clear prose.",
+    "tags": [
+      "Travel",
+      "Adventure",
+      "Humor"
+    ],
+    "source": "Project Gutenberg",
+    "words": 63149,
+    "chapters": 37,
+    "sections": 338,
+    "gutenbergId": 103
+  },
+  {
+    "id": "black-beauty",
+    "title": "Black Beauty",
+    "author": "Anna Sewell",
+    "year": 1877,
+    "genre": "Classic",
+    "difficulty": 2,
+    "description": "A gentle horse tells the story of his life with many different owners. Short chapters, simple sentences and a strong message about kindness.",
+    "tags": [
+      "Children",
+      "Animals",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 59867,
+    "chapters": 49,
+    "sections": 201,
+    "gutenbergId": 271
+  },
+  {
+    "id": "call-of-the-wild",
+    "title": "The Call of the Wild",
+    "author": "Jack London",
+    "year": 1903,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "A strong pet dog is stolen and sold as a sled dog in the frozen Yukon. He must grow wild to survive — a gripping tale of instinct and endurance.",
+    "tags": [
+      "Animals",
+      "Survival",
+      "Adventure"
+    ],
+    "source": "Project Gutenberg",
+    "words": 32324,
+    "chapters": 7,
+    "sections": 69,
+    "gutenbergId": 215
+  },
+  {
+    "id": "christmas-carol",
+    "title": "A Christmas Carol",
+    "author": "Charles Dickens",
+    "year": 1843,
+    "genre": "Fantasy",
+    "difficulty": 3,
+    "description": "On Christmas Eve, the miser Ebenezer Scrooge is visited by three spirits who show him his past, present and future. A short, unforgettable classic.",
+    "tags": [
+      "Christmas",
+      "Ghost story",
+      "Redemption"
+    ],
+    "source": "Project Gutenberg",
+    "words": 28704,
+    "chapters": 5,
+    "sections": 145,
+    "gutenbergId": 46
+  },
+  {
+    "id": "connecticut-yankee",
+    "title": "A Connecticut Yankee in King Arthur's Court",
+    "author": "Mark Twain",
+    "year": 1889,
+    "genre": "Adventure",
+    "difficulty": 4,
+    "description": "A modern American engineer is knocked on the head and wakes up in Camelot, where he tries to bring 19th-century technology to King Arthur's court. Hilarious and sharp.",
+    "tags": [
+      "Satire",
+      "Adventure",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 116142,
+    "chapters": 44,
+    "sections": 392,
+    "gutenbergId": 86
+  },
+  {
+    "id": "david-copperfield",
+    "title": "David Copperfield",
+    "author": "Charles Dickens",
+    "year": 1850,
+    "genre": "Classic",
+    "difficulty": 4,
+    "description": "From a lonely childhood to fame as a writer, David Copperfield is Dickens's most personal novel — full of unforgettable characters like Mr. Micawber and Uriah Heep.",
+    "tags": [
+      "Coming of age",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 362550,
+    "chapters": 64,
+    "sections": 1446,
+    "gutenbergId": 766
+  },
+  {
+    "id": "picture-of-dorian-gray",
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "year": 1890,
+    "genre": "Gothic",
+    "difficulty": 4,
+    "description": "A beautiful young man stays forever young while a hidden portrait ages in his place. Wilde's only novel is full of sharp epigrams about beauty and vice.",
+    "tags": [
+      "Gothic",
+      "Philosophy",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 80006,
+    "chapters": 20,
+    "sections": 306,
+    "gutenbergId": 174
+  },
+  {
+    "id": "dracula",
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "year": 1897,
+    "genre": "Gothic",
+    "difficulty": 4,
+    "description": "The vampire Count Dracula comes to England, and a small group must hunt him down. Told through letters and diaries — suspenseful and deeply atmospheric.",
+    "tags": [
+      "Gothic",
+      "Horror",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 162953,
+    "chapters": 27,
+    "sections": 409,
+    "gutenbergId": 345
+  },
+  {
+    "id": "emma",
+    "title": "Emma",
+    "author": "Jane Austen",
+    "year": 1815,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "Emma is sure she is an excellent matchmaker — until her plans backfire in delightful ways. Witty, warm and full of Austen's sharpest social comedy.",
+    "tags": [
+      "Romance",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 161862,
+    "chapters": 55,
+    "sections": 485,
+    "gutenbergId": 158
+  },
+  {
+    "id": "frankenstein",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "year": 1818,
+    "genre": "Gothic",
+    "difficulty": 4,
+    "description": "A scientist creates a living creature and then abandons it, with tragic results. Written when the author was eighteen, it asks what it means to be human.",
+    "tags": [
+      "Gothic",
+      "Horror",
+      "Science fiction"
+    ],
+    "source": "Project Gutenberg",
+    "words": 75261,
+    "chapters": 28,
+    "sections": 166,
+    "gutenbergId": 84
+  },
+  {
+    "id": "great-expectations",
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "year": 1861,
+    "genre": "Classic",
+    "difficulty": 4,
+    "description": "An orphan boy called Pip is suddenly raised from his humble life by a mysterious fortune. A sweeping story of money, class and self-discovery.",
+    "tags": [
+      "Coming of age",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 188802,
+    "chapters": 59,
+    "sections": 791,
+    "gutenbergId": 1400
+  },
+  {
+    "id": "grimm-fairy-tales",
+    "title": "Grimms' Fairy Tales",
+    "author": "Jacob and Wilhelm Grimm",
+    "year": 1812,
+    "genre": "Fantasy",
+    "difficulty": 2,
+    "description": "Two hundred tales of kings, dwarfs, wolves and magic — from Rapunzel and Cinderella to Hansel and Gretel. The classic source of the stories everyone knows.",
+    "tags": [
+      "Children",
+      "Fairy tales",
+      "Short stories"
+    ],
+    "source": "Project Gutenberg",
+    "words": 285465,
+    "chapters": 200,
+    "sections": 447,
+    "gutenbergId": 5314
+  },
+  {
+    "id": "gullivers-travels",
+    "title": "Gulliver's Travels",
+    "author": "Jonathan Swift",
+    "year": 1726,
+    "genre": "Adventure",
+    "difficulty": 4,
+    "description": "Shipwrecked Gulliver visits lands of tiny people, giant people and talking horses. A famous adventure that is secretly a sharp satire on human nature.",
+    "tags": [
+      "Satire",
+      "Adventure",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 103531,
+    "chapters": 39,
+    "sections": 141,
+    "gutenbergId": 829
+  },
+  {
+    "id": "hard-times",
+    "title": "Hard Times",
+    "author": "Charles Dickens",
+    "year": 1854,
+    "genre": "Classic",
+    "difficulty": 4,
+    "description": "In the bleak industrial city of Coketown, a schoolmaster who believes only in facts learns what really matters. Short, fierce and deeply funny.",
+    "tags": [
+      "Society",
+      "Classic",
+      "Satire"
+    ],
+    "source": "Project Gutenberg",
+    "words": 105494,
+    "chapters": 37,
+    "sections": 461,
+    "gutenbergId": 786
+  },
+  {
+    "id": "heidi",
+    "title": "Heidi",
+    "author": "Johanna Spyri",
+    "year": 1880,
+    "genre": "Classic",
+    "difficulty": 2,
+    "description": "A sunny-natured orphan girl is sent to live with her gruff grandfather high in the Swiss Alps. Simple, joyful prose perfect for early learners.",
+    "tags": [
+      "Children",
+      "Nature",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 91622,
+    "chapters": 23,
+    "sections": 293,
+    "gutenbergId": 1448
+  },
+  {
+    "id": "hound-of-baskervilles",
+    "title": "The Hound of the Baskervilles",
+    "author": "Arthur Conan Doyle",
+    "year": 1902,
+    "genre": "Mystery",
+    "difficulty": 4,
+    "description": "A ghostly hound haunts the moors around Baskerville Hall, and Holmes must uncover the truth behind a family curse. The most famous of the Sherlock Holmes novels.",
+    "tags": [
+      "Mystery",
+      "Detective",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 59799,
+    "chapters": 15,
+    "sections": 302,
+    "gutenbergId": 2852
+  },
+  {
+    "id": "huckleberry-finn",
+    "title": "Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "year": 1884,
+    "genre": "Adventure",
+    "difficulty": 4,
+    "description": "Huck Finn escapes his violent father and floats down the Mississippi on a raft with Jim, an escaped slave. Funny and moving, with unforgettable American voices.",
+    "tags": [
+      "Adventure",
+      "Coming of age",
+      "Humor"
+    ],
+    "source": "Project Gutenberg",
+    "words": 116335,
+    "chapters": 43,
+    "sections": 450,
+    "gutenbergId": 76
+  },
+  {
+    "id": "invisible-man",
+    "title": "The Invisible Man",
+    "author": "H. G. Wells",
+    "year": 1897,
+    "genre": "Science Fiction",
+    "difficulty": 4,
+    "description": "A scientist discovers how to make himself invisible — and uses his power to terrify a quiet English village. Suspenseful, funny and unsettling.",
+    "tags": [
+      "Science fiction",
+      "Horror",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 49640,
+    "chapters": 28,
+    "sections": 233,
+    "gutenbergId": 5230
+  },
+  {
+    "id": "jane-eyre",
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "year": 1847,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "An orphan girl grows up poor, becomes a governess, and falls in love with her mysterious employer. A first-person story rich in feeling and atmosphere.",
+    "tags": [
+      "Romance",
+      "Gothic",
+      "Coming of age"
+    ],
+    "source": "Project Gutenberg",
+    "words": 188571,
+    "chapters": 38,
+    "sections": 824,
+    "gutenbergId": 1260
+  },
+  {
+    "id": "jekyll-and-hyde",
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "year": 1886,
+    "genre": "Gothic",
+    "difficulty": 4,
+    "description": "A respected doctor invents a potion that lets him become his evil double. A short, terrifying study of the good and evil inside every person.",
+    "tags": [
+      "Gothic",
+      "Horror",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 25863,
+    "chapters": 10,
+    "sections": 71,
+    "gutenbergId": 43
+  },
+  {
+    "id": "journey-to-center-earth",
+    "title": "A Journey to the Centre of the Earth",
+    "author": "Jules Verne",
+    "year": 1864,
+    "genre": "Science Fiction",
+    "difficulty": 4,
+    "description": "A professor decodes a cryptic message and descends into a volcano with his nephew, into a lost world of prehistoric marvels. Verne at his most adventurous.",
+    "tags": [
+      "Adventure",
+      "Science fiction",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 85855,
+    "chapters": 44,
+    "sections": 502,
+    "gutenbergId": 18857
+  },
+  {
+    "id": "jungle-book",
+    "title": "The Jungle Book",
+    "author": "Rudyard Kipling",
+    "year": 1894,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "Mowgli is raised by wolves in the Indian jungle, learning the Law of the Jungle from Baloo the bear and Bagheera the panther. Seven classic stories.",
+    "tags": [
+      "Children",
+      "Adventure",
+      "Animals"
+    ],
+    "source": "Project Gutenberg",
+    "words": 52268,
+    "chapters": 6,
+    "sections": 191,
+    "gutenbergId": 236
+  },
+  {
+    "id": "just-so-stories",
+    "title": "Just So Stories",
+    "author": "Rudyard Kipling",
+    "year": 1902,
+    "genre": "Fantasy",
+    "difficulty": 2,
+    "description": "Twelve funny origin stories: how the leopard got his spots, the camel his hump, and the elephant his trunk. Playful, rhythmic English that begs to be read aloud.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Short stories"
+    ],
+    "source": "Project Gutenberg",
+    "words": 30361,
+    "chapters": 12,
+    "sections": 143,
+    "gutenbergId": 2781
+  },
+  {
+    "id": "les-miserables",
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "year": 1862,
+    "genre": "Classic",
+    "difficulty": 5,
+    "description": "Jean Valjean steals a loaf of bread and spends his life running from the law, seeking redemption in a world of poverty and revolution. One of the greatest novels ever written.",
+    "tags": [
+      "Society",
+      "Historical",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 569598,
+    "chapters": 365,
+    "sections": 2773,
+    "gutenbergId": 135
+  },
+  {
+    "id": "little-women",
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "year": 1868,
+    "genre": "Classic",
+    "difficulty": 3,
+    "description": "The four March sisters grow up in Civil War America, dreaming, quarrelling and loving each other. A warm story about family and becoming yourself.",
+    "tags": [
+      "Family",
+      "Coming of age",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 190735,
+    "chapters": 47,
+    "sections": 780,
+    "gutenbergId": 514
+  },
+  {
+    "id": "mansfield-park",
+    "title": "Mansfield Park",
+    "author": "Jane Austen",
+    "year": 1814,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "Quiet Fanny Price is taken in by her wealthy relatives at Mansfield Park and must find her place among them. Austen's deepest study of character and conscience.",
+    "tags": [
+      "Romance",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 161441,
+    "chapters": 48,
+    "sections": 377,
+    "gutenbergId": 141
+  },
+  {
+    "id": "memoirs-of-sherlock-holmes",
+    "title": "The Memoirs of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "year": 1894,
+    "genre": "Mystery",
+    "difficulty": 4,
+    "description": "Eleven short adventures including Silver Blaze, The Musgrave Ritual and the final confrontation at Reichenbach Falls. Holmes at his sharpest.",
+    "tags": [
+      "Mystery",
+      "Short stories",
+      "Detective"
+    ],
+    "source": "Project Gutenberg",
+    "words": 96728,
+    "chapters": 13,
+    "sections": 442,
+    "gutenbergId": 834
+  },
+  {
+    "id": "metamorphosis",
+    "title": "The Metamorphosis",
+    "author": "Franz Kafka",
+    "year": 1915,
+    "genre": "Classic",
+    "difficulty": 4,
+    "description": "Gregor Samsa wakes up one morning as a giant insect. Surreal, dark and strangely funny — the most famous short story of the twentieth century.",
+    "tags": [
+      "Classic",
+      "Philosophy",
+      "Fiction"
+    ],
+    "source": "Project Gutenberg",
+    "words": 22374,
+    "chapters": 3,
+    "sections": 20,
+    "gutenbergId": 5200
+  },
+  {
+    "id": "moby-dick",
+    "title": "Moby-Dick; or, The Whale",
+    "author": "Herman Melville",
+    "year": 1851,
+    "genre": "Adventure",
+    "difficulty": 5,
+    "description": "Ishmael signs onto a whaling ship and meets the obsessed Captain Ahab, who hunts one great white whale. Huge, strange and magnificent — the great American novel.",
+    "tags": [
+      "Adventure",
+      "Sea",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 214150,
+    "chapters": 135,
+    "sections": 537,
+    "gutenbergId": 2701
+  },
+  {
+    "id": "northanger-abbey",
+    "title": "Northanger Abbey",
+    "author": "Jane Austen",
+    "year": 1817,
+    "genre": "Romance",
+    "difficulty": 3,
+    "description": "A young woman who reads too many Gothic novels visits a mysterious abbey and lets her imagination run wild. A sparkling parody and a sweet romance.",
+    "tags": [
+      "Romance",
+      "Humor",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 78088,
+    "chapters": 31,
+    "sections": 217,
+    "gutenbergId": 121
+  },
+  {
+    "id": "oliver-twist",
+    "title": "Oliver Twist",
+    "author": "Charles Dickens",
+    "year": 1838,
+    "genre": "Classic",
+    "difficulty": 4,
+    "description": "A poor orphan asks for more porridge and is thrown into a world of thieves and villains. Dickens's most famous attack on cruelty — and a great adventure.",
+    "tags": [
+      "Society",
+      "Adventure",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 160579,
+    "chapters": 53,
+    "sections": 791,
+    "gutenbergId": 730
+  },
+  {
+    "id": "wonderful-wizard-of-oz",
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum",
+    "year": 1900,
+    "genre": "Fantasy",
+    "difficulty": 3,
+    "description": "Dorothy is swept away to a magical land and must travel the yellow brick road. Warm, clear prose that learners can really sink into.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 39448,
+    "chapters": 24,
+    "sections": 231,
+    "gutenbergId": 55
+  },
+  {
+    "id": "persuasion",
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "year": 1817,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "Years after Anne Elliot was persuaded to refuse the man she loved, he returns — rich and still unmarried. Austen's most tender and mature novel.",
+    "tags": [
+      "Romance",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 84094,
+    "chapters": 24,
+    "sections": 213,
+    "gutenbergId": 105
+  },
+  {
+    "id": "peter-pan",
+    "title": "Peter Pan",
+    "author": "J. M. Barrie",
+    "year": 1911,
+    "genre": "Fantasy",
+    "difficulty": 3,
+    "description": "The boy who never grows up takes Wendy and her brothers to Neverland, where they fight pirates and fly with fairies. Playful, quotable English.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Adventure"
+    ],
+    "source": "Project Gutenberg",
+    "words": 47785,
+    "chapters": 17,
+    "sections": 338,
+    "gutenbergId": 16
+  },
+  {
+    "id": "pinocchio",
+    "title": "The Adventures of Pinocchio",
+    "author": "Carlo Collodi",
+    "year": 1883,
+    "genre": "Fantasy",
+    "difficulty": 2,
+    "description": "A wooden puppet who wants to be a real boy keeps getting into trouble. Clear, lively storytelling that is ideal for early readers.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 40411,
+    "chapters": 36,
+    "sections": 362,
+    "gutenbergId": 500
+  },
+  {
+    "id": "pride-and-prejudice",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "Elizabeth Bennet meets the proud Mr. Darcy and both must learn to see past first impressions. Sharp, witty dialogue and one of the best-loved novels in English.",
+    "tags": [
+      "Romance",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 123505,
+    "chapters": 61,
+    "sections": 490,
+    "gutenbergId": 1342
+  },
+  {
+    "id": "prince-and-pauper",
+    "title": "The Prince and the Pauper",
+    "author": "Mark Twain",
+    "year": 1881,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "A poor boy and a prince who look exactly alike swap clothes — and lives. A fast, funny story about justice, kindness and seeing the world through another's eyes.",
+    "tags": [
+      "Children",
+      "Adventure",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 70260,
+    "chapters": 33,
+    "sections": 297,
+    "gutenbergId": 1837
+  },
+  {
+    "id": "return-of-sherlock-holmes",
+    "title": "The Return of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "year": 1905,
+    "genre": "Mystery",
+    "difficulty": 4,
+    "description": "Holmes returns from the dead in thirteen brilliant short cases, from The Empty House to The Second Stain. Vintage detective work at its peak.",
+    "tags": [
+      "Mystery",
+      "Short stories",
+      "Detective"
+    ],
+    "source": "Project Gutenberg",
+    "words": 113908,
+    "chapters": 13,
+    "sections": 517,
+    "gutenbergId": 108
+  },
+  {
+    "id": "robinson-crusoe",
+    "title": "Robinson Crusoe",
+    "author": "Daniel Defoe",
+    "year": 1719,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "A sailor shipwrecked alone on a tropical island must build a life from almost nothing. The original survival story, told with plain, practical detail.",
+    "tags": [
+      "Survival",
+      "Adventure",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 121515,
+    "chapters": 20,
+    "sections": 153,
+    "gutenbergId": 521
+  },
+  {
+    "id": "scarlet-letter",
+    "title": "The Scarlet Letter",
+    "author": "Nathaniel Hawthorne",
+    "year": 1850,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "In Puritan New England, Hester Prynne must wear a scarlet letter for the rest of her life. A powerful novel about guilt, secrecy and courage.",
+    "tags": [
+      "Society",
+      "Romance",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 69536,
+    "chapters": 24,
+    "sections": 152,
+    "gutenbergId": 33
+  },
+  {
+    "id": "secret-garden",
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett",
+    "year": 1911,
+    "genre": "Classic",
+    "difficulty": 3,
+    "description": "A lonely girl discovers a hidden, walled garden and, as it blooms, so does she. A warm story about nature, friendship and growing up.",
+    "tags": [
+      "Children",
+      "Classic",
+      "Coming of age"
+    ],
+    "source": "Project Gutenberg",
+    "words": 81309,
+    "chapters": 27,
+    "sections": 443,
+    "gutenbergId": 17396
+  },
+  {
+    "id": "sherlock-holmes",
+    "title": "The Adventures of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "year": 1892,
+    "genre": "Mystery",
+    "difficulty": 4,
+    "description": "Twelve classic short stories about the world's greatest detective and his friend Dr. Watson, from A Scandal in Bohemia to The Copper Beeches.",
+    "tags": [
+      "Mystery",
+      "Short stories",
+      "Detective"
+    ],
+    "source": "Project Gutenberg",
+    "words": 105703,
+    "chapters": 12,
+    "sections": 512,
+    "gutenbergId": 1661
+  },
+  {
+    "id": "study-in-scarlet",
+    "title": "A Study in Scarlet",
+    "author": "Arthur Conan Doyle",
+    "year": 1887,
+    "genre": "Mystery",
+    "difficulty": 4,
+    "description": "The very first Sherlock Holmes story: a mysterious murder in an empty house and the meeting of Holmes and Dr. Watson. Where the legend began.",
+    "tags": [
+      "Mystery",
+      "Detective",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 43892,
+    "chapters": 14,
+    "sections": 166,
+    "gutenbergId": 244
+  },
+  {
+    "id": "tale-of-two-cities",
+    "title": "A Tale of Two Cities",
+    "author": "Charles Dickens",
+    "year": 1859,
+    "genre": "Historical",
+    "difficulty": 4,
+    "description": "A doctor, a lawyer and a wine-shop keeper are caught up in the French Revolution. Epic, suspenseful and home to the most famous ending in English fiction.",
+    "tags": [
+      "Historical",
+      "Society",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 138025,
+    "chapters": 45,
+    "sections": 669,
+    "gutenbergId": 98
+  },
+  {
+    "id": "three-musketeers",
+    "title": "The Three Musketeers",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "genre": "Adventure",
+    "difficulty": 4,
+    "description": "Young d'Artagnan joins Athos, Porthos and Aramis — the king's musketeers — for duels, conspiracies and the famous diamond affair. The great adventure novel.",
+    "tags": [
+      "Adventure",
+      "Historical",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 232444,
+    "chapters": 67,
+    "sections": 1651,
+    "gutenbergId": 1257
+  },
+  {
+    "id": "through-the-looking-glass",
+    "title": "Through the Looking-Glass",
+    "author": "Lewis Carroll",
+    "year": 1871,
+    "genre": "Fantasy",
+    "difficulty": 3,
+    "description": "Alice steps through the mirror into a backward world of chess pieces, nonsense poems and the Jabberwock. The playful sequel to Wonderland.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 30527,
+    "chapters": 12,
+    "sections": 192,
+    "gutenbergId": 12
+  },
+  {
+    "id": "time-machine",
+    "title": "The Time Machine",
+    "author": "H. G. Wells",
+    "year": 1895,
+    "genre": "Science Fiction",
+    "difficulty": 3,
+    "description": "An inventor travels to the year 802701 and finds humanity split into two strange races. Short, vivid and thought-provoking — an early classic of science fiction.",
+    "tags": [
+      "Time travel",
+      "Science fiction",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 32751,
+    "chapters": 16,
+    "sections": 67,
+    "gutenbergId": 35
+  },
+  {
+    "id": "tom-sawyer",
+    "title": "The Adventures of Tom Sawyer",
+    "author": "Mark Twain",
+    "year": 1876,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "Tom Sawyer tricks his friends, plays truant, and hunts for treasure on the Mississippi. Funny, warm and packed with everyday American English.",
+    "tags": [
+      "Coming of age",
+      "Humor",
+      "Adventure"
+    ],
+    "source": "Project Gutenberg",
+    "words": 73212,
+    "chapters": 35,
+    "sections": 387,
+    "gutenbergId": 74
+  },
+  {
+    "id": "treasure-island",
+    "title": "Treasure Island",
+    "author": "Robert Louis Stevenson",
+    "year": 1883,
+    "genre": "Adventure",
+    "difficulty": 3,
+    "description": "Young Jim Hawkins finds a treasure map and sails to a distant island full of pirates, including the famous Long John Silver. Action-packed and easy to follow.",
+    "tags": [
+      "Pirates",
+      "Adventure",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 69916,
+    "chapters": 34,
+    "sections": 290,
+    "gutenbergId": 120
+  },
+  {
+    "id": "twenty-thousand-leagues",
+    "title": "Twenty Thousand Leagues Under the Seas",
+    "author": "Jules Verne",
+    "year": 1870,
+    "genre": "Science Fiction",
+    "difficulty": 4,
+    "description": "A mysterious sea monster turns out to be the submarine Nautilus, commanded by the enigmatic Captain Nemo. A grand voyage full of marine marvels.",
+    "tags": [
+      "Sea",
+      "Science fiction",
+      "Adventure"
+    ],
+    "source": "Project Gutenberg",
+    "words": 104948,
+    "chapters": 46,
+    "sections": 479,
+    "gutenbergId": 164
+  },
+  {
+    "id": "vanity-fair",
+    "title": "Vanity Fair",
+    "author": "William Makepeace Thackeray",
+    "year": 1848,
+    "genre": "Classic",
+    "difficulty": 5,
+    "description": "Becky Sharp climbs the slippery ladder of English society with wit and no conscience. A huge, satirical novel about ambition, money and pretending.",
+    "tags": [
+      "Society",
+      "Satire",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 305323,
+    "chapters": 67,
+    "sections": 697,
+    "gutenbergId": 599
+  },
+  {
+    "id": "war-of-the-worlds",
+    "title": "The War of the Worlds",
+    "author": "H. G. Wells",
+    "year": 1898,
+    "genre": "Science Fiction",
+    "difficulty": 4,
+    "description": "Martians invade Victorian England with terrible war machines. Tense, suspenseful prose with striking descriptions and a famous twist at the end.",
+    "tags": [
+      "Alien invasion",
+      "Science fiction",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 60674,
+    "chapters": 27,
+    "sections": 186,
+    "gutenbergId": 36
+  },
+  {
+    "id": "white-fang",
+    "title": "White Fang",
+    "author": "Jack London",
+    "year": 1906,
+    "genre": "Adventure",
+    "difficulty": 4,
+    "description": "The story of a wild wolf-dog in the frozen North who must learn to trust humans. The fierce companion to The Call of the Wild.",
+    "tags": [
+      "Animals",
+      "Survival",
+      "Adventure"
+    ],
+    "source": "Project Gutenberg",
+    "words": 73501,
+    "chapters": 25,
+    "sections": 221,
+    "gutenbergId": 910
+  },
+  {
+    "id": "wind-in-the-willows",
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame",
+    "year": 1908,
+    "genre": "Fantasy",
+    "difficulty": 3,
+    "description": "Mole, Rat, Badger and Mr. Toad by the river — gentle adventures full of friendship and lovely descriptions of the English countryside.",
+    "tags": [
+      "Children",
+      "Fantasy",
+      "Nature"
+    ],
+    "source": "Project Gutenberg",
+    "words": 60632,
+    "chapters": 12,
+    "sections": 188,
+    "gutenbergId": 289
+  },
+  {
+    "id": "wuthering-heights",
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "year": 1847,
+    "genre": "Romance",
+    "difficulty": 4,
+    "description": "On the wild Yorkshire moors, the fierce love between Heathcliff and Catherine shapes two families for generations. Dark, stormy and unforgettable.",
+    "tags": [
+      "Gothic",
+      "Romance",
+      "Revenge"
+    ],
+    "source": "Project Gutenberg",
+    "words": 119295,
+    "chapters": 34,
+    "sections": 399,
+    "gutenbergId": 768
+  },
+  {
+    "id": "yellow-wallpaper",
+    "title": "The Yellow Wallpaper",
+    "author": "Charlotte Perkins Gilman",
+    "year": 1892,
+    "genre": "Gothic",
+    "difficulty": 4,
+    "description": "A woman is told to rest and never to think, and slowly the pattern of the yellow wallpaper starts to move. A chilling short story in the form of a diary.",
+    "tags": [
+      "Horror",
+      "Short story",
+      "Classic"
+    ],
+    "source": "Project Gutenberg",
+    "words": 6251,
+    "chapters": 1,
+    "sections": 54,
+    "gutenbergId": 1952
+  }
+]
