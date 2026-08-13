@@ -41,6 +41,9 @@ jobs:
       - name: npm run analyze
         run: npm run analyze
 
+      - name: Copy WordNet data
+        run: npm run copy:wn
+
       - name: Clippy and rustfmt
         run: |
           npm run format:rust
