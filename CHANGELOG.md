@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-08-13
+
+### Fixed
+
+- bundle the aura binary as the app executable
+
 ## [0.2.2] - 2026-08-13
 
 ### Fixed
