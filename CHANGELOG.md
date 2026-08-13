@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-08-13
+
+### Fixed
+
+- copy WordNet data before clippy
+
 ## [0.2.0] - 2026-08-13
 
 ### Added
