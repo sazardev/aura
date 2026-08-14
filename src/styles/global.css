@@ -14,7 +14,7 @@
   --aura-yellow: #ffc800;
   --aura-ink: #3c3c3c;
   --aura-text: #4b4b4b;
-  --aura-muted: #8a8a8a;
+  --aura-muted: #6e6e6e;
   --aura-bg: #f0f4ef;
   --aura-card: #ffffff;
   --aura-border: #e5e5e5;
@@ -26,6 +26,9 @@
   --aura-pink-soft: #ffe4f5;
   --aura-subtle: #fafafa;
   --aura-amber: #9a6a00;
+
+  /* Always-dark surface (toasts, overlays) regardless of theme */
+  --aura-toast: #3c3c3c;
 
   /* Typography */
   --font-sans:
@@ -333,6 +336,41 @@ body {
 :focus-visible {
   outline: 2px solid var(--aura-focus);
   outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  z-index: 100;
+  top: var(--space-2);
+  left: var(--space-2);
+
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+
+  font-weight: 800;
+  color: var(--aura-ink);
+
+  background: var(--aura-card);
+  box-shadow: var(--shadow-md);
 }
 
 h1,
@@ -717,16 +755,11 @@ button {
   color: var(--aura-muted);
 }
 
-.settings-sheet__note {
-  margin: 8px 4px 0;
-  font-size: 12px;
-  color: var(--aura-muted);
-}
-
 /* ---------- Bottom nav ---------- */
 
 .bottom-nav {
   position: fixed;
+  z-index: 30;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -749,6 +782,7 @@ button {
   gap: 2px;
   align-items: center;
 
+  min-width: 0;
   padding: 10px 4px calc(12px + env(safe-area-inset-bottom, 0px));
   border: none;
 
@@ -756,6 +790,13 @@ button {
   color: var(--aura-muted);
 
   background: none;
+}
+
+.bottom-nav__label {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bottom-nav__item--active {
@@ -928,17 +969,22 @@ button {
 /* ---------- Home ---------- */
 
 .home-hero__brand {
-  cursor: pointer;
+  position: relative;
 
   display: flex;
   gap: 12px;
   align-items: center;
 
   margin-bottom: 12px;
-  padding: 0;
-  border: none;
+}
 
-  text-align: left;
+.home-hero__brand-hit {
+  cursor: pointer;
+
+  position: absolute;
+  inset: 0;
+
+  border: none;
 
   background: none;
 }
@@ -1101,6 +1147,7 @@ button {
 
 .lesson-node--locked {
   cursor: not-allowed;
+  color: var(--aura-muted);
   background: var(--aura-border);
   box-shadow: none;
 }
@@ -1116,12 +1163,6 @@ button {
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
-}
-
-.home-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .home-card--words,
@@ -1173,6 +1214,13 @@ button {
 .lesson-screen__close {
   cursor: pointer;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
   border: none;
 
   font-size: 18px;
@@ -1767,6 +1815,13 @@ button {
 .vocabulary__remove {
   cursor: pointer;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
   border: none;
 
   font-size: 16px;
@@ -2232,7 +2287,12 @@ button {
   color: var(--aura-ink);
 
   background: none;
-  outline: none;
+}
+
+.library-search input:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid var(--aura-focus);
+  outline-offset: 2px;
 }
 
 .library-chips {
@@ -2911,6 +2971,8 @@ button {
   flex-direction: column;
   gap: 8px;
 
+  max-width: 720px;
+  margin: 0 auto;
   padding: 16px;
   padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   border-top: 2px solid var(--aura-border);
@@ -3875,7 +3937,7 @@ button {
 }
 
 .stats-hours__label {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--aura-muted);
 }
 
@@ -4066,7 +4128,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: min(320px, calc(100vw - 48px));
+  width: min(320px, 88vw);
   padding: 16px;
   border-radius: var(--radius-xl);
 
@@ -4805,10 +4867,6 @@ button {
   padding-top: 4px;
 }
 
-.settings-data .settings-sheet__note {
-  margin: 0;
-}
-
 .backup-file-input {
   position: absolute;
 
@@ -4873,7 +4931,7 @@ button {
 
   color: white;
 
-  background: var(--aura-ink);
+  background: var(--aura-toast);
   box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
 
   animation: toast-in 0.25s ease;
@@ -4906,6 +4964,10 @@ button {
 
 @media (width <= 480px) {
   .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -4962,9 +5024,14 @@ button {
 
   font-size: 14px;
   font-weight: 700;
-  color: var(--aura-blue-dark);
+  color: #0a6ea8;
 
   background: none;
+}
+
+/* Bright blue-dark on light backgrounds is only ~3.2:1; the dark theme keeps it. */
+[data-theme='dark'] .onboarding__skip {
+  color: var(--aura-blue-dark);
 }
 
 .onboarding__body {

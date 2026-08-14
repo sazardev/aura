@@ -105,6 +105,7 @@ export function WriteScreen() {
           <textarea
             className="analyzer-textarea"
             rows={4}
+            aria-label="Write a sentence using the target word"
             placeholder={`${target} …`}
             value={text}
             onChange={(event) => setText(event.target.value)}
@@ -120,7 +121,7 @@ export function WriteScreen() {
             </Button>
           </div>
           {error !== undefined && (
-            <p className="dictation-verdict">
+            <p className="dictation-verdict" role="alert">
               <Lightbulb size={14} aria-hidden="true" /> {error}
             </p>
           )}

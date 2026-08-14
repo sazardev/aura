@@ -17,7 +17,7 @@ import {
   User,
   Zap,
 } from 'lucide-react'
-import { type ReactNode, useState } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 
 import { AvatarIcon } from '@/components/avatar'
 import { ProgressBar } from '@/components/progress-bar'
@@ -122,6 +122,15 @@ export function ProfileScreen({
   const activeTab = tab ?? 'overview'
   const [avatarOpen, setAvatarOpen] = useState(false)
   const [nameDraft, setNameDraft] = useState(profile.name)
+
+  useEffect(() => {
+    if (!avatarOpen) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setAvatarOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [avatarOpen])
 
   const level = levelFromXp(xp)
   const accuracy =
@@ -546,6 +555,7 @@ export function ProfileScreen({
                   ]
                     .filter(Boolean)
                     .join(' ')}
+                  aria-label={`${id} avatar`}
                   aria-pressed={id === profile.avatar}
                   onClick={() => {
                     setProfileAvatar(id)

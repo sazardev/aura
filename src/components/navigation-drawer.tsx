@@ -13,6 +13,7 @@ import {
   SpellCheck,
   X,
 } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
 import type { Route } from '@/lib/router'
 
@@ -44,6 +45,17 @@ const ITEMS: DrawerItem[] = [
 
 export function NavigationDrawer({ open, onClose }: NavigationDrawerProps) {
   const { navigate } = useHashRoute()
+  const panelRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    panelRef.current?.focus()
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open, onClose])
 
   if (!open) return null
 
@@ -55,9 +67,11 @@ export function NavigationDrawer({ open, onClose }: NavigationDrawerProps) {
   return (
     <div className="nav-drawer__overlay" onClick={onClose}>
       <aside
+        ref={panelRef}
         className="nav-drawer"
         role="dialog"
         aria-label="All sections"
+        tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
       >
         <header className="nav-drawer__header">

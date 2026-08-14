@@ -235,6 +235,10 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
         handleMatchComplete,
       )}
 
+      <span className="visually-hidden" aria-live="polite">
+        {feedbackText(feedback)}
+      </span>
+
       <div className="lesson-screen__footer">
         {feedback === 'wrong' && (
           <button type="button" className="lesson-screen__continue" onClick={continueAfterWrong}>
@@ -247,6 +251,20 @@ export function LessonScreen({ lesson, onHome }: LessonScreenProps) {
       </div>
     </div>
   )
+}
+
+function feedbackText(feedback: FeedbackState): string {
+  switch (feedback) {
+    case 'correct': {
+      return 'Correct!'
+    }
+    case 'wrong': {
+      return 'Not quite. Check the hint and continue.'
+    }
+    default: {
+      return ''
+    }
+  }
 }
 
 function renderExercise(

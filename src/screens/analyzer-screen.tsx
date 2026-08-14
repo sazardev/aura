@@ -107,6 +107,7 @@ export function AnalyzerScreen() {
 
       <textarea
         className="analyzer-textarea"
+        aria-label="Text to analyze"
         placeholder="Paste an English text here…"
         value={text}
         rows={8}
@@ -119,7 +120,11 @@ export function AnalyzerScreen() {
           analyzed ({text.length.toLocaleString('en-US')} total).
         </p>
       )}
-      {error !== undefined && <p className="analyzer-note analyzer-note--error">{error}</p>}
+      {error !== undefined && (
+        <p className="analyzer-note analyzer-note--error" role="alert">
+          {error}
+        </p>
+      )}
 
       <div className="analyzer-actions">
         <Button
@@ -140,6 +145,8 @@ export function AnalyzerScreen() {
           type="file"
           accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown"
           className="backup-file-input"
+          tabIndex={-1}
+          aria-hidden="true"
           onChange={(event) => void onFileChosen(event.target.files?.[0])}
         />
         <Button variant="secondary" onClick={() => void pasteClipboard()}>

@@ -277,6 +277,7 @@ function FillExercise({
       </p>
       <input
         className="exercise-input"
+        aria-label="Type the missing word"
         value={value}
         placeholder="Type the missing word…"
         disabled={feedback !== 'idle'}

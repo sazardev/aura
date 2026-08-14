@@ -128,9 +128,15 @@ export function LibraryScreen({ onOpenBook, onContinue }: LibraryScreenProps) {
           type="file"
           accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown"
           className="backup-file-input"
+          tabIndex={-1}
+          aria-hidden="true"
           onChange={(event) => void onFileChosen(event.target.files?.[0])}
         />
-        {error !== undefined && <p className="analyzer-note analyzer-note--error">{error}</p>}
+        {error !== undefined && (
+          <p className="analyzer-note analyzer-note--error" role="alert">
+            {error}
+          </p>
+        )}
       </div>
 
       {importedBooks.length > 0 && (
@@ -158,6 +164,7 @@ export function LibraryScreen({ onOpenBook, onContinue }: LibraryScreenProps) {
           <Search size={16} aria-hidden="true" />
           <input
             type="search"
+            aria-label="Search title or author"
             placeholder="Search title or author…"
             value={query}
             onChange={(event) => setQuery(event.target.value)}

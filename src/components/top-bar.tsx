@@ -22,20 +22,24 @@ export function TopBar() {
       <span className="top-bar__brand">
         <Logo size={26} />
       </span>
-      <div className="top-bar__stat" title="Day streak">
+      <div className="top-bar__stat" aria-label={`Day streak: ${streak}`}>
         <Flame size={18} aria-hidden="true" />
         <strong>{streak}</strong>
       </div>
-      <div className="top-bar__stat" title="Experience points">
+      <div className="top-bar__stat" aria-label={`Experience points: ${xp}, level ${level.level}`}>
         <Zap size={18} aria-hidden="true" />
         <strong>{xp}</strong>
         <span className="top-bar__level">Lv {level.level}</span>
       </div>
-      <div className="top-bar__stat" title="Hearts">
+      <div className="top-bar__stat" aria-label={`Hearts: ${hearts}`}>
         <Heart size={18} fill="currentColor" aria-hidden="true" />
         <strong>{hearts}</strong>
       </div>
-      <div className="top-bar__goal" title={`Daily goal: ${daily.xp}/${dailyGoal} XP`}>
+      <div
+        className="top-bar__goal"
+        aria-label={`Daily goal: ${daily.xp} of ${dailyGoal} XP`}
+        title={`Daily goal: ${daily.xp}/${dailyGoal} XP`}
+      >
         <span className="top-bar__goal-label">
           {daily.xp}/{dailyGoal}
         </span>

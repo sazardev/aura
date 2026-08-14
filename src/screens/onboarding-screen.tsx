@@ -462,6 +462,7 @@ function SetupBody({
                 className={['avatar-option', id === avatar ? 'avatar-option--selected' : '']
                   .filter(Boolean)
                   .join(' ')}
+                aria-label={`${id} avatar`}
                 aria-pressed={id === avatar}
                 onClick={() => onAvatar(id)}
               >

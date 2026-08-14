@@ -146,6 +146,7 @@ export function DictionaryScreen({
         <input
           type="search"
           className="exercise-input"
+          aria-label="Search an English word"
           placeholder="Search an English word…"
           value={query}
           onChange={(event) => setQuery(event.target.value)}

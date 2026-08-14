@@ -195,6 +195,7 @@ function DialoguePlayer({ dialogue, onBack }: { dialogue: Dialogue; onBack: () =
               <input
                 type="text"
                 className="exercise-input"
+                aria-label="Type your reply"
                 placeholder="Type your reply…"
                 value={typed}
                 onChange={(event) => setTyped(event.target.value)}

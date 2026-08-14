@@ -219,8 +219,11 @@ export function App() {
 
   return (
     <div className="app">
+      <a href="#app-content" className="visually-hidden skip-link">
+        Skip to content
+      </a>
       <TopBar />
-      <main className="app__content">
+      <main id="app-content" className="app__content">
         {route.name === 'home' && (
           <HomeScreen
             onStartLesson={(lessonId) => navigate({ name: 'lesson', lessonId })}

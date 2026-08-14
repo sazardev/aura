@@ -71,7 +71,7 @@ export function BackupScreen() {
           </Button>
         </div>
         {clipboardError && (
-          <p className="dictation-verdict">
+          <p className="dictation-verdict" role="alert">
             <Trash2 size={14} aria-hidden="true" /> Clipboard unavailable — use "Download as file".
           </p>
         )}
@@ -87,6 +87,7 @@ export function BackupScreen() {
         <textarea
           className="analyzer-textarea"
           rows={4}
+          aria-label="Paste backup content"
           placeholder="Paste your backup here…"
           value={paste}
           onChange={(event) => setPaste(event.target.value)}
@@ -97,6 +98,8 @@ export function BackupScreen() {
             type="file"
             accept="application/json,.json"
             className="backup-file-input"
+            tabIndex={-1}
+            aria-hidden="true"
             onChange={(event) => void upload(event.target.files?.[0])}
           />
         </label>
@@ -104,12 +107,12 @@ export function BackupScreen() {
           <Trash2 size={16} aria-hidden="true" /> Restore this backup
         </Button>
         {status === 'ok' && (
-          <p className="dictation-verdict dictation-verdict--correct">
+          <p className="dictation-verdict dictation-verdict--correct" role="alert">
             <Check size={14} aria-hidden="true" /> Progress restored.
           </p>
         )}
         {status === 'error' && (
-          <p className="dictation-verdict">
+          <p className="dictation-verdict" role="alert">
             <Trash2 size={14} aria-hidden="true" /> That doesn't look like a valid Aura backup.
           </p>
         )}

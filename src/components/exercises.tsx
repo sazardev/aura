@@ -138,6 +138,7 @@ export function TypeView({
         autoComplete="off"
         autoCorrect="off"
         spellCheck={false}
+        aria-label="Type the word in English"
         value={value}
         placeholder="Type the word…"
         disabled={feedback !== 'idle'}
@@ -289,7 +290,7 @@ export function SpeakView({
             )}
           </Button>
           {transcript.length > 0 && (
-            <p className="speak-transcript">
+            <p className="speak-transcript" aria-live="polite">
               You said: <em>“{transcript}”</em>
             </p>
           )}

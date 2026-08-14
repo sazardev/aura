@@ -32,14 +32,11 @@ describe('Review screen', () => {
     expect(wrongOption).toBeDefined()
     await user.click(wrongOption!)
 
-    // Failure: the quiz shows the explanation and offers a continue.
+    // Failure: the word comes back as a harder listening question (the quiz
+    // auto-advances after the wrong answer, no continue click needed).
     expect(
-      await screen.findByRole('button', { name: /i got it — keep going/i }),
+      await screen.findByText(/listen and choose/i, undefined, { timeout: 3000 }),
     ).toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: /i got it — keep going/i }))
-
-    // The word comes back as a harder listening question.
-    expect(await screen.findByText(/listen and choose/i)).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'a fruit' }))
 
     // Session ends and the failed word gets a lesson recommendation.

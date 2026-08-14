@@ -133,6 +133,7 @@ export function DictationScreen() {
         <textarea
           className="analyzer-textarea"
           rows={3}
+          aria-label="Type what you hear"
           placeholder="Type what you hear…"
           value={text}
           disabled={checked}
@@ -141,6 +142,7 @@ export function DictationScreen() {
 
         {checked && (
           <div
+            role="alert"
             className={[
               'dictation-verdict',
               normalize(text) === normalize(prompt.sentence) ? 'dictation-verdict--correct' : '',

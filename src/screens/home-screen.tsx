@@ -67,12 +67,7 @@ export function HomeScreen({ onStartLesson, onProfile }: HomeScreenProps) {
   return (
     <div className="home-screen">
       <div className="home-hero">
-        <button
-          type="button"
-          className="home-hero__brand"
-          aria-label="Open your profile"
-          onClick={onProfile}
-        >
+        <div className="home-hero__brand">
           <span
             className="home-avatar"
             style={{ background: profile.avatarColor, color: '#ffffff' }}
@@ -90,7 +85,13 @@ export function HomeScreen({ onStartLesson, onProfile }: HomeScreenProps) {
               </p>
             )}
           </div>
-        </button>
+          <button
+            type="button"
+            className="home-hero__brand-hit"
+            aria-label="Open your profile"
+            onClick={onProfile}
+          />
+        </div>
         <div className="home-hero__stats">
           <div className="home-card home-card--streak">
             <Flame size={22} aria-hidden="true" />
