@@ -26,6 +26,13 @@ export function vocabularySize(): number {
 }
 
 /**
+All entries in the vocabulary bank (for building quiz distractors).
+ */
+export function allVocabEntries(): readonly VocabularyEntry[] {
+  return ENTRIES
+}
+
+/**
 Returns a random word from the bank (for exploration/surprise).
  */
 export function randomVocabEntry(): VocabularyEntry | undefined {

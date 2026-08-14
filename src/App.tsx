@@ -12,7 +12,6 @@ import { flushTelemetry, initTelemetry, trackScreen } from '@/engine/telemetry'
 import { useHashRoute } from '@/hooks/use-hash-route'
 import { HomeScreen } from '@/screens/home-screen'
 import { OnboardingScreen } from '@/screens/onboarding-screen'
-import { ReviewScreen } from '@/screens/review-screen'
 import { useAuraStore } from '@/state/store'
 
 const AnalyzerScreen = lazy(async () => {
@@ -66,6 +65,10 @@ const LibraryScreen = lazy(async () => {
 const ProfileScreen = lazy(async () => {
   const module = await import('@/screens/profile-screen')
   return { default: module.ProfileScreen }
+})
+const ReviewScreen = lazy(async () => {
+  const module = await import('@/screens/review-screen')
+  return { default: module.ReviewScreen }
 })
 const ReaderScreen = lazy(async () => {
   const module = await import('@/screens/reader-screen')
@@ -151,6 +154,7 @@ export function App() {
       void import('@/screens/library-screen')
       void import('@/screens/profile-screen')
       void import('@/screens/grammar-screen')
+      void import('@/screens/review-screen')
     }, 1500)
     return () => clearTimeout(timer)
   }, [])
@@ -325,7 +329,11 @@ export function App() {
             />
           </Suspense>
         )}
-        {route.name === 'review' && <ReviewScreen />}
+        {route.name === 'review' && (
+          <Suspense fallback={<ScreenLoading />}>
+            <ReviewScreen />
+          </Suspense>
+        )}
       </main>
       <BottomNav active={navActive(route)} onNavigate={(target) => navigate({ name: target })} />
       <GuidedBar />
