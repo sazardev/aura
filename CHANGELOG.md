@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-08-14
+
+### Fixed
+
+- wait for user to continue between questions
+
 ## [0.3.1] - 2026-08-14
 
 ### Fixed
