@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-14
+
+### Added
+
+- turn review into an adaptive quiz
+
 ## [0.2.6] - 2026-08-14
 
 ### Fixed
