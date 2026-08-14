@@ -142,35 +142,156 @@ fn build_vocab(db: &WordNet, entries: &[SubtlexEntry], top_n: usize) -> Vec<Voca
     out
 }
 
+/// Words that should never appear in the course (profanity, insults, explicit
+/// or otherwise inappropriate for an English-learning course).
+const VULGAR_WORDS: &[&str] = &[
+    "ass", "arse", "buns", "fanny", "butt", "shit", "crap", "damn", "hell", "bitch", "bastard",
+    "dick", "cock", "pussy", "cunt", "fuck", "whore", "slut", "porn", "nude", "penis", "vagina",
+    "anus", "boob", "tits", "stupid", "dumb", "idiot", "moron", "jerk", "douche", "boner", "fart",
+    "wank", "orgasm",
+];
+
+/// Text fragments that disqualify a sense (gloss or example) as a teaching
+/// sentence, even when the headword itself is innocuous.
+const VULGAR_FRAGMENTS: &[&str] = &[
+    "fuck",
+    "shit",
+    "cunt",
+    "pussy",
+    "penis",
+    "vagina",
+    "anus",
+    "anal ",
+    "porn",
+    "masturbat",
+    "whore",
+    "slut",
+    "bastard",
+    "boner",
+    "wank",
+    "intercourse",
+    "erection",
+    "excrement",
+    "feces",
+    "prostitut",
+    "buttock",
+];
+
+fn is_vulgar_word(word: &str) -> bool {
+    VULGAR_WORDS.contains(&word)
+}
+
+fn is_vulgar_text(text: &str) -> bool {
+    let lower = text.to_lowercase();
+    VULGAR_FRAGMENTS
+        .iter()
+        .any(|fragment| lower.contains(fragment))
+}
+
+/// Alphanumeric lowercase key used to compare words, meanings and sentences.
+fn normalize_key(text: &str) -> String {
+    text.to_lowercase()
+        .chars()
+        .filter(|c| c.is_ascii_alphanumeric())
+        .collect()
+}
+
+/// True when `sentence` mentions `word` or a common inflection of it.
+fn mentions_word(sentence: &str, word: &str) -> bool {
+    let norm = normalize_key(sentence);
+    let base = normalize_key(word);
+    if base.is_empty() {
+        return false;
+    }
+    if norm.contains(&base) {
+        return true;
+    }
+    ["s", "es", "d", "ed", "ing"]
+        .iter()
+        .any(|suffix| norm.contains(&format!("{base}{suffix}")))
+}
+
+/// Capitalizes and punctuates a raw WordNet example.
+fn clean_sentence(raw: &str) -> String {
+    let trimmed = raw
+        .trim()
+        .trim_matches(|c| c == '"' || c == '\'' || c == '\u{201c}' || c == '\u{201d}');
+    let mut sentence = trimmed.trim().to_string();
+    if let Some(first) = sentence.chars().next() {
+        let upper = first.to_ascii_uppercase();
+        sentence.replace_range(0..first.len_utf8(), &upper.to_string());
+    }
+    if !sentence.ends_with(['.', '!', '?']) {
+        sentence.push('.');
+    }
+    sentence
+}
+
+/// Simple, always-correct scaffolding sentence that contains the word.
+#[derive(Clone)]
+struct ExpansionCandidate {
+    word: String,
+    meaning: String,
+    sentence: String,
+}
+
+/// Picks the best teachable sense for `word`. Only senses backed by a real
+/// WordNet example that actually mentions the word are used, so every lesson
+/// sentence is a natural, self-explanatory sentence (and the tap exercise has
+/// a blank to fill). Vulgar senses are never used.
+fn pick_expansion_candidate(db: &WordNet, word: &str) -> Option<ExpansionCandidate> {
+    let senses = db.senses(word);
+    for sense in &senses {
+        if sense.gloss.trim().is_empty() || is_vulgar_text(&sense.gloss) {
+            continue;
+        }
+        if let Some(example) = sense
+            .examples
+            .iter()
+            .find(|example| !is_vulgar_text(example) && mentions_word(example, word))
+        {
+            return Some(ExpansionCandidate {
+                word: word.to_string(),
+                meaning: sense.gloss.clone(),
+                sentence: clean_sentence(example),
+            });
+        }
+    }
+    None
+}
+
 fn build_expansion(
     db: &WordNet,
     entries: &[SubtlexEntry],
     excluded: &HashSet<String>,
 ) -> Vec<ExpansionUnit> {
     let total_needed = EXPANSION_UNITS * UNIT_LESSONS * LESSON_SIZE;
-    let mut usable: Vec<(usize, &SubtlexEntry, String, String)> = Vec::new();
+    let mut usable: Vec<ExpansionCandidate> = Vec::new();
     let mut used_words: HashSet<String> = excluded.clone();
+    let mut used_meanings: HashSet<String> = HashSet::new();
 
-    for (index, entry) in entries.iter().enumerate().skip(50) {
+    for entry in entries.iter().skip(50) {
         if usable.len() >= total_needed {
             break;
         }
         let word = entry.word.to_lowercase();
-        if used_words.contains(&word) || word.contains(char::is_whitespace) {
+        if used_words.contains(&word)
+            || word.contains(char::is_whitespace)
+            || word.chars().count() < 3
+            || is_vulgar_word(&word)
+        {
             continue;
         }
-        let senses = db.senses(&word);
-        let Some(sense) = best_sense(&senses) else {
+        let Some(candidate) = pick_expansion_candidate(db, &word) else {
             continue;
         };
-        let Some(sentence) = sense.examples.first().cloned() else {
-            continue;
-        };
-        if sense.gloss.is_empty() {
+        let meaning_key = normalize_key(&candidate.meaning);
+        if used_meanings.contains(&meaning_key) {
             continue;
         }
         used_words.insert(word.clone());
-        usable.push((index + 1, entry, sense.gloss.clone(), sentence));
+        used_meanings.insert(meaning_key);
+        usable.push(candidate);
     }
 
     eprintln!(
@@ -179,36 +300,21 @@ fn build_expansion(
     );
 
     let mut units = Vec::new();
+    let mut cursor = 0;
     for unit_index in 0..EXPANSION_UNITS {
-        let unit_words = usable
-            .iter()
-            .skip(unit_index * UNIT_LESSONS * LESSON_SIZE)
-            .take(UNIT_LESSONS * LESSON_SIZE)
-            .cloned()
-            .collect::<Vec<_>>();
-        if unit_words.len() < LESSON_SIZE {
-            break;
-        }
-
         let mut lessons = Vec::new();
         for lesson_index in 0..UNIT_LESSONS {
-            let chunk: Vec<_> = unit_words
+            let chunk = usable
                 .iter()
-                .skip(lesson_index * LESSON_SIZE)
+                .skip(cursor)
                 .take(LESSON_SIZE)
                 .cloned()
-                .collect();
-            if chunk.is_empty() {
+                .collect::<Vec<_>>();
+            if chunk.len() < LESSON_SIZE {
+                cursor += LESSON_SIZE;
                 break;
             }
-            let words = chunk
-                .iter()
-                .map(|(_, entry, meaning, sentence)| ExpansionWord {
-                    word: entry.word.to_lowercase(),
-                    meaning: meaning.clone(),
-                    sentence: sentence.clone(),
-                })
-                .collect::<Vec<_>>();
+            cursor += LESSON_SIZE;
             lessons.push(ExpansionLesson {
                 id: format!("core-{}-{}", unit_index + 1, lesson_index + 1),
                 title: format!("Lesson {}", lesson_index + 1),
@@ -217,23 +323,32 @@ fn build_expansion(
                 } else {
                     "quiz"
                 },
-                words,
+                words: chunk
+                    .into_iter()
+                    .map(|candidate| ExpansionWord {
+                        word: candidate.word,
+                        meaning: candidate.meaning,
+                        sentence: candidate.sentence,
+                    })
+                    .collect(),
             });
         }
 
-        if !lessons.is_empty() {
-            let icon = UNIT_ICONS
-                .get(unit_index)
-                .map(|e| e.1)
-                .unwrap_or("Sparkles");
-            units.push(ExpansionUnit {
-                id: format!("core-{}", unit_index + 1),
-                title: format!("Core Words {}", unit_index + 1),
-                icon: icon.to_string(),
-                color: "#1cb0f6".to_string(),
-                lessons,
-            });
+        if lessons.len() != UNIT_LESSONS {
+            break;
         }
+
+        let icon = UNIT_ICONS
+            .get(unit_index)
+            .map(|e| e.1)
+            .unwrap_or("Sparkles");
+        units.push(ExpansionUnit {
+            id: format!("core-{}", unit_index + 1),
+            title: format!("Core Words {}", unit_index + 1),
+            icon: icon.to_string(),
+            color: "#1cb0f6".to_string(),
+            lessons,
+        });
     }
     units
 }

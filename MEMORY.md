@@ -366,6 +366,22 @@ achievement rules match JSON). Setup: `src/test-setup.ts` + jsdom.
     with changelog notes. In-app visibility: `#/about` screen shows version
     (`__APP_VERSION__` Vite define) and the bundled changelog (`?raw` import),
     reached from Settings → About and the navigation drawer.
+34. `(uncommitted)` — **lessons audit + generator hardening**: audited every
+    lesson (course.json + course-expansion.json + profession-lessons.json) and
+    found the auto-generated "Core Words" lessons were broken: 43 sentences
+    that didn't contain their word (breaking the tap exercise), 53 lowercase
+    starts, profanity/insults (ass, arse, buns, stupid…), and 2 duplicate
+    meanings per lesson (ambiguous choice/match). `gen_vocab.rs` now: filters
+    vulgar words + gloss/example fragments, requires a real WordNet example
+    that mentions the word (drops the old "any example" heuristic → natural
+    self-explanatory sentences), skips 1-2 letter words, dedupes meanings
+    across the expansion, and capitalizes/punctuates sentences. Regenerated
+    `course-expansion.json` (still 18 lessons/90 words; `vocabulary.json`
+    semantically unchanged). Defensive engine fixes in `exercises.ts`: choice
+    never offers another word with the same meaning as a "wrong" option, match
+    pairs dedupe meanings. New data-integrity tests in `lessons.test.ts`
+    (sentence contains word, capitalized+punctuated, no vulgar words, unique
+    meanings per lesson) so CI guards future regressions.
 
 ## 14. Known gotchas / notes
 

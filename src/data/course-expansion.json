@@ -11,29 +11,29 @@
         "type": "lesson",
         "words": [
           {
+            "word": "now",
+            "meaning": "used to preface a command or reproof or request",
+            "sentence": "Now hear this!"
+          },
+          {
+            "word": "think",
+            "meaning": "imagine or visualize",
+            "sentence": "Just think--you could be rich one day!"
+          },
+          {
             "word": "good",
             "meaning": "benefit",
-            "sentence": "what's the good of worrying?"
+            "sentence": "What's the good of worrying?"
           },
           {
-            "word": "make",
-            "meaning": "a recognizable kind",
-            "sentence": "what make of car is that?"
+            "word": "back",
+            "meaning": "place a bet on",
+            "sentence": "Which horse are you backing?"
           },
           {
-            "word": "never",
-            "meaning": "not ever; at no time in the past or future",
-            "sentence": "I will never marry you!"
-          },
-          {
-            "word": "people",
-            "meaning": "members of a family line",
-            "sentence": "are your people still alive?"
-          },
-          {
-            "word": "home",
-            "meaning": "where you live at a particular time",
-            "sentence": "your place or mine?"
+            "word": "time",
+            "meaning": "a reading of a point in time as given by a clock",
+            "sentence": "Do you know what time it is?"
           }
         ]
       },
@@ -43,29 +43,29 @@
         "type": "quiz",
         "words": [
           {
-            "word": "ever",
-            "meaning": "at any time",
-            "sentence": "did you ever smoke?"
+            "word": "look",
+            "meaning": "have a certain outward or facial expression",
+            "sentence": "How does she look?"
           },
           {
-            "word": "place",
-            "meaning": "any area set aside for a particular purpose",
-            "sentence": "who owns this place?"
+            "word": "take",
+            "meaning": "take somebody somewhere",
+            "sentence": "Can you take me to the main entrance?"
           },
           {
-            "word": "remember",
-            "meaning": "keep in mind for attention or consideration",
-            "sentence": "Remember to call your mother every day!"
+            "word": "tell",
+            "meaning": "inform positively and with certainty and confidence",
+            "sentence": "I tell you that man is a crook!"
           },
           {
-            "word": "own",
-            "meaning": "have ownership or possession of",
-            "sentence": "How many cars does she have?"
+            "word": "say",
+            "meaning": "express a supposition",
+            "sentence": "Let's say you had a lot of money--what would you do?"
           },
           {
-            "word": "most",
-            "meaning": "(superlative of `many' used with count nouns and often preceded by `the') quantifier meaning the greatest in number",
-            "sentence": "who has the most apples?"
+            "word": "then",
+            "meaning": "in that case or as a consequence",
+            "sentence": "If he didn't take it, then who did?"
           }
         ]
       },
@@ -75,29 +75,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "use",
-            "meaning": "what something is used for",
-            "sentence": "ballet is beautiful but what use is it?"
+            "word": "make",
+            "meaning": "a recognizable kind",
+            "sentence": "What make of car is that?"
           },
           {
-            "word": "exactly",
-            "meaning": "indicating exactness or preciseness",
-            "sentence": "Properly speaking, all true work is religion."
+            "word": "never",
+            "meaning": "not ever; at no time in the past or future",
+            "sentence": "I will never marry you!"
           },
           {
-            "word": "ass",
-            "meaning": "the fleshy part of the human body that you sit on",
-            "sentence": "are you going to sit on your fanny and do nothing?"
+            "word": "mean",
+            "meaning": "mean or intend to express or convey",
+            "sentence": "You never understand what I mean!"
           },
           {
-            "word": "behind",
-            "meaning": "the fleshy part of the human body that you sit on",
-            "sentence": "are you going to sit on your fanny and do nothing?"
+            "word": "give",
+            "meaning": "leave with; give temporarily",
+            "sentence": "Can I give you my keys while I go in the pool?"
           },
           {
-            "word": "stupid",
-            "meaning": "a person who is not very bright",
-            "sentence": "The economy, stupid!"
+            "word": "people",
+            "meaning": "members of a family line",
+            "sentence": "Are your people still alive?"
           }
         ]
       }
@@ -115,29 +115,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "feeling",
-            "meaning": "a vague idea in which some confidence is placed",
-            "sentence": "what are your feelings about the crisis?"
+            "word": "thing",
+            "meaning": "an action",
+            "sentence": "How could you do such a thing?"
           },
           {
-            "word": "wonderful",
-            "meaning": "extraordinarily good or great; used especially as intensifiers",
-            "sentence": "the film was fantastic!"
+            "word": "even",
+            "meaning": "used as an intensive especially to indicate something unexpected",
+            "sentence": "I don't have even a dollar!"
           },
           {
-            "word": "date",
-            "meaning": "the specified day of the month",
-            "sentence": "what is the date today?"
+            "word": "call",
+            "meaning": "send a message or attempt to reach someone by radio, phone, etc.; make a signal to in order to transmit a message",
+            "sentence": "Hawaii is calling!"
           },
           {
-            "word": "catch",
-            "meaning": "a drawback or difficulty that is not readily evident",
-            "sentence": "it sounds good but what's the catch?"
+            "word": "talk",
+            "meaning": "reveal information",
+            "sentence": "If you don't oblige me, I'll talk!"
           },
           {
-            "word": "cold",
-            "meaning": "a mild viral infection involving the nose and respiratory passages (but not the lungs)",
-            "sentence": "will they never find a cure for the common cold?"
+            "word": "put",
+            "meaning": "estimate",
+            "sentence": "We put the time of arrival at 8 P.M."
           }
         ]
       },
@@ -147,29 +147,29 @@
         "type": "quiz",
         "words": [
           {
-            "word": "suppose",
-            "meaning": "express a supposition",
-            "sentence": "Let's say you had a lot of money--what would you do?"
+            "word": "day",
+            "meaning": "the period of time taken by a particular planet (e.g. Mars) to make a complete rotation on its axis",
+            "sentence": "How long is a day on Jupiter?"
           },
           {
-            "word": "goddamn",
-            "meaning": "used as expletives",
-            "sentence": "oh, damn (or goddamn)!"
+            "word": "life",
+            "meaning": "the course of existence of an individual; the actions and events that occur in living",
+            "sentence": "Get a life!"
           },
           {
-            "word": "dude",
-            "meaning": "an informal form of address for a man",
-            "sentence": "Say, fellow, what are you doing?"
+            "word": "better",
+            "meaning": "from a position of superiority or authority",
+            "sentence": "I know better."
           },
           {
-            "word": "spend",
-            "meaning": "use up a period of time in a specific way",
-            "sentence": "how are you spending your summer vacation?"
+            "word": "still",
+            "meaning": "with reference to action or condition; without change, interruption, or cessation",
+            "sentence": "Will you still love me when we're old and grey?"
           },
           {
-            "word": "mark",
-            "meaning": "a number or letter indicating quality (especially of a student's performance)",
-            "sentence": "what was your score on your homework?"
+            "word": "last",
+            "meaning": "continue to live and avoid dying",
+            "sentence": "How long can a person last without food and water?"
           }
         ]
       },
@@ -179,29 +179,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "area",
-            "meaning": "a subject of study",
-            "sentence": "areas of interest include..."
+            "word": "ever",
+            "meaning": "at any time",
+            "sentence": "Did you ever smoke?"
           },
           {
-            "word": "shoes",
-            "meaning": "a particular situation",
-            "sentence": "If you were in my place what would you do?"
+            "word": "keep",
+            "meaning": "store or keep customarily",
+            "sentence": "Where do you keep your gardening tools?"
           },
           {
-            "word": "kick",
-            "meaning": "the swift release of a store of affective force",
-            "sentence": "what a boot!"
+            "word": "long",
+            "meaning": "for an extended time or at a distant time",
+            "sentence": "How long will you be gone?"
           },
           {
-            "word": "type",
-            "meaning": "a subdivision of a particular kind of thing",
-            "sentence": "what type of sculpture do you prefer?"
+            "word": "feel",
+            "meaning": "examine by touch",
+            "sentence": "Feel this soft cloth!"
           },
           {
-            "word": "beg",
-            "meaning": "call upon in supplication; entreat",
-            "sentence": "I beg you to stop!"
+            "word": "believe",
+            "meaning": "credit with veracity",
+            "sentence": "Should we believe a publication like the National Enquirer?"
           }
         ]
       }
@@ -219,29 +219,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "immediately",
-            "meaning": "without delay or hesitation; with no time intervening",
-            "sentence": "Come here now!"
-          },
-          {
-            "word": "comfortable",
-            "meaning": "providing or experiencing physical well-being or relief (`comfy' is informal)",
-            "sentence": "are you comfortable?"
-          },
-          {
-            "word": "indeed",
-            "meaning": "in truth (often tends to intensify)",
-            "sentence": "he did so do it!"
-          },
-          {
-            "word": "assume",
-            "meaning": "take on titles, offices, duties, responsibilities",
-            "sentence": "When will the new President assume office?"
-          },
-          {
-            "word": "property",
+            "word": "place",
             "meaning": "any area set aside for a particular purpose",
-            "sentence": "who owns this place?"
+            "sentence": "Who owns this place?"
+          },
+          {
+            "word": "through",
+            "meaning": "to completion",
+            "sentence": "Think this through very carefully!"
+          },
+          {
+            "word": "bad",
+            "meaning": "reproduced fraudulently",
+            "sentence": "Like a bad penny..."
+          },
+          {
+            "word": "remember",
+            "meaning": "keep in mind for attention or consideration",
+            "sentence": "Remember to call your mother every day!"
+          },
+          {
+            "word": "baby",
+            "meaning": "an immature childish person",
+            "sentence": "Stop being a baby!"
           }
         ]
       },
@@ -251,29 +251,29 @@
         "type": "quiz",
         "words": [
           {
-            "word": "score",
-            "meaning": "a number or letter indicating quality (especially of a student's performance)",
-            "sentence": "what was your score on your homework?"
+            "word": "enough",
+            "meaning": "as much as necessary",
+            "sentence": "Have I eaten enough?"
           },
           {
-            "word": "survive",
-            "meaning": "continue to live and avoid dying",
-            "sentence": "how long can a person last without food and water?"
+            "word": "care",
+            "meaning": "prefer or wish to do something",
+            "sentence": "Do you care to try this dish?"
           },
           {
-            "word": "borrow",
-            "meaning": "get temporarily",
-            "sentence": "May I borrow your lawn mower?"
+            "word": "ask",
+            "meaning": "consider obligatory; request and expect",
+            "sentence": "Aren't we asking too much of these children?"
           },
           {
-            "word": "exist",
-            "meaning": "support oneself",
-            "sentence": "Can you live on $2000 a month in New York City?"
+            "word": "understand",
+            "meaning": "believe to be the case",
+            "sentence": "I understand you have no previous experience?"
           },
           {
-            "word": "ashamed",
-            "meaning": "feeling shame or guilt or embarrassment or remorse",
-            "sentence": "are you ashamed for having lied?"
+            "word": "try",
+            "meaning": "test the limits of",
+            "sentence": "You are trying my patience!"
           }
         ]
       },
@@ -283,29 +283,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "younger",
-            "meaning": "used of the younger of two persons of the same name especially used to distinguish a son from his father",
-            "sentence": "John Smith, Jr."
+            "word": "miss",
+            "meaning": "be without",
+            "sentence": "There is something missing in my jewelry box!"
           },
           {
-            "word": "appear",
-            "meaning": "be issued or published",
-            "sentence": "Did your latest book appear yet?"
+            "word": "kill",
+            "meaning": "be the source of great pain for",
+            "sentence": "These new shoes are killing me!"
           },
           {
-            "word": "nasty",
-            "meaning": "offensive or even (of persons) malicious",
-            "sentence": "Will he say nasty things at my funeral?"
+            "word": "hold",
+            "meaning": "protect against a challenge or attack",
+            "sentence": "Hold that position behind the trees!"
           },
           {
-            "word": "assure",
-            "meaning": "make certain of",
-            "sentence": "Preparation will guarantee success!"
+            "word": "matter",
+            "meaning": "a problem",
+            "sentence": "Is anything the matter?"
           },
           {
-            "word": "latest",
-            "meaning": "the most recent news or development",
-            "sentence": "have you heard the latest?"
+            "word": "play",
+            "meaning": "be performed or presented for public viewing",
+            "sentence": "What's playing in the local movie theater?"
           }
         ]
       }
@@ -323,29 +323,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "impression",
-            "meaning": "a vague idea in which some confidence is placed",
-            "sentence": "what are your feelings about the crisis?"
+            "word": "most",
+            "meaning": "(superlative of `many' used with count nouns and often preceded by `the') quantifier meaning the greatest in number",
+            "sentence": "Who has the most apples?"
           },
           {
-            "word": "insist",
-            "meaning": "be emphatic or resolute and refuse to budge",
-            "sentence": "I must insist!"
+            "word": "use",
+            "meaning": "what something is used for",
+            "sentence": "Ballet is beautiful but what use is it?"
           },
           {
-            "word": "buster",
-            "meaning": "an informal form of address for a man",
-            "sentence": "Say, fellow, what are you doing?"
+            "word": "start",
+            "meaning": "get off the ground",
+            "sentence": "Who started this company?"
           },
           {
-            "word": "perform",
-            "meaning": "perform a function",
-            "sentence": "Who will perform the wedding?"
+            "word": "school",
+            "meaning": "the process of being formally educated at a school",
+            "sentence": "What will you do when you finish school?"
           },
           {
-            "word": "arrange",
-            "meaning": "make arrangements for",
-            "sentence": "Can you arrange a meeting with the President?"
+            "word": "watch",
+            "meaning": "be vigilant, be on the lookout or be careful",
+            "sentence": "Watch out for pickpockets!"
           }
         ]
       },
@@ -355,29 +355,29 @@
         "type": "quiz",
         "words": [
           {
-            "word": "bum",
-            "meaning": "a person who is deemed to be despicable or contemptible",
-            "sentence": "you cowardly little pukes!"
+            "word": "bring",
+            "meaning": "go or come after and bring or take back",
+            "sentence": "Could you bring the wine?"
           },
           {
-            "word": "valentine",
-            "meaning": "a sweetheart chosen to receive a greeting on Saint Valentine's Day",
-            "sentence": "will you be my valentine?"
+            "word": "sit",
+            "meaning": "be in session",
+            "sentence": "When does the court of law sit?"
           },
           {
-            "word": "attend",
-            "meaning": "be present at (meetings, church services, university), etc.",
-            "sentence": "did you go to the meeting?"
+            "word": "stuff",
+            "meaning": "fill with a stuffing while cooking",
+            "sentence": "Have you stuffed the turkey yet?"
           },
           {
-            "word": "brand",
-            "meaning": "a recognizable kind",
-            "sentence": "what make of car is that?"
+            "word": "such",
+            "meaning": "to so extreme a degree",
+            "sentence": "Such rich people!"
           },
           {
-            "word": "equal",
-            "meaning": "be identical or equivalent to",
-            "sentence": "One dollar equals 1,000 rubles these days!"
+            "word": "ago",
+            "meaning": "in the past",
+            "sentence": "Sixty years ago my grandfather came to the U.S."
           }
         ]
       },
@@ -387,29 +387,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "marvelous",
-            "meaning": "extraordinarily good or great; used especially as intensifiers",
-            "sentence": "the film was fantastic!"
+            "word": "second",
+            "meaning": "a speech seconding a motion",
+            "sentence": "Do I hear a second?"
           },
           {
-            "word": "properly",
-            "meaning": "in the right manner; correctly; suitably",
-            "sentence": "please do your job properly!"
+            "word": "check",
+            "meaning": "be verified or confirmed; pass inspection",
+            "sentence": "These stories don't check!"
           },
           {
-            "word": "apply",
-            "meaning": "be pertinent or relevant or applicable",
-            "sentence": "The same laws apply to you!"
+            "word": "forget",
+            "meaning": "forget to do something",
+            "sentence": "Don't forget to call the chairman of the board to the meeting!"
           },
           {
-            "word": "precisely",
-            "meaning": "indicating exactness or preciseness",
-            "sentence": "Properly speaking, all true work is religion."
+            "word": "under",
+            "meaning": "down below",
+            "sentence": "Get under quickly!"
           },
           {
-            "word": "worker",
-            "meaning": "a member of the working class (not necessarily employed)",
-            "sentence": "workers of the world--unite!"
+            "word": "deal",
+            "meaning": "take action with respect to (someone or something)",
+            "sentence": "How are we going to deal with this problem?"
           }
         ]
       }
@@ -427,29 +427,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "communication",
-            "meaning": "a connection allowing access between persons or places",
-            "sentence": "how many lines of communication can there be among four people?"
+            "word": "die",
+            "meaning": "disappear or come to an end",
+            "sentence": "My secret will die with me!"
           },
           {
-            "word": "locate",
-            "meaning": "discover the location of; determine the place of; find by searching or examining",
-            "sentence": "Can you locate your cousins in the Midwest?"
+            "word": "happen",
+            "meaning": "chance to be or do something, without intention or causation",
+            "sentence": "I happen to have just what you need!"
           },
           {
-            "word": "interfere",
-            "meaning": "come between so as to be hindrance or obstacle",
-            "sentence": "Your talking interferes with my work!"
+            "word": "point",
+            "meaning": "the object of an activity",
+            "sentence": "What is the point of discussing it?"
           },
           {
-            "word": "alternative",
-            "meaning": "one of a number of things from which only one can be chosen",
-            "sentence": "what option did I have?"
+            "word": "word",
+            "meaning": "a verbal command for action",
+            "sentence": "When I give the word, charge!"
           },
           {
-            "word": "thrill",
-            "meaning": "the swift release of a store of affective force",
-            "sentence": "what a boot!"
+            "word": "stand",
+            "meaning": "hold one's ground; maintain a position; be steadfast or upright",
+            "sentence": "I am standing my ground and won't give in!"
           }
         ]
       },
@@ -459,29 +459,29 @@
         "type": "quiz",
         "words": [
           {
-            "word": "presume",
-            "meaning": "take upon oneself; act presumptuously, without permission",
-            "sentence": "How dare you call my lawyer?"
+            "word": "trouble",
+            "meaning": "to cause inconvenience or discomfort to",
+            "sentence": "Sorry to trouble you, but..."
           },
           {
-            "word": "belief",
-            "meaning": "a vague idea in which some confidence is placed",
-            "sentence": "what are your feelings about the crisis?"
+            "word": "couple",
+            "meaning": "link together",
+            "sentence": "Can we couple these proposals?"
           },
           {
-            "word": "suspended",
-            "meaning": "(of undissolved particles in a fluid) supported or kept from sinking or falling by buoyancy and without apparent attachment",
-            "sentence": "suspended matter such as silt or mud..."
+            "word": "break",
+            "meaning": "reduce to bankruptcy",
+            "sentence": "My daughter's fancy wedding is going to break me!"
           },
           {
-            "word": "rely",
-            "meaning": "have faith or confidence in",
-            "sentence": "You can bet on that!"
+            "word": "far",
+            "meaning": "at or to a certain point or degree",
+            "sentence": "How far can we get with this kind of argument?"
           },
           {
-            "word": "bart",
-            "meaning": "a member of the British order of honor; ranks below a baron but above a knight",
-            "sentence": "since he was a baronet he had to be addressed as Sir Henry Jones, Bart."
+            "word": "close",
+            "meaning": "cease to operate or cause to cease operating",
+            "sentence": "My business closes every night at 8 P.M."
           }
         ]
       },
@@ -491,29 +491,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "notion",
+            "word": "bet",
+            "meaning": "maintain with or as if with a bet",
+            "sentence": "I bet she will be there!"
+          },
+          {
+            "word": "feeling",
             "meaning": "a vague idea in which some confidence is placed",
-            "sentence": "what are your feelings about the crisis?"
+            "sentence": "What are your feelings about the crisis?"
           },
           {
-            "word": "puke",
-            "meaning": "a person who is deemed to be despicable or contemptible",
-            "sentence": "you cowardly little pukes!"
+            "word": "light",
+            "meaning": "mental understanding as an enlightening experience",
+            "sentence": "Can you shed light on this problem?"
           },
           {
-            "word": "starve",
-            "meaning": "be hungry; go without food",
-            "sentence": "Let's eat--I'm starving!"
+            "word": "perfect",
+            "meaning": "make perfect or complete",
+            "sentence": "Perfect your French in Paris!"
           },
           {
-            "word": "recognise",
-            "meaning": "show approval or appreciation of",
-            "sentence": "My work is not recognized by anybody!"
-          },
-          {
-            "word": "sew",
-            "meaning": "create (clothes) with cloth",
-            "sentence": "Can the seamstress sew me a suit by next week?"
+            "word": "sort",
+            "meaning": "a person of a particular character or nature",
+            "sentence": "What sort of person is he?"
           }
         ]
       }
@@ -531,29 +531,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "dismiss",
-            "meaning": "cease to consider; put out of judicial consideration",
-            "sentence": "This case is dismissed!"
+            "word": "special",
+            "meaning": "surpassing what is common or usual or expected",
+            "sentence": "What's so special about the year 2000?"
           },
           {
-            "word": "fanny",
-            "meaning": "the fleshy part of the human body that you sit on",
-            "sentence": "are you going to sit on your fanny and do nothing?"
+            "word": "hang",
+            "meaning": "be placed in position as by a hinge",
+            "sentence": "This cabinet door doesn't hang right!"
           },
           {
-            "word": "reconsider",
-            "meaning": "consider again; give new consideration to; usually with a view to changing",
-            "sentence": "Won't you reconsider your decision?"
+            "word": "touch",
+            "meaning": "tamper with",
+            "sentence": "Don't touch my CDs!"
           },
           {
-            "word": "ensure",
-            "meaning": "make certain of",
-            "sentence": "Preparation will guarantee success!"
+            "word": "date",
+            "meaning": "the specified day of the month",
+            "sentence": "What is the date today?"
           },
           {
-            "word": "efficient",
-            "meaning": "able to accomplish a purpose; functioning effectively",
-            "sentence": "people who will do nothing unless they get something out of it for themselves are often highly effective persons..."
+            "word": "air",
+            "meaning": "be broadcast",
+            "sentence": "This show will air Saturdays at 2 P.M."
           }
         ]
       },
@@ -563,29 +563,29 @@
         "type": "quiz",
         "words": [
           {
-            "word": "update",
-            "meaning": "information or data that updates",
-            "sentence": "do you have the latest software update?"
+            "word": "fast",
+            "meaning": "quickly or rapidly (often used as a combining form)",
+            "sentence": "How fast can he get here?"
           },
           {
-            "word": "ungrateful",
-            "meaning": "not feeling or showing gratitude",
-            "sentence": "How sharper than a serpent's tooth it is / To have a thankless child!"
+            "word": "catch",
+            "meaning": "a drawback or difficulty that is not readily evident",
+            "sentence": "It sounds good but what's the catch?"
           },
           {
-            "word": "instantly",
-            "meaning": "without delay or hesitation; with no time intervening",
-            "sentence": "Come here now!"
+            "word": "ride",
+            "meaning": "keep partially engaged by slightly depressing a pedal with the foot",
+            "sentence": "Don't ride the clutch!"
           },
           {
-            "word": "marvellous",
-            "meaning": "extraordinarily good or great; used especially as intensifiers",
-            "sentence": "the film was fantastic!"
+            "word": "sign",
+            "meaning": "approve and express assent, responsibility, or obligation",
+            "sentence": "Have you signed your contract yet?"
           },
           {
-            "word": "forged",
-            "meaning": "reproduced fraudulently",
-            "sentence": "like a bad penny..."
+            "word": "beat",
+            "meaning": "be superior",
+            "sentence": "This sure beats work!"
           }
         ]
       },
@@ -595,29 +595,29 @@
         "type": "lesson",
         "words": [
           {
-            "word": "keeper",
-            "meaning": "someone in charge of other people",
-            "sentence": "am I my brother's keeper?"
+            "word": "control",
+            "meaning": "check or regulate (a scientific experiment) by conducting a parallel experiment or comparing with another standard",
+            "sentence": "Are you controlling for the temperature?"
           },
           {
-            "word": "buns",
-            "meaning": "the fleshy part of the human body that you sit on",
-            "sentence": "are you going to sit on your fanny and do nothing?"
+            "word": "cold",
+            "meaning": "a mild viral infection involving the nose and respiratory passages (but not the lungs)",
+            "sentence": "Will they never find a cure for the common cold?"
           },
           {
-            "word": "arse",
-            "meaning": "the fleshy part of the human body that you sit on",
-            "sentence": "are you going to sit on your fanny and do nothing?"
+            "word": "figure",
+            "meaning": "be or play a part of or in",
+            "sentence": "How do the elections figure in the current pattern of internal politics?"
           },
           {
-            "word": "yonder",
-            "meaning": "distant but within sight (`yon' is dialectal)",
-            "sentence": "what is yon place?"
+            "word": "follow",
+            "meaning": "accept and follow the leadership or command or guidance of",
+            "sentence": "Let's follow our great helmsman!"
           },
           {
-            "word": "seduce",
-            "meaning": "induce to have sex",
-            "sentence": "Did you score last night?"
+            "word": "general",
+            "meaning": "command as a general",
+            "sentence": "We are generaled by an incompetent!"
           }
         ]
       }

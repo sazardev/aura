@@ -120,6 +120,20 @@ function pickRandom<T>(items: readonly T[], rng: () => number): T {
 }
 
 /**
+ * Drops words that share a meaning (synonyms in the same synset), keeping the
+ * first occurrence so every exercise option is unambiguous.
+ */
+function uniqueMeanings(words: readonly LessonWord[]): LessonWord[] {
+  const seen = new Set<string>()
+  return words.filter((wordInfo) => {
+    const key = normalizeText(wordInfo.meaning)
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
+}
+
+/**
 Replaces the target word in a sentence with a blank for tap exercises.
  */
 function blankedSentence(sentence: string, target: string): string {
@@ -136,28 +150,38 @@ export function generateExercises(lesson: Lesson): Exercise[] {
   const rng = mulberry32(hashString(lesson.id))
   const distractors = distractorPool(lesson, rng)
   const words = distractors.map((word) => word.word)
-  const meanings = distractors.map((word) => word.meaning)
 
-  const core: Exercise[] = lesson.words.flatMap((wordInfo) => [
-    {
-      kind: 'choice',
-      id: `${lesson.id}-choice-${wordInfo.word}`,
-      prompt: wordInfo.meaning,
-      word: wordInfo.word,
-      options: buildOptions(wordInfo.word, words, rng),
-      answer: wordInfo.word,
-      sentence: wordInfo.sentence,
-      meaning: wordInfo.meaning,
-    },
-    {
-      kind: 'listen',
-      id: `${lesson.id}-listen-${wordInfo.word}`,
-      word: wordInfo.word,
-      options: buildOptions(wordInfo.meaning, meanings, rng),
-      answer: wordInfo.meaning,
-      sentence: wordInfo.sentence,
-    },
-  ])
+  const core: Exercise[] = lesson.words.flatMap((wordInfo) => {
+    // Never offer another word with the same meaning as a "wrong" option
+    // (e.g. synonyms in the same synset) — it would be marked incorrect
+    // despite being a valid answer.
+    const optionWords = distractors
+      .filter((distractor) => normalizeText(distractor.meaning) !== normalizeText(wordInfo.meaning))
+      .map((distractor) => distractor.word)
+    const optionMeanings = distractors
+      .filter((distractor) => normalizeText(distractor.meaning) !== normalizeText(wordInfo.meaning))
+      .map((distractor) => distractor.meaning)
+    return [
+      {
+        kind: 'choice',
+        id: `${lesson.id}-choice-${wordInfo.word}`,
+        prompt: wordInfo.meaning,
+        word: wordInfo.word,
+        options: buildOptions(wordInfo.word, optionWords, rng),
+        answer: wordInfo.word,
+        sentence: wordInfo.sentence,
+        meaning: wordInfo.meaning,
+      },
+      {
+        kind: 'listen',
+        id: `${lesson.id}-listen-${wordInfo.word}`,
+        word: wordInfo.word,
+        options: buildOptions(wordInfo.meaning, optionMeanings, rng),
+        answer: wordInfo.meaning,
+        sentence: wordInfo.sentence,
+      },
+    ]
+  })
 
   const typed: Exercise[] = sample(lesson.words, rng, 2).map((wordInfo) => ({
     kind: 'type',
@@ -188,7 +212,9 @@ export function generateExercises(lesson: Lesson): Exercise[] {
     meaning: speakTarget.meaning,
   }
 
-  const matchWords = sample(lesson.words, rng, 4)
+  // Match pairs with unique meanings (duplicate meanings would make the
+  // columns ambiguous).
+  const matchWords = sample(uniqueMeanings(lesson.words), rng, 4)
   const match: Exercise = {
     kind: 'match',
     id: `${lesson.id}-match`,
