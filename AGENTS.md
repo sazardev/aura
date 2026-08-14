@@ -17,6 +17,7 @@ Reference docs: `README.md` (overview + scripts), `DESIGN.md` (design system sou
 - `npm run gen:vocab` — regenerates `src/data/vocabulary.json` + `course-expansion.json` from Rust (`src-tauri/src/bin/gen_vocab.rs`). Commit the regenerated JSON if engine data logic changed.
 - `npm run gen:library` — regenerates `src/data/library.json` (public-domain classics) from raw texts in `scripts/books/` (gitignored) via `scripts/gen-library.mjs`. Commit the regenerated JSON.
 - `npm run lint:rust` / `format:rust` — clippy `-D warnings`, rustfmt `--check`.
+- `npm run audit:lighthouse` / `audit:lighthouse:view` — Lighthouse audit of the built app via `scripts/lighthouse.mjs`. Deep pass audits every screen + every lesson/grammar/dialogue route (91), seeded past onboarding; writes HTML+JSON reports + an `index.html` summary to `lighthouse-reports/` (gitignored). Uses Puppeteer's bundled Chrome over the DevTools protocol (fresh per route — avoids chrome-launcher's WSL path bug); falls back to a system Chrome/`CHROME_PATH`. Add `--no-build` to reuse `dist/`, `--screen` for one route per screen type, `--mobile` for the mobile preset, `--view` to open the summary.
 
 ## TypeScript: TS7/TS6 dual setup — do not "fix" it
 

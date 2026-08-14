@@ -95,6 +95,28 @@ const WriteScreen = lazy(async () => {
   return { default: module.WriteScreen }
 })
 
+const WARM_UP_IMPORTS: (() => void)[] = [
+  () => void import('@/engine/frequency'),
+  () => void import('@/engine/vocabulary'),
+  () => void import('@/engine/library'),
+  () => void import('@/engine/grammar'),
+  () => void import('@/engine/dialogue'),
+  () => void import('@/screens/dictionary-screen'),
+  () => void import('@/screens/analyzer-screen'),
+  () => void import('@/screens/library-screen'),
+  () => void import('@/screens/profile-screen'),
+  () => void import('@/screens/grammar-screen'),
+  () => void import('@/screens/review-screen'),
+]
+
+function scheduleIdle(load: () => void): void {
+  if (typeof window !== 'undefined' && typeof window.requestIdleCallback === 'function') {
+    window.requestIdleCallback(load)
+  } else {
+    setTimeout(load, 100)
+  }
+}
+
 export function App() {
   const { route, navigate } = useHashRoute()
   const onboardingDone = useAuraStore((state) => state.onboardingDone)
@@ -140,23 +162,20 @@ export function App() {
     trackScreen(route.name)
   }, [route.name])
 
-  // Warm the shared lazy chunks (frequency + vocabulary + screens) in the
-  // background so opening the Dictionary/Analyzer feels instant.
+  // Warm the shared lazy chunks (frequency + vocabulary + screens) so opening
+  // the Dictionary/Analyzer feels instant. This runs only after the first user
+  // interaction, spread across idle slots, so it never blocks the initial paint
+  // or the main thread on cold loads (parsing SUBTLEX is expensive).
   useEffect(() => {
-    const timer = setTimeout(() => {
-      void import('@/engine/frequency')
-      void import('@/engine/vocabulary')
-      void import('@/engine/library')
-      void import('@/engine/grammar')
-      void import('@/engine/dialogue')
-      void import('@/screens/dictionary-screen')
-      void import('@/screens/analyzer-screen')
-      void import('@/screens/library-screen')
-      void import('@/screens/profile-screen')
-      void import('@/screens/grammar-screen')
-      void import('@/screens/review-screen')
-    }, 1500)
-    return () => clearTimeout(timer)
+    const warmUp = () => {
+      for (const load of WARM_UP_IMPORTS) scheduleIdle(load)
+    }
+    window.addEventListener('pointerdown', warmUp, { once: true })
+    window.addEventListener('keydown', warmUp, { once: true })
+    return () => {
+      window.removeEventListener('pointerdown', warmUp)
+      window.removeEventListener('keydown', warmUp)
+    }
   }, [])
 
   if (!onboardingDone) {

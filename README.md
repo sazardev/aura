@@ -82,32 +82,50 @@ Aura runs fully offline on every major platform from the same codebase:
 
 ## Scripts
 
-| Command                       | Description                                                                       |
-| ----------------------------- | --------------------------------------------------------------------------------- |
-| `npm run dev`                 | Vite dev server (port 1420).                                                      |
-| `npm run tauri:dev`           | Tauri app in dev mode. If port 1420 is busy, it picks a free port automatically.  |
-| `npm run tauri:build`         | Desktop release build (deb, AppImage, dmg, exe…).                                 |
-| `npm run tauri:android`       | Android dev (picks a free port automatically).                                    |
-| `npm run tauri:android:build` | Android release build (APK/AAB).                                                  |
-| `npm run tauri:ios`           | iOS dev (picks a free port automatically).                                        |
-| `npm run tauri:ios:build`     | iOS release build.                                                                |
-| `npm run typecheck`           | TypeScript 7 (`tsgo`, native) — typechecks the whole project.                     |
-| `npm run lint`                | ESLint 10 with maxed-out type-aware rule sets (strict + stylistic).               |
-| `npm run format`              | Prettier (writes).                                                                |
-| `npm run stylelint`           | Stylelint (CSS order and style).                                                  |
-| `npm run lint:rust`           | Clippy with `-D warnings`.                                                        |
-| `npm run format:rust`         | rustfmt in check mode.                                                            |
-| `npm run test`                | Vitest (engine tests).                                                            |
-| `npm run test:coverage`       | Code coverage.                                                                    |
-| `npm run copy:wn`             | Copies the WordNet data files into `src-tauri/resources/wn/`.                     |
-| `npm run gen:vocab`           | Regenerates `vocabulary.json` + `course-expansion.json` from the engines.         |
-| `npm run gen:library`         | Regenerates `src/data/library.json` from public-domain texts in `scripts/books/`. |
-| `npm run docs`                | TypeDoc for the internal API in `docs/`.                                          |
-| `npm run version:check`       | Verifies all version sources agree with `package.json`.                           |
-| `npm run release:check`       | Dry run: shows the next version and changelog source without changing anything.   |
-| `npm run release`             | Bumps the version, rewrites the changelog, commits and tags (`vX.Y.Z`).           |
-| `npm run analyze`             | `version:check` + `typecheck` + `lint` + `stylelint` + `format:check`.            |
-| `npm run ci`                  | Everything: analysis, Rust, tests and build.                                      |
+| Command                         | Description                                                                       |
+| ------------------------------- | --------------------------------------------------------------------------------- |
+| `npm run dev`                   | Vite dev server (port 1420).                                                      |
+| `npm run tauri:dev`             | Tauri app in dev mode. If port 1420 is busy, it picks a free port automatically.  |
+| `npm run tauri:build`           | Desktop release build (deb, AppImage, dmg, exe…).                                 |
+| `npm run tauri:android`         | Android dev (picks a free port automatically).                                    |
+| `npm run tauri:android:build`   | Android release build (APK/AAB).                                                  |
+| `npm run tauri:ios`             | iOS dev (picks a free port automatically).                                        |
+| `npm run tauri:ios:build`       | iOS release build.                                                                |
+| `npm run typecheck`             | TypeScript 7 (`tsgo`, native) — typechecks the whole project.                     |
+| `npm run lint`                  | ESLint 10 with maxed-out type-aware rule sets (strict + stylistic).               |
+| `npm run format`                | Prettier (writes).                                                                |
+| `npm run stylelint`             | Stylelint (CSS order and style).                                                  |
+| `npm run lint:rust`             | Clippy with `-D warnings`.                                                        |
+| `npm run format:rust`           | rustfmt in check mode.                                                            |
+| `npm run test`                  | Vitest (engine tests).                                                            |
+| `npm run test:coverage`         | Code coverage.                                                                    |
+| `npm run copy:wn`               | Copies the WordNet data files into `src-tauri/resources/wn/`.                     |
+| `npm run gen:vocab`             | Regenerates `vocabulary.json` + `course-expansion.json` from the engines.         |
+| `npm run gen:library`           | Regenerates `src/data/library.json` from public-domain texts in `scripts/books/`. |
+| `npm run docs`                  | TypeDoc for the internal API in `docs/`.                                          |
+| `npm run version:check`         | Verifies all version sources agree with `package.json`.                           |
+| `npm run release:check`         | Dry run: shows the next version and changelog source without changing anything.   |
+| `npm run release`               | Bumps the version, rewrites the changelog, commits and tags (`vX.Y.Z`).           |
+| `npm run analyze`               | `version:check` + `typecheck` + `lint` + `stylelint` + `format:check`.            |
+| `npm run ci`                    | Everything: analysis, Rust, tests and build.                                      |
+| `npm run audit:lighthouse`      | Runs a Lighthouse audit on the built app and writes HTML+JSON reports.            |
+| `npm run audit:lighthouse:view` | Same, then opens the HTML report in your browser.                                 |
+
+Lighthouse audits the app through its own bundled Chrome (installed on first
+use). Reports land in `lighthouse-reports/` (gitignored), with an `index.html`
+summary linking every per-route report. Options:
+
+- `npm run audit:lighthouse` — deep pass: every screen **and** every lesson,
+  grammar lesson and dialogue derived from the course data (91 routes).
+- `npm run audit:lighthouse -- --screen` — one screen per type only (~45 routes).
+- `npm run audit:lighthouse -- --no-build` — reuse the existing `dist/` build.
+- `npm run audit:lighthouse -- --mobile` — mobile preset instead of desktop.
+- `npm run audit:lighthouse -- --view` — open the summary report at the end.
+- `CHROME_PATH=/path/to/chrome npm run audit:lighthouse` — force a Chrome.
+
+The audit seeds the profile past onboarding (so real screens render) and audits
+the first-run onboarding screen separately. Chrome is launched fresh per route
+over the DevTools protocol, so every page is measured in an isolated browser.
 
 ---
 

@@ -27,6 +27,9 @@ logs/
 *.log
 npm-debug.log*
 
+# Audits
+lighthouse-reports/
+
 # Editor
 .vscode/*
 !.vscode/extensions.json
