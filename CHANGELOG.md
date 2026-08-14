@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.2.6] - 2026-08-14
+
+### Fixed
+
+- clean up the generated course and harden the engine
+
 ## [0.2.5] - 2026-08-13
 
 ### Fixed
