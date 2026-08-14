@@ -67,7 +67,6 @@ export function ReviewScreen() {
   const [answered, setAnswered] = useState(0)
   const [failedWords, setFailedWords] = useState<FailedWord[]>([])
   const [sessionCount, setSessionCount] = useState(0)
-  const timerRef = useRef<number | undefined>(undefined)
   const advanceRef = useRef<(() => void) | undefined>(undefined)
   const wordsRef = useRef<Map<string, ReviewWord>>(new Map())
   const shownAtRef = useRef(0)
@@ -78,13 +77,6 @@ export function ReviewScreen() {
       speak(item.word)
     }
   }, [queue, speak])
-
-  useEffect(
-    () => () => {
-      if (timerRef.current !== undefined) clearTimeout(timerRef.current)
-    },
-    [],
-  )
 
   const start = () => {
     wordsRef.current = new Map(words.map((word) => [word.word.toLowerCase(), word]))
@@ -99,10 +91,6 @@ export function ReviewScreen() {
   }
 
   const advance = () => {
-    if (timerRef.current !== undefined) {
-      clearTimeout(timerRef.current)
-      timerRef.current = undefined
-    }
     const run = advanceRef.current
     advanceRef.current = undefined
     run?.()
@@ -148,8 +136,6 @@ export function ReviewScreen() {
         shownAtRef.current = nowMs()
       }
     }
-    if (timerRef.current !== undefined) clearTimeout(timerRef.current)
-    timerRef.current = window.setTimeout(advance, 850)
   }
 
   if (phase === 'done') {
@@ -257,10 +243,11 @@ export function ReviewScreen() {
 
       {renderExercise(current.exercise, feedback, handleAnswer)}
 
-      {feedback === 'wrong' && (
+      {feedback !== 'idle' && (
         <div className="review-quiz__footer">
           <button type="button" className="lesson-screen__continue" onClick={advance}>
-            <ArrowRight size={16} aria-hidden="true" /> I got it — keep going
+            <ArrowRight size={16} aria-hidden="true" />{' '}
+            {feedback === 'wrong' ? 'I got it — keep going' : 'Continue'}
           </button>
         </div>
       )}

@@ -32,14 +32,18 @@ describe('Review screen', () => {
     expect(wrongOption).toBeDefined()
     await user.click(wrongOption!)
 
-    // Failure: the word comes back as a harder listening question (the quiz
-    // auto-advances after the wrong answer, no continue click needed).
+    // Failure: the answer stays visible (so the learner can read the correct
+    // meaning) until the user clicks to continue, then the word comes back as
+    // a harder listening question.
+    await user.click(screen.getByRole('button', { name: /i got it.*keep going/i }))
     expect(
       await screen.findByText(/listen and choose/i, undefined, { timeout: 3000 }),
     ).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'a fruit' }))
 
-    // Session ends and the failed word gets a lesson recommendation.
+    // Session ends after the user chooses to continue and the failed word
+    // gets a lesson recommendation.
+    await user.click(screen.getByRole('button', { name: /continue/i }))
     expect(
       await screen.findByText(/review complete/i, undefined, { timeout: 3000 }),
     ).toBeInTheDocument()
@@ -59,6 +63,7 @@ describe('Review screen', () => {
     await screen.findByText(/which word means/i)
     await user.click(screen.getByRole('button', { name: 'apple' }))
 
+    await user.click(screen.getByRole('button', { name: /continue/i }))
     await screen.findByText(/review complete/i, undefined, { timeout: 3000 })
     expect(useAuraStore.getState().xp).toBeGreaterThan(0)
     expect(useAuraStore.getState().weakWords['apple']).toBeUndefined()
