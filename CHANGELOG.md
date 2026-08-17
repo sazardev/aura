@@ -10,6 +10,13 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-08-17
+
+### Fixed
+
+- speak through the OS engine on Linux
+- follow the OS dark mode by default
+
 ## [0.3.2] - 2026-08-14
 
 ### Fixed

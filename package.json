@@ -1,6 +1,6 @@
 {
   "name": "aura",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Aura — learn English at full power. Duolingo-style, 100% local, free and open source.",
   "private": true,
   "type": "module",
