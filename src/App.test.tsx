@@ -163,7 +163,8 @@ describe('App', () => {
     render(<App />)
     await user.click(screen.getByRole('button', { name: /open settings/i }))
     expect(await screen.findByRole('heading', { name: /settings/i })).toBeInTheDocument()
-    expect(screen.getByRole('switch', { name: /dark mode/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^system theme$/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^dark theme$/i })).toBeInTheDocument()
     expect(screen.getByRole('switch', { name: /sound effects/i })).toBeInTheDocument()
   })
 

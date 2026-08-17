@@ -10,6 +10,7 @@ import { lessonById } from '@/engine/lessons'
 import { primeAudio, setSoundEnabled } from '@/engine/sounds'
 import { flushTelemetry, initTelemetry, trackScreen } from '@/engine/telemetry'
 import { useHashRoute } from '@/hooks/use-hash-route'
+import { useSystemDark } from '@/hooks/use-system-dark'
 import { HomeScreen } from '@/screens/home-screen'
 import { OnboardingScreen } from '@/screens/onboarding-screen'
 import { useAuraStore } from '@/state/store'
@@ -121,8 +122,9 @@ export function App() {
   const { route, navigate } = useHashRoute()
   const onboardingDone = useAuraStore((state) => state.onboardingDone)
   const soundEnabled = useAuraStore((state) => state.soundEnabled)
-  const darkMode = useAuraStore((state) => state.darkMode)
+  const darkMode = useAuraStore((state) => state.themeMode)
   const accent = useAuraStore((state) => state.accent)
+  const systemDark = useSystemDark()
 
   const goHome = () => navigate({ name: 'home' })
 
@@ -131,10 +133,12 @@ export function App() {
     setSoundEnabled(soundEnabled)
   }, [soundEnabled])
 
-  // Dark mode is the design tokens' single switch point.
+  // Dark mode is the design tokens' single switch point. `system` follows the
+  // OS color scheme live; `light`/`dark` are explicit overrides.
   useEffect(() => {
-    document.documentElement.dataset['theme'] = darkMode ? 'dark' : 'light'
-  }, [darkMode])
+    const effective = darkMode === 'dark' || (darkMode === 'system' && systemDark)
+    document.documentElement.dataset['theme'] = effective ? 'dark' : 'light'
+  }, [darkMode, systemDark])
 
   // The chosen accent theme recolors the whole app via CSS variables.
   useEffect(() => {

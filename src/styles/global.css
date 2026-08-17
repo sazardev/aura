@@ -556,6 +556,33 @@ button {
   background: var(--aura-green-soft);
 }
 
+.settings-theme {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-theme__option {
+  cursor: pointer;
+
+  flex: 1 1 0;
+
+  padding: 10px 12px;
+  border: 2px solid var(--aura-border);
+  border-radius: var(--radius-md);
+
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--aura-text);
+
+  background: var(--aura-card);
+}
+
+.settings-theme__option--active {
+  border-color: var(--aura-green);
+  color: var(--aura-green-dark);
+  background: var(--aura-green-soft);
+}
+
 .accent-picker {
   display: flex;
   flex-wrap: wrap;

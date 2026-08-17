@@ -23,6 +23,12 @@ export interface DailyProgress {
 
 export type LearningGoal = 'travel' | 'work' | 'study' | 'exams' | 'move' | 'fun'
 
+/**
+ * The user's theme preference. `system` follows the OS color scheme
+ * (`prefers-color-scheme`) live; `light`/`dark` are explicit overrides.
+ */
+export type ThemeMode = 'system' | 'light' | 'dark'
+
 export interface ProfileInfo {
   name: string
   avatar: string
@@ -80,7 +86,7 @@ interface AuraState {
   writingAttempts: number
   writingBest: number
   writingTotalScore: number
-  darkMode: boolean
+  themeMode: ThemeMode
   accent: string
   questBonusClaimed: Record<string, boolean>
   guidedActive: boolean
@@ -99,7 +105,7 @@ interface AuraState {
   setTtsVoice: (uri: string) => void
   setTtsEnabled: (enabled: boolean) => void
   setSoundEnabled: (enabled: boolean) => void
-  setDarkMode: (enabled: boolean) => void
+  setThemeMode: (mode: ThemeMode) => void
   setAccent: (accent: string) => void
   resetHearts: () => void
   completeOnboarding: () => void
@@ -218,7 +224,7 @@ export const useAuraStore = create<AuraState>()(
       writingAttempts: 0,
       writingBest: 0,
       writingTotalScore: 0,
-      darkMode: false,
+      themeMode: 'system',
       accent: 'forest',
       questBonusClaimed: {},
       guidedActive: false,
@@ -345,7 +351,7 @@ export const useAuraStore = create<AuraState>()(
       setTtsVoice: (uri) => set({ ttsVoiceURI: uri }),
       setTtsEnabled: (enabled) => set({ ttsEnabled: enabled }),
       setSoundEnabled: (enabled) => set({ soundEnabled: enabled }),
-      setDarkMode: (enabled) => set({ darkMode: enabled }),
+      setThemeMode: (mode) => set({ themeMode: mode }),
       setAccent: (accent) => set({ accent: accent }),
       resetHearts: () => set({ hearts: CONFIG.gamification.maxHearts }),
       completeOnboarding: () => set({ onboardingDone: true, guidedActive: false }),
@@ -486,7 +492,7 @@ export const useAuraStore = create<AuraState>()(
     }),
     {
       name: 'aura-state',
-      version: 11,
+      version: 12,
       migrate: (persistedState, version) => {
         const base = { ...(persistedState as Record<string, unknown>) }
         if (version < 2) {
@@ -545,6 +551,14 @@ export const useAuraStore = create<AuraState>()(
         }
         if (version < 11) {
           base['hiddenBooks'] = []
+        }
+        if (version < 12) {
+          // The boolean dark-mode flag became a three-way preference. A prior
+          // explicit dark choice stays dark; the default (and any light choice)
+          // now follows the OS, so dark desktops start dark out of the box.
+          const darkMode = base['darkMode'] as boolean | undefined
+          base['themeMode'] = darkMode === true ? 'dark' : 'system'
+          delete base['darkMode']
         }
         return base as unknown as AuraState
       },

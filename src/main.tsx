@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '@fontsource-variable/nunito'
 
+import '@/theme-init'
 import { App } from '@/App'
 import '@/styles/global.css'
 

@@ -76,9 +76,10 @@ describe('Practice metrics', () => {
 })
 
 describe('Dark mode and daily quests', () => {
-  it('toggles dark mode', () => {
-    useAuraStore.getState().setDarkMode(true)
-    expect(useAuraStore.getState().darkMode).toBe(true)
+  it('defaults to the system theme and changes it', () => {
+    expect(useAuraStore.getState().themeMode).toBe('system')
+    useAuraStore.getState().setThemeMode('dark')
+    expect(useAuraStore.getState().themeMode).toBe('dark')
   })
 
   it('defaults to the forest accent and changes it', () => {

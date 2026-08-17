@@ -31,13 +31,19 @@ function pitchLabel(pitch: number): string {
 
 const SAMPLE_LINE = 'Practice makes perfect. Aura helps you speak English with confidence.'
 
+const THEME_MODES: { id: 'system' | 'light' | 'dark'; label: string }[] = [
+  { id: 'system', label: 'System' },
+  { id: 'light', label: 'Light' },
+  { id: 'dark', label: 'Dark' },
+]
+
 export function SettingsScreen() {
   const soundEnabled = useAuraStore((state) => state.soundEnabled)
   const ttsEnabled = useAuraStore((state) => state.ttsEnabled)
   const ttsRate = useAuraStore((state) => state.ttsRate)
   const ttsPitch = useAuraStore((state) => state.ttsPitch)
   const ttsVoiceURI = useAuraStore((state) => state.ttsVoiceURI)
-  const darkMode = useAuraStore((state) => state.darkMode)
+  const themeMode = useAuraStore((state) => state.themeMode)
   const accent = useAuraStore((state) => state.accent)
   const dailyGoal = useAuraStore((state) => state.dailyGoal)
   const setSoundEnabled = useAuraStore((state) => state.setSoundEnabled)
@@ -45,7 +51,7 @@ export function SettingsScreen() {
   const setTtsRate = useAuraStore((state) => state.setTtsRate)
   const setTtsPitch = useAuraStore((state) => state.setTtsPitch)
   const setTtsVoice = useAuraStore((state) => state.setTtsVoice)
-  const setDarkMode = useAuraStore((state) => state.setDarkMode)
+  const setThemeMode = useAuraStore((state) => state.setThemeMode)
   const setAccent = useAuraStore((state) => state.setAccent)
   const setDailyGoal = useAuraStore((state) => state.setDailyGoal)
   const startGuidedTour = useAuraStore((state) => state.startGuidedTour)
@@ -91,22 +97,30 @@ export function SettingsScreen() {
             ))}
           </div>
         </label>
-        <label className="settings-row">
+        <label className="settings-row settings-row--column">
           <span>
-            <strong>Dark mode</strong>
-            <small>Easy on the eyes at night</small>
+            <strong>Theme</strong>
+            <small>Follow your system, or force light or dark</small>
           </span>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={darkMode}
-            className={['settings-toggle', darkMode ? 'settings-toggle--on' : '']
-              .filter(Boolean)
-              .join(' ')}
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            <span className="settings-toggle__knob" />
-          </button>
+          <div className="settings-theme">
+            {THEME_MODES.map((mode) => (
+              <button
+                key={mode.id}
+                type="button"
+                className={[
+                  'settings-theme__option',
+                  themeMode === mode.id ? 'settings-theme__option--active' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                aria-label={`${mode.label} theme`}
+                aria-pressed={themeMode === mode.id}
+                onClick={() => setThemeMode(mode.id)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
         </label>
       </section>
 
