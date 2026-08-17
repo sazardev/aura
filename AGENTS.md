@@ -55,4 +55,5 @@ Reference docs: `README.md` (overview + scripts), `DESIGN.md` (design system sou
 ## Platform facts
 
 - Speech recognition is unavailable on Linux WebKitGTK → speak exercises self-grade when recognition is missing.
+- WebKitGTK also lacks `speechSynthesis` → TTS falls back to the OS engine via the Rust commands `speak_text`/`stop_speech`/`tts_available` (spd-say → espeak-ng/espeak on Linux, `say` on macOS, PowerShell `System.Speech` on Windows). On Linux, install `speech-dispatcher` or `espeak-ng` for voice.
 - Tests: ~50 Vitest tests (jsdom, setup in `src/test-setup.ts`), covering the engine + an `App` smoke test. Data-integrity is asserted (unique ids, achievement rules match JSON).
