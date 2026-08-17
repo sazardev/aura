@@ -11,17 +11,24 @@ const PREFERRED_PORT = 1420
 
 function isPortOpen(port) {
   return new Promise((resolve) => {
-    const socket = net.connect({ host: '127.0.0.1', port })
-    socket.setTimeout(500)
-    socket.once('connect', () => {
-      socket.destroy()
-      resolve(true)
-    })
-    socket.once('timeout', () => {
-      socket.destroy()
-      resolve(false)
-    })
-    socket.once('error', () => resolve(false))
+    let remaining = 0
+    for (const host of ['127.0.0.1', '::1']) {
+      remaining += 1
+      const socket = net.connect({ host, port })
+      socket.setTimeout(500)
+      const finish = (open) => {
+        socket.destroy()
+        remaining -= 1
+        if (open) {
+          resolve(true)
+        } else if (remaining === 0) {
+          resolve(false)
+        }
+      }
+      socket.once('connect', () => finish(true))
+      socket.once('timeout', () => finish(false))
+      socket.once('error', () => finish(false))
+    }
   })
 }
 
