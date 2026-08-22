@@ -277,6 +277,7 @@ function FillExercise({
       </p>
       <input
         className="exercise-input"
+        name="grammar-blank"
         aria-label="Type the missing word"
         value={value}
         placeholder="Type the missing word…"

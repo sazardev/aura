@@ -369,6 +369,7 @@ function SetupBody({
             <span>Your name</span>
             <input
               type="text"
+              name="profile-name"
               className="exercise-input"
               value={name}
               maxLength={20}

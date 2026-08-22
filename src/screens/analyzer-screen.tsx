@@ -143,6 +143,7 @@ export function AnalyzerScreen() {
         <input
           ref={fileInputRef}
           type="file"
+          name="analyzer-document"
           accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown"
           className="backup-file-input"
           tabIndex={-1}

@@ -96,6 +96,7 @@ export function BackupScreen() {
           <Upload size={16} aria-hidden="true" /> Choose backup file
           <input
             type="file"
+            name="backup-file"
             accept="application/json,.json"
             className="backup-file-input"
             tabIndex={-1}

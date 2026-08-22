@@ -71,6 +71,7 @@ export function ChoiceView({
         sentence={exercise.sentence}
         meaning={exercise.meaning}
         show={feedback !== 'idle'}
+        wrong={feedback === 'wrong'}
       />
     </div>
   )
@@ -113,7 +114,12 @@ export function ListenView({
           </button>
         ))}
       </div>
-      <HintCard sentence={exercise.sentence} meaning={exercise.word} show={feedback !== 'idle'} />
+      <HintCard
+        sentence={exercise.sentence}
+        meaning={exercise.word}
+        show={feedback !== 'idle'}
+        wrong={feedback === 'wrong'}
+      />
     </div>
   )
 }
@@ -135,6 +141,7 @@ export function TypeView({
       <input
         className="exercise-input"
         type="text"
+        name="exercise-word"
         autoComplete="off"
         autoCorrect="off"
         spellCheck={false}
@@ -324,6 +331,7 @@ export function SpeakView({
         sentence={exercise.sentence}
         meaning={exercise.meaning}
         show={feedback !== 'idle'}
+        wrong={feedback === 'wrong'}
       />
     </div>
   )
@@ -435,10 +443,17 @@ export function CardView({
       <div className="exercise-prompt">
         <div className="exercise-prompt__label">Memorize the word and its meaning</div>
       </div>
-      <button
-        type="button"
+      <div
+        role="button"
+        tabIndex={0}
+        aria-pressed={flipped}
         className={['flip-card', flipped ? 'flip-card--flipped' : ''].filter(Boolean).join(' ')}
         onClick={() => setFlipped((current) => !current)}
+        onKeyDown={(event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return
+          event.preventDefault()
+          setFlipped((current) => !current)
+        }}
       >
         {flipped ? (
           <div className="flip-card__back">
@@ -453,7 +468,7 @@ export function CardView({
             <small>Tap to see the answer</small>
           </div>
         )}
-      </button>
+      </div>
       <div className="exercise-options">
         <Button variant="danger" disabled={feedback !== 'idle'} onClick={() => onSubmit(false)}>
           I don&apos;t know it yet
@@ -470,14 +485,16 @@ function HintCard({
   sentence,
   meaning,
   show,
+  wrong = false,
 }: {
   sentence: string
   meaning: string
   show: boolean
+  wrong?: boolean
 }) {
   if (!show) return null
   return (
-    <div className="hint-card">
+    <div className={['hint-card', wrong ? 'hint-card--wrong' : ''].filter(Boolean).join(' ')}>
       <SpeechButton text={sentence} size="sm" label={`Listen to ${sentence}`} />
       <div>
         <p>{sentence}</p>

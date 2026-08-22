@@ -178,6 +178,7 @@ export function SettingsScreen() {
           </span>
           <input
             type="range"
+            name="tts-rate"
             min={0.5}
             max={1.5}
             step={0.1}
@@ -198,6 +199,7 @@ export function SettingsScreen() {
           </span>
           <input
             type="range"
+            name="tts-pitch"
             min={0.5}
             max={1.5}
             step={0.1}

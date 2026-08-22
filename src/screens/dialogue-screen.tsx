@@ -194,6 +194,7 @@ function DialoguePlayer({ dialogue, onBack }: { dialogue: Dialogue; onBack: () =
             <div className="dialogue-type">
               <input
                 type="text"
+                name="dialogue-reply"
                 className="exercise-input"
                 aria-label="Type your reply"
                 placeholder="Type your reply…"

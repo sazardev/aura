@@ -145,6 +145,7 @@ export function DictionaryScreen({
       <div className="search-box">
         <input
           type="search"
+          name="dictionary-search"
           className="exercise-input"
           aria-label="Search an English word"
           placeholder="Search an English word…"

@@ -1415,6 +1415,11 @@ button {
   background: var(--aura-green-soft);
 }
 
+.hint-card--wrong {
+  border-color: var(--aura-red);
+  background: var(--aura-red-soft);
+}
+
 .hint-card p {
   margin: 0;
   font-weight: 600;
