@@ -1492,12 +1492,18 @@ function collectParagraphs(lines) {
 }
 
 function joinParagraph(lines) {
-  return lines
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .replace(/ ([,.;:!?'”])/g, '$1')
-    .replace(/([“‘(])\s/g, '$1')
-    .trim()
+  return (
+    lines
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .replace(/ ([,.;:!?'”])/g, '$1')
+      .replace(/([“‘(])\s/g, '$1')
+      // Strip Project Gutenberg _emphasis_ markers; some span paragraphs,
+      // so drop any leftover lone underscores afterwards.
+      .replace(/_([^_]*)_/g, '$1')
+      .replace(/_/g, '')
+      .trim()
+  )
 }
 
 function groupSections(chapters) {
