@@ -10,6 +10,12 @@ here always matches `package.json`, `src-tauri/tauri.conf.json`,
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-08-22
+
+### Fixed
+
+- wrong-answer hint state and keyboard flip card
+
 ## [0.3.3] - 2026-08-17
 
 ### Fixed
